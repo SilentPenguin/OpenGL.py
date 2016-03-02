@@ -71,7 +71,7 @@ def add_commands(lines, commands, command_values):
 def add_documentation(lines, path):
     def pep_reference(match):
         s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', match.group(1))
-        return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
+        return 'gl.' + re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
 
     import re
     try:
