@@ -49,43 +49,43 @@ def bind_texture(target, texture):
 @returns(t.void)
 @binds(dll)
 def blend_color(red, green, blue, alpha): 
-    pass
+    '''set the blend color'''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
 def blend_equation(mode): 
-    pass
+    '''specify the equation used for both the RGB blend equation and the Alpha blend equation'''
 
 @accepts(t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
 def blend_equation_separate(modeRGB, modeAlpha): 
-    pass
+    '''set the RGB blend equation and the alpha blend equation separately'''
 
 @accepts(t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
 def blend_func(sfactor, dfactor): 
-    pass
+    '''specify pixel arithmetic'''
 
 @accepts(t.enum, t.enum, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
 def blend_func_separate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha): 
-    pass
+    '''specify pixel arithmetic for RGB and alpha components separately'''
 
 @accepts(t.enum, t.sizeiptr, t.void, t.enum)
 @returns(t.void)
 @binds(dll)
 def buffer_data(target, size, data, usage): 
-    pass
+    '''creates and initializes a buffer object's data store'''
 
 @accepts(t.enum, t.intptr, t.sizeiptr, t.void)
 @returns(t.void)
 @binds(dll)
 def buffer_sub_data(target, offset, size, data): 
-    pass
+    '''updates a subset of a buffer object's data store'''
 
 @accepts(t.enum)
 @returns(t.enum)
@@ -103,7 +103,7 @@ def clear(mask):
 @returns(t.void)
 @binds(dll)
 def clear_color(red, green, blue, alpha): 
-    pass
+    '''specify clear values for the color buffers'''
 
 @accepts(t.float)
 @returns(t.void)
@@ -115,7 +115,7 @@ def clear_depthf(d):
 @returns(t.void)
 @binds(dll)
 def clear_stencil(s): 
-    pass
+    '''specify the clear value for the stencil buffer'''
 
 @accepts(t.boolean, t.boolean, t.boolean, t.boolean)
 @returns(t.void)
@@ -139,19 +139,19 @@ def compressed_tex_image2_d(target, level, internalformat, width, height, border
 @returns(t.void)
 @binds(dll)
 def compressed_tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, imageSize, data): 
-    pass
+    '''specify a two-dimensional texture subimage in a compressed format'''
 
 @accepts(t.enum, t.int, t.enum, t.int, t.int, t.sizei, t.sizei, t.int)
 @returns(t.void)
 @binds(dll)
 def copy_tex_image2_d(target, level, internalformat, x, y, width, height, border): 
-    pass
+    '''copy pixels into a 2D texture image'''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def copy_tex_sub_image2_d(target, level, xoffset, yoffset, x, y, width, height): 
-    pass
+    '''copy a two-dimensional texture subimage'''
 
 @accepts()
 @returns(t.uint)
@@ -283,7 +283,7 @@ def flush():
 @returns(t.void)
 @binds(dll)
 def framebuffer_renderbuffer(target, attachment, renderbuffertarget, renderbuffer): 
-    '''attach a renderbuffer as a logical buffer to the currently bound framebuffer object'''
+    '''attach a renderbuffer as a logical buffer of a framebuffer object'''
 
 @accepts(t.enum, t.enum, t.enum, t.uint, t.int)
 @returns(t.void)
@@ -307,7 +307,7 @@ def gen_buffers(n, buffers):
 @returns(t.void)
 @binds(dll)
 def generate_mipmap(target): 
-    pass
+    '''generate mipmaps for a specified texture object'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
@@ -421,7 +421,7 @@ def get_shader_info_log(shader, bufSize, length, infoLog):
 @returns(t.void)
 @binds(dll)
 def get_shader_precision_format(shadertype, precisiontype, range, precision): 
-    pass
+    '''retrieve the range and precision for numeric formats supported by the shader compiler'''
 
 @accepts(t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
@@ -535,7 +535,7 @@ def is_texture(texture):
 @returns(t.void)
 @binds(dll)
 def line_width(width): 
-    pass
+    '''specify the width of rasterized lines'''
 
 @accepts(t.uint)
 @returns(t.void)
@@ -553,19 +553,19 @@ def pixel_storei(pname, param):
 @returns(t.void)
 @binds(dll)
 def polygon_offset(factor, units): 
-    pass
+    '''set the scale and units used to calculate depth values'''
 
 @accepts(t.int, t.int, t.sizei, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def read_pixels(x, y, width, height, format, type, pixels): 
-    pass
+    '''read a block of pixels from the frame buffer'''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
 def release_shader_compiler(): 
-    pass
+    '''release resources consumed by the implementation's shader compiler'''
 
 @accepts(t.enum, t.enum, t.sizei, t.sizei)
 @returns(t.void)
@@ -577,7 +577,7 @@ def renderbuffer_storage(target, internalformat, width, height):
 @returns(t.void)
 @binds(dll)
 def sample_coverage(value, invert): 
-    pass
+    '''specify multisample coverage parameters'''
 
 @accepts(t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
@@ -589,7 +589,7 @@ def scissor(x, y, width, height):
 @returns(t.void)
 @binds(dll)
 def shader_binary(count, shaders, binaryformat, binary, length): 
-    pass
+    '''load pre-compiled shader binaries'''
 
 @accepts(t.uint, t.sizei, POINTER(t.char_p), POINTER(t.int))
 @returns(t.void)
@@ -601,43 +601,43 @@ def shader_source(shader, count, string, length):
 @returns(t.void)
 @binds(dll)
 def stencil_func(func, ref, mask): 
-    pass
+    '''set front and back function and reference value for stencil testing'''
 
 @accepts(t.enum, t.enum, t.int, t.uint)
 @returns(t.void)
 @binds(dll)
 def stencil_func_separate(face, func, ref, mask): 
-    pass
+    '''set front and/or back function and reference value for stencil testing'''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
 def stencil_mask(mask): 
-    pass
+    '''control the front and back writing of individual bits in the stencil planes'''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
 def stencil_mask_separate(face, mask): 
-    pass
+    '''control the front and/or back writing of individual bits in the stencil planes'''
 
 @accepts(t.enum, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
 def stencil_op(fail, zfail, zpass): 
-    pass
+    '''set front and back stencil test actions'''
 
 @accepts(t.enum, t.enum, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
 def stencil_op_separate(face, sfail, dpfail, dppass): 
-    pass
+    '''set front and/or back stencil test actions'''
 
 @accepts(t.enum, t.int, t.int, t.sizei, t.sizei, t.int, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def tex_image2_d(target, level, internalformat, width, height, border, format, type, pixels): 
-    pass
+    '''specify a two-dimensional texture image'''
 
 @accepts(t.enum, t.enum, t.float)
 @returns(t.void)
@@ -667,7 +667,7 @@ def tex_parameteriv(target, pname, params):
 @returns(t.void)
 @binds(dll)
 def tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, type, pixels): 
-    pass
+    '''specify a two-dimensional texture subimage'''
 
 @accepts(t.int, t.float)
 @returns(t.void)
@@ -853,7 +853,7 @@ def vertex_attrib_pointer(index, size, type, normalized, stride, pointer):
 @returns(t.void)
 @binds(dll)
 def viewport(x, y, width, height): 
-    pass
+    '''set the viewport'''
 
 DEPTH_BUFFER_BIT = 0x00000100
 STENCIL_BUFFER_BIT = 0x00000400

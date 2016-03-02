@@ -119,19 +119,19 @@ TEXTURE_IMMUTABLE_FORMAT = 0x912F
 @returns(t.void)
 @binds(dll)
 def draw_arrays_instanced_base_instance(mode, first, count, instancecount, baseinstance): 
-    pass
+    '''draw multiple instances of a range of elements with offset applied to instanced attributes'''
 
 @accepts(t.enum, t.sizei, t.enum, t.void, t.sizei, t.uint)
 @returns(t.void)
 @binds(dll)
 def draw_elements_instanced_base_instance(mode, count, type, indices, instancecount, baseinstance): 
-    pass
+    '''draw multiple instances of a set of elements with offset applied to instanced attributes'''
 
 @accepts(t.enum, t.sizei, t.enum, t.void, t.sizei, t.int, t.uint)
 @returns(t.void)
 @binds(dll)
 def draw_elements_instanced_base_vertex_base_instance(mode, count, type, indices, instancecount, basevertex, baseinstance): 
-    pass
+    '''render multiple instances of a set of primitives from array data with a per-element offset'''
 
 @accepts(t.enum, t.enum, t.enum, t.sizei, POINTER(t.int))
 @returns(t.void)
@@ -143,46 +143,46 @@ def get_internalformativ(target, internalformat, pname, bufSize, params):
 @returns(t.void)
 @binds(dll)
 def get_active_atomic_counter_bufferiv(program, bufferIndex, pname, params): 
-    pass
+    '''retrieve information about the set of active atomic counter buffers for a program'''
 
 @accepts(t.uint, t.uint, t.int, t.boolean, t.int, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
 def bind_image_texture(unit, texture, level, layered, layer, access, format): 
-    pass
+    '''bind a level of a texture to an image unit'''
 
 @accepts(t.bitfield)
 @returns(t.void)
 @binds(dll)
 def memory_barrier(barriers): 
-    pass
+    '''defines a barrier ordering memory transactions'''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei)
 @returns(t.void)
 @binds(dll)
 def tex_storage1_d(target, levels, internalformat, width): 
-    pass
+    '''simultaneously specify storage for all levels of a one-dimensional texture'''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def tex_storage2_d(target, levels, internalformat, width, height): 
-    pass
+    '''simultaneously specify storage for all levels of a two-dimensional or one-dimensional array texture'''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def tex_storage3_d(target, levels, internalformat, width, height, depth): 
-    pass
+    '''simultaneously specify storage for all levels of a three-dimensional, two-dimensional array or cube-map array texture'''
 
 @accepts(t.enum, t.uint, t.sizei)
 @returns(t.void)
 @binds(dll)
 def draw_transform_feedback_instanced(mode, id, instancecount): 
-    pass
+    '''render multiple instances of primitives using a count derived from a transform feedback object'''
 
 @accepts(t.enum, t.uint, t.uint, t.sizei)
 @returns(t.void)
 @binds(dll)
 def draw_transform_feedback_stream_instanced(mode, id, stream, instancecount): 
-    pass
+    '''render multiple instances of primitives using a count derived from a specifed stream of a transform feedback object'''

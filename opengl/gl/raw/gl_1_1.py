@@ -25,43 +25,43 @@ def get_pointerv(pname, params):
 @returns(t.void)
 @binds(dll)
 def polygon_offset(factor, units): 
-    pass
+    '''set the scale and units used to calculate depth values'''
 
 @accepts(t.enum, t.int, t.enum, t.int, t.int, t.sizei, t.int)
 @returns(t.void)
 @binds(dll)
 def copy_tex_image1_d(target, level, internalformat, x, y, width, border): 
-    pass
+    '''copy pixels into a 1D texture image'''
 
 @accepts(t.enum, t.int, t.enum, t.int, t.int, t.sizei, t.sizei, t.int)
 @returns(t.void)
 @binds(dll)
 def copy_tex_image2_d(target, level, internalformat, x, y, width, height, border): 
-    pass
+    '''copy pixels into a 2D texture image'''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.sizei)
 @returns(t.void)
 @binds(dll)
 def copy_tex_sub_image1_d(target, level, xoffset, x, y, width): 
-    pass
+    '''copy a one-dimensional texture subimage'''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def copy_tex_sub_image2_d(target, level, xoffset, yoffset, x, y, width, height): 
-    pass
+    '''copy a two-dimensional texture subimage'''
 
 @accepts(t.enum, t.int, t.int, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def tex_sub_image1_d(target, level, xoffset, width, format, type, pixels): 
-    pass
+    '''specify a one-dimensional texture subimage'''
 
 @accepts(t.enum, t.int, t.int, t.int, t.sizei, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, type, pixels): 
-    pass
+    '''specify a two-dimensional texture subimage'''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
@@ -157,7 +157,7 @@ def are_textures_resident(n, textures, residences):
 @returns(t.void)
 @binds(dll)
 def prioritize_textures(n, textures, priorities): 
-    pass
+    '''set texture residence priority'''
 
 @accepts(t.ubyte)
 @returns(t.void)

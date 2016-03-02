@@ -42,19 +42,19 @@ UNDEFINED_VERTEX = 0x8260
 @returns(t.void)
 @binds(dll)
 def release_shader_compiler(): 
-    pass
+    '''release resources consumed by the implementation's shader compiler'''
 
 @accepts(t.sizei, POINTER(t.uint), t.enum, t.void, t.sizei)
 @returns(t.void)
 @binds(dll)
 def shader_binary(count, shaders, binaryformat, binary, length): 
-    pass
+    '''load pre-compiled shader binaries'''
 
 @accepts(t.enum, t.enum, POINTER(t.int), POINTER(t.int))
 @returns(t.void)
 @binds(dll)
 def get_shader_precision_format(shadertype, precisiontype, range, precision): 
-    pass
+    '''retrieve the range and precision for numeric formats supported by the shader compiler'''
 
 @accepts(t.float, t.float)
 @returns(t.void)
@@ -72,13 +72,13 @@ def clear_depthf(d):
 @returns(t.void)
 @binds(dll)
 def get_program_binary(program, bufSize, length, binaryFormat, binary): 
-    pass
+    '''return a binary representation of a program object's compiled and linked executable source'''
 
 @accepts(t.uint, t.enum, t.void, t.sizei)
 @returns(t.void)
 @binds(dll)
 def program_binary(program, binaryFormat, binary, length): 
-    pass
+    '''load a program object with a program binary'''
 
 @accepts(t.uint, t.enum, t.int)
 @returns(t.void)
@@ -90,13 +90,13 @@ def program_parameteri(program, pname, value):
 @returns(t.void)
 @binds(dll)
 def use_program_stages(pipeline, stages, program): 
-    pass
+    '''bind stages of a program object to a program pipeline'''
 
 @accepts(t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
 def active_shader_program(pipeline, program): 
-    pass
+    '''set the active program object for a program pipeline object'''
 
 @accepts(t.enum, t.sizei, POINTER(t.char_p))
 @returns(t.uint)
@@ -108,25 +108,25 @@ def create_shader_programv(type, count, strings):
 @returns(t.void)
 @binds(dll)
 def bind_program_pipeline(pipeline): 
-    pass
+    '''bind a program pipeline to the current context'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def delete_program_pipelines(n, pipelines): 
-    pass
+    '''delete program pipeline objects'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def gen_program_pipelines(n, pipelines): 
-    pass
+    '''reserve program pipeline object names'''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
 def is_program_pipeline(pipeline): 
-    pass
+    '''determine if a name corresponds to a program pipeline object'''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
@@ -438,13 +438,13 @@ def program_uniform_matrix4x3dv(program, location, count, transpose, value):
 @returns(t.void)
 @binds(dll)
 def validate_program_pipeline(pipeline): 
-    pass
+    '''validate a program pipeline object against current GL state'''
 
 @accepts(t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
 def get_program_pipeline_info_log(pipeline, bufSize, length, infoLog): 
-    pass
+    '''retrieve the info log string from a program pipeline object'''
 
 @accepts(t.uint, t.double)
 @returns(t.void)
@@ -534,7 +534,7 @@ def scissor_arrayv(first, count, v):
 @returns(t.void)
 @binds(dll)
 def scissor_indexed(index, left, bottom, width, height): 
-    pass
+    '''define the scissor box for a specific viewport'''
 
 @accepts(t.uint, POINTER(t.int))
 @returns(t.void)
@@ -552,7 +552,7 @@ def depth_range_arrayv(first, count, v):
 @returns(t.void)
 @binds(dll)
 def depth_range_indexed(index, n, f): 
-    pass
+    '''specify mapping of depth values from normalized device coordinates to window coordinates for a specified viewport'''
 
 @accepts(t.enum, t.uint, POINTER(t.float))
 @returns(t.void)

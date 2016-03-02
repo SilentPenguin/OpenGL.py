@@ -7,7 +7,7 @@ from opengl.gl.raw.bindings import *
 @returns(t.void)
 @binds(dll)
 def min_sample_shading(value): 
-    pass
+    '''specifies minimum rate at which sample shaing takes place'''
 
 @accepts(t.uint, t.enum)
 @returns(t.void)
@@ -48,13 +48,13 @@ UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY = 0x900F
 @returns(t.void)
 @binds(dll)
 def draw_arrays_indirect(mode, indirect): 
-    pass
+    '''render primitives from array data, taking parameters from memory'''
 
 @accepts(t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def draw_elements_indirect(mode, type, indirect): 
-    pass
+    '''render indexed primitives from array data, taking parameters from memory'''
 
 DRAW_INDIRECT_BUFFER = 0x8F3F
 DRAW_INDIRECT_BUFFER_BINDING = 0x8F43
@@ -188,13 +188,13 @@ DOUBLE_MAT4x3 = 0x8F4E
 @returns(t.int)
 @binds(dll)
 def get_subroutine_uniform_location(program, shadertype, name): 
-    pass
+    '''retrieve the location of a subroutine uniform of a given shader stage within a program'''
 
 @accepts(t.uint, t.enum, t.char_p)
 @returns(t.uint)
 @binds(dll)
 def get_subroutine_index(program, shadertype, name): 
-    pass
+    '''retrieve the index of a subroutine uniform of a given shader stage within a program'''
 
 @accepts(t.uint, t.enum, t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
@@ -206,13 +206,13 @@ def get_active_subroutine_uniformiv(program, shadertype, index, pname, values):
 @returns(t.void)
 @binds(dll)
 def get_active_subroutine_uniform_name(program, shadertype, index, bufsize, length, name): 
-    pass
+    '''query the name of an active shader subroutine uniform'''
 
 @accepts(t.uint, t.enum, t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
 def get_active_subroutine_name(program, shadertype, index, bufsize, length, name): 
-    pass
+    '''query the name of an active shader subroutine'''
 
 @accepts(t.enum, t.sizei, POINTER(t.uint))
 @returns(t.void)
@@ -290,43 +290,43 @@ TESS_CONTROL_SHADER = 0x8E88
 @returns(t.void)
 @binds(dll)
 def bind_transform_feedback(target, id): 
-    pass
+    '''bind a transform feedback object'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def delete_transform_feedbacks(n, ids): 
-    pass
+    '''delete transform feedback objects'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def gen_transform_feedbacks(n, ids): 
-    pass
+    '''reserve transform feedback object names'''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
 def is_transform_feedback(id): 
-    pass
+    '''determine if a name corresponds to a transform feedback object'''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
 def pause_transform_feedback(): 
-    pass
+    '''pause transform feedback operations'''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
 def resume_transform_feedback(): 
-    pass
+    '''resume transform feedback operations'''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
 def draw_transform_feedback(mode, id): 
-    pass
+    '''render primitives using a count derived from a transform feedback object'''
 
 TRANSFORM_FEEDBACK = 0x8E22
 TRANSFORM_FEEDBACK_BUFFER_PAUSED = 0x8E23
@@ -336,13 +336,13 @@ TRANSFORM_FEEDBACK_BINDING = 0x8E25
 @returns(t.void)
 @binds(dll)
 def draw_transform_feedback_stream(mode, id, stream): 
-    pass
+    '''render primitives using a count derived from a specifed stream of a transform feedback object'''
 
 @accepts(t.enum, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
 def begin_query_indexed(target, index, id): 
-    pass
+    '''delimit the boundaries of a query object on an indexed target'''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)

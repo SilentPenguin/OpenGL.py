@@ -7,7 +7,7 @@ from opengl.gl.raw.bindings import *
 @returns(t.void)
 @binds(dll)
 def blend_equation_separate(modeRGB, modeAlpha): 
-    pass
+    '''set the RGB blend equation and the alpha blend equation separately'''
 
 @accepts(t.sizei, POINTER(t.enum))
 @returns(t.void)
@@ -19,19 +19,19 @@ def draw_buffers(n, bufs):
 @returns(t.void)
 @binds(dll)
 def stencil_op_separate(face, sfail, dpfail, dppass): 
-    pass
+    '''set front and/or back stencil test actions'''
 
 @accepts(t.enum, t.enum, t.int, t.uint)
 @returns(t.void)
 @binds(dll)
 def stencil_func_separate(face, func, ref, mask): 
-    pass
+    '''set front and/or back function and reference value for stencil testing'''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
 def stencil_mask_separate(face, mask): 
-    pass
+    '''control the front and/or back writing of individual bits in the stencil planes'''
 
 @accepts(t.uint, t.uint)
 @returns(t.void)

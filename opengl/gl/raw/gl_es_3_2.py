@@ -30,67 +30,67 @@ HSL_LUMINOSITY = 0x92B0
 @returns(t.void)
 @binds(dll)
 def copy_image_sub_data(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth): 
-    pass
+    '''perform a raw data copy between two images'''
 
 @accepts(t.enum, t.enum, t.enum, t.sizei, POINTER(t.uint), t.boolean)
 @returns(t.void)
 @binds(dll)
 def debug_message_control(source, type, severity, count, ids, enabled): 
-    pass
+    '''control the reporting of debug messages in a debug context'''
 
 @accepts(t.enum, t.enum, t.uint, t.enum, t.sizei, t.char_p)
 @returns(t.void)
 @binds(dll)
 def debug_message_insert(source, type, id, severity, length, buf): 
-    pass
+    '''inject an application-supplied message into the debug message queue'''
 
 @accepts(t.DEBUGPROC, t.void)
 @returns(t.void)
 @binds(dll)
 def debug_message_callback(callback, userParam): 
-    pass
+    '''specify a callback to receive debugging messages from the GL'''
 
 @accepts(t.uint, t.sizei, POINTER(t.enum), POINTER(t.enum), POINTER(t.uint), POINTER(t.enum), POINTER(t.sizei), t.char_p)
 @returns(t.uint)
 @binds(dll)
 def get_debug_message_log(count, bufSize, sources, types, ids, severities, lengths, messageLog): 
-    pass
+    '''retrieve messages from the debug message log'''
 
 @accepts(t.enum, t.uint, t.sizei, t.char_p)
 @returns(t.void)
 @binds(dll)
 def push_debug_group(source, id, length, message): 
-    pass
+    '''push a named debug group into the command stream'''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
 def pop_debug_group(): 
-    pass
+    '''pop the active debug group'''
 
 @accepts(t.enum, t.uint, t.sizei, t.char_p)
 @returns(t.void)
 @binds(dll)
 def object_label(identifier, name, length, label): 
-    pass
+    '''label a named object identified within a namespace'''
 
 @accepts(t.enum, t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
 def get_object_label(identifier, name, bufSize, length, label): 
-    pass
+    '''retrieve the label of a named object identified within a namespace'''
 
 @accepts(t.void, t.sizei, t.char_p)
 @returns(t.void)
 @binds(dll)
 def object_ptr_label(ptr, length, label): 
-    pass
+    '''label a a sync object identified by a pointer'''
 
 @accepts(t.void, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
 def get_object_ptr_label(ptr, bufSize, length, label): 
-    pass
+    '''retrieve the label of a sync object identified by a pointer'''
 
 @accepts(t.enum, t.void)
 @returns(t.void)
@@ -208,7 +208,7 @@ def draw_elements_instanced_base_vertex(mode, count, type, indices, instancecoun
 @returns(t.void)
 @binds(dll)
 def framebuffer_texture(target, attachment, texture, level): 
-    '''attach a level of a texture object as a logical buffer to the currently bound framebuffer object'''
+    '''attach a level of a texture object as a logical buffer of a framebuffer object'''
 
 GEOMETRY_SHADER = 0x8DD9
 GEOMETRY_SHADER_BIT = 0x00000004
@@ -254,7 +254,7 @@ PRIMITIVE_BOUNDING_BOX = 0x92BE
 @returns(t.enum)
 @binds(dll)
 def get_graphics_reset_status(): 
-    pass
+    '''check if the rendering context has not been lost due to software or hardware issues'''
 
 @accepts(t.int, t.int, t.sizei, t.sizei, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
@@ -294,7 +294,7 @@ CONTEXT_LOST = 0x0507
 @returns(t.void)
 @binds(dll)
 def min_sample_shading(value): 
-    pass
+    '''specifies minimum rate at which sample shaing takes place'''
 
 SAMPLE_SHADING = 0x8C36
 MIN_SAMPLE_SHADING_VALUE = 0x8C37
@@ -408,13 +408,13 @@ CLAMP_TO_BORDER = 0x812D
 @returns(t.void)
 @binds(dll)
 def tex_buffer(target, internalformat, buffer): 
-    pass
+    '''attach a buffer object's data store to a buffer texture object'''
 
 @accepts(t.enum, t.enum, t.uint, t.intptr, t.sizeiptr)
 @returns(t.void)
 @binds(dll)
 def tex_buffer_range(target, internalformat, buffer, offset, size): 
-    pass
+    '''attach a range of a buffer object's data store to a buffer texture object'''
 
 TEXTURE_BUFFER = 0x8C2A
 TEXTURE_BUFFER_BINDING = 0x8C2A
@@ -473,7 +473,7 @@ STENCIL_INDEX8 = 0x8D48
 @returns(t.void)
 @binds(dll)
 def tex_storage3_d_multisample(target, samples, internalformat, width, height, depth, fixedsamplelocations): 
-    pass
+    '''specify storage for a two-dimensional multisample array texture'''
 
 TEXTURE_2D_MULTISAMPLE_ARRAY = 0x9102
 TEXTURE_BINDING_2D_MULTISAMPLE_ARRAY = 0x9105

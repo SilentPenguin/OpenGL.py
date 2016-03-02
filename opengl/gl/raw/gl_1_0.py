@@ -25,7 +25,7 @@ def hint(target, mode):
 @returns(t.void)
 @binds(dll)
 def line_width(width): 
-    pass
+    '''specify the width of rasterized lines'''
 
 @accepts(t.float)
 @returns(t.void)
@@ -73,13 +73,13 @@ def tex_parameteriv(target, pname, params):
 @returns(t.void)
 @binds(dll)
 def tex_image1_d(target, level, internalformat, width, border, format, type, pixels): 
-    pass
+    '''specify a one-dimensional texture image'''
 
 @accepts(t.enum, t.int, t.int, t.sizei, t.sizei, t.int, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def tex_image2_d(target, level, internalformat, width, height, border, format, type, pixels): 
-    pass
+    '''specify a two-dimensional texture image'''
 
 @accepts(t.enum)
 @returns(t.void)
@@ -97,25 +97,25 @@ def clear(mask):
 @returns(t.void)
 @binds(dll)
 def clear_color(red, green, blue, alpha): 
-    pass
+    '''specify clear values for the color buffers'''
 
 @accepts(t.int)
 @returns(t.void)
 @binds(dll)
 def clear_stencil(s): 
-    pass
+    '''specify the clear value for the stencil buffer'''
 
 @accepts(t.double)
 @returns(t.void)
 @binds(dll)
 def clear_depth(depth): 
-    pass
+    '''specify the clear value for the depth buffer'''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
 def stencil_mask(mask): 
-    pass
+    '''control the front and back writing of individual bits in the stencil planes'''
 
 @accepts(t.boolean, t.boolean, t.boolean, t.boolean)
 @returns(t.void)
@@ -157,7 +157,7 @@ def flush():
 @returns(t.void)
 @binds(dll)
 def blend_func(sfactor, dfactor): 
-    pass
+    '''specify pixel arithmetic'''
 
 @accepts(t.enum)
 @returns(t.void)
@@ -169,13 +169,13 @@ def logic_op(opcode):
 @returns(t.void)
 @binds(dll)
 def stencil_func(func, ref, mask): 
-    pass
+    '''set front and back function and reference value for stencil testing'''
 
 @accepts(t.enum, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
 def stencil_op(fail, zfail, zpass): 
-    pass
+    '''set front and back stencil test actions'''
 
 @accepts(t.enum)
 @returns(t.void)
@@ -205,7 +205,7 @@ def read_buffer(src):
 @returns(t.void)
 @binds(dll)
 def read_pixels(x, y, width, height, format, type, pixels): 
-    pass
+    '''read a block of pixels from the frame buffer'''
 
 @accepts(t.enum, POINTER(t.boolean))
 @returns(t.void)
@@ -247,7 +247,7 @@ def get_string(name):
 @returns(t.void)
 @binds(dll)
 def get_tex_image(target, level, format, type, pixels): 
-    pass
+    '''return a texture image'''
 
 @accepts(t.enum, t.enum, POINTER(t.float))
 @returns(t.void)
@@ -283,13 +283,13 @@ def is_enabled(cap):
 @returns(t.void)
 @binds(dll)
 def depth_range(near, far): 
-    pass
+    '''specify mapping of depth values from normalized device coordinates to window coordinates'''
 
 @accepts(t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def viewport(x, y, width, height): 
-    pass
+    '''set the viewport'''
 
 @accepts(t.uint, t.enum)
 @returns(t.void)
@@ -313,37 +313,37 @@ def call_list(list):
 @returns(t.void)
 @binds(dll)
 def call_lists(n, type, lists): 
-    pass
+    '''execute a list of display lists'''
 
 @accepts(t.uint, t.sizei)
 @returns(t.void)
 @binds(dll)
 def delete_lists(list, range): 
-    pass
+    '''delete a contiguous group of display lists'''
 
 @accepts(t.sizei)
 @returns(t.uint)
 @binds(dll)
 def gen_lists(range): 
-    pass
+    '''generate a contiguous set of empty display lists'''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
 def list_base(base): 
-    '''set the display-list base for '''
+    '''set the display-list base for <citerefentry><refentrytitle>glCallLists</refentrytitle></citerefentry>'''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
 def begin(mode): 
-    pass
+    '''delimit the vertices of a primitive or a group of like primitives'''
 
 @accepts(t.sizei, t.sizei, t.float, t.float, t.float, t.float, POINTER(t.ubyte))
 @returns(t.void)
 @binds(dll)
 def bitmap(width, height, xorig, yorig, xmove, ymove, bitmap): 
-    pass
+    '''draw a bitmap'''
 
 @accepts(t.byte, t.byte, t.byte)
 @returns(t.void)
@@ -1195,7 +1195,7 @@ def vertex4sv(v):
 @returns(t.void)
 @binds(dll)
 def clip_plane(plane, equation): 
-    pass
+    '''specify a plane against which all geometry is clipped'''
 
 @accepts(t.enum, t.enum)
 @returns(t.void)
@@ -1279,7 +1279,7 @@ def light_modeliv(pname, params):
 @returns(t.void)
 @binds(dll)
 def line_stipple(factor, pattern): 
-    pass
+    '''specify the line stipple pattern'''
 
 @accepts(t.enum, t.enum, t.float)
 @returns(t.void)
@@ -1309,13 +1309,13 @@ def materialiv(face, pname, params):
 @returns(t.void)
 @binds(dll)
 def polygon_stipple(mask): 
-    pass
+    '''set the polygon stippling pattern'''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
 def shade_model(mode): 
-    pass
+    '''select flat or smooth shading'''
 
 @accepts(t.enum, t.enum, t.float)
 @returns(t.void)
@@ -1381,13 +1381,13 @@ def tex_geniv(coord, pname, params):
 @returns(t.void)
 @binds(dll)
 def feedback_buffer(size, type, buffer): 
-    pass
+    '''controls feedback mode'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def select_buffer(size, buffer): 
-    pass
+    '''establish a buffer for selection mode values'''
 
 @accepts(t.enum)
 @returns(t.int)
@@ -1429,25 +1429,25 @@ def push_name(name):
 @returns(t.void)
 @binds(dll)
 def clear_accum(red, green, blue, alpha): 
-    pass
+    '''specify clear values for the accumulation buffer'''
 
 @accepts(t.float)
 @returns(t.void)
 @binds(dll)
 def clear_index(c): 
-    pass
+    '''specify the clear value for the color index buffers'''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
 def index_mask(mask): 
-    pass
+    '''control the writing of individual bits in the color index buffers'''
 
 @accepts(t.enum, t.float)
 @returns(t.void)
 @binds(dll)
 def accum(op, value): 
-    pass
+    '''operate on the accumulation buffer'''
 
 @accepts()
 @returns(t.void)
@@ -1585,13 +1585,13 @@ def eval_point2(i, j):
 @returns(t.void)
 @binds(dll)
 def alpha_func(func, ref): 
-    pass
+    '''specify the alpha test function'''
 
 @accepts(t.float, t.float)
 @returns(t.void)
 @binds(dll)
 def pixel_zoom(xfactor, yfactor): 
-    pass
+    '''specify the pixel zoom factors'''
 
 @accepts(t.enum, t.float)
 @returns(t.void)
@@ -1627,19 +1627,19 @@ def pixel_mapusv(map, mapsize, values):
 @returns(t.void)
 @binds(dll)
 def copy_pixels(x, y, width, height, type): 
-    pass
+    '''copy pixels in the frame buffer'''
 
 @accepts(t.sizei, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def draw_pixels(width, height, format, type, pixels): 
-    pass
+    '''write a block of pixels to the frame buffer'''
 
 @accepts(t.enum, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
 def get_clip_plane(plane, equation): 
-    pass
+    '''return the coefficients of the specified clipping plane'''
 
 @accepts(t.enum, t.enum, POINTER(t.float))
 @returns(t.void)
@@ -1705,7 +1705,7 @@ def get_pixel_mapusv(map, values):
 @returns(t.void)
 @binds(dll)
 def get_polygon_stipple(mask): 
-    pass
+    '''return the polygon stipple pattern'''
 
 @accepts(t.enum, t.enum, POINTER(t.float))
 @returns(t.void)
@@ -1747,13 +1747,13 @@ def is_list(list):
 @returns(t.void)
 @binds(dll)
 def frustum(left, right, bottom, top, zNear, zFar): 
-    pass
+    '''multiply the current matrix by a perspective matrix'''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
 def load_identity(): 
-    pass
+    '''replace the current matrix with the identity matrix'''
 
 @accepts(POINTER(t.float))
 @returns(t.void)
@@ -1789,7 +1789,7 @@ def mult_matrixd(m):
 @returns(t.void)
 @binds(dll)
 def ortho(left, right, bottom, top, zNear, zFar): 
-    pass
+    '''multiply the current matrix with an orthographic matrix'''
 
 @accepts()
 @returns(t.void)

@@ -13,7 +13,7 @@ def active_texture(texture):
 @returns(t.void)
 @binds(dll)
 def sample_coverage(value, invert): 
-    pass
+    '''specify multisample coverage parameters'''
 
 @accepts(t.enum, t.int, t.enum, t.sizei, t.sizei, t.sizei, t.int, t.sizei, t.void)
 @returns(t.void)
@@ -37,31 +37,31 @@ def compressed_tex_image1_d(target, level, internalformat, width, border, imageS
 @returns(t.void)
 @binds(dll)
 def compressed_tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data): 
-    pass
+    '''specify a three-dimensional texture subimage in a compressed format'''
 
 @accepts(t.enum, t.int, t.int, t.int, t.sizei, t.sizei, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
 def compressed_tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, imageSize, data): 
-    pass
+    '''specify a two-dimensional texture subimage in a compressed format'''
 
 @accepts(t.enum, t.int, t.int, t.sizei, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
 def compressed_tex_sub_image1_d(target, level, xoffset, width, format, imageSize, data): 
-    pass
+    '''specify a one-dimensional texture subimage in a compressed format'''
 
 @accepts(t.enum, t.int, t.void)
 @returns(t.void)
 @binds(dll)
 def get_compressed_tex_image(target, level, img): 
-    pass
+    '''return a compressed texture image'''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
 def client_active_texture(texture): 
-    pass
+    '''select active texture unit'''
 
 @accepts(t.enum, t.double)
 @returns(t.void)

@@ -1,11 +1,11 @@
-from schema import api, doc
+from schema.api import Document
 
 MAN_PATH = 'OpenGL/registry/man/man{}/{}.xml'
 XML_PATH = 'OpenGL/registry/api/gl.xml'
 RAW_PATH = 'OpenGL/opengl/gl/raw/'
 
 def main():
-    document = api.Document(XML_PATH)
+    document = Document(XML_PATH)
     write_init(document.registry)
     write_raw(document.registry)
     
@@ -63,16 +63,23 @@ def add_commands(lines, commands, command_values):
         lines.append('@binds(dll)')
         lines.append('def {}({}): '.format(command.pep_name, params))
         for i in [4, 3, 2]:
-            if add_documentation(lines, MAN_PATH.format(i, command.name)): break
+            path = MAN_PATH.format(i, command.name)
+            if add_documentation(lines, path): break
             if i == 2: lines.append('    pass')
         lines.append('')
         
 def add_documentation(lines, path):
+    def pep_reference(match):
+        s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', match.group(1))
+        return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
+
+    import re
     try:
-        document = doc.Document(path)
-        text = document.refentry.refnamediv.refpurpose.text
-        doc_string_format = '    \'\'\'{}\'\'\''
-        doc_string = doc_string_format.format(text)
+        with open(path) as f:
+            content = f.read()
+        text = re.search('<refpurpose>(.*?)<\/refpurpose>', content).group(1)
+        text = re.sub('<citerefentry><refentrytitle>gl(.*)<\/refentrytitle><\/citerefentry>', pep_reference, text)
+        doc_string = '    \'\'\'{}\'\'\''.format(text)
         lines.append(doc_string)
         return True
     except:

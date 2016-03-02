@@ -7,7 +7,7 @@ from opengl.gl.raw.bindings import *
 @returns(t.void)
 @binds(dll)
 def blend_func_separate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha): 
-    pass
+    '''specify pixel arithmetic for RGB and alpha components separately'''
 
 @accepts(t.enum, POINTER(t.int), POINTER(t.sizei), t.sizei)
 @returns(t.void)
@@ -316,13 +316,13 @@ COMPARE_R_TO_TEXTURE = 0x884E
 @returns(t.void)
 @binds(dll)
 def blend_color(red, green, blue, alpha): 
-    pass
+    '''set the blend color'''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
 def blend_equation(mode): 
-    pass
+    '''specify the equation used for both the RGB blend equation and the Alpha blend equation'''
 
 FUNC_ADD = 0x8006
 FUNC_SUBTRACT = 0x800A

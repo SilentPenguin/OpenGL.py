@@ -134,7 +134,7 @@ def get_buffer_parameteri64v(target, pname, params):
 @returns(t.void)
 @binds(dll)
 def framebuffer_texture(target, attachment, texture, level): 
-    '''attach a level of a texture object as a logical buffer to the currently bound framebuffer object'''
+    '''attach a level of a texture object as a logical buffer of a framebuffer object'''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei, t.boolean)
 @returns(t.void)

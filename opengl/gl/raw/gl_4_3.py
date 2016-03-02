@@ -266,37 +266,37 @@ VERTEX_BINDING_BUFFER = 0x8F4F
 @returns(t.void)
 @binds(dll)
 def clear_buffer_data(target, internalformat, format, type, data): 
-    pass
+    '''fill a buffer object's data store with a fixed value'''
 
 @accepts(t.enum, t.enum, t.intptr, t.sizeiptr, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def clear_buffer_sub_data(target, internalformat, offset, size, format, type, data): 
-    pass
+    '''fill all or part of buffer object's data store with a fixed value'''
 
 @accepts(t.uint, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
 def dispatch_compute(num_groups_x, num_groups_y, num_groups_z): 
-    pass
+    '''launch one or more compute work groups'''
 
 @accepts(t.intptr)
 @returns(t.void)
 @binds(dll)
 def dispatch_compute_indirect(indirect): 
-    pass
+    '''launch one or more compute work groups using parameters stored in a buffer'''
 
 @accepts(t.uint, t.enum, t.int, t.int, t.int, t.int, t.uint, t.enum, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def copy_image_sub_data(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth): 
-    pass
+    '''perform a raw data copy between two images'''
 
 @accepts(t.enum, t.enum, t.int)
 @returns(t.void)
 @binds(dll)
 def framebuffer_parameteri(target, pname, param): 
-    pass
+    '''set a named parameter of a framebuffer object'''
 
 @accepts(t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
@@ -314,49 +314,49 @@ def get_internalformati64v(target, internalformat, pname, bufSize, params):
 @returns(t.void)
 @binds(dll)
 def invalidate_tex_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth): 
-    pass
+    '''invalidate a region of a texture image'''
 
 @accepts(t.uint, t.int)
 @returns(t.void)
 @binds(dll)
 def invalidate_tex_image(texture, level): 
-    pass
+    '''invalidate the entirety a texture image'''
 
 @accepts(t.uint, t.intptr, t.sizeiptr)
 @returns(t.void)
 @binds(dll)
 def invalidate_buffer_sub_data(buffer, offset, length): 
-    pass
+    '''invalidate a region of a buffer object's data store'''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
 def invalidate_buffer_data(buffer): 
-    pass
+    '''invalidate the content of a buffer object's data store'''
 
 @accepts(t.enum, t.sizei, POINTER(t.enum))
 @returns(t.void)
 @binds(dll)
 def invalidate_framebuffer(target, numAttachments, attachments): 
-    pass
+    '''invalidate the content of some or all of a framebuffer's attachments'''
 
 @accepts(t.enum, t.sizei, POINTER(t.enum), t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def invalidate_sub_framebuffer(target, numAttachments, attachments, x, y, width, height): 
-    pass
+    '''invalidate the content of a region of some or all of a framebuffer's attachments'''
 
 @accepts(t.enum, t.void, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def multi_draw_arrays_indirect(mode, indirect, drawcount, stride): 
-    pass
+    '''render multiple sets of primitives from array data, taking parameters from memory'''
 
 @accepts(t.enum, t.enum, t.void, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def multi_draw_elements_indirect(mode, type, indirect, drawcount, stride): 
-    pass
+    '''render indexed primitives from array data, taking parameters from memory'''
 
 @accepts(t.uint, t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
@@ -368,13 +368,13 @@ def get_program_interfaceiv(program, programInterface, pname, params):
 @returns(t.uint)
 @binds(dll)
 def get_program_resource_index(program, programInterface, name): 
-    pass
+    '''query the index of a named resource within a program'''
 
 @accepts(t.uint, t.enum, t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
 def get_program_resource_name(program, programInterface, index, bufSize, length, name): 
-    pass
+    '''query the name of an indexed resource within a program'''
 
 @accepts(t.uint, t.enum, t.uint, t.sizei, POINTER(t.enum), t.sizei, POINTER(t.sizei), POINTER(t.int))
 @returns(t.void)
@@ -386,55 +386,55 @@ def get_program_resourceiv(program, programInterface, index, propCount, props, b
 @returns(t.int)
 @binds(dll)
 def get_program_resource_location(program, programInterface, name): 
-    pass
+    '''query the location of a named resource within a program'''
 
 @accepts(t.uint, t.enum, t.char_p)
 @returns(t.int)
 @binds(dll)
 def get_program_resource_location_index(program, programInterface, name): 
-    pass
+    '''query the fragment color index of a named variable within a program'''
 
 @accepts(t.uint, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
 def shader_storage_block_binding(program, storageBlockIndex, storageBlockBinding): 
-    pass
+    '''change an active shader storage block binding'''
 
 @accepts(t.enum, t.enum, t.uint, t.intptr, t.sizeiptr)
 @returns(t.void)
 @binds(dll)
 def tex_buffer_range(target, internalformat, buffer, offset, size): 
-    pass
+    '''attach a range of a buffer object's data store to a buffer texture object'''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei, t.boolean)
 @returns(t.void)
 @binds(dll)
 def tex_storage2_d_multisample(target, samples, internalformat, width, height, fixedsamplelocations): 
-    pass
+    '''specify storage for a two-dimensional multisample texture'''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei, t.sizei, t.boolean)
 @returns(t.void)
 @binds(dll)
 def tex_storage3_d_multisample(target, samples, internalformat, width, height, depth, fixedsamplelocations): 
-    pass
+    '''specify storage for a two-dimensional multisample array texture'''
 
 @accepts(t.uint, t.enum, t.uint, t.enum, t.uint, t.uint, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
 def texture_view(texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers): 
-    pass
+    '''initialize a texture as a data alias of another texture's data store'''
 
 @accepts(t.uint, t.uint, t.intptr, t.sizei)
 @returns(t.void)
 @binds(dll)
 def bind_vertex_buffer(bindingindex, buffer, offset, stride): 
-    pass
+    '''bind a buffer to a vertex buffer bind point'''
 
 @accepts(t.uint, t.int, t.enum, t.boolean, t.uint)
 @returns(t.void)
 @binds(dll)
 def vertex_attrib_format(attribindex, size, type, normalized, relativeoffset): 
-    pass
+    '''specify the organization of vertex arrays'''
 
 @accepts(t.uint, t.int, t.enum, t.uint)
 @returns(t.void)
@@ -452,7 +452,7 @@ def vertex_attrib_l_format(attribindex, size, type, relativeoffset):
 @returns(t.void)
 @binds(dll)
 def vertex_attrib_binding(attribindex, bindingindex): 
-    pass
+    '''associate a vertex attribute and a vertex buffer binding for a vertex array object'''
 
 @accepts(t.uint, t.uint)
 @returns(t.void)
@@ -464,61 +464,61 @@ def vertex_binding_divisor(bindingindex, divisor):
 @returns(t.void)
 @binds(dll)
 def debug_message_control(source, type, severity, count, ids, enabled): 
-    pass
+    '''control the reporting of debug messages in a debug context'''
 
 @accepts(t.enum, t.enum, t.uint, t.enum, t.sizei, t.char_p)
 @returns(t.void)
 @binds(dll)
 def debug_message_insert(source, type, id, severity, length, buf): 
-    pass
+    '''inject an application-supplied message into the debug message queue'''
 
 @accepts(t.DEBUGPROC, t.void)
 @returns(t.void)
 @binds(dll)
 def debug_message_callback(callback, userParam): 
-    pass
+    '''specify a callback to receive debugging messages from the GL'''
 
 @accepts(t.uint, t.sizei, POINTER(t.enum), POINTER(t.enum), POINTER(t.uint), POINTER(t.enum), POINTER(t.sizei), t.char_p)
 @returns(t.uint)
 @binds(dll)
 def get_debug_message_log(count, bufSize, sources, types, ids, severities, lengths, messageLog): 
-    pass
+    '''retrieve messages from the debug message log'''
 
 @accepts(t.enum, t.uint, t.sizei, t.char_p)
 @returns(t.void)
 @binds(dll)
 def push_debug_group(source, id, length, message): 
-    pass
+    '''push a named debug group into the command stream'''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
 def pop_debug_group(): 
-    pass
+    '''pop the active debug group'''
 
 @accepts(t.enum, t.uint, t.sizei, t.char_p)
 @returns(t.void)
 @binds(dll)
 def object_label(identifier, name, length, label): 
-    pass
+    '''label a named object identified within a namespace'''
 
 @accepts(t.enum, t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
 def get_object_label(identifier, name, bufSize, length, label): 
-    pass
+    '''retrieve the label of a named object identified within a namespace'''
 
 @accepts(t.void, t.sizei, t.char_p)
 @returns(t.void)
 @binds(dll)
 def object_ptr_label(ptr, length, label): 
-    pass
+    '''label a a sync object identified by a pointer'''
 
 @accepts(t.void, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
 def get_object_ptr_label(ptr, bufSize, length, label): 
-    pass
+    '''retrieve the label of a sync object identified by a pointer'''
 
 @accepts(t.enum, t.void)
 @returns(t.void)
