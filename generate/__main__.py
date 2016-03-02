@@ -1,10 +1,11 @@
-from schema import *
+from schema import api, doc
 
-XML_PATH = 'OpenGL/generate/gl.xml'
+MAN_PATH = 'OpenGL/registry/man/man{}/{}.xml'
+XML_PATH = 'OpenGL/registry/api/gl.xml'
 RAW_PATH = 'OpenGL/opengl/gl/raw/'
 
 def main():
-    document = Document(XML_PATH)
+    document = api.Document(XML_PATH)
     write_init(document.registry)
     write_raw(document.registry)
     
@@ -60,8 +61,22 @@ def add_commands(lines, commands, command_values):
         lines.append('@accepts({})'.format(types))
         lines.append('@returns({})'.format(ret))
         lines.append('@binds(dll)')
-        lines.append('def {}({}): pass'.format(command.pep_name, params))
+        lines.append('def {}({}): '.format(command.pep_name, params))
+        for i in [4, 3, 2]:
+            if add_documentation(lines, MAN_PATH.format(i, command.name)): break
+            if i == 2: lines.append('    pass')
         lines.append('')
+        
+def add_documentation(lines, path):
+    try:
+        document = doc.Document(path)
+        text = document.refentry.refnamediv.refpurpose.text
+        doc_string_format = '    \'\'\'{}\'\'\''
+        doc_string = doc_string_format.format(text)
+        lines.append(doc_string)
+        return True
+    except:
+        return False
         
 def add_enums(lines, enums, enum_values):
     for enum in enums:

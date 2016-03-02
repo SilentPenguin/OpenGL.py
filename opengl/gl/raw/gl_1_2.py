@@ -6,22 +6,26 @@ from opengl.gl.raw.bindings import *
 @accepts(t.enum, t.uint, t.uint, t.sizei, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def draw_range_elements(mode, start, end, count, type, indices): pass
+def draw_range_elements(mode, start, end, count, type, indices): 
+    pass
 
 @accepts(t.enum, t.int, t.int, t.sizei, t.sizei, t.sizei, t.int, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def tex_image3_d(target, level, internalformat, width, height, depth, border, format, type, pixels): pass
+def tex_image3_d(target, level, internalformat, width, height, depth, border, format, type, pixels): 
+    pass
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels): pass
+def tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels): 
+    pass
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def copy_tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, x, y, width, height): pass
+def copy_tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, x, y, width, height): 
+    pass
 
 UNSIGNED_BYTE_3_3_2 = 0x8032
 UNSIGNED_SHORT_4_4_4_4 = 0x8033

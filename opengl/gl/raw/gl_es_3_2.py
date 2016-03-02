@@ -8,7 +8,8 @@ MULTISAMPLE_LINE_WIDTH_GRANULARITY = 0x9382
 @accepts()
 @returns(t.void)
 @binds(dll)
-def blend_barrier(): pass
+def blend_barrier(): 
+    pass
 
 MULTIPLY = 0x9294
 SCREEN = 0x9295
@@ -28,62 +29,74 @@ HSL_LUMINOSITY = 0x92B0
 @accepts(t.uint, t.enum, t.int, t.int, t.int, t.int, t.uint, t.enum, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def copy_image_sub_data(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth): pass
+def copy_image_sub_data(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth): 
+    pass
 
 @accepts(t.enum, t.enum, t.enum, t.sizei, POINTER(t.uint), t.boolean)
 @returns(t.void)
 @binds(dll)
-def debug_message_control(source, type, severity, count, ids, enabled): pass
+def debug_message_control(source, type, severity, count, ids, enabled): 
+    pass
 
 @accepts(t.enum, t.enum, t.uint, t.enum, t.sizei, t.char_p)
 @returns(t.void)
 @binds(dll)
-def debug_message_insert(source, type, id, severity, length, buf): pass
+def debug_message_insert(source, type, id, severity, length, buf): 
+    pass
 
 @accepts(t.DEBUGPROC, t.void)
 @returns(t.void)
 @binds(dll)
-def debug_message_callback(callback, userParam): pass
+def debug_message_callback(callback, userParam): 
+    pass
 
 @accepts(t.uint, t.sizei, POINTER(t.enum), POINTER(t.enum), POINTER(t.uint), POINTER(t.enum), POINTER(t.sizei), t.char_p)
 @returns(t.uint)
 @binds(dll)
-def get_debug_message_log(count, bufSize, sources, types, ids, severities, lengths, messageLog): pass
+def get_debug_message_log(count, bufSize, sources, types, ids, severities, lengths, messageLog): 
+    pass
 
 @accepts(t.enum, t.uint, t.sizei, t.char_p)
 @returns(t.void)
 @binds(dll)
-def push_debug_group(source, id, length, message): pass
+def push_debug_group(source, id, length, message): 
+    pass
 
 @accepts()
 @returns(t.void)
 @binds(dll)
-def pop_debug_group(): pass
+def pop_debug_group(): 
+    pass
 
 @accepts(t.enum, t.uint, t.sizei, t.char_p)
 @returns(t.void)
 @binds(dll)
-def object_label(identifier, name, length, label): pass
+def object_label(identifier, name, length, label): 
+    pass
 
 @accepts(t.enum, t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_object_label(identifier, name, bufSize, length, label): pass
+def get_object_label(identifier, name, bufSize, length, label): 
+    pass
 
 @accepts(t.void, t.sizei, t.char_p)
 @returns(t.void)
 @binds(dll)
-def object_ptr_label(ptr, length, label): pass
+def object_ptr_label(ptr, length, label): 
+    pass
 
 @accepts(t.void, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_object_ptr_label(ptr, bufSize, length, label): pass
+def get_object_ptr_label(ptr, bufSize, length, label): 
+    pass
 
 @accepts(t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def get_pointerv(pname, params): pass
+def get_pointerv(pname, params): 
+    '''return the address of the specified pointer'''
 
 DEBUG_OUTPUT_SYNCHRONOUS = 0x8242
 DEBUG_NEXT_LOGGED_MESSAGE_LENGTH = 0x8243
@@ -128,62 +141,74 @@ STACK_UNDERFLOW = 0x0504
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def enablei(target, index): pass
+def enablei(target, index): 
+    pass
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def disablei(target, index): pass
+def disablei(target, index): 
+    pass
 
 @accepts(t.uint, t.enum)
 @returns(t.void)
 @binds(dll)
-def blend_equationi(buf, mode): pass
+def blend_equationi(buf, mode): 
+    pass
 
 @accepts(t.uint, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
-def blend_equation_separatei(buf, modeRGB, modeAlpha): pass
+def blend_equation_separatei(buf, modeRGB, modeAlpha): 
+    pass
 
 @accepts(t.uint, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
-def blend_funci(buf, src, dst): pass
+def blend_funci(buf, src, dst): 
+    pass
 
 @accepts(t.uint, t.enum, t.enum, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
-def blend_func_separatei(buf, srcRGB, dstRGB, srcAlpha, dstAlpha): pass
+def blend_func_separatei(buf, srcRGB, dstRGB, srcAlpha, dstAlpha): 
+    pass
 
 @accepts(t.uint, t.boolean, t.boolean, t.boolean, t.boolean)
 @returns(t.void)
 @binds(dll)
-def color_maski(index, r, g, b, a): pass
+def color_maski(index, r, g, b, a): 
+    pass
 
 @accepts(t.enum, t.uint)
 @returns(t.boolean)
 @binds(dll)
-def is_enabledi(target, index): pass
+def is_enabledi(target, index): 
+    pass
 
 @accepts(t.enum, t.sizei, t.enum, t.void, t.int)
 @returns(t.void)
 @binds(dll)
-def draw_elements_base_vertex(mode, count, type, indices, basevertex): pass
+def draw_elements_base_vertex(mode, count, type, indices, basevertex): 
+    '''render primitives from array data with a per-element offset'''
 
 @accepts(t.enum, t.uint, t.uint, t.sizei, t.enum, t.void, t.int)
 @returns(t.void)
 @binds(dll)
-def draw_range_elements_base_vertex(mode, start, end, count, type, indices, basevertex): pass
+def draw_range_elements_base_vertex(mode, start, end, count, type, indices, basevertex): 
+    '''render primitives from array data with a per-element offset'''
 
 @accepts(t.enum, t.sizei, t.enum, t.void, t.sizei, t.int)
 @returns(t.void)
 @binds(dll)
-def draw_elements_instanced_base_vertex(mode, count, type, indices, instancecount, basevertex): pass
+def draw_elements_instanced_base_vertex(mode, count, type, indices, instancecount, basevertex): 
+    '''render multiple instances of a set of primitives from array data with a per-element offset'''
 
 @accepts(t.enum, t.enum, t.uint, t.int)
 @returns(t.void)
 @binds(dll)
-def framebuffer_texture(target, attachment, texture, level): pass
+def framebuffer_texture(target, attachment, texture, level): 
+    '''attach a level of a texture object as a logical buffer to the currently bound framebuffer object'''
 
 GEOMETRY_SHADER = 0x8DD9
 GEOMETRY_SHADER_BIT = 0x00000004
@@ -221,33 +246,39 @@ REFERENCED_BY_GEOMETRY_SHADER = 0x9309
 @accepts(t.float, t.float, t.float, t.float, t.float, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def primitive_bounding_box(minX, minY, minZ, minW, maxX, maxY, maxZ, maxW): pass
+def primitive_bounding_box(minX, minY, minZ, minW, maxX, maxY, maxZ, maxW): 
+    pass
 
 PRIMITIVE_BOUNDING_BOX = 0x92BE
 @accepts()
 @returns(t.enum)
 @binds(dll)
-def get_graphics_reset_status(): pass
+def get_graphics_reset_status(): 
+    pass
 
 @accepts(t.int, t.int, t.sizei, t.sizei, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def readn_pixels(x, y, width, height, format, type, bufSize, data): pass
+def readn_pixels(x, y, width, height, format, type, bufSize, data): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def getn_uniformfv(program, location, bufSize, params): pass
+def getn_uniformfv(program, location, bufSize, params): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def getn_uniformiv(program, location, bufSize, params): pass
+def getn_uniformiv(program, location, bufSize, params): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def getn_uniformuiv(program, location, bufSize, params): pass
+def getn_uniformuiv(program, location, bufSize, params): 
+    pass
 
 NO_ERROR = 0
 CONTEXT_FLAG_ROBUST_ACCESS_BIT = 0x00000004
@@ -262,7 +293,8 @@ CONTEXT_LOST = 0x0507
 @accepts(t.float)
 @returns(t.void)
 @binds(dll)
-def min_sample_shading(value): pass
+def min_sample_shading(value): 
+    pass
 
 SAMPLE_SHADING = 0x8C36
 MIN_SAMPLE_SHADING_VALUE = 0x8C37
@@ -272,7 +304,8 @@ FRAGMENT_INTERPOLATION_OFFSET_BITS = 0x8E5D
 @accepts(t.enum, t.int)
 @returns(t.void)
 @binds(dll)
-def patch_parameteri(pname, value): pass
+def patch_parameteri(pname, value): 
+    pass
 
 PATCHES = 0x000E
 PATCH_VERTICES = 0x8E72
@@ -324,54 +357,64 @@ TESS_EVALUATION_SHADER_BIT = 0x00000010
 @accepts(t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def tex_parameter_iiv(target, pname, params): pass
+def tex_parameter_iiv(target, pname, params): 
+    pass
 
 @accepts(t.enum, t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def tex_parameter_iuiv(target, pname, params): pass
+def tex_parameter_iuiv(target, pname, params): 
+    pass
 
 @accepts(t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_tex_parameter_iiv(target, pname, params): pass
+def get_tex_parameter_iiv(target, pname, params): 
+    pass
 
 @accepts(t.enum, t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def get_tex_parameter_iuiv(target, pname, params): pass
+def get_tex_parameter_iuiv(target, pname, params): 
+    pass
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def sampler_parameter_iiv(sampler, pname, param): pass
+def sampler_parameter_iiv(sampler, pname, param): 
+    pass
 
 @accepts(t.uint, t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def sampler_parameter_iuiv(sampler, pname, param): pass
+def sampler_parameter_iuiv(sampler, pname, param): 
+    pass
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_sampler_parameter_iiv(sampler, pname, params): pass
+def get_sampler_parameter_iiv(sampler, pname, params): 
+    pass
 
 @accepts(t.uint, t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def get_sampler_parameter_iuiv(sampler, pname, params): pass
+def get_sampler_parameter_iuiv(sampler, pname, params): 
+    pass
 
 TEXTURE_BORDER_COLOR = 0x1004
 CLAMP_TO_BORDER = 0x812D
 @accepts(t.enum, t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def tex_buffer(target, internalformat, buffer): pass
+def tex_buffer(target, internalformat, buffer): 
+    pass
 
 @accepts(t.enum, t.enum, t.uint, t.intptr, t.sizeiptr)
 @returns(t.void)
 @binds(dll)
-def tex_buffer_range(target, internalformat, buffer, offset, size): pass
+def tex_buffer_range(target, internalformat, buffer, offset, size): 
+    pass
 
 TEXTURE_BUFFER = 0x8C2A
 TEXTURE_BUFFER_BINDING = 0x8C2A
@@ -429,7 +472,8 @@ STENCIL_INDEX8 = 0x8D48
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei, t.sizei, t.boolean)
 @returns(t.void)
 @binds(dll)
-def tex_storage3_d_multisample(target, samples, internalformat, width, height, depth, fixedsamplelocations): pass
+def tex_storage3_d_multisample(target, samples, internalformat, width, height, depth, fixedsamplelocations): 
+    pass
 
 TEXTURE_2D_MULTISAMPLE_ARRAY = 0x9102
 TEXTURE_BINDING_2D_MULTISAMPLE_ARRAY = 0x9105
