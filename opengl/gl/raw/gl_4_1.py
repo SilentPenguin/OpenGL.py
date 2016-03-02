@@ -41,439 +41,527 @@ UNDEFINED_VERTEX = 0x8260
 @accepts()
 @returns(t.void)
 @binds(dll)
-def release_shader_compiler(): pass
+def release_shader_compiler(): 
+    pass
 
 @accepts(t.sizei, POINTER(t.uint), t.enum, t.void, t.sizei)
 @returns(t.void)
 @binds(dll)
-def shader_binary(count, shaders, binaryformat, binary, length): pass
+def shader_binary(count, shaders, binaryformat, binary, length): 
+    pass
 
 @accepts(t.enum, t.enum, POINTER(t.int), POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_shader_precision_format(shadertype, precisiontype, range, precision): pass
+def get_shader_precision_format(shadertype, precisiontype, range, precision): 
+    pass
 
 @accepts(t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def depth_rangef(n, f): pass
+def depth_rangef(n, f): 
+    pass
 
 @accepts(t.float)
 @returns(t.void)
 @binds(dll)
-def clear_depthf(d): pass
+def clear_depthf(d): 
+    pass
 
 @accepts(t.uint, t.sizei, POINTER(t.sizei), POINTER(t.enum), t.void)
 @returns(t.void)
 @binds(dll)
-def get_program_binary(program, bufSize, length, binaryFormat, binary): pass
+def get_program_binary(program, bufSize, length, binaryFormat, binary): 
+    pass
 
 @accepts(t.uint, t.enum, t.void, t.sizei)
 @returns(t.void)
 @binds(dll)
-def program_binary(program, binaryFormat, binary, length): pass
+def program_binary(program, binaryFormat, binary, length): 
+    pass
 
 @accepts(t.uint, t.enum, t.int)
 @returns(t.void)
 @binds(dll)
-def program_parameteri(program, pname, value): pass
+def program_parameteri(program, pname, value): 
+    pass
 
 @accepts(t.uint, t.bitfield, t.uint)
 @returns(t.void)
 @binds(dll)
-def use_program_stages(pipeline, stages, program): pass
+def use_program_stages(pipeline, stages, program): 
+    pass
 
 @accepts(t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def active_shader_program(pipeline, program): pass
+def active_shader_program(pipeline, program): 
+    pass
 
 @accepts(t.enum, t.sizei, POINTER(t.char_p))
 @returns(t.uint)
 @binds(dll)
-def create_shader_programv(type, count, strings): pass
+def create_shader_programv(type, count, strings): 
+    pass
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
-def bind_program_pipeline(pipeline): pass
+def bind_program_pipeline(pipeline): 
+    pass
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def delete_program_pipelines(n, pipelines): pass
+def delete_program_pipelines(n, pipelines): 
+    pass
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def gen_program_pipelines(n, pipelines): pass
+def gen_program_pipelines(n, pipelines): 
+    pass
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
-def is_program_pipeline(pipeline): pass
+def is_program_pipeline(pipeline): 
+    pass
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_program_pipelineiv(pipeline, pname, params): pass
+def get_program_pipelineiv(pipeline, pname, params): 
+    pass
 
 @accepts(t.uint, t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def program_uniform1i(program, location, v0): pass
+def program_uniform1i(program, location, v0): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def program_uniform1iv(program, location, count, value): pass
+def program_uniform1iv(program, location, count, value): 
+    pass
 
 @accepts(t.uint, t.int, t.float)
 @returns(t.void)
 @binds(dll)
-def program_uniform1f(program, location, v0): pass
+def program_uniform1f(program, location, v0): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def program_uniform1fv(program, location, count, value): pass
+def program_uniform1fv(program, location, count, value): 
+    pass
 
 @accepts(t.uint, t.int, t.double)
 @returns(t.void)
 @binds(dll)
-def program_uniform1d(program, location, v0): pass
+def program_uniform1d(program, location, v0): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def program_uniform1dv(program, location, count, value): pass
+def program_uniform1dv(program, location, count, value): 
+    pass
 
 @accepts(t.uint, t.int, t.uint)
 @returns(t.void)
 @binds(dll)
-def program_uniform1ui(program, location, v0): pass
+def program_uniform1ui(program, location, v0): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def program_uniform1uiv(program, location, count, value): pass
+def program_uniform1uiv(program, location, count, value): 
+    pass
 
 @accepts(t.uint, t.int, t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def program_uniform2i(program, location, v0, v1): pass
+def program_uniform2i(program, location, v0, v1): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def program_uniform2iv(program, location, count, value): pass
+def program_uniform2iv(program, location, count, value): 
+    pass
 
 @accepts(t.uint, t.int, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def program_uniform2f(program, location, v0, v1): pass
+def program_uniform2f(program, location, v0, v1): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def program_uniform2fv(program, location, count, value): pass
+def program_uniform2fv(program, location, count, value): 
+    pass
 
 @accepts(t.uint, t.int, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def program_uniform2d(program, location, v0, v1): pass
+def program_uniform2d(program, location, v0, v1): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def program_uniform2dv(program, location, count, value): pass
+def program_uniform2dv(program, location, count, value): 
+    pass
 
 @accepts(t.uint, t.int, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def program_uniform2ui(program, location, v0, v1): pass
+def program_uniform2ui(program, location, v0, v1): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def program_uniform2uiv(program, location, count, value): pass
+def program_uniform2uiv(program, location, count, value): 
+    pass
 
 @accepts(t.uint, t.int, t.int, t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def program_uniform3i(program, location, v0, v1, v2): pass
+def program_uniform3i(program, location, v0, v1, v2): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def program_uniform3iv(program, location, count, value): pass
+def program_uniform3iv(program, location, count, value): 
+    pass
 
 @accepts(t.uint, t.int, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def program_uniform3f(program, location, v0, v1, v2): pass
+def program_uniform3f(program, location, v0, v1, v2): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def program_uniform3fv(program, location, count, value): pass
+def program_uniform3fv(program, location, count, value): 
+    pass
 
 @accepts(t.uint, t.int, t.double, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def program_uniform3d(program, location, v0, v1, v2): pass
+def program_uniform3d(program, location, v0, v1, v2): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def program_uniform3dv(program, location, count, value): pass
+def program_uniform3dv(program, location, count, value): 
+    pass
 
 @accepts(t.uint, t.int, t.uint, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def program_uniform3ui(program, location, v0, v1, v2): pass
+def program_uniform3ui(program, location, v0, v1, v2): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def program_uniform3uiv(program, location, count, value): pass
+def program_uniform3uiv(program, location, count, value): 
+    pass
 
 @accepts(t.uint, t.int, t.int, t.int, t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def program_uniform4i(program, location, v0, v1, v2, v3): pass
+def program_uniform4i(program, location, v0, v1, v2, v3): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def program_uniform4iv(program, location, count, value): pass
+def program_uniform4iv(program, location, count, value): 
+    pass
 
 @accepts(t.uint, t.int, t.float, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def program_uniform4f(program, location, v0, v1, v2, v3): pass
+def program_uniform4f(program, location, v0, v1, v2, v3): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def program_uniform4fv(program, location, count, value): pass
+def program_uniform4fv(program, location, count, value): 
+    pass
 
 @accepts(t.uint, t.int, t.double, t.double, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def program_uniform4d(program, location, v0, v1, v2, v3): pass
+def program_uniform4d(program, location, v0, v1, v2, v3): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def program_uniform4dv(program, location, count, value): pass
+def program_uniform4dv(program, location, count, value): 
+    pass
 
 @accepts(t.uint, t.int, t.uint, t.uint, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def program_uniform4ui(program, location, v0, v1, v2, v3): pass
+def program_uniform4ui(program, location, v0, v1, v2, v3): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def program_uniform4uiv(program, location, count, value): pass
+def program_uniform4uiv(program, location, count, value): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, t.boolean, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def program_uniform_matrix2fv(program, location, count, transpose, value): pass
+def program_uniform_matrix2fv(program, location, count, transpose, value): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, t.boolean, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def program_uniform_matrix3fv(program, location, count, transpose, value): pass
+def program_uniform_matrix3fv(program, location, count, transpose, value): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, t.boolean, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def program_uniform_matrix4fv(program, location, count, transpose, value): pass
+def program_uniform_matrix4fv(program, location, count, transpose, value): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, t.boolean, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def program_uniform_matrix2dv(program, location, count, transpose, value): pass
+def program_uniform_matrix2dv(program, location, count, transpose, value): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, t.boolean, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def program_uniform_matrix3dv(program, location, count, transpose, value): pass
+def program_uniform_matrix3dv(program, location, count, transpose, value): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, t.boolean, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def program_uniform_matrix4dv(program, location, count, transpose, value): pass
+def program_uniform_matrix4dv(program, location, count, transpose, value): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, t.boolean, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def program_uniform_matrix2x3fv(program, location, count, transpose, value): pass
+def program_uniform_matrix2x3fv(program, location, count, transpose, value): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, t.boolean, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def program_uniform_matrix3x2fv(program, location, count, transpose, value): pass
+def program_uniform_matrix3x2fv(program, location, count, transpose, value): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, t.boolean, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def program_uniform_matrix2x4fv(program, location, count, transpose, value): pass
+def program_uniform_matrix2x4fv(program, location, count, transpose, value): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, t.boolean, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def program_uniform_matrix4x2fv(program, location, count, transpose, value): pass
+def program_uniform_matrix4x2fv(program, location, count, transpose, value): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, t.boolean, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def program_uniform_matrix3x4fv(program, location, count, transpose, value): pass
+def program_uniform_matrix3x4fv(program, location, count, transpose, value): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, t.boolean, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def program_uniform_matrix4x3fv(program, location, count, transpose, value): pass
+def program_uniform_matrix4x3fv(program, location, count, transpose, value): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, t.boolean, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def program_uniform_matrix2x3dv(program, location, count, transpose, value): pass
+def program_uniform_matrix2x3dv(program, location, count, transpose, value): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, t.boolean, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def program_uniform_matrix3x2dv(program, location, count, transpose, value): pass
+def program_uniform_matrix3x2dv(program, location, count, transpose, value): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, t.boolean, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def program_uniform_matrix2x4dv(program, location, count, transpose, value): pass
+def program_uniform_matrix2x4dv(program, location, count, transpose, value): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, t.boolean, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def program_uniform_matrix4x2dv(program, location, count, transpose, value): pass
+def program_uniform_matrix4x2dv(program, location, count, transpose, value): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, t.boolean, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def program_uniform_matrix3x4dv(program, location, count, transpose, value): pass
+def program_uniform_matrix3x4dv(program, location, count, transpose, value): 
+    pass
 
 @accepts(t.uint, t.int, t.sizei, t.boolean, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def program_uniform_matrix4x3dv(program, location, count, transpose, value): pass
+def program_uniform_matrix4x3dv(program, location, count, transpose, value): 
+    pass
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
-def validate_program_pipeline(pipeline): pass
+def validate_program_pipeline(pipeline): 
+    pass
 
 @accepts(t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_program_pipeline_info_log(pipeline, bufSize, length, infoLog): pass
+def get_program_pipeline_info_log(pipeline, bufSize, length, infoLog): 
+    pass
 
 @accepts(t.uint, t.double)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_l1d(index, x): pass
+def vertex_attrib_l1d(index, x): 
+    pass
 
 @accepts(t.uint, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_l2d(index, x, y): pass
+def vertex_attrib_l2d(index, x, y): 
+    pass
 
 @accepts(t.uint, t.double, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_l3d(index, x, y, z): pass
+def vertex_attrib_l3d(index, x, y, z): 
+    pass
 
 @accepts(t.uint, t.double, t.double, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_l4d(index, x, y, z, w): pass
+def vertex_attrib_l4d(index, x, y, z, w): 
+    pass
 
 @accepts(t.uint, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_l1dv(index, v): pass
+def vertex_attrib_l1dv(index, v): 
+    pass
 
 @accepts(t.uint, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_l2dv(index, v): pass
+def vertex_attrib_l2dv(index, v): 
+    pass
 
 @accepts(t.uint, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_l3dv(index, v): pass
+def vertex_attrib_l3dv(index, v): 
+    pass
 
 @accepts(t.uint, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_l4dv(index, v): pass
+def vertex_attrib_l4dv(index, v): 
+    pass
 
 @accepts(t.uint, t.int, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_l_pointer(index, size, type, stride, pointer): pass
+def vertex_attrib_l_pointer(index, size, type, stride, pointer): 
+    pass
 
 @accepts(t.uint, t.enum, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def get_vertex_attrib_ldv(index, pname, params): pass
+def get_vertex_attrib_ldv(index, pname, params): 
+    pass
 
 @accepts(t.uint, t.sizei, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def viewport_arrayv(first, count, v): pass
+def viewport_arrayv(first, count, v): 
+    pass
 
 @accepts(t.uint, t.float, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def viewport_indexedf(index, x, y, w, h): pass
+def viewport_indexedf(index, x, y, w, h): 
+    pass
 
 @accepts(t.uint, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def viewport_indexedfv(index, v): pass
+def viewport_indexedfv(index, v): 
+    pass
 
 @accepts(t.uint, t.sizei, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def scissor_arrayv(first, count, v): pass
+def scissor_arrayv(first, count, v): 
+    pass
 
 @accepts(t.uint, t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def scissor_indexed(index, left, bottom, width, height): pass
+def scissor_indexed(index, left, bottom, width, height): 
+    pass
 
 @accepts(t.uint, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def scissor_indexedv(index, v): pass
+def scissor_indexedv(index, v): 
+    pass
 
 @accepts(t.uint, t.sizei, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def depth_range_arrayv(first, count, v): pass
+def depth_range_arrayv(first, count, v): 
+    pass
 
 @accepts(t.uint, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def depth_range_indexed(index, n, f): pass
+def depth_range_indexed(index, n, f): 
+    pass
 
 @accepts(t.enum, t.uint, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def get_floati_v(target, index, data): pass
+def get_floati_v(target, index, data): 
+    pass
 
 @accepts(t.enum, t.uint, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def get_doublei_v(target, index, data): pass
+def get_doublei_v(target, index, data): 
+    pass

@@ -7,12 +7,14 @@ VERTEX_ATTRIB_ARRAY_DIVISOR = 0x88FE
 @accepts(t.uint, t.uint, t.uint, t.char_p)
 @returns(t.void)
 @binds(dll)
-def bind_frag_data_location_indexed(program, colorNumber, index, name): pass
+def bind_frag_data_location_indexed(program, colorNumber, index, name): 
+    '''bind a user-defined varying out variable to a fragment shader color number and index'''
 
 @accepts(t.uint, t.char_p)
 @returns(t.int)
 @binds(dll)
-def get_frag_data_index(program, name): pass
+def get_frag_data_index(program, name): 
+    '''query the bindings of color indices to user-defined varying out variables'''
 
 SRC1_COLOR = 0x88F9
 ONE_MINUS_SRC1_COLOR = 0x88FA
@@ -22,72 +24,86 @@ ANY_SAMPLES_PASSED = 0x8C2F
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def gen_samplers(count, samplers): pass
+def gen_samplers(count, samplers): 
+    '''generate sampler object names'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def delete_samplers(count, samplers): pass
+def delete_samplers(count, samplers): 
+    '''delete named sampler objects'''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
-def is_sampler(sampler): pass
+def is_sampler(sampler): 
+    '''determine if a name corresponds to a sampler object'''
 
 @accepts(t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def bind_sampler(unit, sampler): pass
+def bind_sampler(unit, sampler): 
+    '''bind a named sampler to a texturing target'''
 
 @accepts(t.uint, t.enum, t.int)
 @returns(t.void)
 @binds(dll)
-def sampler_parameteri(sampler, pname, param): pass
+def sampler_parameteri(sampler, pname, param): 
+    pass
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def sampler_parameteriv(sampler, pname, param): pass
+def sampler_parameteriv(sampler, pname, param): 
+    pass
 
 @accepts(t.uint, t.enum, t.float)
 @returns(t.void)
 @binds(dll)
-def sampler_parameterf(sampler, pname, param): pass
+def sampler_parameterf(sampler, pname, param): 
+    pass
 
 @accepts(t.uint, t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def sampler_parameterfv(sampler, pname, param): pass
+def sampler_parameterfv(sampler, pname, param): 
+    pass
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def sampler_parameter_iiv(sampler, pname, param): pass
+def sampler_parameter_iiv(sampler, pname, param): 
+    pass
 
 @accepts(t.uint, t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def sampler_parameter_iuiv(sampler, pname, param): pass
+def sampler_parameter_iuiv(sampler, pname, param): 
+    pass
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_sampler_parameteriv(sampler, pname, params): pass
+def get_sampler_parameteriv(sampler, pname, params): 
+    pass
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_sampler_parameter_iiv(sampler, pname, params): pass
+def get_sampler_parameter_iiv(sampler, pname, params): 
+    pass
 
 @accepts(t.uint, t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def get_sampler_parameterfv(sampler, pname, params): pass
+def get_sampler_parameterfv(sampler, pname, params): 
+    pass
 
 @accepts(t.uint, t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def get_sampler_parameter_iuiv(sampler, pname, params): pass
+def get_sampler_parameter_iuiv(sampler, pname, params): 
+    pass
 
 SAMPLER_BINDING = 0x8919
 RGB10_A2UI = 0x906F
@@ -99,212 +115,254 @@ TEXTURE_SWIZZLE_RGBA = 0x8E46
 @accepts(t.uint, t.enum)
 @returns(t.void)
 @binds(dll)
-def query_counter(id, target): pass
+def query_counter(id, target): 
+    '''record the GL time into a query object after all previous commands have reached the GL server but have not yet necessarily executed.'''
 
 @accepts(t.uint, t.enum, POINTER(t.int64))
 @returns(t.void)
 @binds(dll)
-def get_query_objecti64v(id, pname, params): pass
+def get_query_objecti64v(id, pname, params): 
+    pass
 
 @accepts(t.uint, t.enum, POINTER(t.uint64))
 @returns(t.void)
 @binds(dll)
-def get_query_objectui64v(id, pname, params): pass
+def get_query_objectui64v(id, pname, params): 
+    pass
 
 TIME_ELAPSED = 0x88BF
 TIMESTAMP = 0x8E28
 @accepts(t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_divisor(index, divisor): pass
+def vertex_attrib_divisor(index, divisor): 
+    '''modify the rate at which generic vertex attributes advance during instanced rendering'''
 
 @accepts(t.uint, t.enum, t.boolean, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_p1ui(index, type, normalized, value): pass
+def vertex_attrib_p1ui(index, type, normalized, value): 
+    pass
 
 @accepts(t.uint, t.enum, t.boolean, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_p1uiv(index, type, normalized, value): pass
+def vertex_attrib_p1uiv(index, type, normalized, value): 
+    pass
 
 @accepts(t.uint, t.enum, t.boolean, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_p2ui(index, type, normalized, value): pass
+def vertex_attrib_p2ui(index, type, normalized, value): 
+    pass
 
 @accepts(t.uint, t.enum, t.boolean, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_p2uiv(index, type, normalized, value): pass
+def vertex_attrib_p2uiv(index, type, normalized, value): 
+    pass
 
 @accepts(t.uint, t.enum, t.boolean, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_p3ui(index, type, normalized, value): pass
+def vertex_attrib_p3ui(index, type, normalized, value): 
+    pass
 
 @accepts(t.uint, t.enum, t.boolean, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_p3uiv(index, type, normalized, value): pass
+def vertex_attrib_p3uiv(index, type, normalized, value): 
+    pass
 
 @accepts(t.uint, t.enum, t.boolean, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_p4ui(index, type, normalized, value): pass
+def vertex_attrib_p4ui(index, type, normalized, value): 
+    pass
 
 @accepts(t.uint, t.enum, t.boolean, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_p4uiv(index, type, normalized, value): pass
+def vertex_attrib_p4uiv(index, type, normalized, value): 
+    pass
 
 INT_2_10_10_10_REV = 0x8D9F
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_p2ui(type, value): pass
+def vertex_p2ui(type, value): 
+    pass
 
 @accepts(t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def vertex_p2uiv(type, value): pass
+def vertex_p2uiv(type, value): 
+    pass
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_p3ui(type, value): pass
+def vertex_p3ui(type, value): 
+    pass
 
 @accepts(t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def vertex_p3uiv(type, value): pass
+def vertex_p3uiv(type, value): 
+    pass
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_p4ui(type, value): pass
+def vertex_p4ui(type, value): 
+    pass
 
 @accepts(t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def vertex_p4uiv(type, value): pass
+def vertex_p4uiv(type, value): 
+    pass
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def tex_coord_p1ui(type, coords): pass
+def tex_coord_p1ui(type, coords): 
+    pass
 
 @accepts(t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def tex_coord_p1uiv(type, coords): pass
+def tex_coord_p1uiv(type, coords): 
+    pass
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def tex_coord_p2ui(type, coords): pass
+def tex_coord_p2ui(type, coords): 
+    pass
 
 @accepts(t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def tex_coord_p2uiv(type, coords): pass
+def tex_coord_p2uiv(type, coords): 
+    pass
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def tex_coord_p3ui(type, coords): pass
+def tex_coord_p3ui(type, coords): 
+    pass
 
 @accepts(t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def tex_coord_p3uiv(type, coords): pass
+def tex_coord_p3uiv(type, coords): 
+    pass
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def tex_coord_p4ui(type, coords): pass
+def tex_coord_p4ui(type, coords): 
+    pass
 
 @accepts(t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def tex_coord_p4uiv(type, coords): pass
+def tex_coord_p4uiv(type, coords): 
+    pass
 
 @accepts(t.enum, t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord_p1ui(texture, type, coords): pass
+def multi_tex_coord_p1ui(texture, type, coords): 
+    pass
 
 @accepts(t.enum, t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord_p1uiv(texture, type, coords): pass
+def multi_tex_coord_p1uiv(texture, type, coords): 
+    pass
 
 @accepts(t.enum, t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord_p2ui(texture, type, coords): pass
+def multi_tex_coord_p2ui(texture, type, coords): 
+    pass
 
 @accepts(t.enum, t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord_p2uiv(texture, type, coords): pass
+def multi_tex_coord_p2uiv(texture, type, coords): 
+    pass
 
 @accepts(t.enum, t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord_p3ui(texture, type, coords): pass
+def multi_tex_coord_p3ui(texture, type, coords): 
+    pass
 
 @accepts(t.enum, t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord_p3uiv(texture, type, coords): pass
+def multi_tex_coord_p3uiv(texture, type, coords): 
+    pass
 
 @accepts(t.enum, t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord_p4ui(texture, type, coords): pass
+def multi_tex_coord_p4ui(texture, type, coords): 
+    pass
 
 @accepts(t.enum, t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord_p4uiv(texture, type, coords): pass
+def multi_tex_coord_p4uiv(texture, type, coords): 
+    pass
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def normal_p3ui(type, coords): pass
+def normal_p3ui(type, coords): 
+    pass
 
 @accepts(t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def normal_p3uiv(type, coords): pass
+def normal_p3uiv(type, coords): 
+    pass
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def color_p3ui(type, color): pass
+def color_p3ui(type, color): 
+    pass
 
 @accepts(t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def color_p3uiv(type, color): pass
+def color_p3uiv(type, color): 
+    pass
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def color_p4ui(type, color): pass
+def color_p4ui(type, color): 
+    pass
 
 @accepts(t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def color_p4uiv(type, color): pass
+def color_p4uiv(type, color): 
+    pass
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def secondary_color_p3ui(type, color): pass
+def secondary_color_p3ui(type, color): 
+    pass
 
 @accepts(t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def secondary_color_p3uiv(type, color): pass
+def secondary_color_p3uiv(type, color): 
+    pass

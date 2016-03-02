@@ -118,59 +118,71 @@ TEXTURE_IMMUTABLE_FORMAT = 0x912F
 @accepts(t.enum, t.int, t.sizei, t.sizei, t.uint)
 @returns(t.void)
 @binds(dll)
-def draw_arrays_instanced_base_instance(mode, first, count, instancecount, baseinstance): pass
+def draw_arrays_instanced_base_instance(mode, first, count, instancecount, baseinstance): 
+    pass
 
 @accepts(t.enum, t.sizei, t.enum, t.void, t.sizei, t.uint)
 @returns(t.void)
 @binds(dll)
-def draw_elements_instanced_base_instance(mode, count, type, indices, instancecount, baseinstance): pass
+def draw_elements_instanced_base_instance(mode, count, type, indices, instancecount, baseinstance): 
+    pass
 
 @accepts(t.enum, t.sizei, t.enum, t.void, t.sizei, t.int, t.uint)
 @returns(t.void)
 @binds(dll)
-def draw_elements_instanced_base_vertex_base_instance(mode, count, type, indices, instancecount, basevertex, baseinstance): pass
+def draw_elements_instanced_base_vertex_base_instance(mode, count, type, indices, instancecount, basevertex, baseinstance): 
+    pass
 
 @accepts(t.enum, t.enum, t.enum, t.sizei, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_internalformativ(target, internalformat, pname, bufSize, params): pass
+def get_internalformativ(target, internalformat, pname, bufSize, params): 
+    pass
 
 @accepts(t.uint, t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_active_atomic_counter_bufferiv(program, bufferIndex, pname, params): pass
+def get_active_atomic_counter_bufferiv(program, bufferIndex, pname, params): 
+    pass
 
 @accepts(t.uint, t.uint, t.int, t.boolean, t.int, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
-def bind_image_texture(unit, texture, level, layered, layer, access, format): pass
+def bind_image_texture(unit, texture, level, layered, layer, access, format): 
+    pass
 
 @accepts(t.bitfield)
 @returns(t.void)
 @binds(dll)
-def memory_barrier(barriers): pass
+def memory_barrier(barriers): 
+    pass
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei)
 @returns(t.void)
 @binds(dll)
-def tex_storage1_d(target, levels, internalformat, width): pass
+def tex_storage1_d(target, levels, internalformat, width): 
+    pass
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def tex_storage2_d(target, levels, internalformat, width, height): pass
+def tex_storage2_d(target, levels, internalformat, width, height): 
+    pass
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def tex_storage3_d(target, levels, internalformat, width, height, depth): pass
+def tex_storage3_d(target, levels, internalformat, width, height, depth): 
+    pass
 
 @accepts(t.enum, t.uint, t.sizei)
 @returns(t.void)
 @binds(dll)
-def draw_transform_feedback_instanced(mode, id, instancecount): pass
+def draw_transform_feedback_instanced(mode, id, instancecount): 
+    pass
 
 @accepts(t.enum, t.uint, t.uint, t.sizei)
 @returns(t.void)
 @binds(dll)
-def draw_transform_feedback_stream_instanced(mode, id, stream, instancecount): pass
+def draw_transform_feedback_stream_instanced(mode, id, stream, instancecount): 
+    pass

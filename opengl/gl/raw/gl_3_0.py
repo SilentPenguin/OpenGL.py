@@ -6,292 +6,350 @@ from opengl.gl.raw.bindings import *
 @accepts(t.uint, t.boolean, t.boolean, t.boolean, t.boolean)
 @returns(t.void)
 @binds(dll)
-def color_maski(index, r, g, b, a): pass
+def color_maski(index, r, g, b, a): 
+    pass
 
 @accepts(t.enum, t.uint, POINTER(t.boolean))
 @returns(t.void)
 @binds(dll)
-def get_booleani_v(target, index, data): pass
+def get_booleani_v(target, index, data): 
+    pass
 
 @accepts(t.enum, t.uint, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_integeri_v(target, index, data): pass
+def get_integeri_v(target, index, data): 
+    pass
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def enablei(target, index): pass
+def enablei(target, index): 
+    pass
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def disablei(target, index): pass
+def disablei(target, index): 
+    pass
 
 @accepts(t.enum, t.uint)
 @returns(t.boolean)
 @binds(dll)
-def is_enabledi(target, index): pass
+def is_enabledi(target, index): 
+    pass
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def begin_transform_feedback(primitiveMode): pass
+def begin_transform_feedback(primitiveMode): 
+    '''start transform feedback operation'''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
-def end_transform_feedback(): pass
+def end_transform_feedback(): 
+    pass
 
 @accepts(t.enum, t.uint, t.uint, t.intptr, t.sizeiptr)
 @returns(t.void)
 @binds(dll)
-def bind_buffer_range(target, index, buffer, offset, size): pass
+def bind_buffer_range(target, index, buffer, offset, size): 
+    '''bind a range within a buffer object to an indexed buffer target'''
 
 @accepts(t.enum, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def bind_buffer_base(target, index, buffer): pass
+def bind_buffer_base(target, index, buffer): 
+    '''bind a buffer object to an indexed buffer target'''
 
 @accepts(t.uint, t.sizei, POINTER(t.char_p), t.enum)
 @returns(t.void)
 @binds(dll)
-def transform_feedback_varyings(program, count, varyings, bufferMode): pass
+def transform_feedback_varyings(program, count, varyings, bufferMode): 
+    '''specify values to record in transform feedback buffers'''
 
 @accepts(t.uint, t.uint, t.sizei, POINTER(t.sizei), POINTER(t.sizei), POINTER(t.enum), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_transform_feedback_varying(program, index, bufSize, length, size, type, name): pass
+def get_transform_feedback_varying(program, index, bufSize, length, size, type, name): 
+    '''retrieve information about varying variables selected for transform feedback'''
 
 @accepts(t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
-def clamp_color(target, clamp): pass
+def clamp_color(target, clamp): 
+    '''specify whether data read via '''
 
 @accepts(t.uint, t.enum)
 @returns(t.void)
 @binds(dll)
-def begin_conditional_render(id, mode): pass
+def begin_conditional_render(id, mode): 
+    '''start conditional rendering'''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
-def end_conditional_render(): pass
+def end_conditional_render(): 
+    pass
 
 @accepts(t.uint, t.int, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i_pointer(index, size, type, stride, pointer): pass
+def vertex_attrib_i_pointer(index, size, type, stride, pointer): 
+    pass
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_vertex_attrib_iiv(index, pname, params): pass
+def get_vertex_attrib_iiv(index, pname, params): 
+    pass
 
 @accepts(t.uint, t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def get_vertex_attrib_iuiv(index, pname, params): pass
+def get_vertex_attrib_iuiv(index, pname, params): 
+    pass
 
 @accepts(t.uint, t.int)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i1i(index, x): pass
+def vertex_attrib_i1i(index, x): 
+    pass
 
 @accepts(t.uint, t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i2i(index, x, y): pass
+def vertex_attrib_i2i(index, x, y): 
+    pass
 
 @accepts(t.uint, t.int, t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i3i(index, x, y, z): pass
+def vertex_attrib_i3i(index, x, y, z): 
+    pass
 
 @accepts(t.uint, t.int, t.int, t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i4i(index, x, y, z, w): pass
+def vertex_attrib_i4i(index, x, y, z, w): 
+    pass
 
 @accepts(t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i1ui(index, x): pass
+def vertex_attrib_i1ui(index, x): 
+    pass
 
 @accepts(t.uint, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i2ui(index, x, y): pass
+def vertex_attrib_i2ui(index, x, y): 
+    pass
 
 @accepts(t.uint, t.uint, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i3ui(index, x, y, z): pass
+def vertex_attrib_i3ui(index, x, y, z): 
+    pass
 
 @accepts(t.uint, t.uint, t.uint, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i4ui(index, x, y, z, w): pass
+def vertex_attrib_i4ui(index, x, y, z, w): 
+    pass
 
 @accepts(t.uint, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i1iv(index, v): pass
+def vertex_attrib_i1iv(index, v): 
+    pass
 
 @accepts(t.uint, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i2iv(index, v): pass
+def vertex_attrib_i2iv(index, v): 
+    pass
 
 @accepts(t.uint, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i3iv(index, v): pass
+def vertex_attrib_i3iv(index, v): 
+    pass
 
 @accepts(t.uint, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i4iv(index, v): pass
+def vertex_attrib_i4iv(index, v): 
+    pass
 
 @accepts(t.uint, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i1uiv(index, v): pass
+def vertex_attrib_i1uiv(index, v): 
+    pass
 
 @accepts(t.uint, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i2uiv(index, v): pass
+def vertex_attrib_i2uiv(index, v): 
+    pass
 
 @accepts(t.uint, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i3uiv(index, v): pass
+def vertex_attrib_i3uiv(index, v): 
+    pass
 
 @accepts(t.uint, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i4uiv(index, v): pass
+def vertex_attrib_i4uiv(index, v): 
+    pass
 
 @accepts(t.uint, POINTER(t.byte))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i4bv(index, v): pass
+def vertex_attrib_i4bv(index, v): 
+    pass
 
 @accepts(t.uint, POINTER(t.short))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i4sv(index, v): pass
+def vertex_attrib_i4sv(index, v): 
+    pass
 
 @accepts(t.uint, POINTER(t.ubyte))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i4ubv(index, v): pass
+def vertex_attrib_i4ubv(index, v): 
+    pass
 
 @accepts(t.uint, POINTER(t.ushort))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i4usv(index, v): pass
+def vertex_attrib_i4usv(index, v): 
+    pass
 
 @accepts(t.uint, t.int, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def get_uniformuiv(program, location, params): pass
+def get_uniformuiv(program, location, params): 
+    pass
 
 @accepts(t.uint, t.uint, t.char_p)
 @returns(t.void)
 @binds(dll)
-def bind_frag_data_location(program, color, name): pass
+def bind_frag_data_location(program, color, name): 
+    '''bind a user-defined varying out variable to a fragment shader color number'''
 
 @accepts(t.uint, t.char_p)
 @returns(t.int)
 @binds(dll)
-def get_frag_data_location(program, name): pass
+def get_frag_data_location(program, name): 
+    '''query the bindings of color numbers to user-defined varying out variables'''
 
 @accepts(t.int, t.uint)
 @returns(t.void)
 @binds(dll)
-def uniform1ui(location, v0): pass
+def uniform1ui(location, v0): 
+    pass
 
 @accepts(t.int, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def uniform2ui(location, v0, v1): pass
+def uniform2ui(location, v0, v1): 
+    pass
 
 @accepts(t.int, t.uint, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def uniform3ui(location, v0, v1, v2): pass
+def uniform3ui(location, v0, v1, v2): 
+    pass
 
 @accepts(t.int, t.uint, t.uint, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def uniform4ui(location, v0, v1, v2, v3): pass
+def uniform4ui(location, v0, v1, v2, v3): 
+    pass
 
 @accepts(t.int, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def uniform1uiv(location, count, value): pass
+def uniform1uiv(location, count, value): 
+    pass
 
 @accepts(t.int, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def uniform2uiv(location, count, value): pass
+def uniform2uiv(location, count, value): 
+    pass
 
 @accepts(t.int, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def uniform3uiv(location, count, value): pass
+def uniform3uiv(location, count, value): 
+    pass
 
 @accepts(t.int, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def uniform4uiv(location, count, value): pass
+def uniform4uiv(location, count, value): 
+    pass
 
 @accepts(t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def tex_parameter_iiv(target, pname, params): pass
+def tex_parameter_iiv(target, pname, params): 
+    pass
 
 @accepts(t.enum, t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def tex_parameter_iuiv(target, pname, params): pass
+def tex_parameter_iuiv(target, pname, params): 
+    pass
 
 @accepts(t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_tex_parameter_iiv(target, pname, params): pass
+def get_tex_parameter_iiv(target, pname, params): 
+    pass
 
 @accepts(t.enum, t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def get_tex_parameter_iuiv(target, pname, params): pass
+def get_tex_parameter_iuiv(target, pname, params): 
+    pass
 
 @accepts(t.enum, t.int, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def clear_bufferiv(buffer, drawbuffer, value): pass
+def clear_bufferiv(buffer, drawbuffer, value): 
+    pass
 
 @accepts(t.enum, t.int, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def clear_bufferuiv(buffer, drawbuffer, value): pass
+def clear_bufferuiv(buffer, drawbuffer, value): 
+    pass
 
 @accepts(t.enum, t.int, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def clear_bufferfv(buffer, drawbuffer, value): pass
+def clear_bufferfv(buffer, drawbuffer, value): 
+    pass
 
 @accepts(t.enum, t.int, t.float, t.int)
 @returns(t.void)
 @binds(dll)
-def clear_bufferfi(buffer, drawbuffer, depth, stencil): pass
+def clear_bufferfi(buffer, drawbuffer, depth, stencil): 
+    pass
 
 @accepts(t.enum, t.uint)
 @returns(POINTER(t.ubyte))
 @binds(dll)
-def get_stringi(name, index): pass
+def get_stringi(name, index): 
+    pass
 
 COMPARE_REF_TO_TEXTURE = 0x884E
 CLIP_DISTANCE0 = 0x3000
@@ -399,102 +457,122 @@ FLOAT_32_UNSIGNED_INT_24_8_REV = 0x8DAD
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
-def is_renderbuffer(renderbuffer): pass
+def is_renderbuffer(renderbuffer): 
+    '''determine if a name corresponds to a renderbuffer object'''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def bind_renderbuffer(target, renderbuffer): pass
+def bind_renderbuffer(target, renderbuffer): 
+    '''bind a renderbuffer to a renderbuffer target'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def delete_renderbuffers(n, renderbuffers): pass
+def delete_renderbuffers(n, renderbuffers): 
+    '''delete renderbuffer objects'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def gen_renderbuffers(n, renderbuffers): pass
+def gen_renderbuffers(n, renderbuffers): 
+    '''generate renderbuffer object names'''
 
 @accepts(t.enum, t.enum, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def renderbuffer_storage(target, internalformat, width, height): pass
+def renderbuffer_storage(target, internalformat, width, height): 
+    '''establish data storage, format and dimensions of a renderbuffer object's image'''
 
 @accepts(t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_renderbuffer_parameteriv(target, pname, params): pass
+def get_renderbuffer_parameteriv(target, pname, params): 
+    pass
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
-def is_framebuffer(framebuffer): pass
+def is_framebuffer(framebuffer): 
+    '''determine if a name corresponds to a framebuffer object'''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def bind_framebuffer(target, framebuffer): pass
+def bind_framebuffer(target, framebuffer): 
+    '''bind a framebuffer to a framebuffer target'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def delete_framebuffers(n, framebuffers): pass
+def delete_framebuffers(n, framebuffers): 
+    '''delete framebuffer objects'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def gen_framebuffers(n, framebuffers): pass
+def gen_framebuffers(n, framebuffers): 
+    '''generate framebuffer object names'''
 
 @accepts(t.enum)
 @returns(t.enum)
 @binds(dll)
-def check_framebuffer_status(target): pass
+def check_framebuffer_status(target): 
+    '''check the completeness status of a framebuffer'''
 
 @accepts(t.enum, t.enum, t.enum, t.uint, t.int)
 @returns(t.void)
 @binds(dll)
-def framebuffer_texture1_d(target, attachment, textarget, texture, level): pass
+def framebuffer_texture1_d(target, attachment, textarget, texture, level): 
+    pass
 
 @accepts(t.enum, t.enum, t.enum, t.uint, t.int)
 @returns(t.void)
 @binds(dll)
-def framebuffer_texture2_d(target, attachment, textarget, texture, level): pass
+def framebuffer_texture2_d(target, attachment, textarget, texture, level): 
+    pass
 
 @accepts(t.enum, t.enum, t.enum, t.uint, t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def framebuffer_texture3_d(target, attachment, textarget, texture, level, zoffset): pass
+def framebuffer_texture3_d(target, attachment, textarget, texture, level, zoffset): 
+    pass
 
 @accepts(t.enum, t.enum, t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def framebuffer_renderbuffer(target, attachment, renderbuffertarget, renderbuffer): pass
+def framebuffer_renderbuffer(target, attachment, renderbuffertarget, renderbuffer): 
+    '''attach a renderbuffer as a logical buffer to the currently bound framebuffer object'''
 
 @accepts(t.enum, t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_framebuffer_attachment_parameteriv(target, attachment, pname, params): pass
+def get_framebuffer_attachment_parameteriv(target, attachment, pname, params): 
+    pass
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def generate_mipmap(target): pass
+def generate_mipmap(target): 
+    pass
 
 @accepts(t.int, t.int, t.int, t.int, t.int, t.int, t.int, t.int, t.bitfield, t.enum)
 @returns(t.void)
 @binds(dll)
-def blit_framebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter): pass
+def blit_framebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter): 
+    '''copy a block of pixels from the read framebuffer to the draw framebuffer'''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def renderbuffer_storage_multisample(target, samples, internalformat, width, height): pass
+def renderbuffer_storage_multisample(target, samples, internalformat, width, height): 
+    '''establish data storage, format, dimensions and sample count of a renderbuffer object's image'''
 
 @accepts(t.enum, t.enum, t.uint, t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def framebuffer_texture_layer(target, attachment, texture, level, layer): pass
+def framebuffer_texture_layer(target, attachment, texture, level, layer): 
+    '''attach a single layer of a texture to a framebuffer'''
 
 INVALID_FRAMEBUFFER_OPERATION = 0x0506
 FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING = 0x8210
@@ -597,12 +675,14 @@ HALF_FLOAT = 0x140B
 @accepts(t.enum, t.intptr, t.sizeiptr, t.bitfield)
 @returns(t.void)
 @binds(dll)
-def map_buffer_range(target, offset, length, access): pass
+def map_buffer_range(target, offset, length, access): 
+    '''map a section of a buffer object's data store'''
 
 @accepts(t.enum, t.intptr, t.sizeiptr)
 @returns(t.void)
 @binds(dll)
-def flush_mapped_buffer_range(target, offset, length): pass
+def flush_mapped_buffer_range(target, offset, length): 
+    '''indicate modifications to a range of a mapped buffer'''
 
 MAP_READ_BIT = 0x0001
 MAP_WRITE_BIT = 0x0002
@@ -639,22 +719,26 @@ RG32UI = 0x823C
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
-def bind_vertex_array(array): pass
+def bind_vertex_array(array): 
+    '''bind a vertex array object'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def delete_vertex_arrays(n, arrays): pass
+def delete_vertex_arrays(n, arrays): 
+    '''delete vertex array objects'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def gen_vertex_arrays(n, arrays): pass
+def gen_vertex_arrays(n, arrays): 
+    '''generate vertex array object names'''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
-def is_vertex_array(array): pass
+def is_vertex_array(array): 
+    '''determine if a name corresponds to a vertex array object'''
 
 VERTEX_ARRAY_BINDING = 0x85B5
 CLAMP_VERTEX_COLOR = 0x891A

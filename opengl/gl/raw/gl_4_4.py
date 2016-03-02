@@ -9,7 +9,8 @@ TEXTURE_BUFFER_BINDING = 0x8C2A
 @accepts(t.enum, t.sizeiptr, t.void, t.bitfield)
 @returns(t.void)
 @binds(dll)
-def buffer_storage(target, size, data, flags): pass
+def buffer_storage(target, size, data, flags): 
+    pass
 
 MAP_READ_BIT = 0x0001
 MAP_WRITE_BIT = 0x0002
@@ -23,12 +24,14 @@ BUFFER_STORAGE_FLAGS = 0x8220
 @accepts(t.uint, t.int, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def clear_tex_image(texture, level, format, type, data): pass
+def clear_tex_image(texture, level, format, type, data): 
+    pass
 
 @accepts(t.uint, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def clear_tex_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data): pass
+def clear_tex_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data): 
+    pass
 
 CLEAR_TEXTURE = 0x9365
 LOCATION_COMPONENT = 0x934A
@@ -38,32 +41,38 @@ TRANSFORM_FEEDBACK_BUFFER_STRIDE = 0x934C
 @accepts(t.enum, t.uint, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def bind_buffers_base(target, first, count, buffers): pass
+def bind_buffers_base(target, first, count, buffers): 
+    pass
 
 @accepts(t.enum, t.uint, t.sizei, POINTER(t.uint), POINTER(t.intptr), POINTER(t.sizeiptr))
 @returns(t.void)
 @binds(dll)
-def bind_buffers_range(target, first, count, buffers, offsets, sizes): pass
+def bind_buffers_range(target, first, count, buffers, offsets, sizes): 
+    pass
 
 @accepts(t.uint, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def bind_textures(first, count, textures): pass
+def bind_textures(first, count, textures): 
+    pass
 
 @accepts(t.uint, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def bind_samplers(first, count, samplers): pass
+def bind_samplers(first, count, samplers): 
+    pass
 
 @accepts(t.uint, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def bind_image_textures(first, count, textures): pass
+def bind_image_textures(first, count, textures): 
+    pass
 
 @accepts(t.uint, t.sizei, POINTER(t.uint), POINTER(t.intptr), POINTER(t.sizei))
 @returns(t.void)
 @binds(dll)
-def bind_vertex_buffers(first, count, buffers, offsets, strides): pass
+def bind_vertex_buffers(first, count, buffers, offsets, strides): 
+    pass
 
 QUERY_BUFFER = 0x9192
 QUERY_BUFFER_BARRIER_BIT = 0x00008000

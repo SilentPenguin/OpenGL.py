@@ -265,228 +265,273 @@ VERTEX_BINDING_BUFFER = 0x8F4F
 @accepts(t.enum, t.enum, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def clear_buffer_data(target, internalformat, format, type, data): pass
+def clear_buffer_data(target, internalformat, format, type, data): 
+    pass
 
 @accepts(t.enum, t.enum, t.intptr, t.sizeiptr, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def clear_buffer_sub_data(target, internalformat, offset, size, format, type, data): pass
+def clear_buffer_sub_data(target, internalformat, offset, size, format, type, data): 
+    pass
 
 @accepts(t.uint, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def dispatch_compute(num_groups_x, num_groups_y, num_groups_z): pass
+def dispatch_compute(num_groups_x, num_groups_y, num_groups_z): 
+    pass
 
 @accepts(t.intptr)
 @returns(t.void)
 @binds(dll)
-def dispatch_compute_indirect(indirect): pass
+def dispatch_compute_indirect(indirect): 
+    pass
 
 @accepts(t.uint, t.enum, t.int, t.int, t.int, t.int, t.uint, t.enum, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def copy_image_sub_data(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth): pass
+def copy_image_sub_data(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth): 
+    pass
 
 @accepts(t.enum, t.enum, t.int)
 @returns(t.void)
 @binds(dll)
-def framebuffer_parameteri(target, pname, param): pass
+def framebuffer_parameteri(target, pname, param): 
+    pass
 
 @accepts(t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_framebuffer_parameteriv(target, pname, params): pass
+def get_framebuffer_parameteriv(target, pname, params): 
+    pass
 
 @accepts(t.enum, t.enum, t.enum, t.sizei, POINTER(t.int64))
 @returns(t.void)
 @binds(dll)
-def get_internalformati64v(target, internalformat, pname, bufSize, params): pass
+def get_internalformati64v(target, internalformat, pname, bufSize, params): 
+    pass
 
 @accepts(t.uint, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def invalidate_tex_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth): pass
+def invalidate_tex_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth): 
+    pass
 
 @accepts(t.uint, t.int)
 @returns(t.void)
 @binds(dll)
-def invalidate_tex_image(texture, level): pass
+def invalidate_tex_image(texture, level): 
+    pass
 
 @accepts(t.uint, t.intptr, t.sizeiptr)
 @returns(t.void)
 @binds(dll)
-def invalidate_buffer_sub_data(buffer, offset, length): pass
+def invalidate_buffer_sub_data(buffer, offset, length): 
+    pass
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
-def invalidate_buffer_data(buffer): pass
+def invalidate_buffer_data(buffer): 
+    pass
 
 @accepts(t.enum, t.sizei, POINTER(t.enum))
 @returns(t.void)
 @binds(dll)
-def invalidate_framebuffer(target, numAttachments, attachments): pass
+def invalidate_framebuffer(target, numAttachments, attachments): 
+    pass
 
 @accepts(t.enum, t.sizei, POINTER(t.enum), t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def invalidate_sub_framebuffer(target, numAttachments, attachments, x, y, width, height): pass
+def invalidate_sub_framebuffer(target, numAttachments, attachments, x, y, width, height): 
+    pass
 
 @accepts(t.enum, t.void, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def multi_draw_arrays_indirect(mode, indirect, drawcount, stride): pass
+def multi_draw_arrays_indirect(mode, indirect, drawcount, stride): 
+    pass
 
 @accepts(t.enum, t.enum, t.void, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def multi_draw_elements_indirect(mode, type, indirect, drawcount, stride): pass
+def multi_draw_elements_indirect(mode, type, indirect, drawcount, stride): 
+    pass
 
 @accepts(t.uint, t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_program_interfaceiv(program, programInterface, pname, params): pass
+def get_program_interfaceiv(program, programInterface, pname, params): 
+    pass
 
 @accepts(t.uint, t.enum, t.char_p)
 @returns(t.uint)
 @binds(dll)
-def get_program_resource_index(program, programInterface, name): pass
+def get_program_resource_index(program, programInterface, name): 
+    pass
 
 @accepts(t.uint, t.enum, t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_program_resource_name(program, programInterface, index, bufSize, length, name): pass
+def get_program_resource_name(program, programInterface, index, bufSize, length, name): 
+    pass
 
 @accepts(t.uint, t.enum, t.uint, t.sizei, POINTER(t.enum), t.sizei, POINTER(t.sizei), POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_program_resourceiv(program, programInterface, index, propCount, props, bufSize, length, params): pass
+def get_program_resourceiv(program, programInterface, index, propCount, props, bufSize, length, params): 
+    pass
 
 @accepts(t.uint, t.enum, t.char_p)
 @returns(t.int)
 @binds(dll)
-def get_program_resource_location(program, programInterface, name): pass
+def get_program_resource_location(program, programInterface, name): 
+    pass
 
 @accepts(t.uint, t.enum, t.char_p)
 @returns(t.int)
 @binds(dll)
-def get_program_resource_location_index(program, programInterface, name): pass
+def get_program_resource_location_index(program, programInterface, name): 
+    pass
 
 @accepts(t.uint, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def shader_storage_block_binding(program, storageBlockIndex, storageBlockBinding): pass
+def shader_storage_block_binding(program, storageBlockIndex, storageBlockBinding): 
+    pass
 
 @accepts(t.enum, t.enum, t.uint, t.intptr, t.sizeiptr)
 @returns(t.void)
 @binds(dll)
-def tex_buffer_range(target, internalformat, buffer, offset, size): pass
+def tex_buffer_range(target, internalformat, buffer, offset, size): 
+    pass
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei, t.boolean)
 @returns(t.void)
 @binds(dll)
-def tex_storage2_d_multisample(target, samples, internalformat, width, height, fixedsamplelocations): pass
+def tex_storage2_d_multisample(target, samples, internalformat, width, height, fixedsamplelocations): 
+    pass
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei, t.sizei, t.boolean)
 @returns(t.void)
 @binds(dll)
-def tex_storage3_d_multisample(target, samples, internalformat, width, height, depth, fixedsamplelocations): pass
+def tex_storage3_d_multisample(target, samples, internalformat, width, height, depth, fixedsamplelocations): 
+    pass
 
 @accepts(t.uint, t.enum, t.uint, t.enum, t.uint, t.uint, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def texture_view(texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers): pass
+def texture_view(texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers): 
+    pass
 
 @accepts(t.uint, t.uint, t.intptr, t.sizei)
 @returns(t.void)
 @binds(dll)
-def bind_vertex_buffer(bindingindex, buffer, offset, stride): pass
+def bind_vertex_buffer(bindingindex, buffer, offset, stride): 
+    pass
 
 @accepts(t.uint, t.int, t.enum, t.boolean, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_format(attribindex, size, type, normalized, relativeoffset): pass
+def vertex_attrib_format(attribindex, size, type, normalized, relativeoffset): 
+    pass
 
 @accepts(t.uint, t.int, t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_i_format(attribindex, size, type, relativeoffset): pass
+def vertex_attrib_i_format(attribindex, size, type, relativeoffset): 
+    pass
 
 @accepts(t.uint, t.int, t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_l_format(attribindex, size, type, relativeoffset): pass
+def vertex_attrib_l_format(attribindex, size, type, relativeoffset): 
+    pass
 
 @accepts(t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_binding(attribindex, bindingindex): pass
+def vertex_attrib_binding(attribindex, bindingindex): 
+    pass
 
 @accepts(t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_binding_divisor(bindingindex, divisor): pass
+def vertex_binding_divisor(bindingindex, divisor): 
+    pass
 
 @accepts(t.enum, t.enum, t.enum, t.sizei, POINTER(t.uint), t.boolean)
 @returns(t.void)
 @binds(dll)
-def debug_message_control(source, type, severity, count, ids, enabled): pass
+def debug_message_control(source, type, severity, count, ids, enabled): 
+    pass
 
 @accepts(t.enum, t.enum, t.uint, t.enum, t.sizei, t.char_p)
 @returns(t.void)
 @binds(dll)
-def debug_message_insert(source, type, id, severity, length, buf): pass
+def debug_message_insert(source, type, id, severity, length, buf): 
+    pass
 
 @accepts(t.DEBUGPROC, t.void)
 @returns(t.void)
 @binds(dll)
-def debug_message_callback(callback, userParam): pass
+def debug_message_callback(callback, userParam): 
+    pass
 
 @accepts(t.uint, t.sizei, POINTER(t.enum), POINTER(t.enum), POINTER(t.uint), POINTER(t.enum), POINTER(t.sizei), t.char_p)
 @returns(t.uint)
 @binds(dll)
-def get_debug_message_log(count, bufSize, sources, types, ids, severities, lengths, messageLog): pass
+def get_debug_message_log(count, bufSize, sources, types, ids, severities, lengths, messageLog): 
+    pass
 
 @accepts(t.enum, t.uint, t.sizei, t.char_p)
 @returns(t.void)
 @binds(dll)
-def push_debug_group(source, id, length, message): pass
+def push_debug_group(source, id, length, message): 
+    pass
 
 @accepts()
 @returns(t.void)
 @binds(dll)
-def pop_debug_group(): pass
+def pop_debug_group(): 
+    pass
 
 @accepts(t.enum, t.uint, t.sizei, t.char_p)
 @returns(t.void)
 @binds(dll)
-def object_label(identifier, name, length, label): pass
+def object_label(identifier, name, length, label): 
+    pass
 
 @accepts(t.enum, t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_object_label(identifier, name, bufSize, length, label): pass
+def get_object_label(identifier, name, bufSize, length, label): 
+    pass
 
 @accepts(t.void, t.sizei, t.char_p)
 @returns(t.void)
 @binds(dll)
-def object_ptr_label(ptr, length, label): pass
+def object_ptr_label(ptr, length, label): 
+    pass
 
 @accepts(t.void, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_object_ptr_label(ptr, bufSize, length, label): pass
+def get_object_ptr_label(ptr, bufSize, length, label): 
+    pass
 
 @accepts(t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def get_pointerv(pname, params): pass
+def get_pointerv(pname, params): 
+    '''return the address of the specified pointer'''
 
 DISPLAY_LIST = 0x82E7
 @accepts(t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def get_pointerv(pname, params): pass
+def get_pointerv(pname, params): 
+    '''return the address of the specified pointer'''
 
 STACK_UNDERFLOW = 0x0504
 STACK_OVERFLOW = 0x0503
