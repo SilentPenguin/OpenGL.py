@@ -79,7 +79,7 @@ def get_transform_feedback_varying(program, index, bufSize, length, size, type, 
 @returns(t.void)
 @binds(dll)
 def clamp_color(target, clamp): 
-    '''specify whether data read via '''
+    '''specify whether data read via <citerefentry><refentrytitle>glReadPixels</refentrytitle></citerefentry> should be clamped'''
 
 @accepts(t.uint, t.enum)
 @returns(t.void)
@@ -542,7 +542,7 @@ def framebuffer_texture3_d(target, attachment, textarget, texture, level, zoffse
 @returns(t.void)
 @binds(dll)
 def framebuffer_renderbuffer(target, attachment, renderbuffertarget, renderbuffer): 
-    '''attach a renderbuffer as a logical buffer to the currently bound framebuffer object'''
+    '''attach a renderbuffer as a logical buffer of a framebuffer object'''
 
 @accepts(t.enum, t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
@@ -554,13 +554,13 @@ def get_framebuffer_attachment_parameteriv(target, attachment, pname, params):
 @returns(t.void)
 @binds(dll)
 def generate_mipmap(target): 
-    pass
+    '''generate mipmaps for a specified texture object'''
 
 @accepts(t.int, t.int, t.int, t.int, t.int, t.int, t.int, t.int, t.bitfield, t.enum)
 @returns(t.void)
 @binds(dll)
 def blit_framebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter): 
-    '''copy a block of pixels from the read framebuffer to the draw framebuffer'''
+    '''copy a block of pixels from one framebuffer object to another'''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei)
 @returns(t.void)
@@ -572,7 +572,7 @@ def renderbuffer_storage_multisample(target, samples, internalformat, width, hei
 @returns(t.void)
 @binds(dll)
 def framebuffer_texture_layer(target, attachment, texture, level, layer): 
-    '''attach a single layer of a texture to a framebuffer'''
+    '''attach a single layer of a texture object as a logical buffer of a framebuffer object'''
 
 INVALID_FRAMEBUFFER_OPERATION = 0x0506
 FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING = 0x8210
@@ -676,7 +676,7 @@ HALF_FLOAT = 0x140B
 @returns(t.void)
 @binds(dll)
 def map_buffer_range(target, offset, length, access): 
-    '''map a section of a buffer object's data store'''
+    '''map all or part of a buffer object's data store into the client's address space'''
 
 @accepts(t.enum, t.intptr, t.sizeiptr)
 @returns(t.void)

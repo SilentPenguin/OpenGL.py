@@ -79,13 +79,13 @@ def is_buffer(buffer):
 @returns(t.void)
 @binds(dll)
 def buffer_data(target, size, data, usage): 
-    pass
+    '''creates and initializes a buffer object's data store'''
 
 @accepts(t.enum, t.intptr, t.sizeiptr, t.void)
 @returns(t.void)
 @binds(dll)
 def buffer_sub_data(target, offset, size, data): 
-    pass
+    '''updates a subset of a buffer object's data store'''
 
 @accepts(t.enum, t.intptr, t.sizeiptr, t.void)
 @returns(t.void)
@@ -97,13 +97,13 @@ def get_buffer_sub_data(target, offset, size, data):
 @returns(t.void)
 @binds(dll)
 def map_buffer(target, access): 
-    '''map a buffer object's data store'''
+    '''map all of a buffer object's data store into the client's address space'''
 
 @accepts(t.enum)
 @returns(t.boolean)
 @binds(dll)
 def unmap_buffer(target): 
-    pass
+    '''release the mapping of a buffer object's data store into the client's address space'''
 
 @accepts(t.enum, t.enum, POINTER(t.int))
 @returns(t.void)

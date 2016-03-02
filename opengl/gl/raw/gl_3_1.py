@@ -19,7 +19,7 @@ def draw_elements_instanced(mode, count, type, indices, instancecount):
 @returns(t.void)
 @binds(dll)
 def tex_buffer(target, internalformat, buffer): 
-    pass
+    '''attach a buffer object's data store to a buffer texture object'''
 
 @accepts(t.uint)
 @returns(t.void)
@@ -57,7 +57,7 @@ PRIMITIVE_RESTART_INDEX = 0x8F9E
 @returns(t.void)
 @binds(dll)
 def copy_buffer_sub_data(readTarget, writeTarget, readOffset, writeOffset, size): 
-    '''copy part of the data store of a buffer object to the data store of another buffer object'''
+    '''copy all or part of the data store of a buffer object to the data store of another buffer object'''
 
 COPY_READ_BUFFER = 0x8F36
 COPY_WRITE_BUFFER = 0x8F37

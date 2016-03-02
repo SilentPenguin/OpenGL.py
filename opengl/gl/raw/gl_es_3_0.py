@@ -13,25 +13,25 @@ def read_buffer(src):
 @returns(t.void)
 @binds(dll)
 def draw_range_elements(mode, start, end, count, type, indices): 
-    pass
+    '''render primitives from array data'''
 
 @accepts(t.enum, t.int, t.int, t.sizei, t.sizei, t.sizei, t.int, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def tex_image3_d(target, level, internalformat, width, height, depth, border, format, type, pixels): 
-    pass
+    '''specify a three-dimensional texture image'''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels): 
-    pass
+    '''specify a three-dimensional texture subimage'''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def copy_tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, x, y, width, height): 
-    pass
+    '''copy a three-dimensional texture subimage'''
 
 @accepts(t.enum, t.int, t.enum, t.sizei, t.sizei, t.sizei, t.int, t.sizei, t.void)
 @returns(t.void)
@@ -43,7 +43,7 @@ def compressed_tex_image3_d(target, level, internalformat, width, height, depth,
 @returns(t.void)
 @binds(dll)
 def compressed_tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data): 
-    pass
+    '''specify a three-dimensional texture subimage in a compressed format'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
@@ -91,7 +91,7 @@ def get_query_objectuiv(id, pname, params):
 @returns(t.boolean)
 @binds(dll)
 def unmap_buffer(target): 
-    pass
+    '''release the mapping of a buffer object's data store into the client's address space'''
 
 @accepts(t.enum, t.enum, t.void)
 @returns(t.void)
@@ -145,7 +145,7 @@ def uniform_matrix4x3fv(location, count, transpose, value):
 @returns(t.void)
 @binds(dll)
 def blit_framebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter): 
-    '''copy a block of pixels from the read framebuffer to the draw framebuffer'''
+    '''copy a block of pixels from one framebuffer object to another'''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei)
 @returns(t.void)
@@ -157,13 +157,13 @@ def renderbuffer_storage_multisample(target, samples, internalformat, width, hei
 @returns(t.void)
 @binds(dll)
 def framebuffer_texture_layer(target, attachment, texture, level, layer): 
-    '''attach a single layer of a texture to a framebuffer'''
+    '''attach a single layer of a texture object as a logical buffer of a framebuffer object'''
 
 @accepts(t.enum, t.intptr, t.sizeiptr, t.bitfield)
 @returns(t.void)
 @binds(dll)
 def map_buffer_range(target, offset, length, access): 
-    '''map a section of a buffer object's data store'''
+    '''map all or part of a buffer object's data store into the client's address space'''
 
 @accepts(t.enum, t.intptr, t.sizeiptr)
 @returns(t.void)
@@ -373,7 +373,7 @@ def get_stringi(name, index):
 @returns(t.void)
 @binds(dll)
 def copy_buffer_sub_data(readTarget, writeTarget, readOffset, writeOffset, size): 
-    '''copy part of the data store of a buffer object to the data store of another buffer object'''
+    '''copy all or part of the data store of a buffer object to the data store of another buffer object'''
 
 @accepts(t.uint, t.sizei, POINTER(t.char_p), POINTER(t.uint))
 @returns(t.void)
@@ -547,49 +547,49 @@ def vertex_attrib_divisor(index, divisor):
 @returns(t.void)
 @binds(dll)
 def bind_transform_feedback(target, id): 
-    pass
+    '''bind a transform feedback object'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def delete_transform_feedbacks(n, ids): 
-    pass
+    '''delete transform feedback objects'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def gen_transform_feedbacks(n, ids): 
-    pass
+    '''reserve transform feedback object names'''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
 def is_transform_feedback(id): 
-    pass
+    '''determine if a name corresponds to a transform feedback object'''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
 def pause_transform_feedback(): 
-    pass
+    '''pause transform feedback operations'''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
 def resume_transform_feedback(): 
-    pass
+    '''resume transform feedback operations'''
 
 @accepts(t.uint, t.sizei, POINTER(t.sizei), POINTER(t.enum), t.void)
 @returns(t.void)
 @binds(dll)
 def get_program_binary(program, bufSize, length, binaryFormat, binary): 
-    pass
+    '''return a binary representation of a program object's compiled and linked executable source'''
 
 @accepts(t.uint, t.enum, t.void, t.sizei)
 @returns(t.void)
 @binds(dll)
 def program_binary(program, binaryFormat, binary, length): 
-    pass
+    '''load a program object with a program binary'''
 
 @accepts(t.uint, t.enum, t.int)
 @returns(t.void)
@@ -601,25 +601,25 @@ def program_parameteri(program, pname, value):
 @returns(t.void)
 @binds(dll)
 def invalidate_framebuffer(target, numAttachments, attachments): 
-    pass
+    '''invalidate the content of some or all of a framebuffer's attachments'''
 
 @accepts(t.enum, t.sizei, POINTER(t.enum), t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def invalidate_sub_framebuffer(target, numAttachments, attachments, x, y, width, height): 
-    pass
+    '''invalidate the content of a region of some or all of a framebuffer's attachments'''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def tex_storage2_d(target, levels, internalformat, width, height): 
-    pass
+    '''simultaneously specify storage for all levels of a two-dimensional or one-dimensional array texture'''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def tex_storage3_d(target, levels, internalformat, width, height, depth): 
-    pass
+    '''simultaneously specify storage for all levels of a three-dimensional, two-dimensional array or cube-map array texture'''
 
 @accepts(t.enum, t.enum, t.enum, t.sizei, POINTER(t.int))
 @returns(t.void)

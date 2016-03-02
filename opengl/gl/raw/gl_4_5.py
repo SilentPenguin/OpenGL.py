@@ -8,7 +8,7 @@ CONTEXT_LOST = 0x0507
 @returns(t.void)
 @binds(dll)
 def clip_control(origin, depth): 
-    pass
+    '''control clip coordinate to window coordinate behavior'''
 
 LOWER_LEFT = 0x8CA1
 UPPER_LEFT = 0x8CA2
@@ -26,19 +26,19 @@ MAX_COMBINED_CLIP_AND_CULL_DISTANCES = 0x82FA
 @returns(t.void)
 @binds(dll)
 def create_transform_feedbacks(n, ids): 
-    pass
+    '''create transform feedback objects'''
 
 @accepts(t.uint, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
 def transform_feedback_buffer_base(xfb, index, buffer): 
-    pass
+    '''bind a buffer object to a transform feedback buffer object'''
 
 @accepts(t.uint, t.uint, t.uint, t.intptr, t.sizeiptr)
 @returns(t.void)
 @binds(dll)
 def transform_feedback_buffer_range(xfb, index, buffer, offset, size): 
-    pass
+    '''bind a range within a buffer object to a transform feedback buffer object'''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
@@ -62,7 +62,7 @@ def get_transform_feedbacki64_v(xfb, pname, index, param):
 @returns(t.void)
 @binds(dll)
 def create_buffers(n, buffers): 
-    pass
+    '''create buffer objects'''
 
 @accepts(t.uint, t.sizeiptr, t.void, t.bitfield)
 @returns(t.void)
@@ -152,7 +152,7 @@ def get_named_buffer_sub_data(buffer, offset, size, data):
 @returns(t.void)
 @binds(dll)
 def create_framebuffers(n, framebuffers): 
-    pass
+    '''create framebuffer objects'''
 
 @accepts(t.uint, t.enum, t.enum, t.uint)
 @returns(t.void)
@@ -260,7 +260,7 @@ def get_named_framebuffer_attachment_parameteriv(framebuffer, attachment, pname,
 @returns(t.void)
 @binds(dll)
 def create_renderbuffers(n, renderbuffers): 
-    pass
+    '''create renderbuffer objects'''
 
 @accepts(t.uint, t.enum, t.sizei, t.sizei)
 @returns(t.void)
@@ -284,7 +284,7 @@ def get_named_renderbuffer_parameteriv(renderbuffer, pname, params):
 @returns(t.void)
 @binds(dll)
 def create_textures(target, n, textures): 
-    pass
+    '''create texture objects'''
 
 @accepts(t.uint, t.enum, t.uint)
 @returns(t.void)
@@ -428,7 +428,7 @@ def generate_texture_mipmap(texture):
 @returns(t.void)
 @binds(dll)
 def bind_texture_unit(unit, texture): 
-    pass
+    '''bind an existing texture object to the specified texture unit '''
 
 @accepts(t.uint, t.int, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
@@ -482,7 +482,7 @@ def get_texture_parameteriv(texture, pname, params):
 @returns(t.void)
 @binds(dll)
 def create_vertex_arrays(n, arrays): 
-    pass
+    '''create vertex array objects'''
 
 @accepts(t.uint, t.uint)
 @returns(t.void)
@@ -500,7 +500,7 @@ def enable_vertex_array_attrib(vaobj, index):
 @returns(t.void)
 @binds(dll)
 def vertex_array_element_buffer(vaobj, buffer): 
-    pass
+    '''configures element array buffer binding of a vertex array object'''
 
 @accepts(t.uint, t.uint, t.uint, t.intptr, t.sizei)
 @returns(t.void)
@@ -548,7 +548,7 @@ def vertex_array_binding_divisor(vaobj, bindingindex, divisor):
 @returns(t.void)
 @binds(dll)
 def get_vertex_arrayiv(vaobj, pname, param): 
-    pass
+    '''retrieve parameters of a vertex array object'''
 
 @accepts(t.uint, t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
@@ -566,19 +566,19 @@ def get_vertex_array_indexed64iv(vaobj, index, pname, param):
 @returns(t.void)
 @binds(dll)
 def create_samplers(n, samplers): 
-    pass
+    '''create sampler objects'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def create_program_pipelines(n, pipelines): 
-    pass
+    '''create program pipeline objects'''
 
 @accepts(t.enum, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def create_queries(target, n, ids): 
-    pass
+    '''create query objects'''
 
 @accepts(t.uint, t.uint, t.enum, t.intptr)
 @returns(t.void)
@@ -640,7 +640,7 @@ def get_compressed_texture_sub_image(texture, level, xoffset, yoffset, zoffset, 
 @returns(t.enum)
 @binds(dll)
 def get_graphics_reset_status(): 
-    pass
+    '''check if the rendering context has not been lost due to software or hardware issues'''
 
 @accepts(t.enum, t.int, t.sizei, t.void)
 @returns(t.void)
@@ -769,7 +769,7 @@ def getn_minmax(target, reset, format, type, bufSize, values):
 @returns(t.void)
 @binds(dll)
 def texture_barrier(): 
-    pass
+    '''controls the ordering of reads and writes to rendered fragments across drawing commands'''
 
 CONTEXT_RELEASE_BEHAVIOR = 0x82FB
 NONE = 0
