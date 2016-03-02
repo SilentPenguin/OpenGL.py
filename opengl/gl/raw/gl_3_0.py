@@ -79,7 +79,7 @@ def get_transform_feedback_varying(program, index, bufSize, length, size, type, 
 @returns(t.void)
 @binds(dll)
 def clamp_color(target, clamp): 
-    '''specify whether data read via <citerefentry><refentrytitle>glReadPixels</refentrytitle></citerefentry> should be clamped'''
+    '''specify whether data read via gl.read_pixels should be clamped'''
 
 @accepts(t.uint, t.enum)
 @returns(t.void)

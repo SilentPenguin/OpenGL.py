@@ -331,7 +331,7 @@ def gen_lists(range):
 @returns(t.void)
 @binds(dll)
 def list_base(base): 
-    '''set the display-list base for <citerefentry><refentrytitle>glCallLists</refentrytitle></citerefentry>'''
+    '''set the display-list base for gl.call_lists'''
 
 @accepts(t.enum)
 @returns(t.void)
