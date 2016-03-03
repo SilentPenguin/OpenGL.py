@@ -14,8 +14,8 @@ OpenGL.py sets out to resolve these issues.
 ### Write PEP 8 code
 We aren't morons, we can quickly and easily translate Pep 8 names into their counterparts.
 
-OpenGL.py transforms the OpenGL specification from the opengl registry for PEP 8 naming conventions.
-Below, is some code that demonstrates the usage of opengl types, enums and commands:
+OpenGL.py transforms the spec from the gl registry for PEP 8 naming conventions.
+Below, is some code that demonstrates the usage of gl types, enums and commands under OpenGL.py:
 
 ```python
 from opengl import gl
