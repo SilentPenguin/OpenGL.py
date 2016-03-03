@@ -42,11 +42,14 @@ of the api changing, use this package instead with the directive `from opengl.gl
 ### Docstrings
 OpenGL.py also includes docstrings as part of the bindings.
 This means if your workflow includes docstrings through a completion editor, your editor should display a short description.
+
 Hazzah, no more travelling back to the api documentation just to double check on an esoteric function.
 
 ## Future changes
 OpenGL.py needs improvement:
-* Docstrings don't contain argument explinations, return values etc.
-* More protection from ctypes quirks
-* Checking gl.error and throwing an exception
+* More protection from ctypes quirks.
+* Additions to negate gl spec insanity.
+* Object orientated access to the api. (The dream of dreams.)
+* Docstrings which contain long form descriptions, argument explinations, return values, etc.
+* Checking gl.error and throwing an exception.
 * Bindings for glu and glut. Presently, these are simple wrappers to PyOpenGL to fix the naming conventions used.
