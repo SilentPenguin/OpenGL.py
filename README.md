@@ -12,7 +12,7 @@ coding and when I did need to interact with gl, my editor's completion functiona
 OpenGL.py sets out to resolve these issues.
 
 ### Write PEP 8 code
-We aren't morons, we can quickly and easily translate Pep 8 names into their counterparts.
+We aren't morons, we can quickly and easily translate PEP 8 names into their counterparts.
 
 OpenGL.py transforms the spec from the gl registry for PEP 8 naming conventions.
 Below, is some code that demonstrates the usage of gl types, enums and commands under OpenGL.py:
@@ -41,7 +41,7 @@ of the api changing, use this package instead with the directive `from opengl.gl
 
 ### Docstrings
 OpenGL.py also includes docstrings as part of the bindings.
-This means if your workflow includes docstrings through a completion editor, your editor should display a short description.
+This means if your workflow includes docstrings through a completion editor, your editor should display a short description of the command and its arguments.
 
 Hazzah, no more travelling back to the api documentation just to double check on an esoteric function.
 
@@ -50,6 +50,6 @@ OpenGL.py needs improvement:
 * More protection from ctypes quirks.
 * Additions to negate gl spec insanity.
 * Object orientated access to the api. (The dream of dreams.)
-* Docstrings which contain long form descriptions, argument explinations, return values, etc.
+* Docstrings which contain long form descriptions, return values, etc.
 * Checking gl.error and throwing an exception.
 * Bindings for glu and glut. Presently, these are simple wrappers to PyOpenGL to fix the naming conventions used.
