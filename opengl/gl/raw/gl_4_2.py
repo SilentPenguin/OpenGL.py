@@ -121,16 +121,22 @@ TEXTURE_IMMUTABLE_FORMAT = 0x912F
 def draw_arrays_instanced_base_instance(mode, first, count, instancecount, baseinstance):
     '''
     draw multiple instances of a range of elements with offset applied to instanced
-attributes
+attributes.
+    
+    gl.draw_arrays_instanced_base_instance behaves identically to gl.draw_arrays
+    except that primcount instances of the range of elements are executed and
+    the value of the internal counter instanceID advances for each iteration.
+    instanceID is an internal 32-bit integer counter that may be read by a
+    vertex shader as gl_InstanceID.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        first: Specifies the starting index in the enabled arrays
-        count: Specifies the number of indices to be rendered
-        instancecount: Specifies the number of instances of the specified range
-            of indices to be rendered
-        baseinstance: Specifies the base instance for use in fetching instanced
-            vertex attributes
+        mode: what kind of primitives to render.
+        first: the starting index in the enabled arrays.
+        count: the number of indices to be rendered.
+        instancecount: the number of instances of the specified range of indices
+            to be rendered.
+        baseinstance: the base instance for use in fetching instanced vertex
+            attributes.
     '''
 
 @accepts(t.enum, t.sizei, t.enum, t.void, t.sizei, t.uint)
@@ -139,18 +145,23 @@ attributes
 def draw_elements_instanced_base_instance(mode, count, type, indices, instancecount, baseinstance):
     '''
     draw multiple instances of a set of elements with offset applied to instanced
-attributes
+attributes.
+    
+    gl.draw_elements_instanced_base_instance behaves identically to
+    gl.draw_elements except that primcount instances of the set of elements are
+    executed and the value of the internal counter instanceID advances for each
+    iteration. instanceID is an internal 32-bit integer counter that may be read
+    by a vertex shader as gl_InstanceID.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        count: Specifies the number of elements to be rendered
-        type: Specifies the type of the values in indices
-        indices: Specifies a pointer to the location where the indices are
-            stored
-        instancecount: Specifies the number of instances of the specified range
-            of indices to be rendered
-        baseinstance: Specifies the base instance for use in fetching instanced
-            vertex attributes
+        mode: what kind of primitives to render.
+        count: the number of elements to be rendered.
+        type: the type of the values in indices.
+        indices: a pointer to the location where the indices are stored.
+        instancecount: the number of instances of the specified range of indices
+            to be rendered.
+        baseinstance: the base instance for use in fetching instanced vertex
+            attributes.
     '''
 
 @accepts(t.enum, t.sizei, t.enum, t.void, t.sizei, t.int, t.uint)
@@ -159,20 +170,28 @@ attributes
 def draw_elements_instanced_base_vertex_base_instance(mode, count, type, indices, instancecount, basevertex, baseinstance):
     '''
     render multiple instances of a set of primitives from array data with a per-
-element offset
+element offset.
+    
+    gl.draw_elements_instanced_base_vertex_base_instance behaves identically to
+    gl.draw_elements_instanced except that the ith element transferred by the
+    corresponding draw call will be taken from element indices[i] + basevertex
+    of each enabled array. If the resulting value is larger than the maximum
+    value representable by type, it is as if the calculation were upconverted to
+    32-bit unsigned integers (with wrapping on overflow conditions). The
+    operation is undefined if the sum would be negative. The basevertex has no
+    effect on the shader-visible value of gl_VertexID.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        count: Specifies the number of elements to be rendered
-        type: Specifies the type of the values in indices
-        indices: Specifies a pointer to the location where the indices are
-            stored
-        instancecount: Specifies the number of instances of the indexed geometry
-            that should be drawn
-        basevertex: Specifies a constant that should be added to each element of
-            indices when chosing elements from the enabled vertex arrays
-        baseinstance: Specifies the base instance for use in fetching instanced
-            vertex attributes
+        mode: what kind of primitives to render.
+        count: the number of elements to be rendered.
+        type: the type of the values in indices.
+        indices: a pointer to the location where the indices are stored.
+        instancecount: the number of instances of the indexed geometry that
+            should be drawn.
+        basevertex: a constant that should be added to each element of indices
+            when chosing elements from the enabled vertex arrays.
+        baseinstance: the base instance for use in fetching instanced vertex
+            attributes.
     '''
 
 @accepts(t.enum, t.enum, t.enum, t.sizei, POINTER(t.int))
@@ -187,15 +206,22 @@ def get_internalformativ(target, internalformat, pname, bufsize, params):
 def get_active_atomic_counter_bufferiv(program, bufferindex, pname, params):
     '''
     retrieve information about the set of active atomic counter buffers for a
-program
+program.
+    
+    gl.get_active_atomic_counter_bufferiv retrieves information about the set of
+    active atomic counter buffers for a program object. program is the name of a
+    program object for which the command gl.link_program has been issued in the
+    past. It is not necessary for program to have been linked successfully. The
+    link may have failed because the number of active atomic counters exceeded
+    the limits.
     
     Args:
-        program: The name of a program object from which to retrieve information
-        bufferindex: Specifies index of an active atomic counter buffer
-        pname: Specifies which parameter of the atomic counter buffer to
-            retrieve
-        params: Specifies the address of a variable into which to write the
-            retrieved information
+        program: the name of a program object from which to retrieve
+            information.
+        bufferindex: index of an active atomic counter buffer.
+        pname: which parameter of the atomic counter buffer to retrieve.
+        params: the address of a variable into which to write the retrieved
+            information.
     '''
 
 @accepts(t.uint, t.uint, t.int, t.boolean, t.int, t.enum, t.enum)
@@ -203,20 +229,25 @@ program
 @binds(dll)
 def bind_image_texture(unit, texture, level, layered, layer, access, format):
     '''
-    bind a level of a texture to an image unit
+    bind a level of a texture to an image unit.
+    
+    gl.bind_image_texture binds a single level of a texture to an image unit for
+    the purpose of reading and writing it from shaders. unit specifies the zero-
+    based index of the image unit to which to bind the texture level. texture
+    specifies the name of an existing texture object to bind to the image unit.
+    If texture is zero, then any existing binding to the image unit is broken.
     
     Args:
-        unit: Specifies the index of the image unit to which to bind the texture
-        texture: Specifies the name of the texture to bind to the image unit
-        level: Specifies the level of the texture that is to be bound
-        layered: Specifies whether a layered texture binding is to be
-            established
-        layer: If layered is gl.FALSE, specifies the layer of texture to be
-            bound to the image unit
-        access: Specifies a token indicating the type of access that will be
-            performed on the image
-        format: Specifies the format that the elements of the image will be
-            treated as for the purposes of formatted stores
+        unit: the index of the image unit to which to bind the texture.
+        texture: the name of the texture to bind to the image unit.
+        level: the level of the texture that is to be bound.
+        layered: whether a layered texture binding is to be established.
+        layer: if layered is gl_false, specifies the layer of texture to be
+            bound to the image unit.
+        access: a token indicating the type of access that will be performed on
+            the image.
+        format: the format that the elements of the image will be treated as for
+            the purposes of formatted stores.
     '''
 
 @accepts(t.bitfield)
@@ -224,10 +255,16 @@ def bind_image_texture(unit, texture, level, layered, layer, access, format):
 @binds(dll)
 def memory_barrier(barriers):
     '''
-    defines a barrier ordering memory transactions
+    defines a barrier ordering memory transactions.
+    
+    gl.memory_barrier defines a barrier ordering the memory transactions issued
+    prior to the command relative to those issued after the barrier. For the
+    purposes of this ordering, memory transactions performed by shaders are
+    considered to be issued by the rendering command that triggered the
+    execution of the shader.
     
     Args:
-        barriers: Specifies the barriers to insert
+        barriers: the barriers to insert.
     '''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei)
@@ -235,15 +272,15 @@ def memory_barrier(barriers):
 @binds(dll)
 def tex_storage1_d(target, levels, internalformat, width):
     '''
-    simultaneously specify storage for all levels of a one-dimensional texture
+    simultaneously specify storage for all levels of a one-dimensional texture.
     
     Args:
-        target: Specifies the target to which the texture object is bound for
-            gl.tex_storage1D
-        levels: Specify the number of texture levels
-        internalformat: Specifies the sized internal format to be used to store
-            texture image data
-        width: Specifies the width of the texture, in texels
+        target: the target to which the texture object is bound for
+            gltexstorage1d.
+        levels: the number of texture levels.
+        internalformat: the sized internal format to be used to store texture
+            image data.
+        width: the width of the texture, in texels.
     '''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei)
@@ -252,16 +289,16 @@ def tex_storage1_d(target, levels, internalformat, width):
 def tex_storage2_d(target, levels, internalformat, width, height):
     '''
     simultaneously specify storage for all levels of a two-dimensional or one-
-dimensional array texture
+dimensional array texture.
     
     Args:
-        target: Specifies the target to which the texture object is bound for
-            gl.tex_storage2D
-        levels: Specify the number of texture levels
-        internalformat: Specifies the sized internal format to be used to store
-            texture image data
-        width: Specifies the width of the texture, in texels
-        height: Specifies the height of the texture, in texels
+        target: the target to which the texture object is bound for
+            gltexstorage2d.
+        levels: the number of texture levels.
+        internalformat: the sized internal format to be used to store texture
+            image data.
+        width: the width of the texture, in texels.
+        height: the height of the texture, in texels.
     '''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei, t.sizei)
@@ -270,17 +307,17 @@ dimensional array texture
 def tex_storage3_d(target, levels, internalformat, width, height, depth):
     '''
     simultaneously specify storage for all levels of a three-dimensional, two-
-dimensional array or cube-map array texture
+dimensional array or cube-map array texture.
     
     Args:
-        target: Specifies the target to which the texture object is bound for
-            gl.tex_storage3D
-        levels: Specify the number of texture levels
-        internalformat: Specifies the sized internal format to be used to store
-            texture image data
-        width: Specifies the width of the texture, in texels
-        height: Specifies the height of the texture, in texels
-        depth: Specifies the depth of the texture, in texels
+        target: the target to which the texture object is bound for
+            gltexstorage3d.
+        levels: the number of texture levels.
+        internalformat: the sized internal format to be used to store texture
+            image data.
+        width: the width of the texture, in texels.
+        height: the height of the texture, in texels.
+        depth: the depth of the texture, in texels.
     '''
 
 @accepts(t.enum, t.uint, t.sizei)
@@ -289,14 +326,22 @@ dimensional array or cube-map array texture
 def draw_transform_feedback_instanced(mode, id, instancecount):
     '''
     render multiple instances of primitives using a count derived from a transform
-feedback object
+feedback object.
+    
+    gl.draw_transform_feedback_instanced draws multiple copies of a range of
+    primitives of a type specified by mode using a count retrieved from the
+    transform feedback stream specified by stream of the transform feedback
+    object specified by id. Calling gl.draw_transform_feedback_instanced is
+    equivalent to calling gl.draw_arrays_instanced with mode and primcount as
+    specified, first set to zero, and count set to the number of vertices
+    captured on vertex stream zero the last time transform feedback was active
+    on the transform feedback object named by id.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        id: Specifies the name of a transform feedback object from which to
-            retrieve a primitive count
-        instancecount: Specifies the number of instances of the geometry to
-            render
+        mode: what kind of primitives to render.
+        id: the name of a transform feedback object from which to retrieve a
+            primitive count.
+        instancecount: the number of instances of the geometry to render.
     '''
 
 @accepts(t.enum, t.uint, t.uint, t.sizei)
@@ -305,14 +350,22 @@ feedback object
 def draw_transform_feedback_stream_instanced(mode, id, stream, instancecount):
     '''
     render multiple instances of primitives using a count derived from a specifed
-stream of a transform feedback object
+stream of a transform feedback object.
+    
+    gl.draw_transform_feedback_stream_instanced draws multiple copies of a range
+    of primitives of a type specified by mode using a count retrieved from the
+    transform feedback stream specified by stream of the transform feedback
+    object specified by id. Calling gl.draw_transform_feedback_stream_instanced
+    is equivalent to calling gl.draw_arrays_instanced with mode and primcount as
+    specified, first set to zero, and count set to the number of vertices
+    captured on vertex stream stream the last time transform feedback was active
+    on the transform feedback object named by id.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        id: Specifies the name of a transform feedback object from which to
-            retrieve a primitive count
-        stream: Specifies the index of the transform feedback stream from which
-            to retrieve a primitive count
-        instancecount: Specifies the number of instances of the geometry to
-            render
+        mode: what kind of primitives to render.
+        id: the name of a transform feedback object from which to retrieve a
+            primitive count.
+        stream: the index of the transform feedback stream from which to
+            retrieve a primitive count.
+        instancecount: the number of instances of the geometry to render.
     '''

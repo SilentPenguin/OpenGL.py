@@ -8,12 +8,16 @@ from opengl.gl.raw.bindings import *
 @binds(dll)
 def gen_queries(n, ids):
     '''
-    generate query object names
+    generate query object names.
+    
+    gl.gen_queries returns n query object names in ids. There is no guarantee
+    that the names form a contiguous set of integers; however, it is guaranteed
+    that none of the returned names was in use immediately before the call to
+    gl.gen_queries.
     
     Args:
-        n: Specifies the number of query object names to be generated
-        ids: Specifies an array in which the generated query object names are
-            stored
+        n: the number of query object names to be generated.
+        ids: an array in which the generated query object names are stored.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -21,11 +25,15 @@ def gen_queries(n, ids):
 @binds(dll)
 def delete_queries(n, ids):
     '''
-    delete named query objects
+    delete named query objects.
+    
+    gl.delete_queries deletes n query objects named by the elements of the array
+    ids. After a query object is deleted, it has no contents, and its name is
+    free for reuse (for example by gl.gen_queries).
     
     Args:
-        n: Specifies the number of query objects to be deleted
-        ids: Specifies an array of query objects to be deleted
+        n: the number of query objects to be deleted.
+        ids: an array of query objects to be deleted.
     '''
 
 @accepts(t.uint)
@@ -33,10 +41,14 @@ def delete_queries(n, ids):
 @binds(dll)
 def is_query(id):
     '''
-    determine if a name corresponds to a query object
+    determine if a name corresponds to a query object.
+    
+    gl.is_query returns gl.TRUE if id is currently the name of a query object.
+    If id is zero, or is a non-zero value that is not currently the name of a
+    query object, or if an error occurs, gl.is_query returns gl.FALSE.
     
     Args:
-        id: Specifies a value that may be the name of a query object
+        id: a value that may be the name of a query object.
     '''
 
 @accepts(t.enum, t.uint)
@@ -44,12 +56,12 @@ def is_query(id):
 @binds(dll)
 def begin_query(target, id):
     '''
-    delimit the boundaries of a query object
+    delimit the boundaries of a query object.
     
     Args:
-        target: Specifies the target type of query object established between
-            gl.begin_query and the subsequent gl.end_query
-        id: Specifies the name of a query object
+        target: the target type of query object established between glbeginquery
+            and the subsequent glendquery.
+        id: the name of a query object.
     '''
 
 @accepts(t.enum)
@@ -63,12 +75,15 @@ def end_query(target):
 @binds(dll)
 def get_queryiv(target, pname, params):
     '''
-    return parameters of a query object target
+    return parameters of a query object target.
+    
+    gl.get_queryiv returns in params a selected parameter of the query object
+    target specified by target.
     
     Args:
-        target: Specifies a query object target
-        pname: Specifies the symbolic name of a query object target parameter
-        params: Returns the requested data
+        target: a query object target.
+        pname: the symbolic name of a query object target parameter.
+        params: returns the requested data.
     '''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
@@ -88,12 +103,19 @@ def get_query_objectuiv(id, pname, params):
 @binds(dll)
 def bind_buffer(target, buffer):
     '''
-    bind a named buffer object
+    bind a named buffer object.
+    
+    gl.bind_buffer binds a buffer object to the specified buffer binding point.
+    Calling gl.bind_buffer with target set to one of the accepted symbolic
+    constants and buffer set to the name of a buffer object binds that buffer
+    object name to the target. If no buffer object with name buffer exists, one
+    is created with that name. When a buffer object is bound to a target, the
+    previous binding for that target is automatically broken.
     
     Args:
-        target: Specifies the target to which the buffer object is bound, which
-            must be one of the buffer binding targets in the following table:
-        buffer: Specifies the name of a buffer object
+        target: the target to which the buffer object is bound, which must be
+            one of the buffer binding targets in the following table:.
+        buffer: the name of a buffer object.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -101,11 +123,17 @@ def bind_buffer(target, buffer):
 @binds(dll)
 def delete_buffers(n, buffers):
     '''
-    delete named buffer objects
+    delete named buffer objects.
+    
+    gl.delete_buffers deletes n buffer objects named by the elements of the
+    array buffers. After a buffer object is deleted, it has no contents, and its
+    name is free for reuse (for example by gl.gen_buffers). If a buffer object
+    that is currently bound is deleted, the binding reverts to 0 (the absence of
+    any buffer object).
     
     Args:
-        n: Specifies the number of buffer objects to be deleted
-        buffers: Specifies an array of buffer objects to be deleted
+        n: the number of buffer objects to be deleted.
+        buffers: an array of buffer objects to be deleted.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -113,12 +141,16 @@ def delete_buffers(n, buffers):
 @binds(dll)
 def gen_buffers(n, buffers):
     '''
-    generate buffer object names
+    generate buffer object names.
+    
+    gl.gen_buffers returns n buffer object names in buffers. There is no
+    guarantee that the names form a contiguous set of integers; however, it is
+    guaranteed that none of the returned names was in use immediately before the
+    call to gl.gen_buffers.
     
     Args:
-        n: Specifies the number of buffer object names to be generated
-        buffers: Specifies an array in which the generated buffer object names
-            are stored
+        n: the number of buffer object names to be generated.
+        buffers: an array in which the generated buffer object names are stored.
     '''
 
 @accepts(t.uint)
@@ -126,10 +158,15 @@ def gen_buffers(n, buffers):
 @binds(dll)
 def is_buffer(buffer):
     '''
-    determine if a name corresponds to a buffer object
+    determine if a name corresponds to a buffer object.
+    
+    gl.is_buffer returns gl.TRUE if buffer is currently the name of a buffer
+    object. If buffer is zero, or is a non-zero value that is not currently the
+    name of a buffer object, or if an error occurs, gl.is_buffer returns
+    gl.FALSE.
     
     Args:
-        buffer: Specifies a value that may be the name of a buffer object
+        buffer: a value that may be the name of a buffer object.
     '''
 
 @accepts(t.enum, t.sizeiptr, t.void, t.enum)
@@ -137,16 +174,21 @@ def is_buffer(buffer):
 @binds(dll)
 def buffer_data(target, size, data, usage):
     '''
-    creates and initializes a buffer object's data store
+    creates and initializes a buffer object's data store.
+    
+    gl.buffer_data and gl.named_buffer_data create a new data store for a buffer
+    object. In case of gl.buffer_data, the buffer object currently bound to
+    target is used. For gl.named_buffer_data, a buffer object associated with ID
+    specified by the caller in buffer will be used instead.
     
     Args:
-        target: Specifies the target to which the buffer object is bound for
-            gl.buffer_data, which must be one of the buffer binding targets in
-            the following table:
-        size: Specifies the size in bytes of the buffer object's new data store
-        data: Specifies a pointer to data that will be copied into the data
-            store for initialization, or None if no data is to be copied
-        usage: Specifies the expected usage pattern of the data store
+        target: the target to which the buffer object is bound for glbufferdata,
+            which must be one of the buffer binding targets in the following
+            table:.
+        size: the size in bytes of the buffer object's new data store.
+        data: a pointer to data that will be copied into the data store for
+            initialization, or null if no data is to be copied.
+        usage: the expected usage pattern of the data store.
     '''
 
 @accepts(t.enum, t.intptr, t.sizeiptr, t.void)
@@ -154,18 +196,22 @@ def buffer_data(target, size, data, usage):
 @binds(dll)
 def buffer_sub_data(target, offset, size, data):
     '''
-    updates a subset of a buffer object's data store
+    updates a subset of a buffer object's data store.
+    
+    gl.buffer_sub_data and gl.named_buffer_sub_data redefine some or all of the
+    data store for the specified buffer object. Data starting at byte offset
+    offset and extending for size bytes is copied to the data store from the
+    memory pointed to by data. offset and size must define a range lying
+    entirely within the buffer object's data store.
     
     Args:
-        target: Specifies the target to which the buffer object is bound for
-            gl.buffer_sub_data, which must be one of the buffer binding targets
-            in the following table:
-        offset: Specifies the offset into the buffer object's data store where
-            data replacement will begin, measured in bytes
-        size: Specifies the size in bytes of the data store region being
-            replaced
-        data: Specifies a pointer to the new data that will be copied into the
-            data store
+        target: the target to which the buffer object is bound for
+            glbuffersubdata, which must be one of the buffer binding targets in
+            the following table:.
+        offset: the offset into the buffer object's data store where data
+            replacement will begin, measured in bytes.
+        size: the size in bytes of the data store region being replaced.
+        data: a pointer to the new data that will be copied into the data store.
     '''
 
 @accepts(t.enum, t.intptr, t.sizeiptr, t.void)
@@ -173,18 +219,23 @@ def buffer_sub_data(target, offset, size, data):
 @binds(dll)
 def get_buffer_sub_data(target, offset, size, data):
     '''
-    returns a subset of a buffer object's data store
+    returns a subset of a buffer object's data store.
+    
+    gl.get_buffer_sub_data and gl.get_named_buffer_sub_data return some or all
+    of the data contents of the data store of the specified buffer object. Data
+    starting at byte offset offset and extending for size bytes is copied from
+    the buffer object's data store to the memory pointed to by data. An error is
+    thrown if the buffer object is currently mapped, or if offset and size
+    together define a range beyond the bounds of the buffer object's data store.
     
     Args:
-        target: Specifies the target to which the buffer object is bound for
-            gl.get_buffer_sub_data, which must be one of the buffer binding
-            targets in the following table:
-        offset: Specifies the offset into the buffer object's data store from
-            which data will be returned, measured in bytes
-        size: Specifies the size in bytes of the data store region being
-            returned
-        data: Specifies a pointer to the location where buffer object data is
-            returned
+        target: the target to which the buffer object is bound for
+            glgetbuffersubdata, which must be one of the buffer binding targets
+            in the following table:.
+        offset: the offset into the buffer object's data store from which data
+            will be returned, measured in bytes.
+        size: the size in bytes of the data store region being returned.
+        data: a pointer to the location where buffer object data is returned.
     '''
 
 @accepts(t.enum, t.enum)
@@ -192,16 +243,20 @@ def get_buffer_sub_data(target, offset, size, data):
 @binds(dll)
 def map_buffer(target, access):
     '''
-    map all of a buffer object's data store into the client's address space
+    map all of a buffer object's data store into the client's address space.
+    
+    gl.map_buffer and gl.map_named_buffer map the entire data store of a
+    specified buffer object into the client's address space. The data can then
+    be directly read and/or written relative to the returned pointer, depending
+    on the specified access policy.
     
     Args:
-        target: Specifies the target to which the buffer object is bound for
-            gl.map_buffer, which must be one of the buffer binding targets in
-            the following table:
-        access: Specifies the access policy for gl.map_buffer and
-            gl.map_named_buffer, indicating whether it will be possible to read
-            from, write to, or both read from and write to the buffer object's
-            mapped data store
+        target: the target to which the buffer object is bound for glmapbuffer,
+            which must be one of the buffer binding targets in the following
+            table:.
+        access: the access policy for glmapbuffer and glmapnamedbuffer,
+            indicating whether it will be possible to read from, write to, or
+            both read from and write to the buffer object's mapped data store.
     '''
 
 @accepts(t.enum)
@@ -210,12 +265,16 @@ def map_buffer(target, access):
 def unmap_buffer(target):
     '''
     release the mapping of a buffer object's data store into the client's address
-space
+space.
+    
+    gl.unmap_buffer and gl.unmap_named_buffer unmap (release) any mapping of a
+    specified buffer object into the client's address space (see
+    gl.map_buffer_range and gl.map_buffer).
     
     Args:
-        target: Specifies the target to which the buffer object is bound for
-            gl.unmap_buffer, which must be one of the buffer binding targets in
-            the following table:
+        target: the target to which the buffer object is bound for
+            glunmapbuffer, which must be one of the buffer binding targets in
+            the following table:.
     '''
 
 @accepts(t.enum, t.enum, POINTER(t.int))
@@ -223,12 +282,15 @@ space
 @binds(dll)
 def get_buffer_parameteriv(target, pname, params):
     '''
-    return parameters of a buffer object
+    return parameters of a buffer object.
+    
+    gl.get_buffer_parameteriv returns in data a selected parameter of the buffer
+    object specified by target.
     
     Args:
-        target: Specifies the target buffer object
-        pname: Specifies the symbolic name of a buffer object parameter
-        params: Returns the requested parameter
+        target: the target buffer object.
+        pname: the symbolic name of a buffer object parameter.
+        params: returns the requested parameter.
     '''
 
 @accepts(t.enum, t.enum, t.void)
@@ -236,14 +298,21 @@ def get_buffer_parameteriv(target, pname, params):
 @binds(dll)
 def get_buffer_pointerv(target, pname, params):
     '''
-    return the pointer to a mapped buffer object's data store
+    return the pointer to a mapped buffer object's data store.
+    
+    gl.get_buffer_pointerv and gl.get_named_buffer_pointerv return the buffer
+    pointer pname, which must be gl.BUFFER_MAP_POINTER. The single buffer map
+    pointer is returned in params. A None pointer is returned if the buffer
+    object's data store is not currently mapped; or if the requesting context
+    did not map the buffer object's data store, and the implementation is unable
+    to support mappings on multiple clients.
     
     Args:
-        target: Specifies the target to which the buffer object is bound for
-            gl.get_buffer_pointerv, which must be one of the buffer binding
-            targets in the following table:
-        pname: Specifies the name of the pointer to be returned
-        params: Returns the pointer value specified by pname
+        target: the target to which the buffer object is bound for
+            glgetbufferpointerv, which must be one of the buffer binding targets
+            in the following table:.
+        pname: the name of the pointer to be returned.
+        params: returns the pointer value specified by pname.
     '''
 
 BUFFER_SIZE = 0x8764

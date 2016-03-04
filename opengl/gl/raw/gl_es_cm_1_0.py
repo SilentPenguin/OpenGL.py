@@ -341,12 +341,16 @@ DOT3_RGBA = 0x86AF
 @binds(dll)
 def alpha_func(func, ref):
     '''
-    specify the alpha test function
+    specify the alpha test function.
+    
+    gl.alpha_func operates on all pixel write operations, including those
+    resulting from the scan conversion of points, lines, polygons, and bitmaps,
+    and from pixel draw and copy operations. gl.alpha_func does not affect
+    screen clear operations.
     
     Args:
-        func: Specifies the alpha comparison function
-        ref: Specifies the reference value that incoming alpha values are
-            compared to
+        func: the alpha comparison function.
+        ref: the reference value that incoming alpha values are compared to.
     '''
 
 @accepts(t.float, t.float, t.float, t.float)
@@ -354,17 +358,21 @@ def alpha_func(func, ref):
 @binds(dll)
 def clear_color(red, green, blue, alpha):
     '''
-    specify clear values for the color buffers
+    specify clear values for the color buffers.
+    
+    gl.clear_color specifies the red, green, blue, and alpha values used by
+    gl.clear to clear the color buffers. Values specified by gl.clear_color are
+    clamped to the range 0 1.
     
     Args:
-        red: Specify the red, green, blue, and alpha values used when the color
-            buffers are cleared
-        green: Specify the red, green, blue, and alpha values used when the
-            color buffers are cleared
-        blue: Specify the red, green, blue, and alpha values used when the color
-            buffers are cleared
-        alpha: Specify the red, green, blue, and alpha values used when the
-            color buffers are cleared
+        red: the red, green, blue, and alpha values used when the color buffers
+            are cleared.
+        green: the red, green, blue, and alpha values used when the color
+            buffers are cleared.
+        blue: the red, green, blue, and alpha values used when the color buffers
+            are cleared.
+        alpha: the red, green, blue, and alpha values used when the color
+            buffers are cleared.
     '''
 
 @accepts(t.float)
@@ -474,10 +482,16 @@ def lightfv(light, pname, params):
 @binds(dll)
 def line_width(width):
     '''
-    specify the width of rasterized lines
+    specify the width of rasterized lines.
+    
+    gl.line_width specifies the rasterized width of both aliased and antialiased
+    lines. Using a line width other than 1 has different effects, depending on
+    whether line antialiasing is enabled. To enable and disable line
+    antialiasing, call gl.enable and gl.disable with argument gl.LINE_SMOOTH.
+    Line antialiasing is initially disabled.
     
     Args:
-        width: Specifies the width of rasterized lines
+        width: the width of rasterized lines.
     '''
 
 @accepts(POINTER(t.float))
@@ -539,10 +553,15 @@ def point_parameterfv(pname, params):
 @binds(dll)
 def point_size(size):
     '''
-    specify the diameter of rasterized points
+    specify the diameter of rasterized points.
+    
+    gl.point_size specifies the rasterized diameter of points. If point size
+    mode is disabled (see gl.enable with parameter gl.PROGRAM_POINT_SIZE), this
+    value will be used to rasterize points. Otherwise, the value written to the
+    shading language built-in variable gl_PointSize will be used.
     
     Args:
-        size: Specifies the diameter of rasterized points
+        size: the diameter of rasterized points.
     '''
 
 @accepts(t.float, t.float)
@@ -550,13 +569,16 @@ def point_size(size):
 @binds(dll)
 def polygon_offset(factor, units):
     '''
-    set the scale and units used to calculate depth values
+    set the scale and units used to calculate depth values.
+    
+    gl.polygon_offset is useful for rendering hidden-line images, for applying
+    decals to surfaces, and for rendering solids with highlighted edges.
     
     Args:
-        factor: Specifies a scale factor that is used to create a variable depth
-            offset for each polygon
-        units: Is multiplied by an implementation-specific value to create a
-            constant depth offset
+        factor: a scale factor that is used to create a variable depth offset
+            for each polygon.
+        units: is multiplied by an implementation-specific value to create a
+            constant depth offset.
     '''
 
 @accepts(t.float, t.float, t.float, t.float)
@@ -606,10 +628,14 @@ def translatef(x, y, z):
 @binds(dll)
 def active_texture(texture):
     '''
-    select active texture unit
+    select active texture unit.
+    
+    gl.active_texture selects which texture unit subsequent texture state calls
+    will affect. The number of texture units an implementation supports is
+    implementation dependent, but must be at least 80.
     
     Args:
-        texture: Specifies which texture unit to make active
+        texture: which texture unit to make active.
     '''
 
 @accepts(t.enum, t.fixed)
@@ -623,12 +649,19 @@ def alpha_funcx(func, ref):
 @binds(dll)
 def bind_buffer(target, buffer):
     '''
-    bind a named buffer object
+    bind a named buffer object.
+    
+    gl.bind_buffer binds a buffer object to the specified buffer binding point.
+    Calling gl.bind_buffer with target set to one of the accepted symbolic
+    constants and buffer set to the name of a buffer object binds that buffer
+    object name to the target. If no buffer object with name buffer exists, one
+    is created with that name. When a buffer object is bound to a target, the
+    previous binding for that target is automatically broken.
     
     Args:
-        target: Specifies the target to which the buffer object is bound, which
-            must be one of the buffer binding targets in the following table:
-        buffer: Specifies the name of a buffer object
+        target: the target to which the buffer object is bound, which must be
+            one of the buffer binding targets in the following table:.
+        buffer: the name of a buffer object.
     '''
 
 @accepts(t.enum, t.uint)
@@ -636,11 +669,20 @@ def bind_buffer(target, buffer):
 @binds(dll)
 def bind_texture(target, texture):
     '''
-    bind a named texture to a texturing target
+    bind a named texture to a texturing target.
+    
+    gl.bind_texture lets you create or use a named texture. Calling
+    gl.bind_texture with target set to gl.TEXTURE_1D, gl.TEXTURE_2D,
+    gl.TEXTURE_3D, gl.TEXTURE_1D_ARRAY, gl.TEXTURE_2D_ARRAY,
+    gl.TEXTURE_RECTANGLE, gl.TEXTURE_CUBE_MAP, gl.TEXTURE_CUBE_MAP_ARRAY,
+    gl.TEXTURE_BUFFER, gl.TEXTURE_2D_MULTISAMPLE or
+    gl.TEXTURE_2D_MULTISAMPLE_ARRAY and texture set to the name of the new
+    texture binds the texture name to the target. When a texture is bound to a
+    target, the previous binding for that target is automatically broken.
     
     Args:
-        target: Specifies the target to which the texture is bound
-        texture: Specifies the name of a texture
+        target: the target to which the texture is bound.
+        texture: the name of a texture.
     '''
 
 @accepts(t.enum, t.enum)
@@ -648,13 +690,19 @@ def bind_texture(target, texture):
 @binds(dll)
 def blend_func(sfactor, dfactor):
     '''
-    specify pixel arithmetic
+    specify pixel arithmetic.
+    
+    gl.blend_func defines the operation of blending for all draw buffers when it
+    is enabled. gl.blend_funci defines the operation of blending for a single
+    draw buffer specified by buf when enabled for that draw buffer. sfactor
+    specifies which method is used to scale the source color components. dfactor
+    specifies which method is used to scale the destination color components.
     
     Args:
-        sfactor: Specifies how the red, green, blue, and alpha source blending
-            factors are computed
-        dfactor: Specifies how the red, green, blue, and alpha destination
-            blending factors are computed
+        sfactor: how the red, green, blue, and alpha source blending factors are
+            computed.
+        dfactor: how the red, green, blue, and alpha destination blending
+            factors are computed.
     '''
 
 @accepts(t.enum, t.sizeiptr, t.void, t.enum)
@@ -662,16 +710,21 @@ def blend_func(sfactor, dfactor):
 @binds(dll)
 def buffer_data(target, size, data, usage):
     '''
-    creates and initializes a buffer object's data store
+    creates and initializes a buffer object's data store.
+    
+    gl.buffer_data and gl.named_buffer_data create a new data store for a buffer
+    object. In case of gl.buffer_data, the buffer object currently bound to
+    target is used. For gl.named_buffer_data, a buffer object associated with ID
+    specified by the caller in buffer will be used instead.
     
     Args:
-        target: Specifies the target to which the buffer object is bound for
-            gl.buffer_data, which must be one of the buffer binding targets in
-            the following table:
-        size: Specifies the size in bytes of the buffer object's new data store
-        data: Specifies a pointer to data that will be copied into the data
-            store for initialization, or None if no data is to be copied
-        usage: Specifies the expected usage pattern of the data store
+        target: the target to which the buffer object is bound for glbufferdata,
+            which must be one of the buffer binding targets in the following
+            table:.
+        size: the size in bytes of the buffer object's new data store.
+        data: a pointer to data that will be copied into the data store for
+            initialization, or null if no data is to be copied.
+        usage: the expected usage pattern of the data store.
     '''
 
 @accepts(t.enum, t.intptr, t.sizeiptr, t.void)
@@ -679,18 +732,22 @@ def buffer_data(target, size, data, usage):
 @binds(dll)
 def buffer_sub_data(target, offset, size, data):
     '''
-    updates a subset of a buffer object's data store
+    updates a subset of a buffer object's data store.
+    
+    gl.buffer_sub_data and gl.named_buffer_sub_data redefine some or all of the
+    data store for the specified buffer object. Data starting at byte offset
+    offset and extending for size bytes is copied to the data store from the
+    memory pointed to by data. offset and size must define a range lying
+    entirely within the buffer object's data store.
     
     Args:
-        target: Specifies the target to which the buffer object is bound for
-            gl.buffer_sub_data, which must be one of the buffer binding targets
-            in the following table:
-        offset: Specifies the offset into the buffer object's data store where
-            data replacement will begin, measured in bytes
-        size: Specifies the size in bytes of the data store region being
-            replaced
-        data: Specifies a pointer to the new data that will be copied into the
-            data store
+        target: the target to which the buffer object is bound for
+            glbuffersubdata, which must be one of the buffer binding targets in
+            the following table:.
+        offset: the offset into the buffer object's data store where data
+            replacement will begin, measured in bytes.
+        size: the size in bytes of the data store region being replaced.
+        data: a pointer to the new data that will be copied into the data store.
     '''
 
 @accepts(t.bitfield)
@@ -698,10 +755,15 @@ def buffer_sub_data(target, offset, size, data):
 @binds(dll)
 def clear(mask):
     '''
-    clear buffers to preset values
+    clear buffers to preset values.
+    
+    gl.clear sets the bitplane area of the window to values previously selected
+    by gl.clear_color, gl.clear_depth, and gl.clear_stencil. Multiple color
+    buffers can be cleared simultaneously by selecting more than one buffer at a
+    time using gl.draw_buffer.
     
     Args:
-        mask: Bitwise OR of masks that indicate the buffers to be cleared
+        mask: bitwise or of masks that indicate the buffers to be cleared.
     '''
 
 @accepts(t.fixed, t.fixed, t.fixed, t.fixed)
@@ -721,10 +783,13 @@ def clear_depthx(depth):
 @binds(dll)
 def clear_stencil(s):
     '''
-    specify the clear value for the stencil buffer
+    specify the clear value for the stencil buffer.
+    
+    gl.clear_stencil specifies the index used by gl.clear to clear the stencil
+    buffer. s is masked with 2 m - 1, where.
     
     Args:
-        s: Specifies the index used when the stencil buffer is cleared
+        s: the index used when the stencil buffer is cleared.
     '''
 
 @accepts(t.enum)
@@ -732,10 +797,15 @@ def clear_stencil(s):
 @binds(dll)
 def client_active_texture(texture):
     '''
-    select active texture unit
+    select active texture unit.
+    
+    gl.client_active_texture selects the vertex array client state parameters to
+    be modified by gl.tex_coord_pointer, and enabled or disabled with
+    gl.enable_client_state or gl.disable_client_state, respectively, when called
+    with a parameter of gl.TEXTURE_COORD_ARRAY.
     
     Args:
-        texture: Specifies which texture unit to make active
+        texture: which texture unit to make active.
     '''
 
 @accepts(t.enum, POINTER(t.fixed))
@@ -761,17 +831,24 @@ def color4x(red, green, blue, alpha):
 @binds(dll)
 def color_mask(red, green, blue, alpha):
     '''
-    enable and disable writing of frame buffer color components
+    enable and disable writing of frame buffer color components.
+    
+    gl.color_mask and gl.color_maski specify whether the individual color
+    components in the frame buffer can or cannot be written. gl.color_maski sets
+    the mask for a specific draw buffer, whereas gl.color_mask sets the mask for
+    all draw buffers. If red is gl.FALSE, for example, no change is made to the
+    red component of any pixel in any of the color buffers, regardless of the
+    drawing operation attempted.
     
     Args:
-        red: Specify whether red, green, blue, and alpha are to be written into
-            the frame buffer
-        green: Specify whether red, green, blue, and alpha are to be written
-            into the frame buffer
-        blue: Specify whether red, green, blue, and alpha are to be written into
-            the frame buffer
-        alpha: Specify whether red, green, blue, and alpha are to be written
-            into the frame buffer
+        red: whether red, green, blue, and alpha are to be written into the
+            frame buffer.
+        green: whether red, green, blue, and alpha are to be written into the
+            frame buffer.
+        blue: whether red, green, blue, and alpha are to be written into the
+            frame buffer.
+        alpha: whether red, green, blue, and alpha are to be written into the
+            frame buffer.
     '''
 
 @accepts(t.int, t.enum, t.sizei, t.void)
@@ -779,14 +856,22 @@ def color_mask(red, green, blue, alpha):
 @binds(dll)
 def color_pointer(size, type, stride, pointer):
     '''
-    define an array of colors
+    define an array of colors.
+    
+    gl.color_pointer specifies the location and data format of an array of color
+    components to use when rendering. size specifies the number of components
+    per color, and must be 3 or 4. type specifies the data type of each color
+    component, and stride specifies the byte stride from one color to the next,
+    allowing vertices and attributes to be packed into a single array or stored
+    in separate arrays. (Single-array storage may be more efficient on some
+    implementations; see gl.interleaved_arrays.
     
     Args:
-        size: Specifies the number of components per color
-        type: Specifies the data type of each color component in the array
-        stride: Specifies the byte offset between consecutive colors
-        pointer: Specifies a pointer to the first component of the first color
-            element in the array
+        size: the number of components per color.
+        type: the data type of each color component in the array.
+        stride: the byte offset between consecutive colors.
+        pointer: a pointer to the first component of the first color element in
+            the array.
     '''
 
 @accepts(t.enum, t.int, t.enum, t.sizei, t.sizei, t.int, t.sizei, t.void)
@@ -794,19 +879,19 @@ def color_pointer(size, type, stride, pointer):
 @binds(dll)
 def compressed_tex_image2_d(target, level, internalformat, width, height, border, imagesize, data):
     '''
-    specify a two-dimensional texture image in a compressed format
+    specify a two-dimensional texture image in a compressed format.
     
     Args:
-        target: Specifies the target texture
-        level: Specifies the level-of-detail number
-        internalformat: Specifies the format of the compressed image data stored
-            at address data
-        width: Specifies the width of the texture image
-        height: Specifies the height of the texture image
-        border: This value must be 0
-        imagesize: Specifies the number of unsigned bytes of image data starting
-            at the address specified by data
-        data: Specifies a pointer to the compressed image data in memory
+        target: the target texture.
+        level: the level-of-detail number.
+        internalformat: the format of the compressed image data stored at
+            address data.
+        width: the width of the texture image.
+        height: the height of the texture image.
+        border: this value must be 0.
+        imagesize: the number of unsigned bytes of image data starting at the
+            address specified by data.
+        data: a pointer to the compressed image data in memory.
     '''
 
 @accepts(t.enum, t.int, t.int, t.int, t.sizei, t.sizei, t.enum, t.sizei, t.void)
@@ -814,23 +899,20 @@ def compressed_tex_image2_d(target, level, internalformat, width, height, border
 @binds(dll)
 def compressed_tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, imagesize, data):
     '''
-    specify a two-dimensional texture subimage in a compressed format
+    specify a two-dimensional texture subimage in a compressed format.
     
     Args:
-        target: Specifies the target to which the texture is bound for
-            gl.compressed_tex_sub_image2D function
-        level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture
-            array
-        yoffset: Specifies a texel offset in the y direction within the texture
-            array
-        width: Specifies the width of the texture subimage
-        height: Specifies the height of the texture subimage
-        format: Specifies the format of the compressed image data stored at
-            address data
-        imagesize: Specifies the number of unsigned bytes of image data starting
-            at the address specified by data
-        data: Specifies a pointer to the compressed image data in memory
+        target: the target to which the texture is bound for
+            glcompressedtexsubimage2d function.
+        level: the level-of-detail number.
+        xoffset: a texel offset in the x direction within the texture array.
+        yoffset: a texel offset in the y direction within the texture array.
+        width: the width of the texture subimage.
+        height: the height of the texture subimage.
+        format: the format of the compressed image data stored at address data.
+        imagesize: the number of unsigned bytes of image data starting at the
+            address specified by data.
+        data: a pointer to the compressed image data in memory.
     '''
 
 @accepts(t.enum, t.int, t.enum, t.int, t.int, t.sizei, t.sizei, t.int)
@@ -838,19 +920,19 @@ def compressed_tex_sub_image2_d(target, level, xoffset, yoffset, width, height, 
 @binds(dll)
 def copy_tex_image2_d(target, level, internalformat, x, y, width, height, border):
     '''
-    copy pixels into a 2D texture image
+    copy pixels into a 2D texture image.
     
     Args:
-        target: Specifies the target texture
-        level: Specifies the level-of-detail number
-        internalformat: Specifies the internal format of the texture
-        x: Specify the window coordinates of the lower left corner of the
-            rectangular region of pixels to be copied
-        y: Specify the window coordinates of the lower left corner of the
-            rectangular region of pixels to be copied
-        width: Specifies the width of the texture image
-        height: Specifies the height of the texture image
-        border: Must be 0
+        target: the target texture.
+        level: the level-of-detail number.
+        internalformat: the internal format of the texture.
+        x: the window coordinates of the lower left corner of the rectangular
+            region of pixels to be copied.
+        y: the window coordinates of the lower left corner of the rectangular
+            region of pixels to be copied.
+        width: the width of the texture image.
+        height: the height of the texture image.
+        border: must be 0.
     '''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.int, t.sizei, t.sizei)
@@ -858,22 +940,20 @@ def copy_tex_image2_d(target, level, internalformat, x, y, width, height, border
 @binds(dll)
 def copy_tex_sub_image2_d(target, level, xoffset, yoffset, x, y, width, height):
     '''
-    copy a two-dimensional texture subimage
+    copy a two-dimensional texture subimage.
     
     Args:
-        target: Specifies the target to which the texture object is bound for
-            gl.copy_tex_sub_image2D function
-        level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture
-            array
-        yoffset: Specifies a texel offset in the y direction within the texture
-            array
-        x: Specify the window coordinates of the lower left corner of the
-            rectangular region of pixels to be copied
-        y: Specify the window coordinates of the lower left corner of the
-            rectangular region of pixels to be copied
-        width: Specifies the width of the texture subimage
-        height: Specifies the height of the texture subimage
+        target: the target to which the texture object is bound for
+            glcopytexsubimage2d function.
+        level: the level-of-detail number.
+        xoffset: a texel offset in the x direction within the texture array.
+        yoffset: a texel offset in the y direction within the texture array.
+        x: the window coordinates of the lower left corner of the rectangular
+            region of pixels to be copied.
+        y: the window coordinates of the lower left corner of the rectangular
+            region of pixels to be copied.
+        width: the width of the texture subimage.
+        height: the height of the texture subimage.
     '''
 
 @accepts(t.enum)
@@ -881,11 +961,16 @@ def copy_tex_sub_image2_d(target, level, xoffset, yoffset, x, y, width, height):
 @binds(dll)
 def cull_face(mode):
     '''
-    specify whether front- or back-facing facets can be culled
+    specify whether front- or back-facing facets can be culled.
+    
+    gl.cull_face specifies whether front- or back-facing facets are culled (as
+    specified by mode) when facet culling is enabled. Facet culling is initially
+    disabled. To enable and disable facet culling, call the gl.enable and
+    gl.disable commands with the argument gl.CULL_FACE. Facets include
+    triangles, quadrilaterals, polygons, and rectangles.
     
     Args:
-        mode: Specifies whether front- or back-facing facets are candidates for
-            culling
+        mode: whether front- or back-facing facets are candidates for culling.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -893,11 +978,17 @@ def cull_face(mode):
 @binds(dll)
 def delete_buffers(n, buffers):
     '''
-    delete named buffer objects
+    delete named buffer objects.
+    
+    gl.delete_buffers deletes n buffer objects named by the elements of the
+    array buffers. After a buffer object is deleted, it has no contents, and its
+    name is free for reuse (for example by gl.gen_buffers). If a buffer object
+    that is currently bound is deleted, the binding reverts to 0 (the absence of
+    any buffer object).
     
     Args:
-        n: Specifies the number of buffer objects to be deleted
-        buffers: Specifies an array of buffer objects to be deleted
+        n: the number of buffer objects to be deleted.
+        buffers: an array of buffer objects to be deleted.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -905,11 +996,17 @@ def delete_buffers(n, buffers):
 @binds(dll)
 def delete_textures(n, textures):
     '''
-    delete named textures
+    delete named textures.
+    
+    gl.delete_textures deletes n textures named by the elements of the array
+    textures. After a texture is deleted, it has no contents or dimensionality,
+    and its name is free for reuse (for example by gl.gen_textures). If a
+    texture that is currently bound is deleted, the binding reverts to 0 (the
+    default texture).
     
     Args:
-        n: Specifies the number of textures to be deleted
-        textures: Specifies an array of textures to be deleted
+        n: the number of textures to be deleted.
+        textures: an array of textures to be deleted.
     '''
 
 @accepts(t.enum)
@@ -917,10 +1014,15 @@ def delete_textures(n, textures):
 @binds(dll)
 def depth_func(func):
     '''
-    specify the value used for depth buffer comparisons
+    specify the value used for depth buffer comparisons.
+    
+    gl.depth_func specifies the function used to compare each incoming pixel
+    depth value with the depth value present in the depth buffer. The comparison
+    is performed only if depth testing is enabled. (See gl.enable and gl.disable
+    of gl.DEPTH_TEST.).
     
     Args:
-        func: Specifies the depth comparison function
+        func: the depth comparison function.
     '''
 
 @accepts(t.boolean)
@@ -928,10 +1030,14 @@ def depth_func(func):
 @binds(dll)
 def depth_mask(flag):
     '''
-    enable or disable writing into the depth buffer
+    enable or disable writing into the depth buffer.
+    
+    gl.depth_mask specifies whether the depth buffer is enabled for writing. If
+    flag is gl.FALSE, depth buffer writing is disabled. Otherwise, it is
+    enabled. Initially, depth buffer writing is enabled.
     
     Args:
-        flag: Specifies whether the depth buffer is enabled for writing
+        flag: whether the depth buffer is enabled for writing.
     '''
 
 @accepts(t.fixed, t.fixed)
@@ -957,12 +1063,18 @@ def disable_client_state(array):
 @binds(dll)
 def draw_arrays(mode, first, count):
     '''
-    render primitives from array data
+    render primitives from array data.
+    
+    gl.draw_arrays specifies multiple geometric primitives with very few
+    subroutine calls. Instead of calling a GL procedure to pass each individual
+    vertex, normal, texture coordinate, edge flag, or color, you can prespecify
+    separate arrays of vertices, normals, and colors and use them to construct a
+    sequence of primitives with a single call to gl.draw_arrays.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        first: Specifies the starting index in the enabled arrays
-        count: Specifies the number of indices to be rendered
+        mode: what kind of primitives to render.
+        first: the starting index in the enabled arrays.
+        count: the number of indices to be rendered.
     '''
 
 @accepts(t.enum, t.sizei, t.enum, t.void)
@@ -970,14 +1082,19 @@ def draw_arrays(mode, first, count):
 @binds(dll)
 def draw_elements(mode, count, type, indices):
     '''
-    render primitives from array data
+    render primitives from array data.
+    
+    gl.draw_elements specifies multiple geometric primitives with very few
+    subroutine calls. Instead of calling a GL function to pass each individual
+    vertex, normal, texture coordinate, edge flag, or color, you can prespecify
+    separate arrays of vertices, normals, and so on, and use them to construct a
+    sequence of primitives with a single call to gl.draw_elements.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        count: Specifies the number of elements to be rendered
-        type: Specifies the type of the values in indices
-        indices: Specifies a pointer to the location where the indices are
-            stored
+        mode: what kind of primitives to render.
+        count: the number of elements to be rendered.
+        type: the type of the values in indices.
+        indices: a pointer to the location where the indices are stored.
     '''
 
 @accepts(t.enum)
@@ -985,10 +1102,16 @@ def draw_elements(mode, count, type, indices):
 @binds(dll)
 def enable(cap):
     '''
-    enable or disable server-side GL capabilities
+    enable or disable server-side GL capabilities.
+    
+    gl.enable and gl.disable enable and disable various capabilities. Use
+    gl.is_enabled or gl.get to determine the current setting of any capability.
+    The initial value for each capability with the exception of gl.DITHER and
+    gl.MULTISAMPLE is gl.FALSE. The initial value for gl.DITHER and
+    gl.MULTISAMPLE is gl.TRUE.
     
     Args:
-        cap: Specifies a symbolic constant indicating a GL capability
+        cap: a symbolic constant indicating a gl capability.
     '''
 
 @accepts(t.enum)
@@ -996,10 +1119,10 @@ def enable(cap):
 @binds(dll)
 def enable_client_state(array):
     '''
-    enable or disable client-side capability
+    enable or disable client-side capability.
     
     Args:
-        array: Specifies the capability to enable
+        array: the capability to enable.
     '''
 
 @accepts()
@@ -1007,7 +1130,9 @@ def enable_client_state(array):
 @binds(dll)
 def finish():
     '''
-    block until all GL execution is complete
+    block until all GL execution is complete.
+    
+    gl.finish requires a round trip to the server.
     '''
 
 @accepts()
@@ -1015,7 +1140,10 @@ def finish():
 @binds(dll)
 def flush():
     '''
-    force execution of GL commands in finite time
+    force execution of GL commands in finite time.
+    
+    gl.flush can return at any time. It does not wait until the execution of all
+    previously issued GL commands is complete.
     '''
 
 @accepts(t.enum, t.fixed)
@@ -1035,10 +1163,10 @@ def fogxv(pname, param):
 @binds(dll)
 def front_face(mode):
     '''
-    define front- and back-facing polygons
+    define front- and back-facing polygons.
     
     Args:
-        mode: Specifies the orientation of front-facing polygons
+        mode: the orientation of front-facing polygons.
     '''
 
 @accepts(t.fixed, t.fixed, t.fixed, t.fixed, t.fixed, t.fixed)
@@ -1058,12 +1186,15 @@ def get_booleanv(pname, data):
 @binds(dll)
 def get_buffer_parameteriv(target, pname, params):
     '''
-    return parameters of a buffer object
+    return parameters of a buffer object.
+    
+    gl.get_buffer_parameteriv returns in data a selected parameter of the buffer
+    object specified by target.
     
     Args:
-        target: Specifies the target buffer object
-        pname: Specifies the symbolic name of a buffer object parameter
-        params: Returns the requested parameter
+        target: the target buffer object.
+        pname: the symbolic name of a buffer object parameter.
+        params: returns the requested parameter.
     '''
 
 @accepts(t.enum, POINTER(t.fixed))
@@ -1077,12 +1208,16 @@ def get_clip_planex(plane, equation):
 @binds(dll)
 def gen_buffers(n, buffers):
     '''
-    generate buffer object names
+    generate buffer object names.
+    
+    gl.gen_buffers returns n buffer object names in buffers. There is no
+    guarantee that the names form a contiguous set of integers; however, it is
+    guaranteed that none of the returned names was in use immediately before the
+    call to gl.gen_buffers.
     
     Args:
-        n: Specifies the number of buffer object names to be generated
-        buffers: Specifies an array in which the generated buffer object names
-            are stored
+        n: the number of buffer object names to be generated.
+        buffers: an array in which the generated buffer object names are stored.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -1090,12 +1225,16 @@ def gen_buffers(n, buffers):
 @binds(dll)
 def gen_textures(n, textures):
     '''
-    generate texture names
+    generate texture names.
+    
+    gl.gen_textures returns n texture names in textures. There is no guarantee
+    that the names form a contiguous set of integers; however, it is guaranteed
+    that none of the returned names was in use immediately before the call to
+    gl.gen_textures.
     
     Args:
-        n: Specifies the number of texture names to be generated
-        textures: Specifies an array in which the generated texture names are
-            stored
+        n: the number of texture names to be generated.
+        textures: an array in which the generated texture names are stored.
     '''
 
 @accepts()
@@ -1103,7 +1242,7 @@ def gen_textures(n, textures):
 @binds(dll)
 def get_error():
     '''
-    return error information
+    return error information.
     '''
 
 @accepts(t.enum, POINTER(t.fixed))
@@ -1135,11 +1274,15 @@ def get_materialxv(face, pname, params):
 @binds(dll)
 def get_pointerv(pname, params):
     '''
-    return the address of the specified pointer
+    return the address of the specified pointer.
+    
+    gl.get_pointerv returns pointer information. pname indicates the pointer to
+    be returned, and params is a pointer to a location in which to place the
+    returned data.
     
     Args:
-        pname: Specifies the pointer to be returned
-        params: Returns the pointer value specified by pname
+        pname: the pointer to be returned.
+        params: returns the pointer value specified by pname.
     '''
 
 @accepts(t.enum)
@@ -1147,11 +1290,14 @@ def get_pointerv(pname, params):
 @binds(dll)
 def get_string(name):
     '''
-    return a string describing the current GL connection
+    return a string describing the current GL connection.
+    
+    gl.get_string returns a pointer to a static string describing some aspect of
+    the current GL connection.
     
     Args:
-        name: Specifies a symbolic constant, one of gl.VENDOR, gl.RENDERER,
-            gl.VERSION, or gl.SHADING_LANGUAGE_VERSION
+        name: a symbolic constant, one of gl_vendor, gl_renderer, gl_version, or
+            gl_shading_language_version.
     '''
 
 @accepts(t.enum, t.enum, POINTER(t.int))
@@ -1183,12 +1329,11 @@ def get_tex_parameterxv(target, pname, params):
 @binds(dll)
 def hint(target, mode):
     '''
-    specify implementation-specific hints
+    specify implementation-specific hints.
     
     Args:
-        target: Specifies a symbolic constant indicating the behavior to be
-            controlled
-        mode: Specifies a symbolic constant indicating the desired behavior
+        target: a symbolic constant indicating the behavior to be controlled.
+        mode: a symbolic constant indicating the desired behavior.
     '''
 
 @accepts(t.uint)
@@ -1196,10 +1341,15 @@ def hint(target, mode):
 @binds(dll)
 def is_buffer(buffer):
     '''
-    determine if a name corresponds to a buffer object
+    determine if a name corresponds to a buffer object.
+    
+    gl.is_buffer returns gl.TRUE if buffer is currently the name of a buffer
+    object. If buffer is zero, or is a non-zero value that is not currently the
+    name of a buffer object, or if an error occurs, gl.is_buffer returns
+    gl.FALSE.
     
     Args:
-        buffer: Specifies a value that may be the name of a buffer object
+        buffer: a value that may be the name of a buffer object.
     '''
 
 @accepts(t.enum)
@@ -1207,10 +1357,16 @@ def is_buffer(buffer):
 @binds(dll)
 def is_enabled(cap):
     '''
-    test whether a capability is enabled
+    test whether a capability is enabled.
+    
+    gl.is_enabled returns gl.TRUE if cap is an enabled capability and returns
+    gl.FALSE otherwise. Boolean states that are indexed may be tested with
+    gl.is_enabledi. For gl.is_enabledi, index specifies the index of the
+    capability to test. index must be between zero and the count of indexed
+    capabilities for cap.
     
     Args:
-        cap: Specifies a symbolic constant indicating a GL capability
+        cap: a symbolic constant indicating a gl capability.
     '''
 
 @accepts(t.uint)
@@ -1218,10 +1374,14 @@ def is_enabled(cap):
 @binds(dll)
 def is_texture(texture):
     '''
-    determine if a name corresponds to a texture
+    determine if a name corresponds to a texture.
+    
+    gl.is_texture returns gl.TRUE if texture is currently the name of a texture.
+    If texture is zero, or is a non-zero value that is not currently the name of
+    a texture, or if an error occurs, gl.is_texture returns gl.FALSE.
     
     Args:
-        texture: Specifies a value that may be the name of a texture
+        texture: a value that may be the name of a texture.
     '''
 
 @accepts(t.enum, t.fixed)
@@ -1259,7 +1419,7 @@ def line_widthx(width):
 @binds(dll)
 def load_identity():
     '''
-    replace the current matrix with the identity matrix
+    replace the current matrix with the identity matrix.
     '''
 
 @accepts(POINTER(t.fixed))
@@ -1273,10 +1433,16 @@ def load_matrixx(m):
 @binds(dll)
 def logic_op(opcode):
     '''
-    specify a logical pixel operation for rendering
+    specify a logical pixel operation for rendering.
+    
+    gl.logic_op specifies a logical operation that, when enabled, is applied
+    between the incoming RGBA color and the RGBA color at the corresponding
+    location in the frame buffer. To enable or disable the logical operation,
+    call gl.enable and gl.disable using the symbolic constant gl.COLOR_LOGIC_OP.
+    The initial value is disabled.
     
     Args:
-        opcode: Specifies a symbolic constant that selects a logical operation
+        opcode: a symbolic constant that selects a logical operation.
     '''
 
 @accepts(t.enum, t.enum, t.fixed)
@@ -1296,11 +1462,12 @@ def materialxv(face, pname, param):
 @binds(dll)
 def matrix_mode(mode):
     '''
-    specify which matrix is the current matrix
+    specify which matrix is the current matrix.
+    
+    gl.matrix_mode sets the current matrix mode.
     
     Args:
-        mode: Specifies which matrix stack is the target for subsequent matrix
-            operations
+        mode: which matrix stack is the target for subsequent matrix operations.
     '''
 
 @accepts(POINTER(t.fixed))
@@ -1326,13 +1493,20 @@ def normal3x(nx, ny, nz):
 @binds(dll)
 def normal_pointer(type, stride, pointer):
     '''
-    define an array of normals
+    define an array of normals.
+    
+    gl.normal_pointer specifies the location and data format of an array of
+    normals to use when rendering. type specifies the data type of each normal
+    coordinate, and stride specifies the byte stride from one normal to the
+    next, allowing vertices and attributes to be packed into a single array or
+    stored in separate arrays. (Single-array storage may be more efficient on
+    some implementations; see gl.interleaved_arrays.).
     
     Args:
-        type: Specifies the data type of each coordinate in the array
-        stride: Specifies the byte offset between consecutive normals
-        pointer: Specifies a pointer to the first coordinate of the first normal
-            in the array
+        type: the data type of each coordinate in the array.
+        stride: the byte offset between consecutive normals.
+        pointer: a pointer to the first coordinate of the first normal in the
+            array.
     '''
 
 @accepts(t.fixed, t.fixed, t.fixed, t.fixed, t.fixed, t.fixed)
@@ -1382,7 +1556,7 @@ def pop_matrix():
 @binds(dll)
 def push_matrix():
     '''
-    push and pop the current matrix stack
+    push and pop the current matrix stack.
     '''
 
 @accepts(t.int, t.int, t.sizei, t.sizei, t.enum, t.enum, t.void)
@@ -1390,18 +1564,26 @@ def push_matrix():
 @binds(dll)
 def read_pixels(x, y, width, height, format, type, pixels):
     '''
-    read a block of pixels from the frame buffer
+    read a block of pixels from the frame buffer.
+    
+    gl.read_pixels and gl.readn_pixels return pixel data from the frame buffer,
+    starting with the pixel whose lower left corner is at location (x, y), into
+    client memory starting at location data. Several parameters control the
+    processing of the pixel data before it is placed into client memory. These
+    parameters are set with gl.pixel_store. This reference page describes the
+    effects on gl.read_pixels and gl.readn_pixels of most, but not all of the
+    parameters specified by these three commands.
     
     Args:
-        x: Specify the window coordinates of the first pixel that is read from
-            the frame buffer
-        y: Specify the window coordinates of the first pixel that is read from
-            the frame buffer
-        width: Specify the dimensions of the pixel rectangle
-        height: Specify the dimensions of the pixel rectangle
-        format: Specifies the format of the pixel data
-        type: Specifies the data type of the pixel data
-        pixels: Returns the pixel data
+        x: the window coordinates of the first pixel that is read from the frame
+            buffer.
+        y: the window coordinates of the first pixel that is read from the frame
+            buffer.
+        width: the dimensions of the pixel rectangle.
+        height: the dimensions of the pixel rectangle.
+        format: the format of the pixel data.
+        type: the data type of the pixel data.
+        pixels: returns the pixel data.
     '''
 
 @accepts(t.fixed, t.fixed, t.fixed, t.fixed)
@@ -1415,12 +1597,12 @@ def rotatex(angle, x, y, z):
 @binds(dll)
 def sample_coverage(value, invert):
     '''
-    specify multisample coverage parameters
+    specify multisample coverage parameters.
     
     Args:
-        value: Specify a single floating-point sample coverage value
-        invert: Specify a single boolean value representing if the coverage
-            masks should be inverted
+        value: a single floating-point sample coverage value.
+        invert: a single boolean value representing if the coverage masks should
+            be inverted.
     '''
 
 @accepts(t.clampx, t.boolean)
@@ -1440,13 +1622,17 @@ def scalex(x, y, z):
 @binds(dll)
 def scissor(x, y, width, height):
     '''
-    define the scissor box
+    define the scissor box.
+    
+    gl.scissor defines a rectangle, called the scissor box, in window
+    coordinates. The first two arguments, x and y, specify the lower left corner
+    of the box. width and height specify the width and height of the box.
     
     Args:
-        x: Specify the lower left corner of the scissor box
-        y: Specify the lower left corner of the scissor box
-        width: Specify the width and height of the scissor box
-        height: Specify the width and height of the scissor box
+        x: the lower left corner of the scissor box.
+        y: the lower left corner of the scissor box.
+        width: the width and height of the scissor box.
+        height: the width and height of the scissor box.
     '''
 
 @accepts(t.enum)
@@ -1454,10 +1640,10 @@ def scissor(x, y, width, height):
 @binds(dll)
 def shade_model(mode):
     '''
-    select flat or smooth shading
+    select flat or smooth shading.
     
     Args:
-        mode: Specifies a symbolic value representing a shading technique
+        mode: a symbolic value representing a shading technique.
     '''
 
 @accepts(t.enum, t.int, t.uint)
@@ -1465,13 +1651,13 @@ def shade_model(mode):
 @binds(dll)
 def stencil_func(func, ref, mask):
     '''
-    set front and back function and reference value for stencil testing
+    set front and back function and reference value for stencil testing.
     
     Args:
-        func: Specifies the test function
-        ref: Specifies the reference value for the stencil test
-        mask: Specifies a mask that is ANDed with both the reference value and
-            the stored stencil value when the test is done
+        func: the test function.
+        ref: the reference value for the stencil test.
+        mask: a mask that is anded with both the reference value and the stored
+            stencil value when the test is done.
     '''
 
 @accepts(t.uint)
@@ -1479,11 +1665,14 @@ def stencil_func(func, ref, mask):
 @binds(dll)
 def stencil_mask(mask):
     '''
-    control the front and back writing of individual bits in the stencil planes
+    control the front and back writing of individual bits in the stencil planes.
+    
+    gl.stencil_mask controls the writing of individual bits in the stencil
+    planes. The least significant n bits of mask, where.
     
     Args:
-        mask: Specifies a bit mask to enable and disable writing of individual
-            bits in the stencil planes
+        mask: a bit mask to enable and disable writing of individual bits in the
+            stencil planes.
     '''
 
 @accepts(t.enum, t.enum, t.enum)
@@ -1491,15 +1680,21 @@ def stencil_mask(mask):
 @binds(dll)
 def stencil_op(fail, zfail, zpass):
     '''
-    set front and back stencil test actions
+    set front and back stencil test actions.
+    
+    gl.stencil_op takes three arguments that indicate what happens to the stored
+    stencil value while stenciling is enabled. If the stencil test fails, no
+    change is made to the pixel's color or depth buffers, and sfail specifies
+    what happens to the stencil buffer contents. The following eight actions are
+    possible.
     
     Args:
-        fail: Specifies the action to take when the stencil test fails
-        zfail: Specifies the stencil action when the stencil test passes, but
-            the depth test fails
-        zpass: Specifies the stencil action when both the stencil test and the
-            depth test pass, or when the stencil test passes and either there is
-            no depth buffer or depth testing is not enabled
+        fail: the action to take when the stencil test fails.
+        zfail: the stencil action when the stencil test passes, but the depth
+            test fails.
+        zpass: the stencil action when both the stencil test and the depth test
+            pass, or when the stencil test passes and either there is no depth
+            buffer or depth testing is not enabled.
     '''
 
 @accepts(t.int, t.enum, t.sizei, t.void)
@@ -1507,15 +1702,23 @@ def stencil_op(fail, zfail, zpass):
 @binds(dll)
 def tex_coord_pointer(size, type, stride, pointer):
     '''
-    define an array of texture coordinates
+    define an array of texture coordinates.
+    
+    gl.tex_coord_pointer specifies the location and data format of an array of
+    texture coordinates to use when rendering. size specifies the number of
+    coordinates per texture coordinate set, and must be 1, 2, 3, or 4. type
+    specifies the data type of each texture coordinate, and stride specifies the
+    byte stride from one texture coordinate set to the next, allowing vertices
+    and attributes to be packed into a single array or stored in separate
+    arrays. (Single-array storage may be more efficient on some implementations;
+    see gl.interleaved_arrays.
     
     Args:
-        size: Specifies the number of coordinates per array element
-        type: Specifies the data type of each texture coordinate
-        stride: Specifies the byte offset between consecutive texture coordinate
-            sets
-        pointer: Specifies a pointer to the first coordinate of the first
-            texture coordinate set in the array
+        size: the number of coordinates per array element.
+        type: the data type of each texture coordinate.
+        stride: the byte offset between consecutive texture coordinate sets.
+        pointer: a pointer to the first coordinate of the first texture
+            coordinate set in the array.
     '''
 
 @accepts(t.enum, t.enum, t.int)
@@ -1547,20 +1750,20 @@ def tex_envxv(target, pname, params):
 @binds(dll)
 def tex_image2_d(target, level, internalformat, width, height, border, format, type, pixels):
     '''
-    specify a two-dimensional texture image
+    specify a two-dimensional texture image.
     
     Args:
-        target: Specifies the target texture
-        level: Specifies the level-of-detail number
-        internalformat: Specifies the number of color components in the texture
-        width: Specifies the width of the texture image
-        height: Specifies the height of the texture image, or the number of
-            layers in a texture array, in the case of the gl.TEXTURE_1D_ARRAY
-            and gl.PROXY_TEXTURE_1D_ARRAY targets
-        border: This value must be 0
-        format: Specifies the format of the pixel data
-        type: Specifies the data type of the pixel data
-        pixels: Specifies a pointer to the image data in memory
+        target: the target texture.
+        level: the level-of-detail number.
+        internalformat: the number of color components in the texture.
+        width: the width of the texture image.
+        height: the height of the texture image, or the number of layers in a
+            texture array, in the case of the gl_texture_1d_array and
+            gl_proxy_texture_1d_array targets.
+        border: this value must be 0.
+        format: the format of the pixel data.
+        type: the data type of the pixel data.
+        pixels: a pointer to the image data in memory.
     '''
 
 @accepts(t.enum, t.enum, t.int)
@@ -1592,21 +1795,18 @@ def tex_parameterxv(target, pname, params):
 @binds(dll)
 def tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, type, pixels):
     '''
-    specify a two-dimensional texture subimage
+    specify a two-dimensional texture subimage.
     
     Args:
-        target: Specifies the target to which the texture is bound for
-            gl.tex_sub_image2D
-        level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture
-            array
-        yoffset: Specifies a texel offset in the y direction within the texture
-            array
-        width: Specifies the width of the texture subimage
-        height: Specifies the height of the texture subimage
-        format: Specifies the format of the pixel data
-        type: Specifies the data type of the pixel data
-        pixels: Specifies a pointer to the image data in memory
+        target: the target to which the texture is bound for gltexsubimage2d.
+        level: the level-of-detail number.
+        xoffset: a texel offset in the x direction within the texture array.
+        yoffset: a texel offset in the y direction within the texture array.
+        width: the width of the texture subimage.
+        height: the height of the texture subimage.
+        format: the format of the pixel data.
+        type: the data type of the pixel data.
+        pixels: a pointer to the image data in memory.
     '''
 
 @accepts(t.fixed, t.fixed, t.fixed)
@@ -1620,14 +1820,22 @@ def translatex(x, y, z):
 @binds(dll)
 def vertex_pointer(size, type, stride, pointer):
     '''
-    define an array of vertex data
+    define an array of vertex data.
+    
+    gl.vertex_pointer specifies the location and data format of an array of
+    vertex coordinates to use when rendering. size specifies the number of
+    coordinates per vertex, and must be 2, 3, or 4. type specifies the data type
+    of each coordinate, and stride specifies the byte stride from one vertex to
+    the next, allowing vertices and attributes to be packed into a single array
+    or stored in separate arrays. (Single-array storage may be more efficient on
+    some implementations; see gl.interleaved_arrays.
     
     Args:
-        size: Specifies the number of coordinates per vertex
-        type: Specifies the data type of each coordinate in the array
-        stride: Specifies the byte offset between consecutive vertices
-        pointer: Specifies a pointer to the first coordinate of the first vertex
-            in the array
+        size: the number of coordinates per vertex.
+        type: the data type of each coordinate in the array.
+        stride: the byte offset between consecutive vertices.
+        pointer: a pointer to the first coordinate of the first vertex in the
+            array.
     '''
 
 @accepts(t.int, t.int, t.sizei, t.sizei)
@@ -1635,11 +1843,13 @@ def vertex_pointer(size, type, stride, pointer):
 @binds(dll)
 def viewport(x, y, width, height):
     '''
-    set the viewport
+    set the viewport.
+    
+    gl.viewport specifies the affine transformation of x and.
     
     Args:
-        x: Specify the lower left corner of the viewport rectangle, in pixels
-        y: Specify the lower left corner of the viewport rectangle, in pixels
-        width: Specify the width and height of the viewport
-        height: Specify the width and height of the viewport
+        x: the lower left corner of the viewport rectangle, in pixels.
+        y: the lower left corner of the viewport rectangle, in pixels.
+        width: the width and height of the viewport.
+        height: the width and height of the viewport.
     '''

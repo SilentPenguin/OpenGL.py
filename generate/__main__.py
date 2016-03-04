@@ -79,22 +79,52 @@ class document:
                 doc = rxml.Document(path)
                 lines.append('    \'\'\'')
                 document.command_description(lines, doc)
+                document.command_long_description(lines, command['name'], doc)
                 document.command_args(lines, params, doc)
                 lines.append('    \'\'\'')
                 break
             except IOError:
                 if i == 2: lines.append('    pass')
-            
+                
     @staticmethod
     def command_description(lines, doc):
         text = doc.refnamediv[0].refpurpose[0].node_text
+        text = text.strip()
         text = pep.doc_body(text)
         text = textwrap.fill(text, 80)
-        lines.append('    ' + text)
+        lines.append('    {}.'.format(text))
+        
+    @staticmethod
+    def command_long_description(lines, name, doc):
+        '''fetches long descriptions, looking for a paragraph that leads with the name of the function'''
+        if not doc.refsect1 or not doc.refsect1[1] or not doc.refsect1[1].para: return
+        
+        for para in doc.refsect1[1].para:
+            text = para.node_text
+            if not text: continue
+            text = text.strip()
+            if not text: continue
+            text = text.replace('...', '…')
+            text = '.'.join(text.split('.')[:4])
+            text = text.replace('…', '...')
+            text = pep.doc_body(text)
+            while text.endswith(':'):
+                text = '.'.join(text.split('.')[:-1])
+            if not text or not text.startswith('gl.' + pep.command(name)): continue
+            text = ('\n    ').join(textwrap.wrap(text, 76))
+            text = text.replace(' ,', ',')
+            if not text.endswith('.'):
+                text += '.'
+            lines.append('    ')
+            lines.append('    {}'.format(text))
+            break
+        
+        return
         
     @staticmethod
     def command_args(lines, params, doc):
-        
+    
+        #give up if the xml document doesn't contain what we need
         if not doc.refsect1 or not doc.refsect1[0].variablelist or not doc.refsect1[0].variablelist[0].varlistentry: return
         if not doc.refsynopsisdiv or not doc.refsynopsisdiv[0].funcsynopsis[0] or not doc.refsynopsisdiv[0].funcsynopsis[0].funcprototype or not doc.refsynopsisdiv[0].funcsynopsis[0].funcprototype[0].paramdef: return
         
@@ -111,14 +141,28 @@ class document:
         
         if not args: return
         
+        def cleanup_docline(text):
+            '''tidies argument descriptions'''
+            stripstarts = ('specify ', 'specifies ') #pointless words gl tends to  start argument descriptions
+            text = text.split(".")[0] #take only the first sentence
+            text = text.lower()
+            text = pep.doc_body(text) #format away the xml children and 
+            for starts in stripstarts:
+                if text.startswith(starts):
+                    text = text[len(starts):]
+                    break;
+            return text
+        
         #This maps documented names above to the documented lines
         docline = {
-            args[term.parameter[0].text] : pep.doc_body(param.listitem[0].para[0].node_text)
+            args[term.parameter[0].text] : cleanup_docline(param.listitem[0].para[0].node_text)
             for param in var_elements
             if param.term
             for term in param.term
             if term.parameter and term.parameter[0].text in args
         }
+        
+        #format our lines
         
         lines.append('    ')
         lines.append('    Args:')
@@ -126,7 +170,7 @@ class document:
         for param in params:
             if param not in docline: continue
             text = docline[param]
-            text = '{}: {}'.format(param, text)
+            text = '{}: {}.'.format(param, text)
             text = text[:4] + ('\n            ').join(textwrap.wrap(text[4:], 68))
             lines.append('        ' + text)
         return
@@ -185,12 +229,12 @@ class pep:
     def doc_body(string):
         def command_replace(match):
             return 'gl.' + pep.command(match.group(0))
-        string = string.split(".")[0]
         string = re.sub('GL_([_A-Z]*?)', r'gl.\1', string)
         string = re.sub('gl[A-Z][A-Za-z]+', command_replace, string)
         string = string.replace('NULL', 'None')
         string = string.replace('\n', '').replace('\r', '')
         string = lxml.html.fromstring(string).text_content().encode('unicode-escape')
+        string = string.replace('\\xd7', '*')
         string = ' '.join(string.split())
         return string
 

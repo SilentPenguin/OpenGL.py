@@ -8,16 +8,23 @@ from opengl.gl.raw.bindings import *
 @binds(dll)
 def blend_func_separate(sfactorrgb, dfactorrgb, sfactoralpha, dfactoralpha):
     '''
-    specify pixel arithmetic for RGB and alpha components separately
+    specify pixel arithmetic for RGB and alpha components separately.
+    
+    gl.blend_func_separate defines the operation of blending for all draw
+    buffers when it is enabled. gl.blend_func_separatei defines the operation of
+    blending for a single draw buffer specified by buf when enabled for that
+    draw buffer. srcRGB specifies which method is used to scale the source RGB-
+    color components. dstRGB specifies which method is used to scale the
+    destination RGB-color components.
     
     Args:
-        sfactorrgb: Specifies how the red, green, and blue blending factors are
-            computed
-        dfactorrgb: Specifies how the red, green, and blue destination blending
-            factors are computed
-        sfactoralpha: Specified how the alpha source blending factor is computed
-        dfactoralpha: Specified how the alpha destination blending factor is
-            computed
+        sfactorrgb: how the red, green, and blue blending factors are computed.
+        dfactorrgb: how the red, green, and blue destination blending factors
+            are computed.
+        sfactoralpha: specified how the alpha source blending factor is
+            computed.
+        dfactoralpha: specified how the alpha destination blending factor is
+            computed.
     '''
 
 @accepts(t.enum, POINTER(t.int), POINTER(t.sizei), t.sizei)
@@ -25,13 +32,20 @@ def blend_func_separate(sfactorrgb, dfactorrgb, sfactoralpha, dfactoralpha):
 @binds(dll)
 def multi_draw_arrays(mode, first, count, drawcount):
     '''
-    render multiple sets of primitives from array data
+    render multiple sets of primitives from array data.
+    
+    gl.multi_draw_arrays specifies multiple sets of geometric primitives with
+    very few subroutine calls. Instead of calling a GL procedure to pass each
+    individual vertex, normal, texture coordinate, edge flag, or color, you can
+    prespecify separate arrays of vertices, normals, and colors and use them to
+    construct a sequence of primitives with a single call to
+    gl.multi_draw_arrays.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        first: Points to an array of starting indices in the enabled arrays
-        count: Points to an array of the number of indices to be rendered
-        drawcount: Specifies the size of the first and count
+        mode: what kind of primitives to render.
+        first: points to an array of starting indices in the enabled arrays.
+        count: points to an array of the number of indices to be rendered.
+        drawcount: the size of the first and count.
     '''
 
 @accepts(t.enum, POINTER(t.sizei), t.enum, t.void, t.sizei)
@@ -39,15 +53,21 @@ def multi_draw_arrays(mode, first, count, drawcount):
 @binds(dll)
 def multi_draw_elements(mode, count, type, indices, drawcount):
     '''
-    render multiple sets of primitives by specifying indices of array data elements
+    render multiple sets of primitives by specifying indices of array data elements.
+    
+    gl.multi_draw_elements specifies multiple sets of geometric primitives with
+    very few subroutine calls. Instead of calling a GL function to pass each
+    individual vertex, normal, texture coordinate, edge flag, or color, you can
+    prespecify separate arrays of vertices, normals, and so on, and use them to
+    construct a sequence of primitives with a single call to
+    gl.multi_draw_elements.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        count: Points to an array of the elements counts
-        type: Specifies the type of the values in indices
-        indices: Specifies a pointer to the location where the indices are
-            stored
-        drawcount: Specifies the size of the count and indices arrays
+        mode: what kind of primitives to render.
+        count: points to an array of the elements counts.
+        type: the type of the values in indices.
+        indices: a pointer to the location where the indices are stored.
+        drawcount: the size of the count and indices arrays.
     '''
 
 @accepts(t.enum, t.float)
@@ -103,13 +123,19 @@ def fog_coorddv(coord):
 @binds(dll)
 def fog_coord_pointer(type, stride, pointer):
     '''
-    define an array of fog coordinates
+    define an array of fog coordinates.
+    
+    gl.fog_coord_pointer specifies the location and data format of an array of
+    fog coordinates to use when rendering. type specifies the data type of each
+    fog coordinate, and stride specifies the byte stride from one fog coordinate
+    to the next, allowing vertices and attributes to be packed into a single
+    array or stored in separate arrays.
     
     Args:
-        type: Specifies the data type of each fog coordinate
-        stride: Specifies the byte offset between consecutive fog coordinates
-        pointer: Specifies a pointer to the first coordinate of the first fog
-            coordinate in the array
+        type: the data type of each fog coordinate.
+        stride: the byte offset between consecutive fog coordinates.
+        pointer: a pointer to the first coordinate of the first fog coordinate
+            in the array.
     '''
 
 @accepts(t.byte, t.byte, t.byte)
@@ -213,14 +239,21 @@ def secondary_color3usv(v):
 @binds(dll)
 def secondary_color_pointer(size, type, stride, pointer):
     '''
-    define an array of secondary colors
+    define an array of secondary colors.
+    
+    gl.secondary_color_pointer specifies the location and data format of an
+    array of color components to use when rendering. size specifies the number
+    of components per color, and must be 3. type specifies the data type of each
+    color component, and stride specifies the byte stride from one color to the
+    next, allowing vertices and attributes to be packed into a single array or
+    stored in separate arrays.
     
     Args:
-        size: Specifies the number of components per color
-        type: Specifies the data type of each color component in the array
-        stride: Specifies the byte offset between consecutive colors
-        pointer: Specifies a pointer to the first component of the first color
-            element in the array
+        size: the number of components per color.
+        type: the data type of each color component in the array.
+        stride: the byte offset between consecutive colors.
+        pointer: a pointer to the first component of the first color element in
+            the array.
     '''
 
 @accepts(t.double, t.double)
@@ -363,13 +396,13 @@ COMPARE_R_TO_TEXTURE = 0x884E
 @binds(dll)
 def blend_color(red, green, blue, alpha):
     '''
-    set the blend color
+    set the blend color.
     
     Args:
-        red: specify the components of gl.BLEND_COLOR
-        green: specify the components of gl.BLEND_COLOR
-        blue: specify the components of gl.BLEND_COLOR
-        alpha: specify the components of gl.BLEND_COLOR
+        red: the components of gl_blend_color.
+        green: the components of gl_blend_color.
+        blue: the components of gl_blend_color.
+        alpha: the components of gl_blend_color.
     '''
 
 @accepts(t.enum)
@@ -378,10 +411,10 @@ def blend_color(red, green, blue, alpha):
 def blend_equation(mode):
     '''
     specify the equation used for both the RGB blend equation and the Alpha blend
-equation
+equation.
     
     Args:
-        mode: specifies how source and destination colors are combined
+        mode: how source and destination colors are combined.
     '''
 
 FUNC_ADD = 0x8006

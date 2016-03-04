@@ -8,13 +8,13 @@ from opengl.gl.raw.bindings import *
 @binds(dll)
 def blend_equation_separate(modergb, modealpha):
     '''
-    set the RGB blend equation and the alpha blend equation separately
+    set the RGB blend equation and the alpha blend equation separately.
     
     Args:
-        modergb: specifies the RGB blend equation, how the red, green, and blue
-            components of the source and destination colors are combined
-        modealpha: specifies the alpha blend equation, how the alpha component
-            of the source and destination colors are combined
+        modergb: the rgb blend equation, how the red, green, and blue components
+            of the source and destination colors are combined.
+        modealpha: the alpha blend equation, how the alpha component of the
+            source and destination colors are combined.
     '''
 
 @accepts(t.sizei, POINTER(t.enum))
@@ -22,12 +22,21 @@ def blend_equation_separate(modergb, modealpha):
 @binds(dll)
 def draw_buffers(n, bufs):
     '''
-    Specifies a list of color buffers to be drawn into
+    Specifies a list of color buffers to be drawn into.
+    
+    gl.draw_buffers and gl.named_framebuffer_draw_buffers define an array of
+    buffers into which outputs from the fragment shader data will be written. If
+    a fragment shader writes a value to one or more user defined output
+    variables, then the value of each variable will be written into the buffer
+    specified at a location within bufs corresponding to the location assigned
+    to that user defined output. The draw buffer used for user defined outputs
+    assigned to locations greater than or equal to n is implicitly set to
+    gl.NONE and any data written to such an output is discarded.
     
     Args:
-        n: Specifies the number of buffers in bufs
-        bufs: Points to an array of symbolic constants specifying the buffers
-            into which fragment colors or data values will be written
+        n: the number of buffers in bufs.
+        bufs: points to an array of symbolic constants specifying the buffers
+            into which fragment colors or data values will be written.
     '''
 
 @accepts(t.enum, t.enum, t.enum, t.enum)
@@ -35,16 +44,22 @@ def draw_buffers(n, bufs):
 @binds(dll)
 def stencil_op_separate(face, sfail, dpfail, dppass):
     '''
-    set front and/or back stencil test actions
+    set front and/or back stencil test actions.
+    
+    gl.stencil_op_separate takes three arguments that indicate what happens to
+    the stored stencil value while stenciling is enabled. If the stencil test
+    fails, no change is made to the pixel's color or depth buffers, and sfail
+    specifies what happens to the stencil buffer contents. The following eight
+    actions are possible.
     
     Args:
-        face: Specifies whether front and/or back stencil state is updated
-        sfail: Specifies the action to take when the stencil test fails
-        dpfail: Specifies the stencil action when the stencil test passes, but
-            the depth test fails
-        dppass: Specifies the stencil action when both the stencil test and the
-            depth test pass, or when the stencil test passes and either there is
-            no depth buffer or depth testing is not enabled
+        face: whether front and/or back stencil state is updated.
+        sfail: the action to take when the stencil test fails.
+        dpfail: the stencil action when the stencil test passes, but the depth
+            test fails.
+        dppass: the stencil action when both the stencil test and the depth test
+            pass, or when the stencil test passes and either there is no depth
+            buffer or depth testing is not enabled.
     '''
 
 @accepts(t.enum, t.enum, t.int, t.uint)
@@ -52,14 +67,14 @@ def stencil_op_separate(face, sfail, dpfail, dppass):
 @binds(dll)
 def stencil_func_separate(face, func, ref, mask):
     '''
-    set front and/or back function and reference value for stencil testing
+    set front and/or back function and reference value for stencil testing.
     
     Args:
-        face: Specifies whether front and/or back stencil state is updated
-        func: Specifies the test function
-        ref: Specifies the reference value for the stencil test
-        mask: Specifies a mask that is ANDed with both the reference value and
-            the stored stencil value when the test is done
+        face: whether front and/or back stencil state is updated.
+        func: the test function.
+        ref: the reference value for the stencil test.
+        mask: a mask that is anded with both the reference value and the stored
+            stencil value when the test is done.
     '''
 
 @accepts(t.enum, t.uint)
@@ -67,13 +82,15 @@ def stencil_func_separate(face, func, ref, mask):
 @binds(dll)
 def stencil_mask_separate(face, mask):
     '''
-    control the front and/or back writing of individual bits in the stencil planes
+    control the front and/or back writing of individual bits in the stencil planes.
+    
+    gl.stencil_mask_separate controls the writing of individual bits in the
+    stencil planes. The least significant n bits of mask, where.
     
     Args:
-        face: Specifies whether the front and/or back stencil writemask is
-            updated
-        mask: Specifies a bit mask to enable and disable writing of individual
-            bits in the stencil planes
+        face: whether the front and/or back stencil writemask is updated.
+        mask: a bit mask to enable and disable writing of individual bits in the
+            stencil planes.
     '''
 
 @accepts(t.uint, t.uint)
@@ -81,12 +98,11 @@ def stencil_mask_separate(face, mask):
 @binds(dll)
 def attach_shader(program, shader):
     '''
-    Attaches a shader object to a program object
+    Attaches a shader object to a program object.
     
     Args:
-        program: Specifies the program object to which a shader object will be
-            attached
-        shader: Specifies the shader object that is to be attached
+        program: the program object to which a shader object will be attached.
+        shader: the shader object that is to be attached.
     '''
 
 @accepts(t.uint, t.uint, t.char_p)
@@ -94,14 +110,23 @@ def attach_shader(program, shader):
 @binds(dll)
 def bind_attrib_location(program, index, name):
     '''
-    Associates a generic vertex attribute index with a named attribute variable
+    Associates a generic vertex attribute index with a named attribute variable.
+    
+    gl.bind_attrib_location is used to associate a user-defined attribute
+    variable in the program object specified by program with a generic vertex
+    attribute index. The name of the user-defined attribute variable is passed
+    as a null terminated string in name. The generic vertex attribute index to
+    be bound to this variable is specified by index. When program is made part
+    of current state, values provided via the generic vertex attribute index
+    will modify the value of the user-defined attribute variable specified by
+    name.
     
     Args:
-        program: Specifies the handle of the program object in which the
-            association is to be made
-        index: Specifies the index of the generic vertex attribute to be bound
-        name: Specifies a null terminated string containing the name of the
-            vertex shader attribute variable to which index is to be bound
+        program: the handle of the program object in which the association is to
+            be made.
+        index: the index of the generic vertex attribute to be bound.
+        name: a null terminated string containing the name of the vertex shader
+            attribute variable to which index is to be bound.
     '''
 
 @accepts(t.uint)
@@ -109,10 +134,13 @@ def bind_attrib_location(program, index, name):
 @binds(dll)
 def compile_shader(shader):
     '''
-    Compiles a shader object
+    Compiles a shader object.
+    
+    gl.compile_shader compiles the source code strings that have been stored in
+    the shader object specified by shader.
     
     Args:
-        shader: Specifies the shader object to be compiled
+        shader: the shader object to be compiled.
     '''
 
 @accepts()
@@ -120,7 +148,7 @@ def compile_shader(shader):
 @binds(dll)
 def create_program():
     '''
-    Creates a program object
+    Creates a program object.
     '''
 
 @accepts(t.enum)
@@ -128,10 +156,15 @@ def create_program():
 @binds(dll)
 def create_shader(type):
     '''
-    Creates a shader object
+    Creates a shader object.
+    
+    gl.create_shader creates an empty shader object and returns a non-zero value
+    by which it can be referenced. A shader object is used to maintain the
+    source code strings that define a shader. shaderType indicates the type of
+    shader to be created. Five types of shader are supported.
     
     Args:
-        type: Specifies the type of shader to be created
+        type: the type of shader to be created.
     '''
 
 @accepts(t.uint)
@@ -139,10 +172,14 @@ def create_shader(type):
 @binds(dll)
 def delete_program(program):
     '''
-    Deletes a program object
+    Deletes a program object.
+    
+    gl.delete_program frees the memory and invalidates the name associated with
+    the program object specified by program. This command effectively undoes the
+    effects of a call to gl.create_program.
     
     Args:
-        program: Specifies the program object to be deleted
+        program: the program object to be deleted.
     '''
 
 @accepts(t.uint)
@@ -150,10 +187,14 @@ def delete_program(program):
 @binds(dll)
 def delete_shader(shader):
     '''
-    Deletes a shader object
+    Deletes a shader object.
+    
+    gl.delete_shader frees the memory and invalidates the name associated with
+    the shader object specified by shader. This command effectively undoes the
+    effects of a call to gl.create_shader.
     
     Args:
-        shader: Specifies the shader object to be deleted
+        shader: the shader object to be deleted.
     '''
 
 @accepts(t.uint, t.uint)
@@ -161,12 +202,15 @@ def delete_shader(shader):
 @binds(dll)
 def detach_shader(program, shader):
     '''
-    Detaches a shader object from a program object to which it is attached
+    Detaches a shader object from a program object to which it is attached.
+    
+    gl.detach_shader detaches the shader object specified by shader from the
+    program object specified by program. This command can be used to undo the
+    effect of the command gl.attach_shader.
     
     Args:
-        program: Specifies the program object from which to detach the shader
-            object
-        shader: Specifies the shader object to be detached
+        program: the program object from which to detach the shader object.
+        shader: the shader object to be detached.
     '''
 
 @accepts(t.uint)
@@ -180,11 +224,17 @@ def disable_vertex_attrib_array(index):
 @binds(dll)
 def enable_vertex_attrib_array(index):
     '''
-    Enable or disable a generic vertex attribute array
+    Enable or disable a generic vertex attribute array.
+    
+    gl.enable_vertex_attrib_array and gl.enable_vertex_array_attrib enable the
+    generic vertex attribute array specified by index.
+    gl.enable_vertex_attrib_array uses currently bound vertex array object for
+    the operation, whereas gl.enable_vertex_array_attrib updates state of the
+    vertex array object with ID vaobj.
     
     Args:
-        index: Specifies the index of the generic vertex attribute to be enabled
-            or disabled
+        index: the index of the generic vertex attribute to be enabled or
+            disabled.
     '''
 
 @accepts(t.uint, t.uint, t.sizei, POINTER(t.sizei), POINTER(t.int), POINTER(t.enum), t.char_p)
@@ -193,20 +243,27 @@ def enable_vertex_attrib_array(index):
 def get_active_attrib(program, index, bufsize, length, size, type, name):
     '''
     Returns information about an active attribute variable for the specified program
-object
+object.
+    
+    gl.get_active_attrib returns information about an active attribute variable
+    in the program object specified by program. The number of active attributes
+    can be obtained by calling gl.get_program with the value
+    gl.ACTIVE_ATTRIBUTES. A value of 0 for index selects the first active
+    attribute variable. Permissible values for index range from zero to the
+    number of active attribute variables minus one.
     
     Args:
-        program: Specifies the program object to be queried
-        index: Specifies the index of the attribute variable to be queried
-        bufsize: Specifies the maximum number of characters OpenGL is allowed to
-            write in the character buffer indicated by name
-        length: Returns the number of characters actually written by OpenGL in
+        program: the program object to be queried.
+        index: the index of the attribute variable to be queried.
+        bufsize: the maximum number of characters opengl is allowed to write in
+            the character buffer indicated by name.
+        length: returns the number of characters actually written by opengl in
             the string indicated by name (excluding the null terminator) if a
-            value other than None is passed
-        size: Returns the size of the attribute variable
-        type: Returns the data type of the attribute variable
-        name: Returns a null terminated string containing the name of the
-            attribute variable
+            value other than null is passed.
+        size: returns the size of the attribute variable.
+        type: returns the data type of the attribute variable.
+        name: returns a null terminated string containing the name of the
+            attribute variable.
     '''
 
 @accepts(t.uint, t.uint, t.sizei, POINTER(t.sizei), POINTER(t.int), POINTER(t.enum), t.char_p)
@@ -215,20 +272,27 @@ object
 def get_active_uniform(program, index, bufsize, length, size, type, name):
     '''
     Returns information about an active uniform variable for the specified program
-object
+object.
+    
+    gl.get_active_uniform returns information about an active uniform variable
+    in the program object specified by program. The number of active uniform
+    variables can be obtained by calling gl.get_program with the value
+    gl.ACTIVE_UNIFORMS. A value of 0 for index selects the first active uniform
+    variable. Permissible values for index range from zero to the number of
+    active uniform variables minus one.
     
     Args:
-        program: Specifies the program object to be queried
-        index: Specifies the index of the uniform variable to be queried
-        bufsize: Specifies the maximum number of characters OpenGL is allowed to
-            write in the character buffer indicated by name
-        length: Returns the number of characters actually written by OpenGL in
+        program: the program object to be queried.
+        index: the index of the uniform variable to be queried.
+        bufsize: the maximum number of characters opengl is allowed to write in
+            the character buffer indicated by name.
+        length: returns the number of characters actually written by opengl in
             the string indicated by name (excluding the null terminator) if a
-            value other than None is passed
-        size: Returns the size of the uniform variable
-        type: Returns the data type of the uniform variable
-        name: Returns a null terminated string containing the name of the
-            uniform variable
+            value other than null is passed.
+        size: returns the size of the uniform variable.
+        type: returns the data type of the uniform variable.
+        name: returns a null terminated string containing the name of the
+            uniform variable.
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.sizei), POINTER(t.uint))
@@ -236,15 +300,20 @@ object
 @binds(dll)
 def get_attached_shaders(program, maxcount, count, shaders):
     '''
-    Returns the handles of the shader objects attached to a program object
+    Returns the handles of the shader objects attached to a program object.
+    
+    gl.get_attached_shaders returns the names of the shader objects attached to
+    program. The names of shader objects that are attached to program will be
+    returned in shaders. The actual number of shader names written into shaders
+    is returned in count. If no shader objects are attached to program, count is
+    set to 0.
     
     Args:
-        program: Specifies the program object to be queried
-        maxcount: Specifies the size of the array for storing the returned
-            object names
-        count: Returns the number of names actually returned in shaders
-        shaders: Specifies an array that is used to return the names of attached
-            shader objects
+        program: the program object to be queried.
+        maxcount: the size of the array for storing the returned object names.
+        count: returns the number of names actually returned in shaders.
+        shaders: an array that is used to return the names of attached shader
+            objects.
     '''
 
 @accepts(t.uint, t.char_p)
@@ -252,12 +321,20 @@ def get_attached_shaders(program, maxcount, count, shaders):
 @binds(dll)
 def get_attrib_location(program, name):
     '''
-    Returns the location of an attribute variable
+    Returns the location of an attribute variable.
+    
+    gl.get_attrib_location queries the previously linked program object
+    specified by program for the attribute variable specified by name and
+    returns the index of the generic vertex attribute that is bound to that
+    attribute variable. If name is a matrix attribute variable, the index of the
+    first column of the matrix is returned. If the named attribute variable is
+    not an active attribute in the specified program object or if name starts
+    with the reserved prefix "gl_", a value of -1 is returned.
     
     Args:
-        program: Specifies the program object to be queried
-        name: Points to a null terminated string containing the name of the
-            attribute variable whose location is to be queried
+        program: the program object to be queried.
+        name: points to a null terminated string containing the name of the
+            attribute variable whose location is to be queried.
     '''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
@@ -271,17 +348,21 @@ def get_programiv(program, pname, params):
 @binds(dll)
 def get_program_info_log(program, bufsize, length, infolog):
     '''
-    Returns the information log for a program object
+    Returns the information log for a program object.
+    
+    gl.get_program_info_log returns the information log for the specified
+    program object. The information log for a program object is modified when
+    the program object is linked or validated. The string that is returned will
+    be null terminated.
     
     Args:
-        program: Specifies the program object whose information log is to be
-            queried
-        bufsize: Specifies the size of the character buffer for storing the
-            returned information log
-        length: Returns the length of the string returned in infoLog (excluding
-            the null terminator)
-        infolog: Specifies an array of characters that is used to return the
-            information log
+        program: the program object whose information log is to be queried.
+        bufsize: the size of the character buffer for storing the returned
+            information log.
+        length: returns the length of the string returned in infolog (excluding
+            the null terminator).
+        infolog: an array of characters that is used to return the information
+            log.
     '''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
@@ -295,17 +376,20 @@ def get_shaderiv(shader, pname, params):
 @binds(dll)
 def get_shader_info_log(shader, bufsize, length, infolog):
     '''
-    Returns the information log for a shader object
+    Returns the information log for a shader object.
+    
+    gl.get_shader_info_log returns the information log for the specified shader
+    object. The information log for a shader object is modified when the shader
+    is compiled. The string that is returned will be null terminated.
     
     Args:
-        shader: Specifies the shader object whose information log is to be
-            queried
-        bufsize: Specifies the size of the character buffer for storing the
-            returned information log
-        length: Returns the length of the string returned in infoLog (excluding
-            the null terminator)
-        infolog: Specifies an array of characters that is used to return the
-            information log
+        shader: the shader object whose information log is to be queried.
+        bufsize: the size of the character buffer for storing the returned
+            information log.
+        length: returns the length of the string returned in infolog (excluding
+            the null terminator).
+        infolog: an array of characters that is used to return the information
+            log.
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.sizei), t.char_p)
@@ -313,16 +397,21 @@ def get_shader_info_log(shader, bufsize, length, infolog):
 @binds(dll)
 def get_shader_source(shader, bufsize, length, source):
     '''
-    Returns the source code string from a shader object
+    Returns the source code string from a shader object.
+    
+    gl.get_shader_source returns the concatenation of the source code strings
+    from the shader object specified by shader. The source code strings for a
+    shader object are the result of a previous call to gl.shader_source. The
+    string returned by the function will be null terminated.
     
     Args:
-        shader: Specifies the shader object to be queried
-        bufsize: Specifies the size of the character buffer for storing the
-            returned source code string
-        length: Returns the length of the string returned in source (excluding
-            the null terminator)
-        source: Specifies an array of characters that is used to return the
-            source code string
+        shader: the shader object to be queried.
+        bufsize: the size of the character buffer for storing the returned
+            source code string.
+        length: returns the length of the string returned in source (excluding
+            the null terminator).
+        source: an array of characters that is used to return the source code
+            string.
     '''
 
 @accepts(t.uint, t.char_p)
@@ -330,12 +419,21 @@ def get_shader_source(shader, bufsize, length, source):
 @binds(dll)
 def get_uniform_location(program, name):
     '''
-    Returns the location of a uniform variable
+    Returns the location of a uniform variable.
+    
+    gl.get_uniform_location returns an integer that represents the location of a
+    specific uniform variable within a program object. name must be a null
+    terminated string that contains no white space. name must be an active
+    uniform variable name in program that is not a structure, an array of
+    structures, or a subcomponent of a vector or a matrix. This function returns
+    -1 if name does not correspond to an active uniform variable in program, if
+    name starts with the reserved prefix "gl_", or if name is associated with an
+    atomic counter or a named uniform block.
     
     Args:
-        program: Specifies the program object to be queried
-        name: Points to a null terminated string containing the name of the
-            uniform variable whose location is to be queried
+        program: the program object to be queried.
+        name: points to a null terminated string containing the name of the
+            uniform variable whose location is to be queried.
     '''
 
 @accepts(t.uint, t.int, POINTER(t.float))
@@ -373,13 +471,18 @@ def get_vertex_attribiv(index, pname, params):
 @binds(dll)
 def get_vertex_attrib_pointerv(index, pname, pointer):
     '''
-    return the address of the specified generic vertex attribute pointer
+    return the address of the specified generic vertex attribute pointer.
+    
+    gl.get_vertex_attrib_pointerv returns pointer information. index is the
+    generic vertex attribute to be queried, pname is a symbolic constant
+    indicating the pointer to be returned, and params is a pointer to a location
+    in which to place the returned data.
     
     Args:
-        index: Specifies the generic vertex attribute parameter to be returned
-        pname: Specifies the symbolic name of the generic vertex attribute
-            parameter to be returned
-        pointer: Returns the pointer value
+        index: the generic vertex attribute parameter to be returned.
+        pname: the symbolic name of the generic vertex attribute parameter to be
+            returned.
+        pointer: returns the pointer value.
     '''
 
 @accepts(t.uint)
@@ -387,10 +490,16 @@ def get_vertex_attrib_pointerv(index, pname, pointer):
 @binds(dll)
 def is_program(program):
     '''
-    Determines if a name corresponds to a program object
+    Determines if a name corresponds to a program object.
+    
+    gl.is_program returns gl.TRUE if program is the name of a program object
+    previously created with gl.create_program and not yet deleted with
+    gl.delete_program. If program is zero or a non-zero value that is not the
+    name of a program object, or if an error occurs, gl.is_program returns
+    gl.FALSE.
     
     Args:
-        program: Specifies a potential program object
+        program: a potential program object.
     '''
 
 @accepts(t.uint)
@@ -398,10 +507,15 @@ def is_program(program):
 @binds(dll)
 def is_shader(shader):
     '''
-    Determines if a name corresponds to a shader object
+    Determines if a name corresponds to a shader object.
+    
+    gl.is_shader returns gl.TRUE if shader is the name of a shader object
+    previously created with gl.create_shader and not yet deleted with
+    gl.delete_shader. If shader is zero or a non-zero value that is not the name
+    of a shader object, or if an error occurs, gl.is_shader returns gl.FALSE.
     
     Args:
-        shader: Specifies a potential shader object
+        shader: a potential shader object.
     '''
 
 @accepts(t.uint)
@@ -409,10 +523,19 @@ def is_shader(shader):
 @binds(dll)
 def link_program(program):
     '''
-    Links a program object
+    Links a program object.
+    
+    gl.link_program links the program object specified by program. If any shader
+    objects of type gl.VERTEX_SHADER are attached to program, they will be used
+    to create an executable that will run on the programmable vertex processor.
+    If any shader objects of type gl.GEOMETRY_SHADER are attached to program,
+    they will be used to create an executable that will run on the programmable
+    geometry processor. If any shader objects of type gl.FRAGMENT_SHADER are
+    attached to program, they will be used to create an executable that will run
+    on the programmable fragment processor.
     
     Args:
-        program: Specifies the handle of the program object to be linked
+        program: the handle of the program object to be linked.
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.char_p), POINTER(t.int))
@@ -420,15 +543,21 @@ def link_program(program):
 @binds(dll)
 def shader_source(shader, count, string, length):
     '''
-    Replaces the source code in a shader object
+    Replaces the source code in a shader object.
+    
+    gl.shader_source sets the source code in shader to the source code in the
+    array of strings specified by string. Any source code previously stored in
+    the shader object is completely replaced. The number of strings in the array
+    is specified by count. If length is None, each string is assumed to be null
+    terminated.
     
     Args:
-        shader: Specifies the handle of the shader object whose source code is
-            to be replaced
-        count: Specifies the number of elements in the string and length arrays
-        string: Specifies an array of pointers to strings containing the source
-            code to be loaded into the shader
-        length: Specifies an array of string lengths
+        shader: the handle of the shader object whose source code is to be
+            replaced.
+        count: the number of elements in the string and length arrays.
+        string: an array of pointers to strings containing the source code to be
+            loaded into the shader.
+        length: an array of string lengths.
     '''
 
 @accepts(t.uint)
@@ -436,11 +565,17 @@ def shader_source(shader, count, string, length):
 @binds(dll)
 def use_program(program):
     '''
-    Installs a program object as part of current rendering state
+    Installs a program object as part of current rendering state.
+    
+    gl.use_program installs the program object specified by program as part of
+    current rendering state. One or more executables are created in a program
+    object by successfully attaching shader objects to it with gl.attach_shader,
+    successfully compiling the shader objects with gl.compile_shader, and
+    successfully linking the program object with gl.link_program.
     
     Args:
-        program: Specifies the handle of the program object whose executables
-            are to be used as part of current rendering state
+        program: the handle of the program object whose executables are to be
+            used as part of current rendering state.
     '''
 
 @accepts(t.int, t.float)
@@ -562,10 +697,19 @@ def uniform_matrix4fv(location, count, transpose, value):
 @binds(dll)
 def validate_program(program):
     '''
-    Validates a program object
+    Validates a program object.
+    
+    gl.validate_program checks to see whether the executables contained in
+    program can execute given the current OpenGL state. The information
+    generated by the validation process will be stored in program's information
+    log. The validation information may consist of an empty string, or it may be
+    a string containing information about how the current program object
+    interacts with the rest of current OpenGL state. This provides a way for
+    OpenGL implementers to convey more information about why the current program
+    is inefficient, suboptimal, failing to execute, and so on.
     
     Args:
-        program: Specifies the handle of the program object to be validated
+        program: the handle of the program object to be validated.
     '''
 
 @accepts(t.uint, t.double)
@@ -789,21 +933,28 @@ def vertex_attrib4usv(index, v):
 @binds(dll)
 def vertex_attrib_pointer(index, size, type, normalized, stride, pointer):
     '''
-    define an array of generic vertex attribute data
+    define an array of generic vertex attribute data.
+    
+    gl.vertex_attrib_pointer, gl.vertex_attrib_i_pointer and
+    gl.vertex_attrib_l_pointer specify the location and data format of the array
+    of generic vertex attributes at index index to use when rendering. size
+    specifies the number of components per attribute and must be 1, 2, 3, 4, or
+    gl.BGRA. type specifies the data type of each component, and stride
+    specifies the byte stride from one attribute to the next, allowing vertices
+    and attributes to be packed into a single array or stored in separate
+    arrays.
     
     Args:
-        index: Specifies the index of the generic vertex attribute to be
-            modified
-        size: Specifies the number of components per generic vertex attribute
-        type: Specifies the data type of each component in the array
-        normalized: For gl.vertex_attrib_pointer, specifies whether fixed-point
-            data values should be normalized (gl.TRUE) or converted directly as
-            fixed-point values (gl.FALSE) when they are accessed
-        stride: Specifies the byte offset between consecutive generic vertex
-            attributes
-        pointer: Specifies a offset of the first component of the first generic
-            vertex attribute in the array in the data store of the buffer
-            currently bound to the gl.ARRAY_BUFFER target
+        index: the index of the generic vertex attribute to be modified.
+        size: the number of components per generic vertex attribute.
+        type: the data type of each component in the array.
+        normalized: for glvertexattribpointer, specifies whether fixed-point
+            data values should be normalized (gl_true) or converted directly as
+            fixed-point values (gl_false) when they are accessed.
+        stride: the byte offset between consecutive generic vertex attributes.
+        pointer: a offset of the first component of the first generic vertex
+            attribute in the array in the data store of the buffer currently
+            bound to the gl_array_buffer target.
     '''
 
 BLEND_EQUATION_RGB = 0x8009

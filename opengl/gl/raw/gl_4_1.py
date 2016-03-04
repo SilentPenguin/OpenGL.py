@@ -43,7 +43,7 @@ UNDEFINED_VERTEX = 0x8260
 @binds(dll)
 def release_shader_compiler():
     '''
-    release resources consumed by the implementation's shader compiler
+    release resources consumed by the implementation's shader compiler.
     '''
 
 @accepts(t.sizei, POINTER(t.uint), t.enum, t.void, t.sizei)
@@ -51,19 +51,21 @@ def release_shader_compiler():
 @binds(dll)
 def shader_binary(count, shaders, binaryformat, binary, length):
     '''
-    load pre-compiled shader binaries
+    load pre-compiled shader binaries.
+    
+    gl.shader_binary loads pre-compiled shader binary code into the count shader
+    objects whose handles are given in shaders. binary points to length bytes of
+    binary shader code stored in client memory. binaryFormat specifies the
+    format of the pre-compiled code.
     
     Args:
-        count: Specifies the number of shader object handles contained in
-            shaders
-        shaders: Specifies the address of an array of shader handles into which
-            to load pre-compiled shader binaries
-        binaryformat: Specifies the format of the shader binaries contained in
-            binary
-        binary: Specifies the address of an array of bytes containing pre-
-            compiled binary shader code
-        length: Specifies the length of the array whose address is given in
-            binary
+        count: the number of shader object handles contained in shaders.
+        shaders: the address of an array of shader handles into which to load
+            pre-compiled shader binaries.
+        binaryformat: the format of the shader binaries contained in binary.
+        binary: the address of an array of bytes containing pre-compiled binary
+            shader code.
+        length: the length of the array whose address is given in binary.
     '''
 
 @accepts(t.enum, t.enum, POINTER(t.int), POINTER(t.int))
@@ -72,16 +74,23 @@ def shader_binary(count, shaders, binaryformat, binary, length):
 def get_shader_precision_format(shadertype, precisiontype, range, precision):
     '''
     retrieve the range and precision for numeric formats supported by the shader
-compiler
+compiler.
+    
+    gl.get_shader_precision_format retrieves the numeric range and precision for
+    the implementation's representation of quantities in different numeric
+    formats in specified shader type. shaderType specifies the type of shader
+    for which the numeric precision and range is to be retrieved and must be one
+    of gl.VERTEX_SHADER or gl.FRAGMENT_SHADER. precisionType specifies the
+    numeric format to query and must be one of gl.LOW_FLOAT, gl.MEDIUM_FLOAT
+    gl.HIGH_FLOAT, gl.LOW_INT, gl.MEDIUM_INT, or gl.HIGH_INT.
     
     Args:
-        shadertype: Specifies the type of shader whose precision to query
-        precisiontype: Specifies the numeric format whose precision and range to
-            query
-        range: Specifies the address of array of two integers into which
-            encodings of the implementation's numeric range are returned
-        precision: Specifies the address of an integer into which the numeric
-            precision of the implementation is written
+        shadertype: the type of shader whose precision to query.
+        precisiontype: the numeric format whose precision and range to query.
+        range: the address of array of two integers into which encodings of the
+            implementation's numeric range are returned.
+        precision: the address of an integer into which the numeric precision of
+            the implementation is written.
     '''
 
 @accepts(t.float, t.float)
@@ -102,17 +111,25 @@ def clear_depthf(d):
 def get_program_binary(program, bufsize, length, binaryformat, binary):
     '''
     return a binary representation of a program object's compiled and linked
-executable source
+executable source.
+    
+    gl.get_program_binary returns a binary representation of the compiled and
+    linked executable for program into the array of bytes whose address is
+    specified in binary. The maximum number of bytes that may be written into
+    binary is specified by bufSize. If the program binary is greater in size
+    than bufSize bytes, then an error is generated, otherwise the actual number
+    of bytes written into binary is returned in the variable whose address is
+    given by length. If length is None, then no length is returned.
     
     Args:
-        program: Specifies the name of a program object whose binary
-            representation to retrieve
-        length: Specifies the address of a variable to receive the number of
-            bytes written into binary
-        binaryformat: Specifies the address of a variable to receive a token
-            indicating the format of the binary data returned by the GL
-        binary: Specifies the address an array into which the GL will return
-            program's binary representation
+        program: the name of a program object whose binary representation to
+            retrieve.
+        length: the address of a variable to receive the number of bytes written
+            into binary.
+        binaryformat: the address of a variable to receive a token indicating
+            the format of the binary data returned by the gl.
+        binary: the address an array into which the gl will return program's
+            binary representation.
     '''
 
 @accepts(t.uint, t.enum, t.void, t.sizei)
@@ -120,15 +137,23 @@ executable source
 @binds(dll)
 def program_binary(program, binaryformat, binary, length):
     '''
-    load a program object with a program binary
+    load a program object with a program binary.
+    
+    gl.program_binary loads a program object with a program binary previously
+    returned from gl.get_program_binary. binaryFormat and binary must be those
+    returned by a previous call to gl.get_program_binary, and length must be the
+    length returned by gl.get_program_binary, or by gl.get_program when called
+    with pname set to gl.PROGRAM_BINARY_LENGTH. If these conditions are not met,
+    loading the program binary will fail and program's gl.LINK_STATUS will be
+    set to gl.FALSE.
     
     Args:
-        program: Specifies the name of a program object into which to load a
-            program binary
-        binaryformat: Specifies the format of the binary data in binary
-        binary: Specifies the address an array containing the binary to be
-            loaded into program
-        length: Specifies the number of bytes contained in binary
+        program: the name of a program object into which to load a program
+            binary.
+        binaryformat: the format of the binary data in binary.
+        binary: the address an array containing the binary to be loaded into
+            program.
+        length: the number of bytes contained in binary.
     '''
 
 @accepts(t.uint, t.enum, t.int)
@@ -142,15 +167,23 @@ def program_parameteri(program, pname, value):
 @binds(dll)
 def use_program_stages(pipeline, stages, program):
     '''
-    bind stages of a program object to a program pipeline
+    bind stages of a program object to a program pipeline.
+    
+    gl.use_program_stages binds executables from a program object associated
+    with a specified set of shader stages to the program pipeline object given
+    by pipeline. pipeline specifies the program pipeline object to which to bind
+    the executables. stages contains a logical combination of bits indicating
+    the shader stages to use within program with the program pipeline object
+    pipeline. stages must be a logical combination of gl.VERTEX_SHADER_BIT,
+    gl.TESS_CONTROL_SHADER_BIT, gl.TESS_EVALUATION_SHADER_BIT,
+    gl.GEOMETRY_SHADER_BIT, gl.FRAGMENT_SHADER_BIT and gl.COMPUTE_SHADER_BIT.
     
     Args:
-        pipeline: Specifies the program pipeline object to which to bind stages
-            from program
-        stages: Specifies a set of program stages to bind to the program
-            pipeline object
-        program: Specifies the program object containing the shader executables
-            to use in pipeline
+        pipeline: the program pipeline object to which to bind stages from
+            program.
+        stages: a set of program stages to bind to the program pipeline object.
+        program: the program object containing the shader executables to use in
+            pipeline.
     '''
 
 @accepts(t.uint, t.uint)
@@ -158,13 +191,18 @@ def use_program_stages(pipeline, stages, program):
 @binds(dll)
 def active_shader_program(pipeline, program):
     '''
-    set the active program object for a program pipeline object
+    set the active program object for a program pipeline object.
+    
+    gl.active_shader_program sets the linked program named by program to be the
+    active program for the program pipeline object pipeline. The active program
+    in the active program pipeline object is the target of calls to gl.uniform
+    when no program has been made current through a call to gl.use_program.
     
     Args:
-        pipeline: Specifies the program pipeline object to set the active
-            program object for
-        program: Specifies the program object to set as the active program
-            pipeline object pipeline
+        pipeline: the program pipeline object to set the active program object
+            for.
+        program: the program object to set as the active program pipeline object
+            pipeline.
     '''
 
 @accepts(t.enum, t.sizei, POINTER(t.char_p))
@@ -178,11 +216,16 @@ def create_shader_programv(type, count, strings):
 @binds(dll)
 def bind_program_pipeline(pipeline):
     '''
-    bind a program pipeline to the current context
+    bind a program pipeline to the current context.
+    
+    gl.bind_program_pipeline binds a program pipeline object to the current
+    context. pipeline must be a name previously returned from a call to
+    gl.gen_program_pipelines. If no program pipeline exists with name pipeline
+    then a new pipeline object is created with that name and initialized to the
+    default state vector.
     
     Args:
-        pipeline: Specifies the name of the pipeline object to bind to the
-            context
+        pipeline: the name of the pipeline object to bind to the context.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -190,12 +233,18 @@ def bind_program_pipeline(pipeline):
 @binds(dll)
 def delete_program_pipelines(n, pipelines):
     '''
-    delete program pipeline objects
+    delete program pipeline objects.
+    
+    gl.delete_program_pipelines deletes the n program pipeline objects whose
+    names are stored in the array pipelines. Unused names in pipelines are
+    ignored, as is the name zero. After a program pipeline object is deleted,
+    its name is again unused and it has no contents. If program pipeline object
+    that is currently bound is deleted, the binding for that object reverts to
+    zero and no program pipeline object becomes current.
     
     Args:
-        n: Specifies the number of program pipeline objects to delete
-        pipelines: Specifies an array of names of program pipeline objects to
-            delete
+        n: the number of program pipeline objects to delete.
+        pipelines: an array of names of program pipeline objects to delete.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -203,12 +252,16 @@ def delete_program_pipelines(n, pipelines):
 @binds(dll)
 def gen_program_pipelines(n, pipelines):
     '''
-    reserve program pipeline object names
+    reserve program pipeline object names.
+    
+    gl.gen_program_pipelines returns n previously unused program pipeline object
+    names in pipelines. These names are marked as used, for the purposes of
+    gl.gen_program_pipelines only, but they acquire program pipeline state only
+    when they are first bound.
     
     Args:
-        n: Specifies the number of program pipeline object names to reserve
-        pipelines: Specifies an array of into which the reserved names will be
-            written
+        n: the number of program pipeline object names to reserve.
+        pipelines: an array of into which the reserved names will be written.
     '''
 
 @accepts(t.uint)
@@ -216,11 +269,18 @@ def gen_program_pipelines(n, pipelines):
 @binds(dll)
 def is_program_pipeline(pipeline):
     '''
-    determine if a name corresponds to a program pipeline object
+    determine if a name corresponds to a program pipeline object.
+    
+    gl.is_program_pipeline returns gl.TRUE if pipeline is currently the name of
+    a program pipeline object. If pipeline is zero, or if pipeline is not the
+    name of a program pipeline object, or if an error occurs,
+    gl.is_program_pipeline returns gl.FALSE. If pipeline is a name returned by
+    gl.gen_program_pipelines, but that has not yet been bound through a call to
+    gl.bind_program_pipeline, then the name is not a program pipeline object and
+    gl.is_program_pipeline returns gl.FALSE.
     
     Args:
-        pipeline: Specifies a value that may be the name of a program pipeline
-            object
+        pipeline: a value that may be the name of a program pipeline object.
     '''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
@@ -534,10 +594,16 @@ def program_uniform_matrix4x3dv(program, location, count, transpose, value):
 @binds(dll)
 def validate_program_pipeline(pipeline):
     '''
-    validate a program pipeline object against current GL state
+    validate a program pipeline object against current GL state.
+    
+    gl.validate_program_pipeline instructs the implementation to validate the
+    shader executables contained in pipeline against the current GL state. The
+    implementation may use this as an opportunity to perform any internal shader
+    modifications that may be required to ensure correct operation of the
+    installed shaders given the current GL state.
     
     Args:
-        pipeline: Specifies the name of a program pipeline object to validate
+        pipeline: the name of a program pipeline object to validate.
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.sizei), t.char_p)
@@ -545,17 +611,25 @@ def validate_program_pipeline(pipeline):
 @binds(dll)
 def get_program_pipeline_info_log(pipeline, bufsize, length, infolog):
     '''
-    retrieve the info log string from a program pipeline object
+    retrieve the info log string from a program pipeline object.
+    
+    gl.get_program_pipeline_info_log retrieves the info log for the program
+    pipeline object pipeline. The info log, including its null terminator, is
+    written into the array of characters whose address is given by infoLog. The
+    maximum number of characters that may be written into infoLog is given by
+    bufSize, and the actual number of characters written into infoLog is
+    returned in the integer whose address is given by length. If length is None,
+    no length is returned.
     
     Args:
-        pipeline: Specifies the name of a program pipeline object from which to
-            retrieve the info log
-        bufsize: Specifies the maximum number of characters, including the null
-            terminator, that may be written into infoLog
-        length: Specifies the address of a variable into which will be written
-            the number of characters written into infoLog
-        infolog: Specifies the address of an array of characters into which will
-            be written the info log for pipeline
+        pipeline: the name of a program pipeline object from which to retrieve
+            the info log.
+        bufsize: the maximum number of characters, including the null
+            terminator, that may be written into infolog.
+        length: the address of a variable into which will be written the number
+            of characters written into infolog.
+        infolog: the address of an array of characters into which will be
+            written the info log for pipeline.
     '''
 
 @accepts(t.uint, t.double)
@@ -647,16 +721,22 @@ def scissor_arrayv(first, count, v):
 @binds(dll)
 def scissor_indexed(index, left, bottom, width, height):
     '''
-    define the scissor box for a specific viewport
+    define the scissor box for a specific viewport.
+    
+    gl.scissor_indexed defines the scissor box for a specified viewport. index
+    specifies the index of scissor box to modify. index must be less than the
+    value of gl.MAX_VIEWPORTS. For gl.scissor_indexed, left, bottom, width and
+    height specify the left, bottom, width and height of the scissor box, in
+    pixels, respectively.
     
     Args:
-        index: Specifies the index of the viewport whose scissor box to modify
-        left: Specify the coordinate of the bottom left corner of the scissor
-            box, in pixels
-        bottom: Specify the coordinate of the bottom left corner of the scissor
-            box, in pixels
-        width: Specify ths dimensions of the scissor box, in pixels
-        height: Specify ths dimensions of the scissor box, in pixels
+        index: the index of the viewport whose scissor box to modify.
+        left: the coordinate of the bottom left corner of the scissor box, in
+            pixels.
+        bottom: the coordinate of the bottom left corner of the scissor box, in
+            pixels.
+        width: ths dimensions of the scissor box, in pixels.
+        height: ths dimensions of the scissor box, in pixels.
     '''
 
 @accepts(t.uint, POINTER(t.int))
@@ -677,13 +757,12 @@ def depth_range_arrayv(first, count, v):
 def depth_range_indexed(index, n, f):
     '''
     specify mapping of depth values from normalized device coordinates to window
-coordinates for a specified viewport
+coordinates for a specified viewport.
     
     Args:
-        index: Specifies the index of the viewport whose depth range to update
-        n: Specifies the mapping of the near clipping plane to window
-            coordinates
-        f: Specifies the mapping of the far clipping plane to window coordinates
+        index: the index of the viewport whose depth range to update.
+        n: the mapping of the near clipping plane to window coordinates.
+        f: the mapping of the far clipping plane to window coordinates.
     '''
 
 @accepts(t.enum, t.uint, POINTER(t.float))

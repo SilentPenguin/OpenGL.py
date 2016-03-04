@@ -11,16 +11,22 @@ TEXTURE_BUFFER_BINDING = 0x8C2A
 @binds(dll)
 def buffer_storage(target, size, data, flags):
     '''
-    creates and initializes a buffer object's immutable data store
+    creates and initializes a buffer object's immutable data store.
+    
+    gl.buffer_storage and gl.named_buffer_storage create a new immutable data
+    store. For gl.buffer_storage, the buffer object currently bound to target
+    will be initialized. For gl.named_buffer_storage, buffer is the name of the
+    buffer object that will be configured. The size of the data store is
+    specified by size.
     
     Args:
-        target: Specifies the target to which the buffer object is bound for
-            gl.buffer_storage, which must be one of the buffer binding targets
-            in the following table:
-        size: Specifies the size in bytes of the buffer object's new data store
-        data: Specifies a pointer to data that will be copied into the data
-            store for initialization, or None if no data is to be copied
-        flags: Specifies the intended usage of the buffer's data store
+        target: the target to which the buffer object is bound for
+            glbufferstorage, which must be one of the buffer binding targets in
+            the following table:.
+        size: the size in bytes of the buffer object's new data store.
+        data: a pointer to data that will be copied into the data store for
+            initialization, or null if no data is to be copied.
+        flags: the intended usage of the buffer's data store.
     '''
 
 MAP_READ_BIT = 0x0001
@@ -37,16 +43,21 @@ BUFFER_STORAGE_FLAGS = 0x8220
 @binds(dll)
 def clear_tex_image(texture, level, format, type, data):
     '''
-    fills all a texture image with a constant value
+    fills all a texture image with a constant value.
+    
+    gl.clear_tex_image fills all an image contained in a texture with an
+    application supplied value. texture must be the name of an existing texture.
+    Further, texture may not be the name of a buffer texture, nor may its
+    internal format be compressed.
     
     Args:
-        texture: The name of an existing texture object containing the image to
-            be cleared
-        level: The level of texture containing the region to be cleared
-        format: The format of the data whose address in memory is given by data
-        type: The type of the data whose address in memory is given by data
-        data: The address in memory of the data to be used to clear the
-            specified region
+        texture: the name of an existing texture object containing the image to
+            be cleared.
+        level: the level of texture containing the region to be cleared.
+        format: the format of the data whose address in memory is given by data.
+        type: the type of the data whose address in memory is given by data.
+        data: the address in memory of the data to be used to clear the
+            specified region.
     '''
 
 @accepts(t.uint, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.enum, t.enum, t.void)
@@ -54,22 +65,27 @@ def clear_tex_image(texture, level, format, type, data):
 @binds(dll)
 def clear_tex_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data):
     '''
-    fills all or part of a texture image with a constant value
+    fills all or part of a texture image with a constant value.
+    
+    gl.clear_tex_sub_image fills all or part of an image contained in a texture
+    with an application supplied value. texture must be the name of an existing
+    texture. Further, texture may not be the name of a buffer texture, nor may
+    its internal format be compressed.
     
     Args:
-        texture: The name of an existing texture object containing the image to
-            be cleared
-        level: The level of texture containing the region to be cleared
-        xoffset: The coordinate of the left edge of the region to be cleared
-        yoffset: The coordinate of the lower edge of the region to be cleared
-        zoffset: The coordinate of the front of the region to be cleared
-        width: The width of the region to be cleared
-        height: The height of the region to be cleared
-        depth: The depth of the region to be cleared
-        format: The format of the data whose address in memory is given by data
-        type: The type of the data whose address in memory is given by data
-        data: The address in memory of the data to be used to clear the
-            specified region
+        texture: the name of an existing texture object containing the image to
+            be cleared.
+        level: the level of texture containing the region to be cleared.
+        xoffset: the coordinate of the left edge of the region to be cleared.
+        yoffset: the coordinate of the lower edge of the region to be cleared.
+        zoffset: the coordinate of the front of the region to be cleared.
+        width: the width of the region to be cleared.
+        height: the height of the region to be cleared.
+        depth: the depth of the region to be cleared.
+        format: the format of the data whose address in memory is given by data.
+        type: the type of the data whose address in memory is given by data.
+        data: the address in memory of the data to be used to clear the
+            specified region.
     '''
 
 CLEAR_TEXTURE = 0x9365
@@ -82,14 +98,20 @@ TRANSFORM_FEEDBACK_BUFFER_STRIDE = 0x934C
 @binds(dll)
 def bind_buffers_base(target, first, count, buffers):
     '''
-    bind one or more buffer objects to a sequence of indexed buffer targets
+    bind one or more buffer objects to a sequence of indexed buffer targets.
+    
+    gl.bind_buffers_base binds a set of count buffer objects whose names are
+    given in the array buffers to the count consecutive binding points starting
+    from index index of the array of targets specified by target. If buffers is
+    None then gl.bind_buffers_base unbinds any buffers that are currently bound
+    to the referenced binding points. Assuming no errors are generated, it is
+    equivalent to the following pseudo-code, which calls gl.
     
     Args:
-        target: Specify the target of the bind operation
-        count: Specify the number of contiguous binding points to which to bind
-            buffers
-        buffers: A pointer to an array of names of buffer objects to bind to the
-            targets on the specified binding point, or None
+        target: the target of the bind operation.
+        count: the number of contiguous binding points to which to bind buffers.
+        buffers: a pointer to an array of names of buffer objects to bind to the
+            targets on the specified binding point, or null.
     '''
 
 @accepts(t.enum, t.uint, t.sizei, POINTER(t.uint), POINTER(t.intptr), POINTER(t.sizeiptr))
@@ -98,14 +120,23 @@ def bind_buffers_base(target, first, count, buffers):
 def bind_buffers_range(target, first, count, buffers, offsets, sizes):
     '''
     bind ranges of one or more buffer objects to a sequence of indexed buffer
-targets
+targets.
+    
+    gl.bind_buffers_range binds a set of count ranges from buffer objects whose
+    names are given in the array buffers to the count consecutive binding points
+    starting from index index of the array of targets specified by target.
+    offsets specifies the address of an array containing count starting offsets
+    within the buffers, and sizes specifies the adderess of an array of count
+    sizes of the ranges. If buffers is None then offsets and sizes are ignored
+    and gl.bind_buffers_range unbinds any buffers that are currently bound to
+    the referenced binding points. Assuming no errors are generated, it is
+    equivalent to the following pseudo-code, which calls gl.
     
     Args:
-        target: Specify the target of the bind operation
-        count: Specify the number of contiguous binding points to which to bind
-            buffers
-        buffers: A pointer to an array of names of buffer objects to bind to the
-            targets on the specified binding point, or None
+        target: the target of the bind operation.
+        count: the number of contiguous binding points to which to bind buffers.
+        buffers: a pointer to an array of names of buffer objects to bind to the
+            targets on the specified binding point, or null.
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.uint))
@@ -113,14 +144,20 @@ targets
 @binds(dll)
 def bind_textures(first, count, textures):
     '''
-    bind one or more named textures to a sequence of consecutive texture units
+    bind one or more named textures to a sequence of consecutive texture units.
+    
+    gl.bind_textures binds an array of existing texture objects to a specified
+    number of consecutive texture units. count specifies the number of texture
+    objects whose names are stored in the array textures. That number of texture
+    names are read from the array and bound to the count consecutive texture
+    units starting from first. The target, or type of texture is deduced from
+    the texture object and each texture is bound to the corresponding target of
+    the texture unit.
     
     Args:
-        first: Specifies the first texture unit to which a texture is to be
-            bound
-        count: Specifies the number of textures to bind
-        textures: Specifies the address of an array of names of existing texture
-            objects
+        first: the first texture unit to which a texture is to be bound.
+        count: the number of textures to bind.
+        textures: the address of an array of names of existing texture objects.
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.uint))
@@ -129,14 +166,18 @@ def bind_textures(first, count, textures):
 def bind_samplers(first, count, samplers):
     '''
     bind one or more named sampler objects to a sequence of consecutive sampler
-units
+units.
+    
+    gl.bind_samplers binds samplers from an array of existing sampler objects to
+    a specified number of consecutive sampler units. count specifies the number
+    of sampler objects whose names are stored in the array samplers. That number
+    of sampler names is read from the array and bound to the count consecutive
+    sampler units starting from first.
     
     Args:
-        first: Specifies the first sampler unit to which a sampler object is to
-            be bound
-        count: Specifies the number of samplers to bind
-        samplers: Specifies the address of an array of names of existing sampler
-            objects
+        first: the first sampler unit to which a sampler object is to be bound.
+        count: the number of samplers to bind.
+        samplers: the address of an array of names of existing sampler objects.
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.uint))
@@ -144,13 +185,19 @@ units
 @binds(dll)
 def bind_image_textures(first, count, textures):
     '''
-    bind one or more named texture images to a sequence of consecutive image units
+    bind one or more named texture images to a sequence of consecutive image units.
+    
+    gl.bind_image_textures binds images from an array of existing texture
+    objects to a specified number of consecutive image units. count specifies
+    the number of texture objects whose names are stored in the array textures.
+    That number of texture names are read from the array and bound to the count
+    consecutive texture units starting from first. If the name zero appears in
+    the textures array, any existing binding to the image unit is reset.
     
     Args:
-        first: Specifies the first image unit to which a texture is to be bound
-        count: Specifies the number of textures to bind
-        textures: Specifies the address of an array of names of existing texture
-            objects
+        first: the first image unit to which a texture is to be bound.
+        count: the number of textures to bind.
+        textures: the address of an array of names of existing texture objects.
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.uint), POINTER(t.intptr), POINTER(t.sizei))
@@ -158,16 +205,23 @@ def bind_image_textures(first, count, textures):
 @binds(dll)
 def bind_vertex_buffers(first, count, buffers, offsets, strides):
     '''
-    attach multiple buffer objects to a vertex array object
+    attach multiple buffer objects to a vertex array object.
+    
+    gl.bind_vertex_buffers and gl.vertex_array_vertex_buffers bind storage from
+    an array of existing buffer objects to a specified number of consecutive
+    vertex buffer binding points units in a vertex array object. For
+    gl.bind_vertex_buffers, the vertex array object is the currently bound
+    vertex array object. For gl.vertex_array_vertex_buffers, vaobj is the name
+    of the vertex array object.
     
     Args:
-        first: Specifies the first vertex buffer binding point to which a buffer
-            object is to be bound
-        count: Specifies the number of buffers to bind
-        buffers: Specifies the address of an array of strides to associate with
-            the binding points
-        offsets: Specifies the address of an array of offsets to associate with
-            the binding points
+        first: the first vertex buffer binding point to which a buffer object is
+            to be bound.
+        count: the number of buffers to bind.
+        buffers: the address of an array of strides to associate with the
+            binding points.
+        offsets: the address of an array of offsets to associate with the
+            binding points.
     '''
 
 QUERY_BUFFER = 0x9192

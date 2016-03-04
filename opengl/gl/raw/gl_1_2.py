@@ -8,16 +8,20 @@ from opengl.gl.raw.bindings import *
 @binds(dll)
 def draw_range_elements(mode, start, end, count, type, indices):
     '''
-    render primitives from array data
+    render primitives from array data.
+    
+    gl.draw_range_elements is a restricted form of gl.draw_elements. mode,
+    start, end, and count match the corresponding arguments to gl.draw_elements,
+    with the additional constraint that all values in the arrays count must lie
+    between start and end, inclusive.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        start: Specifies the minimum array index contained in indices
-        end: Specifies the maximum array index contained in indices
-        count: Specifies the number of elements to be rendered
-        type: Specifies the type of the values in indices
-        indices: Specifies a pointer to the location where the indices are
-            stored
+        mode: what kind of primitives to render.
+        start: the minimum array index contained in indices.
+        end: the maximum array index contained in indices.
+        count: the number of elements to be rendered.
+        type: the type of the values in indices.
+        indices: a pointer to the location where the indices are stored.
     '''
 
 @accepts(t.enum, t.int, t.int, t.sizei, t.sizei, t.sizei, t.int, t.enum, t.enum, t.void)
@@ -25,20 +29,20 @@ def draw_range_elements(mode, start, end, count, type, indices):
 @binds(dll)
 def tex_image3_d(target, level, internalformat, width, height, depth, border, format, type, pixels):
     '''
-    specify a three-dimensional texture image
+    specify a three-dimensional texture image.
     
     Args:
-        target: Specifies the target texture
-        level: Specifies the level-of-detail number
-        internalformat: Specifies the number of color components in the texture
-        width: Specifies the width of the texture image
-        height: Specifies the height of the texture image
-        depth: Specifies the depth of the texture image, or the number of layers
-            in a texture array
-        border: This value must be 0
-        format: Specifies the format of the pixel data
-        type: Specifies the data type of the pixel data
-        pixels: Specifies a pointer to the image data in memory
+        target: the target texture.
+        level: the level-of-detail number.
+        internalformat: the number of color components in the texture.
+        width: the width of the texture image.
+        height: the height of the texture image.
+        depth: the depth of the texture image, or the number of layers in a
+            texture array.
+        border: this value must be 0.
+        format: the format of the pixel data.
+        type: the data type of the pixel data.
+        pixels: a pointer to the image data in memory.
     '''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.enum, t.enum, t.void)
@@ -46,24 +50,20 @@ def tex_image3_d(target, level, internalformat, width, height, depth, border, fo
 @binds(dll)
 def tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels):
     '''
-    specify a three-dimensional texture subimage
+    specify a three-dimensional texture subimage.
     
     Args:
-        target: Specifies the target to which the texture is bound for
-            gl.tex_sub_image3D
-        level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture
-            array
-        yoffset: Specifies a texel offset in the y direction within the texture
-            array
-        zoffset: Specifies a texel offset in the z direction within the texture
-            array
-        width: Specifies the width of the texture subimage
-        height: Specifies the height of the texture subimage
-        depth: Specifies the depth of the texture subimage
-        format: Specifies the format of the pixel data
-        type: Specifies the data type of the pixel data
-        pixels: Specifies a pointer to the image data in memory
+        target: the target to which the texture is bound for gltexsubimage3d.
+        level: the level-of-detail number.
+        xoffset: a texel offset in the x direction within the texture array.
+        yoffset: a texel offset in the y direction within the texture array.
+        zoffset: a texel offset in the z direction within the texture array.
+        width: the width of the texture subimage.
+        height: the height of the texture subimage.
+        depth: the depth of the texture subimage.
+        format: the format of the pixel data.
+        type: the data type of the pixel data.
+        pixels: a pointer to the image data in memory.
     '''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.int, t.int, t.sizei, t.sizei)
@@ -71,24 +71,21 @@ def tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, width, height, de
 @binds(dll)
 def copy_tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, x, y, width, height):
     '''
-    copy a three-dimensional texture subimage
+    copy a three-dimensional texture subimage.
     
     Args:
-        target: Specifies the target to which the texture object is bound for
-            gl.copy_tex_sub_image3D function
-        level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture
-            array
-        yoffset: Specifies a texel offset in the y direction within the texture
-            array
-        zoffset: Specifies a texel offset in the z direction within the texture
-            array
-        x: Specify the window coordinates of the lower left corner of the
-            rectangular region of pixels to be copied
-        y: Specify the window coordinates of the lower left corner of the
-            rectangular region of pixels to be copied
-        width: Specifies the width of the texture subimage
-        height: Specifies the height of the texture subimage
+        target: the target to which the texture object is bound for
+            glcopytexsubimage3d function.
+        level: the level-of-detail number.
+        xoffset: a texel offset in the x direction within the texture array.
+        yoffset: a texel offset in the y direction within the texture array.
+        zoffset: a texel offset in the z direction within the texture array.
+        x: the window coordinates of the lower left corner of the rectangular
+            region of pixels to be copied.
+        y: the window coordinates of the lower left corner of the rectangular
+            region of pixels to be copied.
+        width: the width of the texture subimage.
+        height: the height of the texture subimage.
     '''
 
 UNSIGNED_BYTE_3_3_2 = 0x8032
