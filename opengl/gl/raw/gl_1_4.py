@@ -6,20 +6,41 @@ from opengl.gl.raw.bindings import *
 @accepts(t.enum, t.enum, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
-def blend_func_separate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha):
-    '''specify pixel arithmetic for RGB and alpha components separately'''
+def blend_func_separate(sfactorrgb, dfactorrgb, sfactoralpha, dfactoralpha):
+    '''
+    specify pixel arithmetic for RGB and alpha components separately
+    
+    Args:
+    '''
 
 @accepts(t.enum, POINTER(t.int), POINTER(t.sizei), t.sizei)
 @returns(t.void)
 @binds(dll)
 def multi_draw_arrays(mode, first, count, drawcount):
-    '''render multiple sets of primitives from array data'''
+    '''
+    render multiple sets of primitives from array data
+    
+    Args:
+        mode: Specifies what kind of primitives to render
+        first: Points to an array of starting indices in the enabled arrays
+        count: Points to an array of the number of indices to be rendered
+        drawcount: Specifies the size of the first and count
+    '''
 
 @accepts(t.enum, POINTER(t.sizei), t.enum, t.void, t.sizei)
 @returns(t.void)
 @binds(dll)
 def multi_draw_elements(mode, count, type, indices, drawcount):
-    '''render multiple sets of primitives by specifying indices of array data elements'''
+    '''
+    render multiple sets of primitives by specifying indices of array data elements
+    
+    Args:
+        mode: Specifies what kind of primitives to render
+        count: Points to an array of the elements counts
+        type: Specifies the type of the values in indices
+        indices: Specifies a pointer to the location where the indices are stored
+        drawcount: Specifies the size of the count and indices arrays
+    '''
 
 @accepts(t.enum, t.float)
 @returns(t.void)
@@ -73,7 +94,14 @@ def fog_coorddv(coord):
 @returns(t.void)
 @binds(dll)
 def fog_coord_pointer(type, stride, pointer):
-    '''define an array of fog coordinates'''
+    '''
+    define an array of fog coordinates
+    
+    Args:
+        type: Specifies the data type of each fog coordinate
+        stride: Specifies the byte offset between consecutive fog coordinates
+        pointer: Specifies a pointer to the first coordinate of the first fog coordinate in the array
+    '''
 
 @accepts(t.byte, t.byte, t.byte)
 @returns(t.void)
@@ -175,7 +203,15 @@ def secondary_color3usv(v):
 @returns(t.void)
 @binds(dll)
 def secondary_color_pointer(size, type, stride, pointer):
-    '''define an array of secondary colors'''
+    '''
+    define an array of secondary colors
+    
+    Args:
+        size: Specifies the number of components per color
+        type: Specifies the data type of each color component in the array
+        stride: Specifies the byte offset between consecutive colors
+        pointer: Specifies a pointer to the first component of the first color element in the array
+    '''
 
 @accepts(t.double, t.double)
 @returns(t.void)
@@ -316,13 +352,23 @@ COMPARE_R_TO_TEXTURE = 0x884E
 @returns(t.void)
 @binds(dll)
 def blend_color(red, green, blue, alpha):
-    '''set the blend color'''
+    '''
+    set the blend color
+    
+    Args:
+        red, green, blue, alpha: specify the components of GL_BLEND_COLOR
+    '''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
 def blend_equation(mode):
-    '''specify the equation used for both the RGB blend equation and the Alpha blend equation'''
+    '''
+    specify the equation used for both the RGB blend equation and the Alpha blend equation
+    
+    Args:
+        mode: specifies how source and destination colors are combined
+    '''
 
 FUNC_ADD = 0x8006
 FUNC_SUBTRACT = 0x800A

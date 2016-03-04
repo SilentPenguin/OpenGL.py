@@ -50,11 +50,11 @@ class write:
     def command(lines, command):
         name = command['name']
         ret, params, types = write.command_values[name]
-        lines.append('@accepts({})'.format(types))
+        lines.append('@accepts({})'.format(', '.join(types)))
         lines.append('@returns({})'.format(ret))
         lines.append('@binds(dll)')
-        lines.append('def {}({}):'.format(pep.command(name), params))
-        document.command(lines, command)
+        lines.append('def {}({}):'.format(pep.command(name), ', '.join(params)))
+        document.command(lines, command, params)
         lines.append('')
         
     @staticmethod
@@ -70,29 +70,39 @@ class write:
             
 class document:
     @staticmethod
-    def command(lines, command):
-        for i in [4,3,2]:
-            path = MAN_PATH.format(i, command['name'])
-            if document.try_command(lines, path): break
-            if i == 2: lines.append('    pass')
+    def command(lines, command, params):
+        for i in (4,3,2):
+            try:
+                path = MAN_PATH.format(i, command['name'])
+                doc = rxml.Document(path)
+                lines.append('    \'\'\'')
+                document.command_description(lines, doc)
+                document.command_args(lines, params, doc)
+                lines.append('    \'\'\'')
+                break
+            except IOError:
+                if i == 2: lines.append('    pass')
             
     @staticmethod
-    def try_command(lines, path):
-        def pep_reference(match):
-            s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', match.group(1))
-            return 'gl.' + re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
-        try:
-            doc = rxml.Document(path)
-            text = doc.refnamediv[0].refpurpose[0].node_text
-            text = text.replace('\n', '').replace('\r', '')
-            text = ' '.join(text.split())
-            text = re.sub('<citerefentry><refentrytitle>gl(.*)<\/refentrytitle><\/citerefentry>', pep_reference, text)
-            doc_string = '    \'\'\'{}\'\'\''.format(text)
-            lines.append(doc_string)
-            return True
-        except IOError as e:
-            return False
-    
+    def command_description(lines, doc):
+        text = doc.refnamediv[0].refpurpose[0].node_text
+        text = pep.doc_body(text)
+        lines.append('    ' + text)
+        
+    @staticmethod
+    def command_args(lines, params, doc):
+        lines.append('    ')
+        lines.append('    Args:')
+        if not doc.refsect1 or not doc.refsect1[0].variablelist or not doc.refsect1[0].variablelist[0].varlistentry: return
+        variable_list = doc.refsect1[0].variablelist[0].varlistentry
+        for param in variable_list:
+            if not param.term: break
+            name = ', '.join(term.parameter[0].text.lower() for term in param.term if term.parameter and term.parameter[0].text.lower() in params)
+            if not name: continue
+            text = param.listitem[0].para[0].node_text
+            text = pep.doc_body(text)
+            lines.append('        {}: {}'.format(name, text))
+            
 class define:
     @staticmethod
     def commands(doc):
@@ -100,8 +110,8 @@ class define:
             command.proto[0].name[0].text:
             (
                 pep.type(command.proto[0].ptype[0].text, command.proto[0].ptype[0].tail) if command.proto and command.proto[0].ptype else 't.void',
-                ', '.join(param.name[0].text for param in command.param),
-                ', '.join(pep.type(param.ptype[0].text, param.ptype[0].tail) if param.ptype else 't.void' for param in command.param),
+                tuple(param.name[0].text.lower() for param in command.param),
+                tuple(pep.type(param.ptype[0].text, param.ptype[0].tail) if param.ptype else 't.void' for param in command.param),
             )
             for group in doc.commands
             for command in group.command
@@ -142,5 +152,15 @@ class pep:
             pointer_str = 't.char_p' if string == 'char' and i == 0 else 'POINTER({})'
             format_str = pointer_str.format(format_str)
         return format_str.format(string)
+        
+    @staticmethod
+    def doc_body(string):
+        import lxml.html
+        string = string.split(".")[0]
+        string = string.replace('\n', '').replace('\r', '')
+        string = ' '.join(string.split())
+        string = lxml.html.fromstring(string).text_content().encode('unicode-escape')
+        return string
+        
 
 if __name__ == '__main__': main()

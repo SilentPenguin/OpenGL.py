@@ -7,43 +7,81 @@ from opengl.gl.raw.bindings import *
 @returns(t.void)
 @binds(dll)
 def cull_face(mode):
-    '''specify whether front- or back-facing facets can be culled'''
+    '''
+    specify whether front- or back-facing facets can be culled
+    
+    Args:
+        mode: Specifies whether front- or back-facing facets are candidates for culling
+    '''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
 def front_face(mode):
-    '''define front- and back-facing polygons'''
+    '''
+    define front- and back-facing polygons
+    
+    Args:
+        mode: Specifies the orientation of front-facing polygons
+    '''
 
 @accepts(t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
 def hint(target, mode):
-    '''specify implementation-specific hints'''
+    '''
+    specify implementation-specific hints
+    
+    Args:
+        target: Specifies a symbolic constant indicating the behavior to be controlled
+        mode: Specifies a symbolic constant indicating the desired behavior
+    '''
 
 @accepts(t.float)
 @returns(t.void)
 @binds(dll)
 def line_width(width):
-    '''specify the width of rasterized lines'''
+    '''
+    specify the width of rasterized lines
+    
+    Args:
+        width: Specifies the width of rasterized lines
+    '''
 
 @accepts(t.float)
 @returns(t.void)
 @binds(dll)
 def point_size(size):
-    '''specify the diameter of rasterized points'''
+    '''
+    specify the diameter of rasterized points
+    
+    Args:
+        size: Specifies the diameter of rasterized points
+    '''
 
 @accepts(t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
 def polygon_mode(face, mode):
-    '''select a polygon rasterization mode'''
+    '''
+    select a polygon rasterization mode
+    
+    Args:
+        face: Specifies the polygons that mode applies to
+        mode: Specifies how polygons will be rasterized
+    '''
 
 @accepts(t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def scissor(x, y, width, height):
-    '''define the scissor box'''
+    '''
+    define the scissor box
+    
+    Args:
+        x, y: Specify the lower left corner of the scissor box
+        width, height: Specify the width and height of the scissor box
+    '''
 
 @accepts(t.enum, t.enum, t.float)
 @returns(t.void)
@@ -73,61 +111,124 @@ def tex_parameteriv(target, pname, params):
 @returns(t.void)
 @binds(dll)
 def tex_image1_d(target, level, internalformat, width, border, format, type, pixels):
-    '''specify a one-dimensional texture image'''
+    '''
+    specify a one-dimensional texture image
+    
+    Args:
+        target: Specifies the target texture
+        level: Specifies the level-of-detail number
+        internalformat: Specifies the number of color components in the texture
+        width: Specifies the width of the texture image
+        border: This value must be 0
+        format: Specifies the format of the pixel data
+        type: Specifies the data type of the pixel data
+    '''
 
 @accepts(t.enum, t.int, t.int, t.sizei, t.sizei, t.int, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def tex_image2_d(target, level, internalformat, width, height, border, format, type, pixels):
-    '''specify a two-dimensional texture image'''
+    '''
+    specify a two-dimensional texture image
+    
+    Args:
+        target: Specifies the target texture
+        level: Specifies the level-of-detail number
+        internalformat: Specifies the number of color components in the texture
+        width: Specifies the width of the texture image
+        height: Specifies the height of the texture image, or the number of layers in a texture array, in the case of the GL_TEXTURE_1D_ARRAY and GL_PROXY_TEXTURE_1D_ARRAY targets
+        border: This value must be 0
+        format: Specifies the format of the pixel data
+        type: Specifies the data type of the pixel data
+    '''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
 def draw_buffer(buf):
-    '''specify which color buffers are to be drawn into'''
+    '''
+    specify which color buffers are to be drawn into
+    
+    Args:
+        buf: For default framebuffer, the argument specifies up to four color buffers to be drawn into
+    '''
 
 @accepts(t.bitfield)
 @returns(t.void)
 @binds(dll)
 def clear(mask):
-    '''clear buffers to preset values'''
+    '''
+    clear buffers to preset values
+    
+    Args:
+        mask: Bitwise OR of masks that indicate the buffers to be cleared
+    '''
 
 @accepts(t.float, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
 def clear_color(red, green, blue, alpha):
-    '''specify clear values for the color buffers'''
+    '''
+    specify clear values for the color buffers
+    
+    Args:
+        red, green, blue, alpha: Specify the red, green, blue, and alpha values used when the color buffers are cleared
+    '''
 
 @accepts(t.int)
 @returns(t.void)
 @binds(dll)
 def clear_stencil(s):
-    '''specify the clear value for the stencil buffer'''
+    '''
+    specify the clear value for the stencil buffer
+    
+    Args:
+        s: Specifies the index used when the stencil buffer is cleared
+    '''
 
 @accepts(t.double)
 @returns(t.void)
 @binds(dll)
 def clear_depth(depth):
-    '''specify the clear value for the depth buffer'''
+    '''
+    specify the clear value for the depth buffer
+    
+    Args:
+        depth: Specifies the depth value used when the depth buffer is cleared
+    '''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
 def stencil_mask(mask):
-    '''control the front and back writing of individual bits in the stencil planes'''
+    '''
+    control the front and back writing of individual bits in the stencil planes
+    
+    Args:
+        mask: Specifies a bit mask to enable and disable writing of individual bits in the stencil planes
+    '''
 
 @accepts(t.boolean, t.boolean, t.boolean, t.boolean)
 @returns(t.void)
 @binds(dll)
 def color_mask(red, green, blue, alpha):
-    '''enable and disable writing of frame buffer color components'''
+    '''
+    enable and disable writing of frame buffer color components
+    
+    Args:
+        red, green, blue, alpha: Specify whether red, green, blue, and alpha are to be written into the frame buffer
+    '''
 
 @accepts(t.boolean)
 @returns(t.void)
 @binds(dll)
 def depth_mask(flag):
-    '''enable or disable writing into the depth buffer'''
+    '''
+    enable or disable writing into the depth buffer
+    
+    Args:
+        flag: Specifies whether the depth buffer is enabled for writing
+    '''
 
 @accepts(t.enum)
 @returns(t.void)
@@ -139,49 +240,89 @@ def disable(cap):
 @returns(t.void)
 @binds(dll)
 def enable(cap):
-    '''enable or disable server-side GL capabilities'''
+    '''
+    enable or disable server-side GL capabilities
+    
+    Args:
+        cap: Specifies a symbolic constant indicating a GL capability
+    '''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
 def finish():
-    '''block until all GL execution is complete'''
+    '''
+    block until all GL execution is complete
+    
+    Args:
+    '''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
 def flush():
-    '''force execution of GL commands in finite time'''
+    '''
+    force execution of GL commands in finite time
+    
+    Args:
+    '''
 
 @accepts(t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
 def blend_func(sfactor, dfactor):
-    '''specify pixel arithmetic'''
+    '''
+    specify pixel arithmetic
+    
+    Args:
+        sfactor: Specifies how the red, green, blue, and alpha source blending factors are computed
+        dfactor: Specifies how the red, green, blue, and alpha destination blending factors are computed
+    '''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
 def logic_op(opcode):
-    '''specify a logical pixel operation for rendering'''
+    '''
+    specify a logical pixel operation for rendering
+    
+    Args:
+        opcode: Specifies a symbolic constant that selects a logical operation
+    '''
 
 @accepts(t.enum, t.int, t.uint)
 @returns(t.void)
 @binds(dll)
 def stencil_func(func, ref, mask):
-    '''set front and back function and reference value for stencil testing'''
+    '''
+    set front and back function and reference value for stencil testing
+    
+    Args:
+        func: Specifies the test function
+        ref: Specifies the reference value for the stencil test
+        mask: Specifies a mask that is ANDed with both the reference value and the stored stencil value when the test is done
+    '''
 
 @accepts(t.enum, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
 def stencil_op(fail, zfail, zpass):
-    '''set front and back stencil test actions'''
+    '''
+    set front and back stencil test actions
+    
+    Args:
+    '''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
 def depth_func(func):
-    '''specify the value used for depth buffer comparisons'''
+    '''
+    specify the value used for depth buffer comparisons
+    
+    Args:
+        func: Specifies the depth comparison function
+    '''
 
 @accepts(t.enum, t.float)
 @returns(t.void)
@@ -199,13 +340,25 @@ def pixel_storei(pname, param):
 @returns(t.void)
 @binds(dll)
 def read_buffer(src):
-    '''select a color buffer source for pixels'''
+    '''
+    select a color buffer source for pixels
+    
+    Args:
+    '''
 
 @accepts(t.int, t.int, t.sizei, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def read_pixels(x, y, width, height, format, type, pixels):
-    '''read a block of pixels from the frame buffer'''
+    '''
+    read a block of pixels from the frame buffer
+    
+    Args:
+        x, y: Specify the window coordinates of the first pixel that is read from the frame buffer
+        width, height: Specify the dimensions of the pixel rectangle
+        format: Specifies the format of the pixel data
+        type: Specifies the data type of the pixel data
+    '''
 
 @accepts(t.enum, POINTER(t.boolean))
 @returns(t.void)
@@ -223,7 +376,11 @@ def get_doublev(pname, data):
 @returns(t.enum)
 @binds(dll)
 def get_error():
-    '''return error information'''
+    '''
+    return error information
+    
+    Args:
+    '''
 
 @accepts(t.enum, POINTER(t.float))
 @returns(t.void)
@@ -241,13 +398,27 @@ def get_integerv(pname, data):
 @returns(POINTER(t.ubyte))
 @binds(dll)
 def get_string(name):
-    '''return a string describing the current GL connection'''
+    '''
+    return a string describing the current GL connection
+    
+    Args:
+        name: Specifies a symbolic constant, one of GL_VENDOR, GL_RENDERER, GL_VERSION, or GL_SHADING_LANGUAGE_VERSION
+    '''
 
 @accepts(t.enum, t.int, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def get_tex_image(target, level, format, type, pixels):
-    '''return a texture image'''
+    '''
+    return a texture image
+    
+    Args:
+        target: Specifies the target to which the texture is bound for glGetTexImage and glGetnTexImage functions
+        level: Specifies the level-of-detail number of the desired image
+        format: Specifies a pixel format for the returned data
+        type: Specifies a pixel type for the returned data
+        pixels: Returns the texture image
+    '''
 
 @accepts(t.enum, t.enum, POINTER(t.float))
 @returns(t.void)
@@ -277,25 +448,46 @@ def get_tex_level_parameteriv(target, level, pname, params):
 @returns(t.boolean)
 @binds(dll)
 def is_enabled(cap):
-    '''test whether a capability is enabled'''
+    '''
+    test whether a capability is enabled
+    
+    Args:
+        cap: Specifies a symbolic constant indicating a GL capability
+    '''
 
 @accepts(t.double, t.double)
 @returns(t.void)
 @binds(dll)
 def depth_range(near, far):
-    '''specify mapping of depth values from normalized device coordinates to window coordinates'''
+    '''
+    specify mapping of depth values from normalized device coordinates to window coordinates
+    
+    Args:
+    '''
 
 @accepts(t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def viewport(x, y, width, height):
-    '''set the viewport'''
+    '''
+    set the viewport
+    
+    Args:
+        x, y: Specify the lower left corner of the viewport rectangle, in pixels
+        width, height: Specify the width and height of the viewport
+    '''
 
 @accepts(t.uint, t.enum)
 @returns(t.void)
 @binds(dll)
 def new_list(list, mode):
-    '''create or replace a display list'''
+    '''
+    create or replace a display list
+    
+    Args:
+        list: Specifies the display-list name
+        mode: Specifies the compilation mode, which can be GL_COMPILE or GL_COMPILE_AND_EXECUTE
+    '''
 
 @accepts()
 @returns(t.void)
@@ -307,43 +499,84 @@ def end_list():
 @returns(t.void)
 @binds(dll)
 def call_list(list):
-    '''execute a display list'''
+    '''
+    execute a display list
+    
+    Args:
+        list: Specifies the integer name of the display list to be executed
+    '''
 
 @accepts(t.sizei, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def call_lists(n, type, lists):
-    '''execute a list of display lists'''
+    '''
+    execute a list of display lists
+    
+    Args:
+        n: Specifies the number of display lists to be executed
+        type: Specifies the type of values in lists
+        lists: Specifies the address of an array of name offsets in the display list
+    '''
 
 @accepts(t.uint, t.sizei)
 @returns(t.void)
 @binds(dll)
 def delete_lists(list, range):
-    '''delete a contiguous group of display lists'''
+    '''
+    delete a contiguous group of display lists
+    
+    Args:
+        list: Specifies the integer name of the first display list to delete
+        range: Specifies the number of display lists to delete
+    '''
 
 @accepts(t.sizei)
 @returns(t.uint)
 @binds(dll)
 def gen_lists(range):
-    '''generate a contiguous set of empty display lists'''
+    '''
+    generate a contiguous set of empty display lists
+    
+    Args:
+        range: Specifies the number of contiguous empty display lists to be generated
+    '''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
 def list_base(base):
-    '''set the display-list base for gl.call_lists'''
+    '''
+    set the display-list base for glCallLists
+    
+    Args:
+        base: Specifies an integer offset that will be added to glCallLists offsets to generate display-list names
+    '''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
 def begin(mode):
-    '''delimit the vertices of a primitive or a group of like primitives'''
+    '''
+    delimit the vertices of a primitive or a group of like primitives
+    
+    Args:
+        mode: Specifies the primitive or primitives that will be created from vertices presented between glBegin and the subsequent glEnd
+    '''
 
 @accepts(t.sizei, t.sizei, t.float, t.float, t.float, t.float, POINTER(t.ubyte))
 @returns(t.void)
 @binds(dll)
 def bitmap(width, height, xorig, yorig, xmove, ymove, bitmap):
-    '''draw a bitmap'''
+    '''
+    draw a bitmap
+    
+    Args:
+        width, height: Specify the pixel width and height of the bitmap image
+        xorig, yorig: Specify the location of the origin in the bitmap image
+        xmove, ymove: Specify the x and y offsets to be added to the current raster position after the bitmap is drawn
+        bitmap: Specifies the address of the bitmap image
+    '''
 
 @accepts(t.byte, t.byte, t.byte)
 @returns(t.void)
@@ -541,7 +774,12 @@ def color4usv(v):
 @returns(t.void)
 @binds(dll)
 def edge_flag(flag):
-    '''flag edges as either boundary or nonboundary'''
+    '''
+    flag edges as either boundary or nonboundary
+    
+    Args:
+        flag: Specifies the current edge flag value, either GL_TRUE or GL_FALSE
+    '''
 
 @accepts(POINTER(t.boolean))
 @returns(t.void)
@@ -1195,13 +1433,25 @@ def vertex4sv(v):
 @returns(t.void)
 @binds(dll)
 def clip_plane(plane, equation):
-    '''specify a plane against which all geometry is clipped'''
+    '''
+    specify a plane against which all geometry is clipped
+    
+    Args:
+        plane: Specifies which clipping plane is being positioned
+        equation: Specifies the address of an array of four double-precision floating-point values
+    '''
 
 @accepts(t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
 def color_material(face, mode):
-    '''cause a material color to track the current color'''
+    '''
+    cause a material color to track the current color
+    
+    Args:
+        face: Specifies whether front, back, or both front and back material parameters should track the current color
+        mode: Specifies which of several material parameters track the current color
+    '''
 
 @accepts(t.enum, t.float)
 @returns(t.void)
@@ -1279,7 +1529,13 @@ def light_modeliv(pname, params):
 @returns(t.void)
 @binds(dll)
 def line_stipple(factor, pattern):
-    '''specify the line stipple pattern'''
+    '''
+    specify the line stipple pattern
+    
+    Args:
+        factor: Specifies a multiplier for each bit in the line stipple pattern
+        pattern: Specifies a 16-bit integer whose bit pattern determines which fragments of a line will be drawn when the line is rasterized
+    '''
 
 @accepts(t.enum, t.enum, t.float)
 @returns(t.void)
@@ -1309,13 +1565,22 @@ def materialiv(face, pname, params):
 @returns(t.void)
 @binds(dll)
 def polygon_stipple(mask):
-    '''set the polygon stippling pattern'''
+    '''
+    set the polygon stippling pattern
+    
+    Args:
+    '''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
 def shade_model(mode):
-    '''select flat or smooth shading'''
+    '''
+    select flat or smooth shading
+    
+    Args:
+        mode: Specifies a symbolic value representing a shading technique
+    '''
 
 @accepts(t.enum, t.enum, t.float)
 @returns(t.void)
@@ -1381,37 +1646,69 @@ def tex_geniv(coord, pname, params):
 @returns(t.void)
 @binds(dll)
 def feedback_buffer(size, type, buffer):
-    '''controls feedback mode'''
+    '''
+    controls feedback mode
+    
+    Args:
+        size: Specifies the maximum number of values that can be written into buffer
+        type: Specifies a symbolic constant that describes the information that will be returned for each vertex
+        buffer: Returns the feedback data
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def select_buffer(size, buffer):
-    '''establish a buffer for selection mode values'''
+    '''
+    establish a buffer for selection mode values
+    
+    Args:
+        size: Specifies the size of buffer
+        buffer: Returns the selection data
+    '''
 
 @accepts(t.enum)
 @returns(t.int)
 @binds(dll)
 def render_mode(mode):
-    '''set rasterization mode'''
+    '''
+    set rasterization mode
+    
+    Args:
+        mode: Specifies the rasterization mode
+    '''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
 def init_names():
-    '''initialize the name stack'''
+    '''
+    initialize the name stack
+    
+    Args:
+    '''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
 def load_name(name):
-    '''load a name onto the name stack'''
+    '''
+    load a name onto the name stack
+    
+    Args:
+        name: Specifies a name that will replace the top value on the name stack
+    '''
 
 @accepts(t.float)
 @returns(t.void)
 @binds(dll)
 def pass_through(token):
-    '''place a marker in the feedback buffer'''
+    '''
+    place a marker in the feedback buffer
+    
+    Args:
+        token: Specifies a marker value to be placed in the feedback buffer following a GL_PASS_THROUGH_TOKEN
+    '''
 
 @accepts()
 @returns(t.void)
@@ -1423,31 +1720,57 @@ def pop_name():
 @returns(t.void)
 @binds(dll)
 def push_name(name):
-    '''push and pop the name stack'''
+    '''
+    push and pop the name stack
+    
+    Args:
+        name: Specifies a name that will be pushed onto the name stack
+    '''
 
 @accepts(t.float, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
 def clear_accum(red, green, blue, alpha):
-    '''specify clear values for the accumulation buffer'''
+    '''
+    specify clear values for the accumulation buffer
+    
+    Args:
+        red, green, blue, alpha: Specify the red, green, blue, and alpha values used when the accumulation buffer is cleared
+    '''
 
 @accepts(t.float)
 @returns(t.void)
 @binds(dll)
 def clear_index(c):
-    '''specify the clear value for the color index buffers'''
+    '''
+    specify the clear value for the color index buffers
+    
+    Args:
+        c: Specifies the index used when the color index buffers are cleared
+    '''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
 def index_mask(mask):
-    '''control the writing of individual bits in the color index buffers'''
+    '''
+    control the writing of individual bits in the color index buffers
+    
+    Args:
+        mask: Specifies a bit mask to enable and disable the writing of individual bits in the color index buffers
+    '''
 
 @accepts(t.enum, t.float)
 @returns(t.void)
 @binds(dll)
 def accum(op, value):
-    '''operate on the accumulation buffer'''
+    '''
+    operate on the accumulation buffer
+    
+    Args:
+        op: Specifies the accumulation buffer operation
+        value: Specifies a floating-point value used in the accumulation buffer operation
+    '''
 
 @accepts()
 @returns(t.void)
@@ -1459,7 +1782,12 @@ def pop_attrib():
 @returns(t.void)
 @binds(dll)
 def push_attrib(mask):
-    '''push and pop the server attribute stack'''
+    '''
+    push and pop the server attribute stack
+    
+    Args:
+        mask: Specifies a mask that indicates which attributes to save
+    '''
 
 @accepts(t.enum, t.double, t.double, t.int, t.int, POINTER(t.double))
 @returns(t.void)
@@ -1585,13 +1913,24 @@ def eval_point2(i, j):
 @returns(t.void)
 @binds(dll)
 def alpha_func(func, ref):
-    '''specify the alpha test function'''
+    '''
+    specify the alpha test function
+    
+    Args:
+        func: Specifies the alpha comparison function
+        ref: Specifies the reference value that incoming alpha values are compared to
+    '''
 
 @accepts(t.float, t.float)
 @returns(t.void)
 @binds(dll)
 def pixel_zoom(xfactor, yfactor):
-    '''specify the pixel zoom factors'''
+    '''
+    specify the pixel zoom factors
+    
+    Args:
+        xfactor, yfactor: Specify the x and y zoom factors for pixel write operations
+    '''
 
 @accepts(t.enum, t.float)
 @returns(t.void)
@@ -1627,19 +1966,39 @@ def pixel_mapusv(map, mapsize, values):
 @returns(t.void)
 @binds(dll)
 def copy_pixels(x, y, width, height, type):
-    '''copy pixels in the frame buffer'''
+    '''
+    copy pixels in the frame buffer
+    
+    Args:
+        x, y: Specify the window coordinates of the lower left corner of the rectangular region of pixels to be copied
+        width, height: Specify the dimensions of the rectangular region of pixels to be copied
+        type: Specifies whether color values, depth values, or stencil values are to be copied
+    '''
 
 @accepts(t.sizei, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def draw_pixels(width, height, format, type, pixels):
-    '''write a block of pixels to the frame buffer'''
+    '''
+    write a block of pixels to the frame buffer
+    
+    Args:
+        width, height: Specify the dimensions of the pixel rectangle to be written into the frame buffer
+        format: Specifies the format of the pixel data
+        type: Specifies the data type for data
+    '''
 
 @accepts(t.enum, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
 def get_clip_plane(plane, equation):
-    '''return the coefficients of the specified clipping plane'''
+    '''
+    return the coefficients of the specified clipping plane
+    
+    Args:
+        plane: Specifies a clipping plane
+        equation: Returns four double-precision values that are the coefficients of the plane equation of plane in eye coordinates
+    '''
 
 @accepts(t.enum, t.enum, POINTER(t.float))
 @returns(t.void)
@@ -1705,7 +2064,11 @@ def get_pixel_mapusv(map, values):
 @returns(t.void)
 @binds(dll)
 def get_polygon_stipple(mask):
-    '''return the polygon stipple pattern'''
+    '''
+    return the polygon stipple pattern
+    
+    Args:
+    '''
 
 @accepts(t.enum, t.enum, POINTER(t.float))
 @returns(t.void)
@@ -1741,19 +2104,34 @@ def get_tex_geniv(coord, pname, params):
 @returns(t.boolean)
 @binds(dll)
 def is_list(list):
-    '''determine if a name corresponds to a display list'''
+    '''
+    determine if a name corresponds to a display list
+    
+    Args:
+        list: Specifies a potential display list name
+    '''
 
 @accepts(t.double, t.double, t.double, t.double, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def frustum(left, right, bottom, top, zNear, zFar):
-    '''multiply the current matrix by a perspective matrix'''
+def frustum(left, right, bottom, top, znear, zfar):
+    '''
+    multiply the current matrix by a perspective matrix
+    
+    Args:
+        left, right: Specify the coordinates for the left and right vertical clipping planes
+        bottom, top: Specify the coordinates for the bottom and top horizontal clipping planes
+    '''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
 def load_identity():
-    '''replace the current matrix with the identity matrix'''
+    '''
+    replace the current matrix with the identity matrix
+    
+    Args:
+    '''
 
 @accepts(POINTER(t.float))
 @returns(t.void)
@@ -1771,7 +2149,12 @@ def load_matrixd(m):
 @returns(t.void)
 @binds(dll)
 def matrix_mode(mode):
-    '''specify which matrix is the current matrix'''
+    '''
+    specify which matrix is the current matrix
+    
+    Args:
+        mode: Specifies which matrix stack is the target for subsequent matrix operations
+    '''
 
 @accepts(POINTER(t.float))
 @returns(t.void)
@@ -1788,8 +2171,14 @@ def mult_matrixd(m):
 @accepts(t.double, t.double, t.double, t.double, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def ortho(left, right, bottom, top, zNear, zFar):
-    '''multiply the current matrix with an orthographic matrix'''
+def ortho(left, right, bottom, top, znear, zfar):
+    '''
+    multiply the current matrix with an orthographic matrix
+    
+    Args:
+        left, right: Specify the coordinates for the left and right vertical clipping planes
+        bottom, top: Specify the coordinates for the bottom and top horizontal clipping planes
+    '''
 
 @accepts()
 @returns(t.void)
@@ -1801,7 +2190,11 @@ def pop_matrix():
 @returns(t.void)
 @binds(dll)
 def push_matrix():
-    '''push and pop the current matrix stack'''
+    '''
+    push and pop the current matrix stack
+    
+    Args:
+    '''
 
 @accepts(t.double, t.double, t.double, t.double)
 @returns(t.void)

@@ -7,14 +7,28 @@ VERTEX_ATTRIB_ARRAY_DIVISOR = 0x88FE
 @accepts(t.uint, t.uint, t.uint, t.char_p)
 @returns(t.void)
 @binds(dll)
-def bind_frag_data_location_indexed(program, colorNumber, index, name):
-    '''bind a user-defined varying out variable to a fragment shader color number and index'''
+def bind_frag_data_location_indexed(program, colornumber, index, name):
+    '''
+    bind a user-defined varying out variable to a fragment shader color number and index
+    
+    Args:
+        program: The name of the program containing varying out variable whose binding to modify
+        colornumber: The color number to bind the user-defined varying out variable to
+        index: The index of the color input to bind the user-defined varying out variable to
+        name: The name of the user-defined varying out variable whose binding to modify
+    '''
 
 @accepts(t.uint, t.char_p)
 @returns(t.int)
 @binds(dll)
 def get_frag_data_index(program, name):
-    '''query the bindings of color indices to user-defined varying out variables'''
+    '''
+    query the bindings of color indices to user-defined varying out variables
+    
+    Args:
+        program: The name of the program containing varying out variable whose binding to query
+        name: The name of the user-defined varying out variable whose index to query
+    '''
 
 SRC1_COLOR = 0x88F9
 ONE_MINUS_SRC1_COLOR = 0x88FA
@@ -25,25 +39,45 @@ ANY_SAMPLES_PASSED = 0x8C2F
 @returns(t.void)
 @binds(dll)
 def gen_samplers(count, samplers):
-    '''generate sampler object names'''
+    '''
+    generate sampler object names
+    
+    Args:
+        samplers: Specifies an array in which the generated sampler object names are stored
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def delete_samplers(count, samplers):
-    '''delete named sampler objects'''
+    '''
+    delete named sampler objects
+    
+    Args:
+        samplers: Specifies an array of sampler objects to be deleted
+    '''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
 def is_sampler(sampler):
-    '''determine if a name corresponds to a sampler object'''
+    '''
+    determine if a name corresponds to a sampler object
+    
+    Args:
+    '''
 
 @accepts(t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
 def bind_sampler(unit, sampler):
-    '''bind a named sampler to a texturing target'''
+    '''
+    bind a named sampler to a texturing target
+    
+    Args:
+        unit: Specifies the index of the texture unit to which the sampler is bound
+        sampler: Specifies the name of a sampler
+    '''
 
 @accepts(t.uint, t.enum, t.int)
 @returns(t.void)
@@ -116,7 +150,13 @@ TEXTURE_SWIZZLE_RGBA = 0x8E46
 @returns(t.void)
 @binds(dll)
 def query_counter(id, target):
-    '''record the GL time into a query object after all previous commands have reached the GL server but have not yet necessarily executed.'''
+    '''
+    record the GL time into a query object after all previous commands have reached the GL server but have not yet necessarily executed
+    
+    Args:
+        id: Specify the name of a query object into which to record the GL time
+        target: Specify the counter to query
+    '''
 
 @accepts(t.uint, t.enum, POINTER(t.int64))
 @returns(t.void)
@@ -136,7 +176,13 @@ TIMESTAMP = 0x8E28
 @returns(t.void)
 @binds(dll)
 def vertex_attrib_divisor(index, divisor):
-    '''modify the rate at which generic vertex attributes advance during instanced rendering'''
+    '''
+    modify the rate at which generic vertex attributes advance during instanced rendering
+    
+    Args:
+        index: Specify the index of the generic vertex attribute
+        divisor: Specify the number of instances that will pass between updates of the generic attribute at slot index
+    '''
 
 @accepts(t.uint, t.enum, t.boolean, t.uint)
 @returns(t.void)

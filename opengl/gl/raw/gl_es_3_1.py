@@ -7,13 +7,25 @@ from opengl.gl.raw.bindings import *
 @returns(t.void)
 @binds(dll)
 def dispatch_compute(num_groups_x, num_groups_y, num_groups_z):
-    '''launch one or more compute work groups'''
+    '''
+    launch one or more compute work groups
+    
+    Args:
+        num_groups_x: The number of work groups to be launched in the X dimension
+        num_groups_y: The number of work groups to be launched in the Y dimension
+        num_groups_z: The number of work groups to be launched in the Z dimension
+    '''
 
 @accepts(t.intptr)
 @returns(t.void)
 @binds(dll)
 def dispatch_compute_indirect(indirect):
-    '''launch one or more compute work groups using parameters stored in a buffer'''
+    '''
+    launch one or more compute work groups using parameters stored in a buffer
+    
+    Args:
+        indirect: The offset into the buffer object currently bound to the GL_DISPATCH_INDIRECT_BUFFER buffer target at which the dispatch parameters are stored
+    '''
 
 COMPUTE_SHADER = 0x91B9
 MAX_COMPUTE_UNIFORM_BLOCKS = 0x91BB
@@ -35,13 +47,26 @@ COMPUTE_SHADER_BIT = 0x00000020
 @returns(t.void)
 @binds(dll)
 def draw_arrays_indirect(mode, indirect):
-    '''render primitives from array data, taking parameters from memory'''
+    '''
+    render primitives from array data, taking parameters from memory
+    
+    Args:
+        mode: Specifies what kind of primitives to render
+        indirect: Specifies the address of a structure containing the draw parameters
+    '''
 
 @accepts(t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def draw_elements_indirect(mode, type, indirect):
-    '''render indexed primitives from array data, taking parameters from memory'''
+    '''
+    render indexed primitives from array data, taking parameters from memory
+    
+    Args:
+        mode: Specifies what kind of primitives to render
+        type: Specifies the type of data in the buffer bound to the GL_ELEMENT_ARRAY_BUFFER binding
+        indirect: Specifies the address of a structure containing the draw parameters
+    '''
 
 DRAW_INDIRECT_BUFFER = 0x8F3F
 DRAW_INDIRECT_BUFFER_BINDING = 0x8F43
@@ -50,7 +75,14 @@ MAX_UNIFORM_LOCATIONS = 0x826E
 @returns(t.void)
 @binds(dll)
 def framebuffer_parameteri(target, pname, param):
-    '''set a named parameter of a framebuffer object'''
+    '''
+    set a named parameter of a framebuffer object
+    
+    Args:
+        target: Specifies the target to which the framebuffer is bound for glFramebufferParameteri
+        pname: Specifies the framebuffer parameter to be modified
+        param: The new value for the parameter named pname
+    '''
 
 @accepts(t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
@@ -68,32 +100,56 @@ MAX_FRAMEBUFFER_SAMPLES = 0x9318
 @accepts(t.uint, t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_program_interfaceiv(program, programInterface, pname, params):
+def get_program_interfaceiv(program, programinterface, pname, params):
     pass
 
 @accepts(t.uint, t.enum, t.char_p)
 @returns(t.uint)
 @binds(dll)
-def get_program_resource_index(program, programInterface, name):
-    '''query the index of a named resource within a program'''
+def get_program_resource_index(program, programinterface, name):
+    '''
+    query the index of a named resource within a program
+    
+    Args:
+        program: The name of a program object whose resources to query
+        programinterface: A token identifying the interface within program containing the resource named name
+        name: The name of the resource to query the index of
+    '''
 
 @accepts(t.uint, t.enum, t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_program_resource_name(program, programInterface, index, bufSize, length, name):
-    '''query the name of an indexed resource within a program'''
+def get_program_resource_name(program, programinterface, index, bufsize, length, name):
+    '''
+    query the name of an indexed resource within a program
+    
+    Args:
+        program: The name of a program object whose resources to query
+        programinterface: A token identifying the interface within program containing the indexed resource
+        index: The index of the resource within programInterface of program
+        bufsize: The size of the character array whose address is given by name
+        length: The address of a variable which will receive the length of the resource name
+        name: The address of a character array into which will be written the name of the resource
+    '''
 
 @accepts(t.uint, t.enum, t.uint, t.sizei, POINTER(t.enum), t.sizei, POINTER(t.sizei), POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_program_resourceiv(program, programInterface, index, propCount, props, bufSize, length, params):
+def get_program_resourceiv(program, programinterface, index, propcount, props, bufsize, length, params):
     pass
 
 @accepts(t.uint, t.enum, t.char_p)
 @returns(t.int)
 @binds(dll)
-def get_program_resource_location(program, programInterface, name):
-    '''query the location of a named resource within a program'''
+def get_program_resource_location(program, programinterface, name):
+    '''
+    query the location of a named resource within a program
+    
+    Args:
+        program: The name of a program object whose resources to query
+        programinterface: A token identifying the interface within program containing the resource named name
+        name: The name of the resource to query the location of
+    '''
 
 UNIFORM = 0x92E1
 UNIFORM_BLOCK = 0x92E2
@@ -129,13 +185,26 @@ LOCATION = 0x930E
 @returns(t.void)
 @binds(dll)
 def use_program_stages(pipeline, stages, program):
-    '''bind stages of a program object to a program pipeline'''
+    '''
+    bind stages of a program object to a program pipeline
+    
+    Args:
+        pipeline: Specifies the program pipeline object to which to bind stages from program
+        stages: Specifies a set of program stages to bind to the program pipeline object
+        program: Specifies the program object containing the shader executables to use in pipeline
+    '''
 
 @accepts(t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
 def active_shader_program(pipeline, program):
-    '''set the active program object for a program pipeline object'''
+    '''
+    set the active program object for a program pipeline object
+    
+    Args:
+        pipeline: Specifies the program pipeline object to set the active program object for
+        program: Specifies the program object to set as the active program pipeline object pipeline
+    '''
 
 @accepts(t.enum, t.sizei, POINTER(t.char_p))
 @returns(t.uint)
@@ -147,25 +216,47 @@ def create_shader_programv(type, count, strings):
 @returns(t.void)
 @binds(dll)
 def bind_program_pipeline(pipeline):
-    '''bind a program pipeline to the current context'''
+    '''
+    bind a program pipeline to the current context
+    
+    Args:
+        pipeline: Specifies the name of the pipeline object to bind to the context
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def delete_program_pipelines(n, pipelines):
-    '''delete program pipeline objects'''
+    '''
+    delete program pipeline objects
+    
+    Args:
+        n: Specifies the number of program pipeline objects to delete
+        pipelines: Specifies an array of names of program pipeline objects to delete
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def gen_program_pipelines(n, pipelines):
-    '''reserve program pipeline object names'''
+    '''
+    reserve program pipeline object names
+    
+    Args:
+        n: Specifies the number of program pipeline object names to reserve
+        pipelines: Specifies an array of into which the reserved names will be written
+    '''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
 def is_program_pipeline(pipeline):
-    '''determine if a name corresponds to a program pipeline object'''
+    '''
+    determine if a name corresponds to a program pipeline object
+    
+    Args:
+        pipeline: Specifies a value that may be the name of a program pipeline object
+    '''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
@@ -375,13 +466,26 @@ def program_uniform_matrix4x3fv(program, location, count, transpose, value):
 @returns(t.void)
 @binds(dll)
 def validate_program_pipeline(pipeline):
-    '''validate a program pipeline object against current GL state'''
+    '''
+    validate a program pipeline object against current GL state
+    
+    Args:
+        pipeline: Specifies the name of a program pipeline object to validate
+    '''
 
 @accepts(t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_program_pipeline_info_log(pipeline, bufSize, length, infoLog):
-    '''retrieve the info log string from a program pipeline object'''
+def get_program_pipeline_info_log(pipeline, bufsize, length, infolog):
+    '''
+    retrieve the info log string from a program pipeline object
+    
+    Args:
+        pipeline: Specifies the name of a program pipeline object from which to retrieve the info log
+        bufsize: Specifies the maximum number of characters, including the null terminator, that may be written into infoLog
+        length: Specifies the address of a variable into which will be written the number of characters written into infoLog
+        infolog: Specifies the address of an array of characters into which will be written the info log for pipeline
+    '''
 
 VERTEX_SHADER_BIT = 0x00000001
 FRAGMENT_SHADER_BIT = 0x00000002
@@ -409,7 +513,18 @@ UNSIGNED_INT_ATOMIC_COUNTER = 0x92DB
 @returns(t.void)
 @binds(dll)
 def bind_image_texture(unit, texture, level, layered, layer, access, format):
-    '''bind a level of a texture to an image unit'''
+    '''
+    bind a level of a texture to an image unit
+    
+    Args:
+        unit: Specifies the index of the image unit to which to bind the texture
+        texture: Specifies the name of the texture to bind to the image unit
+        level: Specifies the level of the texture that is to be bound
+        layered: Specifies whether a layered texture binding is to be established
+        layer: If layered is GL_FALSE, specifies the layer of texture to be bound to the image unit
+        access: Specifies a token indicating the type of access that will be performed on the image
+        format: Specifies the format that the elements of the image will be treated as for the purposes of formatted stores
+    '''
 
 @accepts(t.enum, t.uint, POINTER(t.boolean))
 @returns(t.void)
@@ -421,7 +536,12 @@ def get_booleani_v(target, index, data):
 @returns(t.void)
 @binds(dll)
 def memory_barrier(barriers):
-    '''defines a barrier ordering memory transactions'''
+    '''
+    defines a barrier ordering memory transactions
+    
+    Args:
+        barriers: Specifies the barriers to insert
+    '''
 
 @accepts(t.bitfield)
 @returns(t.void)
@@ -492,7 +612,17 @@ MAX_PROGRAM_TEXTURE_GATHER_OFFSET = 0x8E5F
 @returns(t.void)
 @binds(dll)
 def tex_storage2_d_multisample(target, samples, internalformat, width, height, fixedsamplelocations):
-    '''specify storage for a two-dimensional multisample texture'''
+    '''
+    specify storage for a two-dimensional multisample texture
+    
+    Args:
+        target: Specifies the target to which the texture object is bound for glTexStorage2DMultisample
+        samples: Specify the number of samples in the texture
+        internalformat: Specifies the sized internal format to be used to store texture image data
+        width: Specifies the width of the texture, in texels
+        height: Specifies the height of the texture, in texels
+        fixedsamplelocations: Specifies whether the image will use identical sample locations and the same number of samples for all texels in the image, and the sample locations will not depend on the internal format or size of the image
+    '''
 
 @accepts(t.enum, t.uint, POINTER(t.float))
 @returns(t.void)
@@ -503,8 +633,14 @@ def get_multisamplefv(pname, index, val):
 @accepts(t.uint, t.bitfield)
 @returns(t.void)
 @binds(dll)
-def sample_maski(maskNumber, mask):
-    '''set the value of a sub-word of the sample mask'''
+def sample_maski(masknumber, mask):
+    '''
+    set the value of a sub-word of the sample mask
+    
+    Args:
+        masknumber: Specifies which 32-bit sub-word of the sample mask to update
+        mask: Specifies the new value of the mask sub-word
+    '''
 
 @accepts(t.enum, t.int, t.enum, POINTER(t.int))
 @returns(t.void)
@@ -553,13 +689,30 @@ UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE = 0x910A
 @returns(t.void)
 @binds(dll)
 def bind_vertex_buffer(bindingindex, buffer, offset, stride):
-    '''bind a buffer to a vertex buffer bind point'''
+    '''
+    bind a buffer to a vertex buffer bind point
+    
+    Args:
+        bindingindex: The index of the vertex buffer binding point to which to bind the buffer
+        buffer: The name of a buffer to bind to the vertex buffer binding point
+        offset: The offset of the first element of the buffer
+        stride: The distance between elements within the buffer
+    '''
 
 @accepts(t.uint, t.int, t.enum, t.boolean, t.uint)
 @returns(t.void)
 @binds(dll)
 def vertex_attrib_format(attribindex, size, type, normalized, relativeoffset):
-    '''specify the organization of vertex arrays'''
+    '''
+    specify the organization of vertex arrays
+    
+    Args:
+        attribindex: The generic vertex attribute array being described
+        size: The number of values per vertex that are stored in the array
+        type: The type of the data stored in the array
+        normalized: The distance between elements within the buffer
+        relativeoffset: The distance between elements within the buffer
+    '''
 
 @accepts(t.uint, t.int, t.enum, t.uint)
 @returns(t.void)
@@ -571,13 +724,25 @@ def vertex_attrib_i_format(attribindex, size, type, relativeoffset):
 @returns(t.void)
 @binds(dll)
 def vertex_attrib_binding(attribindex, bindingindex):
-    '''associate a vertex attribute and a vertex buffer binding for a vertex array object'''
+    '''
+    associate a vertex attribute and a vertex buffer binding for a vertex array object
+    
+    Args:
+        attribindex: The index of the attribute to associate with a vertex buffer binding
+        bindingindex: The index of the vertex buffer binding with which to associate the generic vertex attribute
+    '''
 
 @accepts(t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
 def vertex_binding_divisor(bindingindex, divisor):
-    '''modify the rate at which generic vertex attributes advance'''
+    '''
+    modify the rate at which generic vertex attributes advance
+    
+    Args:
+        bindingindex: The index of the binding whose divisor to modify
+        divisor: The new value for the instance step rate to apply
+    '''
 
 VERTEX_ATTRIB_BINDING = 0x82D4
 VERTEX_ATTRIB_RELATIVE_OFFSET = 0x82D5

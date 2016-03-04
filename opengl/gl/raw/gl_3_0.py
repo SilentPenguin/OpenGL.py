@@ -42,8 +42,13 @@ def is_enabledi(target, index):
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def begin_transform_feedback(primitiveMode):
-    '''start transform feedback operation'''
+def begin_transform_feedback(primitivemode):
+    '''
+    start transform feedback operation
+    
+    Args:
+        primitivemode: Specify the output type of the primitives that will be recorded into the buffer objects that are bound for transform feedback
+    '''
 
 @accepts()
 @returns(t.void)
@@ -55,37 +60,84 @@ def end_transform_feedback():
 @returns(t.void)
 @binds(dll)
 def bind_buffer_range(target, index, buffer, offset, size):
-    '''bind a range within a buffer object to an indexed buffer target'''
+    '''
+    bind a range within a buffer object to an indexed buffer target
+    
+    Args:
+        target: Specify the target of the bind operation
+        index: Specify the index of the binding point within the array specified by target
+        buffer: The name of a buffer object to bind to the specified binding point
+        offset: The starting offset in basic machine units into the buffer object buffer
+        size: The amount of data in machine units that can be read from the buffer object while used as an indexed target
+    '''
 
 @accepts(t.enum, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
 def bind_buffer_base(target, index, buffer):
-    '''bind a buffer object to an indexed buffer target'''
+    '''
+    bind a buffer object to an indexed buffer target
+    
+    Args:
+        target: Specify the target of the bind operation
+        index: Specify the index of the binding point within the array specified by target
+        buffer: The name of a buffer object to bind to the specified binding point
+    '''
 
 @accepts(t.uint, t.sizei, POINTER(t.char_p), t.enum)
 @returns(t.void)
 @binds(dll)
-def transform_feedback_varyings(program, count, varyings, bufferMode):
-    '''specify values to record in transform feedback buffers'''
+def transform_feedback_varyings(program, count, varyings, buffermode):
+    '''
+    specify values to record in transform feedback buffers
+    
+    Args:
+        program: The name of the target program object
+        count: The number of varying variables used for transform feedback
+        varyings: An array of count zero-terminated strings specifying the names of the varying variables to use for transform feedback
+        buffermode: Identifies the mode used to capture the varying variables when transform feedback is active
+    '''
 
 @accepts(t.uint, t.uint, t.sizei, POINTER(t.sizei), POINTER(t.sizei), POINTER(t.enum), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_transform_feedback_varying(program, index, bufSize, length, size, type, name):
-    '''retrieve information about varying variables selected for transform feedback'''
+def get_transform_feedback_varying(program, index, bufsize, length, size, type, name):
+    '''
+    retrieve information about varying variables selected for transform feedback
+    
+    Args:
+        program: The name of the target program object
+        index: The index of the varying variable whose information to retrieve
+        bufsize: The maximum number of characters, including the null terminator, that may be written into name
+        length: The address of a variable which will receive the number of characters written into name, excluding the null-terminator
+        size: The address of a variable that will receive the size of the varying
+        type: The address of a variable that will recieve the type of the varying
+        name: The address of a buffer into which will be written the name of the varying
+    '''
 
 @accepts(t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
 def clamp_color(target, clamp):
-    '''specify whether data read via gl.read_pixels should be clamped'''
+    '''
+    specify whether data read via glReadPixels should be clamped
+    
+    Args:
+        target: Target for color clamping
+        clamp: Specifies whether to apply color clamping
+    '''
 
 @accepts(t.uint, t.enum)
 @returns(t.void)
 @binds(dll)
 def begin_conditional_render(id, mode):
-    '''start conditional rendering'''
+    '''
+    start conditional rendering
+    
+    Args:
+        id: Specifies the name of an occlusion query object whose results are used to determine if the rendering commands are discarded
+        mode: Specifies how glBeginConditionalRender interprets the results of the occlusion query
+    '''
 
 @accepts()
 @returns(t.void)
@@ -241,13 +293,25 @@ def get_uniformuiv(program, location, params):
 @returns(t.void)
 @binds(dll)
 def bind_frag_data_location(program, color, name):
-    '''bind a user-defined varying out variable to a fragment shader color number'''
+    '''
+    bind a user-defined varying out variable to a fragment shader color number
+    
+    Args:
+        program: The name of the program containing varying out variable whose binding to modify
+        name: The name of the user-defined varying out variable whose binding to modify
+    '''
 
 @accepts(t.uint, t.char_p)
 @returns(t.int)
 @binds(dll)
 def get_frag_data_location(program, name):
-    '''query the bindings of color numbers to user-defined varying out variables'''
+    '''
+    query the bindings of color numbers to user-defined varying out variables
+    
+    Args:
+        program: The name of the program containing varying out variable whose binding to query
+        name: The name of the user-defined varying out variable whose binding to query
+    '''
 
 @accepts(t.int, t.uint)
 @returns(t.void)
@@ -458,31 +522,62 @@ FLOAT_32_UNSIGNED_INT_24_8_REV = 0x8DAD
 @returns(t.boolean)
 @binds(dll)
 def is_renderbuffer(renderbuffer):
-    '''determine if a name corresponds to a renderbuffer object'''
+    '''
+    determine if a name corresponds to a renderbuffer object
+    
+    Args:
+        renderbuffer: Specifies a value that may be the name of a renderbuffer object
+    '''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
 def bind_renderbuffer(target, renderbuffer):
-    '''bind a renderbuffer to a renderbuffer target'''
+    '''
+    bind a renderbuffer to a renderbuffer target
+    
+    Args:
+        target: Specifies the renderbuffer target of the binding operation
+        renderbuffer: Specifies the name of the renderbuffer object to bind
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def delete_renderbuffers(n, renderbuffers):
-    '''delete renderbuffer objects'''
+    '''
+    delete renderbuffer objects
+    
+    Args:
+        n: Specifies the number of renderbuffer objects to be deleted
+        renderbuffers: A pointer to an array containing n renderbuffer objects to be deleted
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def gen_renderbuffers(n, renderbuffers):
-    '''generate renderbuffer object names'''
+    '''
+    generate renderbuffer object names
+    
+    Args:
+        n: Specifies the number of renderbuffer object names to generate
+        renderbuffers: Specifies an array in which the generated renderbuffer object names are stored
+    '''
 
 @accepts(t.enum, t.enum, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def renderbuffer_storage(target, internalformat, width, height):
-    '''establish data storage, format and dimensions of a renderbuffer object's image'''
+    '''
+    establish data storage, format and dimensions of a renderbuffer object's image
+    
+    Args:
+        target: Specifies a binding target of the allocation for glRenderbufferStorage function
+        internalformat: Specifies the internal format to use for the renderbuffer object's image
+        width: Specifies the width of the renderbuffer, in pixels
+        height: Specifies the height of the renderbuffer, in pixels
+    '''
 
 @accepts(t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
@@ -494,31 +589,58 @@ def get_renderbuffer_parameteriv(target, pname, params):
 @returns(t.boolean)
 @binds(dll)
 def is_framebuffer(framebuffer):
-    '''determine if a name corresponds to a framebuffer object'''
+    '''
+    determine if a name corresponds to a framebuffer object
+    
+    Args:
+        framebuffer: Specifies a value that may be the name of a framebuffer object
+    '''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
 def bind_framebuffer(target, framebuffer):
-    '''bind a framebuffer to a framebuffer target'''
+    '''
+    bind a framebuffer to a framebuffer target
+    
+    Args:
+        target: Specifies the framebuffer target of the binding operation
+        framebuffer: Specifies the name of the framebuffer object to bind
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def delete_framebuffers(n, framebuffers):
-    '''delete framebuffer objects'''
+    '''
+    delete framebuffer objects
+    
+    Args:
+        n: Specifies the number of framebuffer objects to be deleted
+        framebuffers: A pointer to an array containing n framebuffer objects to be deleted
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def gen_framebuffers(n, framebuffers):
-    '''generate framebuffer object names'''
+    '''
+    generate framebuffer object names
+    
+    Args:
+        n: Specifies the number of framebuffer object names to generate
+    '''
 
 @accepts(t.enum)
 @returns(t.enum)
 @binds(dll)
 def check_framebuffer_status(target):
-    '''check the completeness status of a framebuffer'''
+    '''
+    check the completeness status of a framebuffer
+    
+    Args:
+        target: Specify the target to which the framebuffer is bound for glCheckFramebufferStatus, and the target against which framebuffer completeness of framebuffer is checked for glCheckNamedFramebufferStatus
+    '''
 
 @accepts(t.enum, t.enum, t.enum, t.uint, t.int)
 @returns(t.void)
@@ -542,7 +664,15 @@ def framebuffer_texture3_d(target, attachment, textarget, texture, level, zoffse
 @returns(t.void)
 @binds(dll)
 def framebuffer_renderbuffer(target, attachment, renderbuffertarget, renderbuffer):
-    '''attach a renderbuffer as a logical buffer of a framebuffer object'''
+    '''
+    attach a renderbuffer as a logical buffer of a framebuffer object
+    
+    Args:
+        target: Specifies the target to which the framebuffer is bound for glFramebufferRenderbuffer
+        attachment: Specifies the attachment point of the framebuffer
+        renderbuffertarget: Specifies the renderbuffer target
+        renderbuffer: Specifies the name of an existing renderbuffer object of type renderbuffertarget to attach
+    '''
 
 @accepts(t.enum, t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
@@ -554,25 +684,56 @@ def get_framebuffer_attachment_parameteriv(target, attachment, pname, params):
 @returns(t.void)
 @binds(dll)
 def generate_mipmap(target):
-    '''generate mipmaps for a specified texture object'''
+    '''
+    generate mipmaps for a specified texture object
+    
+    Args:
+        target: Specifies the target to which the texture object is bound for glGenerateMipmap
+    '''
 
 @accepts(t.int, t.int, t.int, t.int, t.int, t.int, t.int, t.int, t.bitfield, t.enum)
 @returns(t.void)
 @binds(dll)
-def blit_framebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter):
-    '''copy a block of pixels from one framebuffer object to another'''
+def blit_framebuffer(srcx0, srcy0, srcx1, srcy1, dstx0, dsty0, dstx1, dsty1, mask, filter):
+    '''
+    copy a block of pixels from one framebuffer object to another
+    
+    Args:
+        srcx0, srcy0, srcx1, srcy1: Specify the bounds of the source rectangle within the read buffer of the read framebuffer
+        dstx0, dsty0, dstx1, dsty1: Specify the bounds of the destination rectangle within the write buffer of the write framebuffer
+        mask: The bitwise OR of the flags indicating which buffers are to be copied
+        filter: Specifies the interpolation to be applied if the image is stretched
+    '''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def renderbuffer_storage_multisample(target, samples, internalformat, width, height):
-    '''establish data storage, format, dimensions and sample count of a renderbuffer object's image'''
+    '''
+    establish data storage, format, dimensions and sample count of a renderbuffer object's image
+    
+    Args:
+        target: Specifies a binding target of the allocation for glRenderbufferStorageMultisample function
+        samples: Specifies the number of samples to be used for the renderbuffer object's storage
+        internalformat: Specifies the internal format to use for the renderbuffer object's image
+        width: Specifies the width of the renderbuffer, in pixels
+        height: Specifies the height of the renderbuffer, in pixels
+    '''
 
 @accepts(t.enum, t.enum, t.uint, t.int, t.int)
 @returns(t.void)
 @binds(dll)
 def framebuffer_texture_layer(target, attachment, texture, level, layer):
-    '''attach a single layer of a texture object as a logical buffer of a framebuffer object'''
+    '''
+    attach a single layer of a texture object as a logical buffer of a framebuffer object
+    
+    Args:
+        target: Specifies the target to which the framebuffer is bound for glFramebufferTextureLayer
+        attachment: Specifies the attachment point of the framebuffer
+        texture: Specifies the name of an existing texture object to attach
+        level: Specifies the mipmap level of the texture object to attach
+        layer: Specifies the layer of the texture object to attach
+    '''
 
 INVALID_FRAMEBUFFER_OPERATION = 0x0506
 FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING = 0x8210
@@ -676,13 +837,28 @@ HALF_FLOAT = 0x140B
 @returns(t.void)
 @binds(dll)
 def map_buffer_range(target, offset, length, access):
-    '''map all or part of a buffer object's data store into the client's address space'''
+    '''
+    map all or part of a buffer object's data store into the client's address space
+    
+    Args:
+        target: Specifies the target to which the buffer object is bound for glMapBufferRange, which must be one of the buffer binding targets in the following table:
+        offset: Specifies the starting offset within the buffer of the range to be mapped
+        length: Specifies the length of the range to be mapped
+        access: Specifies a combination of access flags indicating the desired access to the mapped range
+    '''
 
 @accepts(t.enum, t.intptr, t.sizeiptr)
 @returns(t.void)
 @binds(dll)
 def flush_mapped_buffer_range(target, offset, length):
-    '''indicate modifications to a range of a mapped buffer'''
+    '''
+    indicate modifications to a range of a mapped buffer
+    
+    Args:
+        target: Specifies the target to which the buffer object is bound for glFlushMappedBufferRange, which must be one of the buffer binding targets in the following table:
+        offset: Specifies the start of the buffer subrange, in basic machine units
+        length: Specifies the length of the buffer subrange, in basic machine units
+    '''
 
 MAP_READ_BIT = 0x0001
 MAP_WRITE_BIT = 0x0002
@@ -720,25 +896,47 @@ RG32UI = 0x823C
 @returns(t.void)
 @binds(dll)
 def bind_vertex_array(array):
-    '''bind a vertex array object'''
+    '''
+    bind a vertex array object
+    
+    Args:
+        array: Specifies the name of the vertex array to bind
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def delete_vertex_arrays(n, arrays):
-    '''delete vertex array objects'''
+    '''
+    delete vertex array objects
+    
+    Args:
+        n: Specifies the number of vertex array objects to be deleted
+        arrays: Specifies the address of an array containing the n names of the objects to be deleted
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def gen_vertex_arrays(n, arrays):
-    '''generate vertex array object names'''
+    '''
+    generate vertex array object names
+    
+    Args:
+        n: Specifies the number of vertex array object names to generate
+        arrays: Specifies an array in which the generated vertex array object names are stored
+    '''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
 def is_vertex_array(array):
-    '''determine if a name corresponds to a vertex array object'''
+    '''
+    determine if a name corresponds to a vertex array object
+    
+    Args:
+        array: Specifies a value that may be the name of a vertex array object
+    '''
 
 VERTEX_ARRAY_BINDING = 0x85B5
 CLAMP_VERTEX_COLOR = 0x891A
