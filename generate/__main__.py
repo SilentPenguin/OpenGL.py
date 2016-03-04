@@ -7,9 +7,17 @@ RAW_PATH = 'OpenGL/opengl/gl/raw/'
 
 def main():
     doc = rxml.Document(XML_PATH)
+    write.init(doc)
     write.raw(doc)
     
 class write:
+    @staticmethod
+    def init(doc):
+        lines = []
+        for feature in doc.feature:
+            lines.append('from opengl.gl.raw.' + pep.feature(feature['name']) + ' import *')
+        write.file(lines, RAW_PATH + '__init__.py')
+    
     @staticmethod
     def raw(doc):
         write.enum_values = define.enums(doc)
