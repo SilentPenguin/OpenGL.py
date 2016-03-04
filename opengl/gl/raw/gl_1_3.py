@@ -8,10 +8,14 @@ from opengl.gl.raw.bindings import *
 @binds(dll)
 def active_texture(texture):
     '''
-    select active texture unit
+    select active texture unit.
+    
+    gl.active_texture selects which texture unit subsequent texture state calls
+    will affect. The number of texture units an implementation supports is
+    implementation dependent, but must be at least 80.
     
     Args:
-        texture: Specifies which texture unit to make active
+        texture: which texture unit to make active.
     '''
 
 @accepts(t.float, t.boolean)
@@ -19,12 +23,12 @@ def active_texture(texture):
 @binds(dll)
 def sample_coverage(value, invert):
     '''
-    specify multisample coverage parameters
+    specify multisample coverage parameters.
     
     Args:
-        value: Specify a single floating-point sample coverage value
-        invert: Specify a single boolean value representing if the coverage
-            masks should be inverted
+        value: a single floating-point sample coverage value.
+        invert: a single boolean value representing if the coverage masks should
+            be inverted.
     '''
 
 @accepts(t.enum, t.int, t.enum, t.sizei, t.sizei, t.sizei, t.int, t.sizei, t.void)
@@ -32,20 +36,20 @@ def sample_coverage(value, invert):
 @binds(dll)
 def compressed_tex_image3_d(target, level, internalformat, width, height, depth, border, imagesize, data):
     '''
-    specify a three-dimensional texture image in a compressed format
+    specify a three-dimensional texture image in a compressed format.
     
     Args:
-        target: Specifies the target texture
-        level: Specifies the level-of-detail number
-        internalformat: Specifies the format of the compressed image data stored
-            at address data
-        width: Specifies the width of the texture image
-        height: Specifies the height of the texture image
-        depth: Specifies the depth of the texture image
-        border: This value must be 0
-        imagesize: Specifies the number of unsigned bytes of image data starting
-            at the address specified by data
-        data: Specifies a pointer to the compressed image data in memory
+        target: the target texture.
+        level: the level-of-detail number.
+        internalformat: the format of the compressed image data stored at
+            address data.
+        width: the width of the texture image.
+        height: the height of the texture image.
+        depth: the depth of the texture image.
+        border: this value must be 0.
+        imagesize: the number of unsigned bytes of image data starting at the
+            address specified by data.
+        data: a pointer to the compressed image data in memory.
     '''
 
 @accepts(t.enum, t.int, t.enum, t.sizei, t.sizei, t.int, t.sizei, t.void)
@@ -53,19 +57,19 @@ def compressed_tex_image3_d(target, level, internalformat, width, height, depth,
 @binds(dll)
 def compressed_tex_image2_d(target, level, internalformat, width, height, border, imagesize, data):
     '''
-    specify a two-dimensional texture image in a compressed format
+    specify a two-dimensional texture image in a compressed format.
     
     Args:
-        target: Specifies the target texture
-        level: Specifies the level-of-detail number
-        internalformat: Specifies the format of the compressed image data stored
-            at address data
-        width: Specifies the width of the texture image
-        height: Specifies the height of the texture image
-        border: This value must be 0
-        imagesize: Specifies the number of unsigned bytes of image data starting
-            at the address specified by data
-        data: Specifies a pointer to the compressed image data in memory
+        target: the target texture.
+        level: the level-of-detail number.
+        internalformat: the format of the compressed image data stored at
+            address data.
+        width: the width of the texture image.
+        height: the height of the texture image.
+        border: this value must be 0.
+        imagesize: the number of unsigned bytes of image data starting at the
+            address specified by data.
+        data: a pointer to the compressed image data in memory.
     '''
 
 @accepts(t.enum, t.int, t.enum, t.sizei, t.int, t.sizei, t.void)
@@ -73,18 +77,18 @@ def compressed_tex_image2_d(target, level, internalformat, width, height, border
 @binds(dll)
 def compressed_tex_image1_d(target, level, internalformat, width, border, imagesize, data):
     '''
-    specify a one-dimensional texture image in a compressed format
+    specify a one-dimensional texture image in a compressed format.
     
     Args:
-        target: Specifies the target texture
-        level: Specifies the level-of-detail number
-        internalformat: Specifies the format of the compressed image data stored
-            at address data
-        width: Specifies the width of the texture image
-        border: This value must be 0
-        imagesize: Specifies the number of unsigned bytes of image data starting
-            at the address specified by data
-        data: Specifies a pointer to the compressed image data in memory
+        target: the target texture.
+        level: the level-of-detail number.
+        internalformat: the format of the compressed image data stored at
+            address data.
+        width: the width of the texture image.
+        border: this value must be 0.
+        imagesize: the number of unsigned bytes of image data starting at the
+            address specified by data.
+        data: a pointer to the compressed image data in memory.
     '''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.enum, t.sizei, t.void)
@@ -92,24 +96,21 @@ def compressed_tex_image1_d(target, level, internalformat, width, border, images
 @binds(dll)
 def compressed_tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imagesize, data):
     '''
-    specify a three-dimensional texture subimage in a compressed format
+    specify a three-dimensional texture subimage in a compressed format.
     
     Args:
-        target: Specifies the target to which the texture is bound for
-            gl.compressed_tex_sub_image3D function
-        level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture
-            array
-        yoffset: Specifies a texel offset in the y direction within the texture
-            array
-        width: Specifies the width of the texture subimage
-        height: Specifies the height of the texture subimage
-        depth: Specifies the depth of the texture subimage
-        format: Specifies the format of the compressed image data stored at
-            address data
-        imagesize: Specifies the number of unsigned bytes of image data starting
-            at the address specified by data
-        data: Specifies a pointer to the compressed image data in memory
+        target: the target to which the texture is bound for
+            glcompressedtexsubimage3d function.
+        level: the level-of-detail number.
+        xoffset: a texel offset in the x direction within the texture array.
+        yoffset: a texel offset in the y direction within the texture array.
+        width: the width of the texture subimage.
+        height: the height of the texture subimage.
+        depth: the depth of the texture subimage.
+        format: the format of the compressed image data stored at address data.
+        imagesize: the number of unsigned bytes of image data starting at the
+            address specified by data.
+        data: a pointer to the compressed image data in memory.
     '''
 
 @accepts(t.enum, t.int, t.int, t.int, t.sizei, t.sizei, t.enum, t.sizei, t.void)
@@ -117,23 +118,20 @@ def compressed_tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, width,
 @binds(dll)
 def compressed_tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, imagesize, data):
     '''
-    specify a two-dimensional texture subimage in a compressed format
+    specify a two-dimensional texture subimage in a compressed format.
     
     Args:
-        target: Specifies the target to which the texture is bound for
-            gl.compressed_tex_sub_image2D function
-        level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture
-            array
-        yoffset: Specifies a texel offset in the y direction within the texture
-            array
-        width: Specifies the width of the texture subimage
-        height: Specifies the height of the texture subimage
-        format: Specifies the format of the compressed image data stored at
-            address data
-        imagesize: Specifies the number of unsigned bytes of image data starting
-            at the address specified by data
-        data: Specifies a pointer to the compressed image data in memory
+        target: the target to which the texture is bound for
+            glcompressedtexsubimage2d function.
+        level: the level-of-detail number.
+        xoffset: a texel offset in the x direction within the texture array.
+        yoffset: a texel offset in the y direction within the texture array.
+        width: the width of the texture subimage.
+        height: the height of the texture subimage.
+        format: the format of the compressed image data stored at address data.
+        imagesize: the number of unsigned bytes of image data starting at the
+            address specified by data.
+        data: a pointer to the compressed image data in memory.
     '''
 
 @accepts(t.enum, t.int, t.int, t.sizei, t.enum, t.sizei, t.void)
@@ -141,20 +139,18 @@ def compressed_tex_sub_image2_d(target, level, xoffset, yoffset, width, height, 
 @binds(dll)
 def compressed_tex_sub_image1_d(target, level, xoffset, width, format, imagesize, data):
     '''
-    specify a one-dimensional texture subimage in a compressed format
+    specify a one-dimensional texture subimage in a compressed format.
     
     Args:
-        target: Specifies the target, to which the texture is bound, for
-            gl.compressed_tex_sub_image1D function
-        level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture
-            array
-        width: Specifies the width of the texture subimage
-        format: Specifies the format of the compressed image data stored at
-            address data
-        imagesize: Specifies the number of unsigned bytes of image data starting
-            at the address specified by data
-        data: Specifies a pointer to the compressed image data in memory
+        target: the target, to which the texture is bound, for
+            glcompressedtexsubimage1d function.
+        level: the level-of-detail number.
+        xoffset: a texel offset in the x direction within the texture array.
+        width: the width of the texture subimage.
+        format: the format of the compressed image data stored at address data.
+        imagesize: the number of unsigned bytes of image data starting at the
+            address specified by data.
+        data: a pointer to the compressed image data in memory.
     '''
 
 @accepts(t.enum, t.int, t.void)
@@ -162,14 +158,23 @@ def compressed_tex_sub_image1_d(target, level, xoffset, width, format, imagesize
 @binds(dll)
 def get_compressed_tex_image(target, level, img):
     '''
-    return a compressed texture image
+    return a compressed texture image.
+    
+    gl.get_compressed_tex_image and gl.getn_compressed_tex_image return the
+    compressed texture image associated with target and lod into pixels.
+    gl.get_compressed_texture_image serves the same purpose, but instead of
+    taking a texture target, it takes the ID of the texture object. pixels
+    should be an array of bufSize bytes for gl.getn_compresed_tex_image and
+    gl.get_compressed_texture_image functions, and of
+    gl.TEXTURE_COMPRESSED_IMAGE_SIZE bytes in case of
+    gl.get_compressed_tex_image. If the actual data takes less space than
+    bufSize, the remaining bytes will not be touched.
     
     Args:
-        target: Specifies the target to which the texture is bound for
-            gl.get_compressed_tex_image and gl.getn_compressed_tex_image
-            functions
-        level: Specifies the level-of-detail number of the desired image
-        img: Returns the compressed texture image
+        target: the target to which the texture is bound for
+            glgetcompressedteximage and glgetncompressedteximage functions.
+        level: the level-of-detail number of the desired image.
+        img: returns the compressed texture image.
     '''
 
 @accepts(t.enum)
@@ -177,10 +182,15 @@ def get_compressed_tex_image(target, level, img):
 @binds(dll)
 def client_active_texture(texture):
     '''
-    select active texture unit
+    select active texture unit.
+    
+    gl.client_active_texture selects the vertex array client state parameters to
+    be modified by gl.tex_coord_pointer, and enabled or disabled with
+    gl.enable_client_state or gl.disable_client_state, respectively, when called
+    with a parameter of gl.TEXTURE_COORD_ARRAY.
     
     Args:
-        texture: Specifies which texture unit to make active
+        texture: which texture unit to make active.
     '''
 
 @accepts(t.enum, t.double)

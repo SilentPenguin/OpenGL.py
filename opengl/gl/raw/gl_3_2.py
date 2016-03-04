@@ -31,16 +31,23 @@ DEPTH_CLAMP = 0x864F
 @binds(dll)
 def draw_elements_base_vertex(mode, count, type, indices, basevertex):
     '''
-    render primitives from array data with a per-element offset
+    render primitives from array data with a per-element offset.
+    
+    gl.draw_elements_base_vertex behaves identically to gl.draw_elements except
+    that the ith element transferred by the corresponding draw call will be
+    taken from element indices[i] + basevertex of each enabled array. If the
+    resulting value is larger than the maximum value representable by type, it
+    is as if the calculation were upconverted to 32-bit unsigned integers (with
+    wrapping on overflow conditions). The operation is undefined if the sum
+    would be negative.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        count: Specifies the number of elements to be rendered
-        type: Specifies the type of the values in indices
-        indices: Specifies a pointer to the location where the indices are
-            stored
-        basevertex: Specifies a constant that should be added to each element of
-            indices when chosing elements from the enabled vertex arrays
+        mode: what kind of primitives to render.
+        count: the number of elements to be rendered.
+        type: the type of the values in indices.
+        indices: a pointer to the location where the indices are stored.
+        basevertex: a constant that should be added to each element of indices
+            when chosing elements from the enabled vertex arrays.
     '''
 
 @accepts(t.enum, t.uint, t.uint, t.sizei, t.enum, t.void, t.int)
@@ -48,18 +55,27 @@ def draw_elements_base_vertex(mode, count, type, indices, basevertex):
 @binds(dll)
 def draw_range_elements_base_vertex(mode, start, end, count, type, indices, basevertex):
     '''
-    render primitives from array data with a per-element offset
+    render primitives from array data with a per-element offset.
+    
+    gl.draw_range_elements_base_vertex is a restricted form of
+    gl.draw_elements_base_vertex. mode, start, end, count and basevertex match
+    the corresponding arguments to gl.draw_elements_base_vertex, with the
+    additional constraint that all values in the array indices must lie between
+    start and end, inclusive, prior to adding basevertex. Index values lying
+    outside the range [start, end] are treated in the same way as
+    gl.draw_elements_base_vertex. The ith element transferred by the
+    corresponding draw call will be taken from element indices[i] + basevertex
+    of each enabled array.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        start: Specifies the minimum array index contained in indices
-        end: Specifies the maximum array index contained in indices
-        count: Specifies the number of elements to be rendered
-        type: Specifies the type of the values in indices
-        indices: Specifies a pointer to the location where the indices are
-            stored
-        basevertex: Specifies a constant that should be added to each element of
-            indices when chosing elements from the enabled vertex arrays
+        mode: what kind of primitives to render.
+        start: the minimum array index contained in indices.
+        end: the maximum array index contained in indices.
+        count: the number of elements to be rendered.
+        type: the type of the values in indices.
+        indices: a pointer to the location where the indices are stored.
+        basevertex: a constant that should be added to each element of indices
+            when chosing elements from the enabled vertex arrays.
     '''
 
 @accepts(t.enum, t.sizei, t.enum, t.void, t.sizei, t.int)
@@ -68,18 +84,25 @@ def draw_range_elements_base_vertex(mode, start, end, count, type, indices, base
 def draw_elements_instanced_base_vertex(mode, count, type, indices, instancecount, basevertex):
     '''
     render multiple instances of a set of primitives from array data with a per-
-element offset
+element offset.
+    
+    gl.draw_elements_instanced_base_vertex behaves identically to
+    gl.draw_elements_instanced except that the ith element transferred by the
+    corresponding draw call will be taken from element indices[i] + basevertex
+    of each enabled array. If the resulting value is larger than the maximum
+    value representable by type, it is as if the calculation were upconverted to
+    32-bit unsigned integers (with wrapping on overflow conditions). The
+    operation is undefined if the sum would be negative.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        count: Specifies the number of elements to be rendered
-        type: Specifies the type of the values in indices
-        indices: Specifies a pointer to the location where the indices are
-            stored
-        instancecount: Specifies the number of instances of the indexed geometry
-            that should be drawn
-        basevertex: Specifies a constant that should be added to each element of
-            indices when chosing elements from the enabled vertex arrays
+        mode: what kind of primitives to render.
+        count: the number of elements to be rendered.
+        type: the type of the values in indices.
+        indices: a pointer to the location where the indices are stored.
+        instancecount: the number of instances of the indexed geometry that
+            should be drawn.
+        basevertex: a constant that should be added to each element of indices
+            when chosing elements from the enabled vertex arrays.
     '''
 
 @accepts(t.enum, POINTER(t.sizei), t.enum, t.void, t.sizei, POINTER(t.int))
@@ -88,18 +111,20 @@ element offset
 def multi_draw_elements_base_vertex(mode, count, type, indices, drawcount, basevertex):
     '''
     render multiple sets of primitives by specifying indices of array data elements
-and an index to apply to each index
+and an index to apply to each index.
+    
+    gl.multi_draw_elements_base_vertex behaves identically to
+    gl.draw_elements_base_vertex, except that drawcount separate lists of
+    elements are specifried instead.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        count: Points to an array of the elements counts
-        type: Specifies the type of the values in indices
-        indices: Specifies a pointer to the location where the indices are
-            stored
-        drawcount: Specifies the size of the count, indices and basevertex
-            arrays
-        basevertex: Specifies a pointer to the location where the base vertices
-            are stored
+        mode: what kind of primitives to render.
+        count: points to an array of the elements counts.
+        type: the type of the values in indices.
+        indices: a pointer to the location where the indices are stored.
+        drawcount: the size of the count, indices and basevertex arrays.
+        basevertex: a pointer to the location where the base vertices are
+            stored.
     '''
 
 @accepts(t.enum)
@@ -107,11 +132,11 @@ and an index to apply to each index
 @binds(dll)
 def provoking_vertex(mode):
     '''
-    specifiy the vertex to be used as the source of data for flat shaded varyings
+    specifiy the vertex to be used as the source of data for flat shaded varyings.
     
     Args:
-        mode: Specifies the vertex to be used as the source of data for flat
-            shaded varyings
+        mode: the vertex to be used as the source of data for flat shaded
+            varyings.
     '''
 
 QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION = 0x8E4C
@@ -124,13 +149,17 @@ TEXTURE_CUBE_MAP_SEAMLESS = 0x884F
 @binds(dll)
 def fence_sync(condition, flags):
     '''
-    create a new sync object and insert it into the GL command stream
+    create a new sync object and insert it into the GL command stream.
+    
+    gl.fence_sync creates a new fence sync object, inserts a fence command into
+    the GL command stream and associates it with that sync object, and returns a
+    non-zero name corresponding to the sync object.
     
     Args:
-        condition: Specifies the condition that must be met to set the sync
-            object's state to signaled
-        flags: Specifies a bitwise combination of flags controlling the behavior
-            of the sync object
+        condition: the condition that must be met to set the sync object's state
+            to signaled.
+        flags: a bitwise combination of flags controlling the behavior of the
+            sync object.
     '''
 
 @accepts(t.sync)
@@ -138,10 +167,14 @@ def fence_sync(condition, flags):
 @binds(dll)
 def is_sync(sync):
     '''
-    determine if a name corresponds to a sync object
+    determine if a name corresponds to a sync object.
+    
+    gl.is_sync returns gl.TRUE if sync is currently the name of a sync object.
+    If sync is not the name of a sync object, or if an error occurs, gl.is_sync
+    returns gl.FALSE. Note that zero is not the name of a sync object.
     
     Args:
-        sync: Specifies a value that may be the name of a sync object
+        sync: a value that may be the name of a sync object.
     '''
 
 @accepts(t.sync)
@@ -149,10 +182,19 @@ def is_sync(sync):
 @binds(dll)
 def delete_sync(sync):
     '''
-    delete a sync object
+    delete a sync object.
+    
+    gl.delete_sync deletes the sync object specified by sync. If the fence
+    command corresponding to the specified sync object has completed, or if no
+    gl.wait_sync or gl.client_wait_sync commands are blocking on sync, the
+    object is deleted immediately. Otherwise, sync is flagged for deletion and
+    will be deleted when it is no longer associated with any fence command and
+    is no longer blocking any gl.wait_sync or gl.client_wait_sync command. In
+    either case, after gl.delete_sync returns, the name sync is invalid and can
+    no longer be used to refer to the sync object.
     
     Args:
-        sync: The sync object to be deleted
+        sync: the sync object to be deleted.
     '''
 
 @accepts(t.sync, t.bitfield, t.uint64)
@@ -160,13 +202,19 @@ def delete_sync(sync):
 @binds(dll)
 def client_wait_sync(sync, flags, timeout):
     '''
-    block and wait for a sync object to become signaled
+    block and wait for a sync object to become signaled.
+    
+    gl.client_wait_sync causes the client to block and wait for the sync object
+    specified by sync to become signaled. If sync is signaled when
+    gl.client_wait_sync is called, gl.client_wait_sync returns immediately,
+    otherwise it will block and wait for up to timeout nanoseconds for sync to
+    become signaled.
     
     Args:
-        sync: The sync object whose status to wait on
-        flags: A bitfield controlling the command flushing behavior
-        timeout: The timeout, specified in nanoseconds, for which the
-            implementation should wait for sync to become signaled
+        sync: the sync object whose status to wait on.
+        flags: a bitfield controlling the command flushing behavior.
+        timeout: the timeout, specified in nanoseconds, for which the
+            implementation should wait for sync to become signaled.
     '''
 
 @accepts(t.sync, t.bitfield, t.uint64)
@@ -174,13 +222,20 @@ def client_wait_sync(sync, flags, timeout):
 @binds(dll)
 def wait_sync(sync, flags, timeout):
     '''
-    instruct the GL server to block until the specified sync object becomes signaled
+    instruct the GL server to block until the specified sync object becomes signaled.
+    
+    gl.wait_sync causes the GL server to block and wait until sync becomes
+    signaled. sync is the name of an existing sync object upon which to wait.
+    flags and timeout are currently not used and must be set to zero and the
+    special value gl.TIMEOUT_IGNORED, respectivelyflags and timeout are
+    placeholders for anticipated future extensions of sync object capabilities.
+    They must have these reserved values in order that existing code calling
+    gl.wait_sync operate properly in the presence of such extensions.
     
     Args:
-        sync: Specifies the sync object whose status to wait on
-        flags: A bitfield controlling the command flushing behavior
-        timeout: Specifies the timeout that the server should wait before
-            continuing
+        sync: the sync object whose status to wait on.
+        flags: a bitfield controlling the command flushing behavior.
+        timeout: the timeout that the server should wait before continuing.
     '''
 
 @accepts(t.enum, POINTER(t.int64))
@@ -227,14 +282,14 @@ def get_buffer_parameteri64v(target, pname, params):
 @binds(dll)
 def framebuffer_texture(target, attachment, texture, level):
     '''
-    attach a level of a texture object as a logical buffer of a framebuffer object
+    attach a level of a texture object as a logical buffer of a framebuffer object.
     
     Args:
-        target: Specifies the target to which the framebuffer is bound for all
-            commands except gl.named_framebuffer_texture
-        attachment: Specifies the attachment point of the framebuffer
-        texture: Specifies the name of an existing texture object to attach
-        level: Specifies the mipmap level of the texture object to attach
+        target: the target to which the framebuffer is bound for all commands
+            except glnamedframebuffertexture.
+        attachment: the attachment point of the framebuffer.
+        texture: the name of an existing texture object to attach.
+        level: the mipmap level of the texture object to attach.
     '''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei, t.boolean)
@@ -243,19 +298,19 @@ def framebuffer_texture(target, attachment, texture, level):
 def tex_image2_d_multisample(target, samples, internalformat, width, height, fixedsamplelocations):
     '''
     establish the data storage, format, dimensions, and number of samples of a
-multisample texture's image
+multisample texture's image.
     
     Args:
-        target: Specifies the target of the operation
-        samples: The number of samples in the multisample texture's image
-        internalformat: The internal format to be used to store the multisample
-            texture's image
-        width: The width of the multisample texture's image, in texels
-        height: The height of the multisample texture's image, in texels
-        fixedsamplelocations: Specifies whether the image will use identical
-            sample locations and the same number of samples for all texels in
-            the image, and the sample locations will not depend on the internal
-            format or size of the image
+        target: the target of the operation.
+        samples: the number of samples in the multisample texture's image.
+        internalformat: the internal format to be used to store the multisample
+            texture's image.
+        width: the width of the multisample texture's image, in texels.
+        height: the height of the multisample texture's image, in texels.
+        fixedsamplelocations: whether the image will use identical sample
+            locations and the same number of samples for all texels in the
+            image, and the sample locations will not depend on the internal
+            format or size of the image.
     '''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei, t.sizei, t.boolean)
@@ -264,19 +319,19 @@ multisample texture's image
 def tex_image3_d_multisample(target, samples, internalformat, width, height, depth, fixedsamplelocations):
     '''
     establish the data storage, format, dimensions, and number of samples of a
-multisample texture's image
+multisample texture's image.
     
     Args:
-        target: Specifies the target of the operation
-        samples: The number of samples in the multisample texture's image
-        internalformat: The internal format to be used to store the multisample
-            texture's image
-        width: The width of the multisample texture's image, in texels
-        height: The height of the multisample texture's image, in texels
-        fixedsamplelocations: Specifies whether the image will use identical
-            sample locations and the same number of samples for all texels in
-            the image, and the sample locations will not depend on the internal
-            format or size of the image
+        target: the target of the operation.
+        samples: the number of samples in the multisample texture's image.
+        internalformat: the internal format to be used to store the multisample
+            texture's image.
+        width: the width of the multisample texture's image, in texels.
+        height: the height of the multisample texture's image, in texels.
+        fixedsamplelocations: whether the image will use identical sample
+            locations and the same number of samples for all texels in the
+            image, and the sample locations will not depend on the internal
+            format or size of the image.
     '''
 
 @accepts(t.enum, t.uint, POINTER(t.float))
@@ -290,11 +345,14 @@ def get_multisamplefv(pname, index, val):
 @binds(dll)
 def sample_maski(masknumber, mask):
     '''
-    set the value of a sub-word of the sample mask
+    set the value of a sub-word of the sample mask.
+    
+    gl.sample_maski sets one 32-bit sub-word of the multi-word sample mask,
+    gl.SAMPLE_MASK_VALUE.
     
     Args:
-        masknumber: Specifies which 32-bit sub-word of the sample mask to update
-        mask: Specifies the new value of the mask sub-word
+        masknumber: which 32-bit sub-word of the sample mask to update.
+        mask: the new value of the mask sub-word.
     '''
 
 SAMPLE_POSITION = 0x8E50

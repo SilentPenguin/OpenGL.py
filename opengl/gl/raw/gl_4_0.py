@@ -8,11 +8,18 @@ from opengl.gl.raw.bindings import *
 @binds(dll)
 def min_sample_shading(value):
     '''
-    specifies minimum rate at which sample shaing takes place
+    specifies minimum rate at which sample shaing takes place.
+    
+    gl.min_sample_shading specifies the rate at which samples are shaded within
+    a covered pixel. Sample-rate shading is enabled by calling gl.enable with
+    the parameter gl.SAMPLE_SHADING. If gl.MULTISAMPLE or gl.SAMPLE_SHADING is
+    disabled, sample shading has no effect. Otherwise, an implementation must
+    provide at least as many unique color values for each covered fragment as
+    specified by value times samples where samples is the value of gl.SAMPLES
+    for the current framebuffer.
     
     Args:
-        value: Specifies the rate at which samples are shaded within each
-            covered pixel
+        value: the rate at which samples are shaded within each covered pixel.
     '''
 
 @accepts(t.uint, t.enum)
@@ -55,12 +62,17 @@ UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY = 0x900F
 @binds(dll)
 def draw_arrays_indirect(mode, indirect):
     '''
-    render primitives from array data, taking parameters from memory
+    render primitives from array data, taking parameters from memory.
+    
+    gl.draw_arrays_indirect specifies multiple geometric primitives with very
+    few subroutine calls. gl.draw_arrays_indirect behaves similarly to
+    gl.draw_arrays_instanced_base_instance, execept that the parameters to
+    gl.draw_arrays_instanced_base_instance are stored in memory at the address
+    given by indirect.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        indirect: Specifies the address of a structure containing the draw
-            parameters
+        mode: what kind of primitives to render.
+        indirect: the address of a structure containing the draw parameters.
     '''
 
 @accepts(t.enum, t.enum, t.void)
@@ -68,14 +80,19 @@ def draw_arrays_indirect(mode, indirect):
 @binds(dll)
 def draw_elements_indirect(mode, type, indirect):
     '''
-    render indexed primitives from array data, taking parameters from memory
+    render indexed primitives from array data, taking parameters from memory.
+    
+    gl.draw_elements_indirect specifies multiple indexed geometric primitives
+    with very few subroutine calls. gl.draw_elements_indirect behaves similarly
+    to gl.draw_elements_instanced_base_vertex_base_instance, execpt that the
+    parameters to gl.draw_elements_instanced_base_vertex_base_instance are
+    stored in memory at the address given by indirect.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        type: Specifies the type of data in the buffer bound to the
-            gl.ELEMENT_ARRAY_BUFFER binding
-        indirect: Specifies the address of a structure containing the draw
-            parameters
+        mode: what kind of primitives to render.
+        type: the type of data in the buffer bound to the
+            gl_element_array_buffer binding.
+        indirect: the address of a structure containing the draw parameters.
     '''
 
 DRAW_INDIRECT_BUFFER = 0x8F3F
@@ -212,13 +229,17 @@ DOUBLE_MAT4x3 = 0x8F4E
 def get_subroutine_uniform_location(program, shadertype, name):
     '''
     retrieve the location of a subroutine uniform of a given shader stage within a
-program
+program.
+    
+    gl.get_subroutine_uniform_location returns the location of the subroutine
+    uniform variable name in the shader stage of type shadertype attached to
+    program, with behavior otherwise identical to gl.get_uniform_location.
     
     Args:
-        program: Specifies the name of the program containing shader stage
-        shadertype: Specifies the shader stage from which to query for
-            subroutine uniform index
-        name: Specifies the name of the subroutine uniform whose index to query
+        program: the name of the program containing shader stage.
+        shadertype: the shader stage from which to query for subroutine uniform
+            index.
+        name: the name of the subroutine uniform whose index to query.
     '''
 
 @accepts(t.uint, t.enum, t.char_p)
@@ -227,13 +248,19 @@ program
 def get_subroutine_index(program, shadertype, name):
     '''
     retrieve the index of a subroutine uniform of a given shader stage within a
-program
+program.
+    
+    gl.get_subroutine_index returns the index of a subroutine uniform within a
+    shader stage attached to a program object. program contains the name of the
+    program to which the shader is attached. shadertype specifies the stage from
+    which to query shader subroutine index. name contains the null-terminated
+    name of the subroutine uniform whose name to query.
     
     Args:
-        program: Specifies the name of the program containing shader stage
-        shadertype: Specifies the shader stage from which to query for
-            subroutine uniform index
-        name: Specifies the name of the subroutine uniform whose index to query
+        program: the name of the program containing shader stage.
+        shadertype: the shader stage from which to query for subroutine uniform
+            index.
+        name: the name of the subroutine uniform whose index to query.
     '''
 
 @accepts(t.uint, t.enum, t.uint, t.enum, POINTER(t.int))
@@ -247,18 +274,24 @@ def get_active_subroutine_uniformiv(program, shadertype, index, pname, values):
 @binds(dll)
 def get_active_subroutine_uniform_name(program, shadertype, index, bufsize, length, name):
     '''
-    query the name of an active shader subroutine uniform
+    query the name of an active shader subroutine uniform.
+    
+    gl.get_active_subroutine_uniform_name retrieves the name of an active shader
+    subroutine uniform. program contains the name of the program containing the
+    uniform. shadertype specifies the stage for which which the uniform
+    location, given by index, is valid. index must be between zero and the value
+    of gl.ACTIVE_SUBROUTINE_UNIFORMS minus one for the shader stage.
     
     Args:
-        program: Specifies the name of the program containing the subroutine
-        shadertype: Specifies the shader stage from which to query for the
-            subroutine parameter
-        index: Specifies the index of the shader subroutine uniform
-        bufsize: Specifies the size of the buffer whose address is given in name
-        length: Specifies the address of a variable into which is written the
-            number of characters copied into name
-        name: Specifies the address of a buffer that will receive the name of
-            the specified shader subroutine uniform
+        program: the name of the program containing the subroutine.
+        shadertype: the shader stage from which to query for the subroutine
+            parameter.
+        index: the index of the shader subroutine uniform.
+        bufsize: the size of the buffer whose address is given in name.
+        length: the address of a variable into which is written the number of
+            characters copied into name.
+        name: the address of a buffer that will receive the name of the
+            specified shader subroutine uniform.
     '''
 
 @accepts(t.uint, t.enum, t.uint, t.sizei, POINTER(t.sizei), t.char_p)
@@ -266,18 +299,23 @@ def get_active_subroutine_uniform_name(program, shadertype, index, bufsize, leng
 @binds(dll)
 def get_active_subroutine_name(program, shadertype, index, bufsize, length, name):
     '''
-    query the name of an active shader subroutine
+    query the name of an active shader subroutine.
+    
+    gl.get_active_subroutine_name queries the name of an active shader
+    subroutine uniform from the program object given in program. index specifies
+    the index of the shader subroutine uniform within the shader stage given by
+    stage, and must between zero and the value of gl.ACTIVE_SUBROUTINES minus
+    one for the shader stage.
     
     Args:
-        program: Specifies the name of the program containing the subroutine
-        shadertype: Specifies the shader stage from which to query the
-            subroutine name
-        index: Specifies the index of the shader subroutine uniform
-        bufsize: Specifies the size of the buffer whose address is given in name
-        length: Specifies the address of a variable which is to receive the
-            length of the shader subroutine uniform name
-        name: Specifies the address of an array into which the name of the
-            shader subroutine uniform will be written
+        program: the name of the program containing the subroutine.
+        shadertype: the shader stage from which to query the subroutine name.
+        index: the index of the shader subroutine uniform.
+        bufsize: the size of the buffer whose address is given in name.
+        length: the address of a variable which is to receive the length of the
+            shader subroutine uniform name.
+        name: the address of an array into which the name of the shader
+            subroutine uniform will be written.
     '''
 
 @accepts(t.enum, t.sizei, POINTER(t.uint))
@@ -357,13 +395,18 @@ TESS_CONTROL_SHADER = 0x8E88
 @binds(dll)
 def bind_transform_feedback(target, id):
     '''
-    bind a transform feedback object
+    bind a transform feedback object.
+    
+    gl.bind_transform_feedback binds the transform feedback object with name id
+    to the current GL state. id must be a name previously returned from a call
+    to gl.gen_transform_feedbacks. If id has not previously been bound, a new
+    transform feedback object with name id and initialized with with the default
+    transform state vector is created.
     
     Args:
-        target: Specifies the target to which to bind the transform feedback
-            object id
-        id: Specifies the name of a transform feedback object reserved by
-            gl.gen_transform_feedbacks
+        target: the target to which to bind the transform feedback object id.
+        id: the name of a transform feedback object reserved by
+            glgentransformfeedbacks.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -371,11 +414,18 @@ def bind_transform_feedback(target, id):
 @binds(dll)
 def delete_transform_feedbacks(n, ids):
     '''
-    delete transform feedback objects
+    delete transform feedback objects.
+    
+    gl.delete_transform_feedbacks deletes the n transform feedback objects whose
+    names are stored in the array ids. Unused names in ids are ignored, as is
+    the name zero. After a transform feedback object is deleted, its name is
+    again unused and it has no contents. If an active transform feedback object
+    is deleted, its name immediately becomes unused, but the underlying object
+    is not deleted until it is no longer active.
     
     Args:
-        n: Specifies the number of transform feedback objects to delete
-        ids: Specifies an array of names of transform feedback objects to delete
+        n: the number of transform feedback objects to delete.
+        ids: an array of names of transform feedback objects to delete.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -383,11 +433,16 @@ def delete_transform_feedbacks(n, ids):
 @binds(dll)
 def gen_transform_feedbacks(n, ids):
     '''
-    reserve transform feedback object names
+    reserve transform feedback object names.
+    
+    gl.gen_transform_feedbacks returns n previously unused transform feedback
+    object names in ids. These names are marked as used, for the purposes of
+    gl.gen_transform_feedbacks only, but they acquire transform feedback state
+    only when they are first bound.
     
     Args:
-        n: Specifies the number of transform feedback object names to reserve
-        ids: Specifies an array of into which the reserved names will be written
+        n: the number of transform feedback object names to reserve.
+        ids: an array of into which the reserved names will be written.
     '''
 
 @accepts(t.uint)
@@ -395,11 +450,18 @@ def gen_transform_feedbacks(n, ids):
 @binds(dll)
 def is_transform_feedback(id):
     '''
-    determine if a name corresponds to a transform feedback object
+    determine if a name corresponds to a transform feedback object.
+    
+    gl.is_transform_feedback returns gl.TRUE if id is currently the name of a
+    transform feedback object. If id is zero, or if id is not the name of a
+    transform feedback object, or if an error occurs, gl.is_transform_feedback
+    returns gl.FALSE. If id is a name returned by gl.gen_transform_feedbacks,
+    but that has not yet been bound through a call to
+    gl.bind_transform_feedback, then the name is not a transform feedback object
+    and gl.is_transform_feedback returns gl.FALSE.
     
     Args:
-        id: Specifies a value that may be the name of a transform feedback
-            object
+        id: a value that may be the name of a transform feedback object.
     '''
 
 @accepts()
@@ -407,7 +469,7 @@ def is_transform_feedback(id):
 @binds(dll)
 def pause_transform_feedback():
     '''
-    pause transform feedback operations
+    pause transform feedback operations.
     '''
 
 @accepts()
@@ -415,7 +477,7 @@ def pause_transform_feedback():
 @binds(dll)
 def resume_transform_feedback():
     '''
-    resume transform feedback operations
+    resume transform feedback operations.
     '''
 
 @accepts(t.enum, t.uint)
@@ -423,12 +485,19 @@ def resume_transform_feedback():
 @binds(dll)
 def draw_transform_feedback(mode, id):
     '''
-    render primitives using a count derived from a transform feedback object
+    render primitives using a count derived from a transform feedback object.
+    
+    gl.draw_transform_feedback draws primitives of a type specified by mode
+    using a count retrieved from the transform feedback specified by id. Calling
+    gl.draw_transform_feedback is equivalent to calling gl.draw_arrays with mode
+    as specified, first set to zero, and count set to the number of vertices
+    captured on vertex stream zero the last time transform feedback was active
+    on the transform feedback object named by id.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        id: Specifies the name of a transform feedback object from which to
-            retrieve a primitive count
+        mode: what kind of primitives to render.
+        id: the name of a transform feedback object from which to retrieve a
+            primitive count.
     '''
 
 TRANSFORM_FEEDBACK = 0x8E22
@@ -441,14 +510,22 @@ TRANSFORM_FEEDBACK_BINDING = 0x8E25
 def draw_transform_feedback_stream(mode, id, stream):
     '''
     render primitives using a count derived from a specifed stream of a transform
-feedback object
+feedback object.
+    
+    gl.draw_transform_feedback_stream draws primitives of a type specified by
+    mode using a count retrieved from the transform feedback stream specified by
+    stream of the transform feedback object specified by id. Calling
+    gl.draw_transform_feedback_stream is equivalent to calling gl.draw_arrays
+    with mode as specified, first set to zero, and count set to the number of
+    vertices captured on vertex stream stream the last time transform feedback
+    was active on the transform feedback object named by id.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        id: Specifies the name of a transform feedback object from which to
-            retrieve a primitive count
-        stream: Specifies the index of the transform feedback stream from which
-            to retrieve a primitive count
+        mode: what kind of primitives to render.
+        id: the name of a transform feedback object from which to retrieve a
+            primitive count.
+        stream: the index of the transform feedback stream from which to
+            retrieve a primitive count.
     '''
 
 @accepts(t.enum, t.uint, t.uint)
@@ -456,14 +533,13 @@ feedback object
 @binds(dll)
 def begin_query_indexed(target, index, id):
     '''
-    delimit the boundaries of a query object on an indexed target
+    delimit the boundaries of a query object on an indexed target.
     
     Args:
-        target: Specifies the target type of query object established between
-            gl.begin_query_indexed and the subsequent gl.end_query_indexed
-        index: Specifies the index of the query target upon which to begin the
-            query
-        id: Specifies the name of a query object
+        target: the target type of query object established between
+            glbeginqueryindexed and the subsequent glendqueryindexed.
+        index: the index of the query target upon which to begin the query.
+        id: the name of a query object.
     '''
 
 @accepts(t.enum, t.uint)

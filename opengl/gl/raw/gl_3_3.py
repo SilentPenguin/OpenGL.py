@@ -10,17 +10,23 @@ VERTEX_ATTRIB_ARRAY_DIVISOR = 0x88FE
 def bind_frag_data_location_indexed(program, colornumber, index, name):
     '''
     bind a user-defined varying out variable to a fragment shader color number and
-index
+index.
+    
+    gl.bind_frag_data_location_indexed specifies that the varying out variable
+    name in program should be bound to fragment color colorNumber when the
+    program is next linked. index may be zero or one to specify that the color
+    be used as either the first or second color input to the blend equation,
+    respectively.
     
     Args:
-        program: The name of the program containing varying out variable whose
-            binding to modify
-        colornumber: The color number to bind the user-defined varying out
-            variable to
-        index: The index of the color input to bind the user-defined varying out
-            variable to
-        name: The name of the user-defined varying out variable whose binding to
-            modify
+        program: the name of the program containing varying out variable whose
+            binding to modify.
+        colornumber: the color number to bind the user-defined varying out
+            variable to.
+        index: the index of the color input to bind the user-defined varying out
+            variable to.
+        name: the name of the user-defined varying out variable whose binding to
+            modify.
     '''
 
 @accepts(t.uint, t.char_p)
@@ -28,13 +34,18 @@ index
 @binds(dll)
 def get_frag_data_index(program, name):
     '''
-    query the bindings of color indices to user-defined varying out variables
+    query the bindings of color indices to user-defined varying out variables.
+    
+    gl.get_frag_data_index returns the index of the fragment color to which the
+    variable name was bound when the program object program was last linked. If
+    name is not a varying out variable of program, or if an error occurs, -1
+    will be returned.
     
     Args:
-        program: The name of the program containing varying out variable whose
-            binding to query
-        name: The name of the user-defined varying out variable whose index to
-            query
+        program: the name of the program containing varying out variable whose
+            binding to query.
+        name: the name of the user-defined varying out variable whose index to
+            query.
     '''
 
 SRC1_COLOR = 0x88F9
@@ -47,12 +58,17 @@ ANY_SAMPLES_PASSED = 0x8C2F
 @binds(dll)
 def gen_samplers(count, samplers):
     '''
-    generate sampler object names
+    generate sampler object names.
+    
+    gl.gen_samplers returns n sampler object names in samplers. There is no
+    guarantee that the names form a contiguous set of integers; however, it is
+    guaranteed that none of the returned names was in use immediately before the
+    call to gl.gen_samplers.
     
     Args:
-        count: Specifies the number of sampler object names to generate
-        samplers: Specifies an array in which the generated sampler object names
-            are stored
+        count: the number of sampler object names to generate.
+        samplers: an array in which the generated sampler object names are
+            stored.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -60,11 +76,18 @@ def gen_samplers(count, samplers):
 @binds(dll)
 def delete_samplers(count, samplers):
     '''
-    delete named sampler objects
+    delete named sampler objects.
+    
+    gl.delete_samplers deletes n sampler objects named by the elements of the
+    array samplers. After a sampler object is deleted, its name is again unused.
+    If a sampler object that is currently bound to a sampler unit is deleted, it
+    is as though gl.bind_sampler is called with unit set to the unit the sampler
+    is bound to and sampler zero. Unused names in samplers are silently ignored,
+    as is the reserved name zero.
     
     Args:
-        count: Specifies the number of sampler objects to be deleted
-        samplers: Specifies an array of sampler objects to be deleted
+        count: the number of sampler objects to be deleted.
+        samplers: an array of sampler objects to be deleted.
     '''
 
 @accepts(t.uint)
@@ -72,10 +95,14 @@ def delete_samplers(count, samplers):
 @binds(dll)
 def is_sampler(sampler):
     '''
-    determine if a name corresponds to a sampler object
+    determine if a name corresponds to a sampler object.
+    
+    gl.is_sampler returns gl.TRUE if id is currently the name of a sampler
+    object. If id is zero, or is a non-zero value that is not currently the name
+    of a sampler object, or if an error occurs, gl.is_sampler returns gl.FALSE.
     
     Args:
-        sampler: Specifies a value that may be the name of a sampler object
+        sampler: a value that may be the name of a sampler object.
     '''
 
 @accepts(t.uint, t.uint)
@@ -83,12 +110,16 @@ def is_sampler(sampler):
 @binds(dll)
 def bind_sampler(unit, sampler):
     '''
-    bind a named sampler to a texturing target
+    bind a named sampler to a texturing target.
+    
+    gl.bind_sampler binds sampler to the texture unit at index unit. sampler
+    must be zero or the name of a sampler object previously returned from a call
+    to gl.gen_samplers. unit must be less than the value of
+    gl.MAX_COMBINED_TEXTURE_IMAGE_UNITS.
     
     Args:
-        unit: Specifies the index of the texture unit to which the sampler is
-            bound
-        sampler: Specifies the name of a sampler
+        unit: the index of the texture unit to which the sampler is bound.
+        sampler: the name of a sampler.
     '''
 
 @accepts(t.uint, t.enum, t.int)
@@ -164,11 +195,17 @@ TEXTURE_SWIZZLE_RGBA = 0x8E46
 def query_counter(id, target):
     '''
     record the GL time into a query object after all previous commands have reached
-the GL server but have not yet necessarily executed
+the GL server but have not yet necessarily executed..
+    
+    gl.query_counter causes the GL to record the current time into the query
+    object named id. target must be gl.TIMESTAMP. The time is recorded after all
+    previous commands on the GL client and server state and the framebuffer have
+    been fully realized. When the time is recorded, the query result for that
+    object is marked available.
     
     Args:
-        id: Specify the name of a query object into which to record the GL time
-        target: Specify the counter to query
+        id: the name of a query object into which to record the gl time.
+        target: the counter to query.
     '''
 
 @accepts(t.uint, t.enum, POINTER(t.int64))
@@ -191,12 +228,20 @@ TIMESTAMP = 0x8E28
 def vertex_attrib_divisor(index, divisor):
     '''
     modify the rate at which generic vertex attributes advance during instanced
-rendering
+rendering.
+    
+    gl.vertex_attrib_divisor modifies the rate at which generic vertex
+    attributes advance when rendering multiple instances of primitives in a
+    single draw call. If divisor is zero, the attribute at slot index advances
+    once per vertex. If divisor is non-zero, the attribute advances once per
+    divisor instances of the set(s) of vertices being rendered. An attribute is
+    referred to as instanced if its gl.VERTEX_ATTRIB_ARRAY_DIVISOR value is non-
+    zero.
     
     Args:
-        index: Specify the index of the generic vertex attribute
-        divisor: Specify the number of instances that will pass between updates
-            of the generic attribute at slot index
+        index: the index of the generic vertex attribute.
+        divisor: the number of instances that will pass between updates of the
+            generic attribute at slot index.
     '''
 
 @accepts(t.uint, t.enum, t.boolean, t.uint)

@@ -9,11 +9,14 @@ CONTEXT_LOST = 0x0507
 @binds(dll)
 def clip_control(origin, depth):
     '''
-    control clip coordinate to window coordinate behavior
+    control clip coordinate to window coordinate behavior.
+    
+    gl.clip_control controls the clipping volume behavior and the clip
+    coordinate to window coordinate transformation behavior.
     
     Args:
-        origin: Specifies the clip control origin
-        depth: Specifies the clip control depth mode
+        origin: the clip control origin.
+        depth: the clip control depth mode.
     '''
 
 LOWER_LEFT = 0x8CA1
@@ -33,12 +36,16 @@ MAX_COMBINED_CLIP_AND_CULL_DISTANCES = 0x82FA
 @binds(dll)
 def create_transform_feedbacks(n, ids):
     '''
-    create transform feedback objects
+    create transform feedback objects.
+    
+    gl.create_transform_feedbacks returns n previously unused transform feedback
+    object names in ids, each representing a new transform feedback object
+    initialized to the default state.
     
     Args:
-        n: Number of transform feedback objects to create
-        ids: Specifies an array in which names of the new transform feedback
-            objects are stored
+        n: number of transform feedback objects to create.
+        ids: an array in which names of the new transform feedback objects are
+            stored.
     '''
 
 @accepts(t.uint, t.uint, t.uint)
@@ -46,12 +53,16 @@ def create_transform_feedbacks(n, ids):
 @binds(dll)
 def transform_feedback_buffer_base(xfb, index, buffer):
     '''
-    bind a buffer object to a transform feedback buffer object
+    bind a buffer object to a transform feedback buffer object.
+    
+    gl.transform_feedback_buffer_base binds the buffer object buffer to the
+    binding point at index index of the transform feedback object xfb.
     
     Args:
-        xfb: Name of the transform feedback buffer object
-        index: Index of the binding point within xfb
-        buffer: Name of the buffer object to bind to the specified binding point
+        xfb: name of the transform feedback buffer object.
+        index: index of the binding point within xfb.
+        buffer: name of the buffer object to bind to the specified binding
+            point.
     '''
 
 @accepts(t.uint, t.uint, t.uint, t.intptr, t.sizeiptr)
@@ -59,16 +70,21 @@ def transform_feedback_buffer_base(xfb, index, buffer):
 @binds(dll)
 def transform_feedback_buffer_range(xfb, index, buffer, offset, size):
     '''
-    bind a range within a buffer object to a transform feedback buffer object
+    bind a range within a buffer object to a transform feedback buffer object.
+    
+    gl.transform_feedback_buffer_range binds a range of the buffer object buffer
+    represented by offset and size to the binding point at index index of the
+    transform feedback object xfb.
     
     Args:
-        xfb: Name of the transform feedback buffer object
-        index: Index of the binding point within xfb
-        buffer: Name of the buffer object to bind to the specified binding point
-        offset: The starting offset in basic machine units into the buffer
-            object
-        size: The amount of data in basic machine units that can be read from or
-            written to the buffer object while used as an indexed target
+        xfb: name of the transform feedback buffer object.
+        index: index of the binding point within xfb.
+        buffer: name of the buffer object to bind to the specified binding
+            point.
+        offset: the starting offset in basic machine units into the buffer
+            object.
+        size: the amount of data in basic machine units that can be read from or
+            written to the buffer object while used as an indexed target.
     '''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
@@ -94,12 +110,15 @@ def get_transform_feedbacki64_v(xfb, pname, index, param):
 @binds(dll)
 def create_buffers(n, buffers):
     '''
-    create buffer objects
+    create buffer objects.
+    
+    gl.create_buffers returns n previously unused buffer names in buffers, each
+    representing a new buffer object initialized as if it had been bound to an
+    unspecified target.
     
     Args:
-        n: Specifies the number of buffer objects to create
-        buffers: Specifies an array in which names of the new buffer objects are
-            stored
+        n: the number of buffer objects to create.
+        buffers: an array in which names of the new buffer objects are stored.
     '''
 
 @accepts(t.uint, t.sizeiptr, t.void, t.bitfield)
@@ -191,10 +210,14 @@ def get_named_buffer_sub_data(buffer, offset, size, data):
 @binds(dll)
 def create_framebuffers(n, framebuffers):
     '''
-    create framebuffer objects
+    create framebuffer objects.
+    
+    gl.create_framebuffers returns n previously unused framebuffer names in
+    framebuffers, each representing a new framebuffer object initialized to the
+    default state.
     
     Args:
-        n: Number of framebuffer objects to create
+        n: number of framebuffer objects to create.
     '''
 
 @accepts(t.uint, t.enum, t.enum, t.uint)
@@ -304,12 +327,16 @@ def get_named_framebuffer_attachment_parameteriv(framebuffer, attachment, pname,
 @binds(dll)
 def create_renderbuffers(n, renderbuffers):
     '''
-    create renderbuffer objects
+    create renderbuffer objects.
+    
+    gl.create_renderbuffers returns n previously unused renderbuffer object
+    names in renderbuffers, each representing a new renderbuffer object
+    initialized to the default state.
     
     Args:
-        n: Number of renderbuffer objects to create
-        renderbuffers: Specifies an array in which names of the new renderbuffer
-            objects are stored
+        n: number of renderbuffer objects to create.
+        renderbuffers: an array in which names of the new renderbuffer objects
+            are stored.
     '''
 
 @accepts(t.uint, t.enum, t.sizei, t.sizei)
@@ -335,13 +362,17 @@ def get_named_renderbuffer_parameteriv(renderbuffer, pname, params):
 @binds(dll)
 def create_textures(target, n, textures):
     '''
-    create texture objects
+    create texture objects.
+    
+    gl.create_textures returns n previously unused texture names in textures,
+    each representing a new texture object of the dimensionality and type
+    specified by target and initialized to the default values for that texture
+    type.
     
     Args:
-        target: Specifies the effective texture target of each created texture
-        n: Number of texture objects to create
-        textures: Specifies an array in which names of the new texture objects
-            are stored
+        target: the effective texture target of each created texture.
+        n: number of texture objects to create.
+        textures: an array in which names of the new texture objects are stored.
     '''
 
 @accepts(t.uint, t.enum, t.uint)
@@ -487,12 +518,14 @@ def generate_texture_mipmap(texture):
 @binds(dll)
 def bind_texture_unit(unit, texture):
     '''
-    bind an existing texture object to the specified texture unit
+    bind an existing texture object to the specified texture unit.
+    
+    gl.bind_texture_unit binds an existing texture object to the texture unit
+    numbered unit.
     
     Args:
-        unit: Specifies the texture unit, to which the texture object should be
-            bound to
-        texture: Specifies the name of a texture
+        unit: the texture unit, to which the texture object should be bound to.
+        texture: the name of a texture.
     '''
 
 @accepts(t.uint, t.int, t.enum, t.enum, t.sizei, t.void)
@@ -548,12 +581,16 @@ def get_texture_parameteriv(texture, pname, params):
 @binds(dll)
 def create_vertex_arrays(n, arrays):
     '''
-    create vertex array objects
+    create vertex array objects.
+    
+    gl.create_vertex_arrays returns n previously unused vertex array object
+    names in arrays, each representing a new vertex array object initialized to
+    the default state.
     
     Args:
-        n: Number of vertex array objects to create
-        arrays: Specifies an array in which names of the new vertex array
-            objects are stored
+        n: number of vertex array objects to create.
+        arrays: an array in which names of the new vertex array objects are
+            stored.
     '''
 
 @accepts(t.uint, t.uint)
@@ -573,12 +610,17 @@ def enable_vertex_array_attrib(vaobj, index):
 @binds(dll)
 def vertex_array_element_buffer(vaobj, buffer):
     '''
-    configures element array buffer binding of a vertex array object
+    configures element array buffer binding of a vertex array object.
+    
+    gl.vertex_array_element_buffer binds a buffer object with id buffer to the
+    element array buffer bind point of a vertex array object with id vaobj. If
+    buffer is zero, any existing element array buffer binding to vaobj is
+    removed.
     
     Args:
-        vaobj: Specifies the name of the vertex array object
-        buffer: Specifies the name of the buffer object to use for the element
-            array buffer binding
+        vaobj: the name of the vertex array object.
+        buffer: the name of the buffer object to use for the element array
+            buffer binding.
     '''
 
 @accepts(t.uint, t.uint, t.uint, t.intptr, t.sizei)
@@ -628,13 +670,17 @@ def vertex_array_binding_divisor(vaobj, bindingindex, divisor):
 @binds(dll)
 def get_vertex_arrayiv(vaobj, pname, param):
     '''
-    retrieve parameters of a vertex array object
+    retrieve parameters of a vertex array object.
+    
+    gl.get_vertex_arrayiv can be used to retrieve ID of a buffer object that
+    will be bound to the gl.ELEMENT_ARRAY_BUFFER binding point whenever the
+    queried vertex array object is bound to the rendering context. The binding
+    can be changed for an active vertex array object with a gl.bind_buffer call.
     
     Args:
-        vaobj: specifies the name of the vertex array object to use for the
-            query
-        pname: Name of the property to use for the query
-        param: Returns the requested value
+        vaobj: the name of the vertex array object to use for the query.
+        pname: name of the property to use for the query.
+        param: returns the requested value.
     '''
 
 @accepts(t.uint, t.uint, t.enum, POINTER(t.int))
@@ -654,12 +700,14 @@ def get_vertex_array_indexed64iv(vaobj, index, pname, param):
 @binds(dll)
 def create_samplers(n, samplers):
     '''
-    create sampler objects
+    create sampler objects.
+    
+    gl.create_samplers returns n previously unused sampler names in samplers,
+    each representing a new sampler object initialized to the default state.
     
     Args:
-        n: Number of sampler objects to create
-        samplers: Specifies an array in which names of the new sampler objects
-            are stored
+        n: number of sampler objects to create.
+        samplers: an array in which names of the new sampler objects are stored.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -667,12 +715,16 @@ def create_samplers(n, samplers):
 @binds(dll)
 def create_program_pipelines(n, pipelines):
     '''
-    create program pipeline objects
+    create program pipeline objects.
+    
+    gl.create_program_pipelines returns n previously unused program pipeline
+    names in pipelines, each representing a new program pipeline object
+    initialized to the default state.
     
     Args:
-        n: Number of program pipeline objects to create
-        pipelines: Specifies an array in which names of the new program pipeline
-            objects are stored
+        n: number of program pipeline objects to create.
+        pipelines: an array in which names of the new program pipeline objects
+            are stored.
     '''
 
 @accepts(t.enum, t.sizei, POINTER(t.uint))
@@ -680,13 +732,15 @@ def create_program_pipelines(n, pipelines):
 @binds(dll)
 def create_queries(target, n, ids):
     '''
-    create query objects
+    create query objects.
+    
+    gl.create_queries returns n previously unused query object names in ids,
+    each representing a new query object with the specified target.
     
     Args:
-        target: Specifies the target of each created query object
-        n: Number of query objects to create
-        ids: Specifies an array in which names of the new query objects are
-            stored
+        target: the target of each created query object.
+        n: number of query objects to create.
+        ids: an array in which names of the new query objects are stored.
     '''
 
 @accepts(t.uint, t.uint, t.enum, t.intptr)
@@ -738,25 +792,23 @@ BACK = 0x0405
 @binds(dll)
 def get_texture_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufsize, pixels):
     '''
-    retrieve a sub-region of a texture image from a texture object
+    retrieve a sub-region of a texture image from a texture object.
+    
+    gl.get_texture_sub_image returns a texture subimage into pixels.
     
     Args:
-        texture: Specifies the name of the source texture object
-        level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture
-            array
-        yoffset: Specifies a texel offset in the y direction within the texture
-            array
-        zoffset: Specifies a texel offset in the z direction within the texture
-            array
-        width: Specifies the width of the texture subimage
-        height: Specifies the height of the texture subimage
-        depth: Specifies the depth of the texture subimage
-        format: Specifies the format of the pixel data
-        type: Specifies the data type of the pixel data
-        bufsize: Specifies the size of the buffer to receive the retrieved pixel
-            data
-        pixels: Returns the texture subimage
+        texture: the name of the source texture object.
+        level: the level-of-detail number.
+        xoffset: a texel offset in the x direction within the texture array.
+        yoffset: a texel offset in the y direction within the texture array.
+        zoffset: a texel offset in the z direction within the texture array.
+        width: the width of the texture subimage.
+        height: the height of the texture subimage.
+        depth: the depth of the texture subimage.
+        format: the format of the pixel data.
+        type: the data type of the pixel data.
+        bufsize: the size of the buffer to receive the retrieved pixel data.
+        pixels: returns the texture subimage.
     '''
 
 @accepts(t.uint, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.sizei, t.void)
@@ -765,23 +817,27 @@ def get_texture_sub_image(texture, level, xoffset, yoffset, zoffset, width, heig
 def get_compressed_texture_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth, bufsize, pixels):
     '''
     retrieve a sub-region of a compressed texture image from a compressed texture
-object
+object.
+    
+    gl.get_compressed_texture_sub_image can be used to obtain a sub-region of a
+    compressed texture image instead of the whole image, as long as the
+    compressed data are arranged into fixed-size blocks of texels. texture is
+    the name of the texture object, and must not be a buffer or multisample
+    texture. The effective target is the value of gl.TEXTURE_TARGET for texture.
+    level and pixels have the same meaning as the corresponding arguments of
+    gl.compressed_tex_sub_image3D.
     
     Args:
-        texture: Specifies the name of the source texture object
-        level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture
-            array
-        yoffset: Specifies a texel offset in the y direction within the texture
-            array
-        zoffset: Specifies a texel offset in the z direction within the texture
-            array
-        width: Specifies the width of the texture subimage
-        height: Specifies the height of the texture subimage
-        depth: Specifies the depth of the texture subimage
-        bufsize: Specifies the size of the buffer to receive the retrieved pixel
-            data
-        pixels: Returns the texture subimage
+        texture: the name of the source texture object.
+        level: the level-of-detail number.
+        xoffset: a texel offset in the x direction within the texture array.
+        yoffset: a texel offset in the y direction within the texture array.
+        zoffset: a texel offset in the z direction within the texture array.
+        width: the width of the texture subimage.
+        height: the height of the texture subimage.
+        depth: the depth of the texture subimage.
+        bufsize: the size of the buffer to receive the retrieved pixel data.
+        pixels: returns the texture subimage.
     '''
 
 @accepts()
@@ -790,7 +846,7 @@ object
 def get_graphics_reset_status():
     '''
     check if the rendering context has not been lost due to software or hardware
-issues
+issues.
     '''
 
 @accepts(t.enum, t.int, t.sizei, t.void)
@@ -922,7 +978,7 @@ def getn_minmax(target, reset, format, type, bufsize, values):
 def texture_barrier():
     '''
     controls the ordering of reads and writes to rendered fragments across drawing
-commands
+commands.
     '''
 
 CONTEXT_RELEASE_BEHAVIOR = 0x82FB

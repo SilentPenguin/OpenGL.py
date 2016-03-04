@@ -8,15 +8,23 @@ from opengl.gl.raw.bindings import *
 @binds(dll)
 def dispatch_compute(num_groups_x, num_groups_y, num_groups_z):
     '''
-    launch one or more compute work groups
+    launch one or more compute work groups.
+    
+    gl.dispatch_compute launches one or more compute work groups. Each work
+    group is processed by the active program object for the compute shader
+    stage. While the individual shader invocations within a work group are
+    executed as a unit, work groups are executed completely independently and in
+    unspecified order. num_groups_x, num_groups_y and num_groups_z specify the
+    number of local work groups that will be dispatched in the X, Y and Z
+    dimensions, respectively.
     
     Args:
-        num_groups_x: The number of work groups to be launched in the X
-            dimension
-        num_groups_y: The number of work groups to be launched in the Y
-            dimension
-        num_groups_z: The number of work groups to be launched in the Z
-            dimension
+        num_groups_x: the number of work groups to be launched in the x
+            dimension.
+        num_groups_y: the number of work groups to be launched in the y
+            dimension.
+        num_groups_z: the number of work groups to be launched in the z
+            dimension.
     '''
 
 @accepts(t.intptr)
@@ -24,12 +32,21 @@ def dispatch_compute(num_groups_x, num_groups_y, num_groups_z):
 @binds(dll)
 def dispatch_compute_indirect(indirect):
     '''
-    launch one or more compute work groups using parameters stored in a buffer
+    launch one or more compute work groups using parameters stored in a buffer.
+    
+    gl.dispatch_compute_indirect launches one or more compute work groups using
+    parameters stored in the buffer object currently bound to the
+    gl.DISPATCH_INDIRECT_BUFFER target. Each work group is processed by the
+    active program object for the compute shader stage. While the individual
+    shader invocations within a work group are executed as a unit, work groups
+    are executed completely independently and in unspecified order. indirect
+    contains the offset into the data store of the buffer object bound to the
+    gl.DISPATCH_INDIRECT_BUFFER target at which the parameters are stored.
     
     Args:
-        indirect: The offset into the buffer object currently bound to the
-            gl.DISPATCH_INDIRECT_BUFFER buffer target at which the dispatch
-            parameters are stored
+        indirect: the offset into the buffer object currently bound to the
+            gl_dispatch_indirect_buffer buffer target at which the dispatch
+            parameters are stored.
     '''
 
 COMPUTE_SHADER = 0x91B9
@@ -53,12 +70,17 @@ COMPUTE_SHADER_BIT = 0x00000020
 @binds(dll)
 def draw_arrays_indirect(mode, indirect):
     '''
-    render primitives from array data, taking parameters from memory
+    render primitives from array data, taking parameters from memory.
+    
+    gl.draw_arrays_indirect specifies multiple geometric primitives with very
+    few subroutine calls. gl.draw_arrays_indirect behaves similarly to
+    gl.draw_arrays_instanced_base_instance, execept that the parameters to
+    gl.draw_arrays_instanced_base_instance are stored in memory at the address
+    given by indirect.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        indirect: Specifies the address of a structure containing the draw
-            parameters
+        mode: what kind of primitives to render.
+        indirect: the address of a structure containing the draw parameters.
     '''
 
 @accepts(t.enum, t.enum, t.void)
@@ -66,14 +88,19 @@ def draw_arrays_indirect(mode, indirect):
 @binds(dll)
 def draw_elements_indirect(mode, type, indirect):
     '''
-    render indexed primitives from array data, taking parameters from memory
+    render indexed primitives from array data, taking parameters from memory.
+    
+    gl.draw_elements_indirect specifies multiple indexed geometric primitives
+    with very few subroutine calls. gl.draw_elements_indirect behaves similarly
+    to gl.draw_elements_instanced_base_vertex_base_instance, execpt that the
+    parameters to gl.draw_elements_instanced_base_vertex_base_instance are
+    stored in memory at the address given by indirect.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        type: Specifies the type of data in the buffer bound to the
-            gl.ELEMENT_ARRAY_BUFFER binding
-        indirect: Specifies the address of a structure containing the draw
-            parameters
+        mode: what kind of primitives to render.
+        type: the type of data in the buffer bound to the
+            gl_element_array_buffer binding.
+        indirect: the address of a structure containing the draw parameters.
     '''
 
 DRAW_INDIRECT_BUFFER = 0x8F3F
@@ -84,13 +111,18 @@ MAX_UNIFORM_LOCATIONS = 0x826E
 @binds(dll)
 def framebuffer_parameteri(target, pname, param):
     '''
-    set a named parameter of a framebuffer object
+    set a named parameter of a framebuffer object.
+    
+    gl.framebuffer_parameteri and gl.named_framebuffer_parameteri modify the
+    value of the parameter named pname in the specified framebuffer object.
+    There are no modifiable parameters of the default draw and read framebuffer,
+    so they are not valid targets of these commands.
     
     Args:
-        target: Specifies the target to which the framebuffer is bound for
-            gl.framebuffer_parameteri
-        pname: Specifies the framebuffer parameter to be modified
-        param: The new value for the parameter named pname
+        target: the target to which the framebuffer is bound for
+            glframebufferparameteri.
+        pname: the framebuffer parameter to be modified.
+        param: the new value for the parameter named pname.
     '''
 
 @accepts(t.enum, t.enum, POINTER(t.int))
@@ -117,13 +149,17 @@ def get_program_interfaceiv(program, programinterface, pname, params):
 @binds(dll)
 def get_program_resource_index(program, programinterface, name):
     '''
-    query the index of a named resource within a program
+    query the index of a named resource within a program.
+    
+    gl.get_program_resource_index returns the unsigned integer index assigned to
+    a resource named name in the interface type programInterface of program
+    object program.
     
     Args:
-        program: The name of a program object whose resources to query
-        programinterface: A token identifying the interface within program
-            containing the resource named name
-        name: The name of the resource to query the index of
+        program: the name of a program object whose resources to query.
+        programinterface: a token identifying the interface within program
+            containing the resource named name.
+        name: the name of the resource to query the index of.
     '''
 
 @accepts(t.uint, t.enum, t.uint, t.sizei, POINTER(t.sizei), t.char_p)
@@ -131,18 +167,23 @@ def get_program_resource_index(program, programinterface, name):
 @binds(dll)
 def get_program_resource_name(program, programinterface, index, bufsize, length, name):
     '''
-    query the name of an indexed resource within a program
+    query the name of an indexed resource within a program.
+    
+    gl.get_program_resource_name retrieves the name string assigned to the
+    single active resource with an index of index in the interface
+    programInterface of program object program. index must be less than the
+    number of entries in the active resource list for programInterface.
     
     Args:
-        program: The name of a program object whose resources to query
-        programinterface: A token identifying the interface within program
-            containing the indexed resource
-        index: The index of the resource within programInterface of program
-        bufsize: The size of the character array whose address is given by name
-        length: The address of a variable which will receive the length of the
-            resource name
-        name: The address of a character array into which will be written the
-            name of the resource
+        program: the name of a program object whose resources to query.
+        programinterface: a token identifying the interface within program
+            containing the indexed resource.
+        index: the index of the resource within programinterface of program.
+        bufsize: the size of the character array whose address is given by name.
+        length: the address of a variable which will receive the length of the
+            resource name.
+        name: the address of a character array into which will be written the
+            name of the resource.
     '''
 
 @accepts(t.uint, t.enum, t.uint, t.sizei, POINTER(t.enum), t.sizei, POINTER(t.sizei), POINTER(t.int))
@@ -156,13 +197,22 @@ def get_program_resourceiv(program, programinterface, index, propcount, props, b
 @binds(dll)
 def get_program_resource_location(program, programinterface, name):
     '''
-    query the location of a named resource within a program
+    query the location of a named resource within a program.
+    
+    gl.get_program_resource_location returns the location assigned to the
+    variable named name in interface programInterface of program object program.
+    program must be the name of a program that has been linked successfully.
+    programInterface must be one of gl.UNIFORM, gl.PROGRAM_INPUT,
+    gl.PROGRAM_OUTPUT, gl.VERTEX_SUBROUTINE_UNIFORM,
+    gl.TESS_CONTROL_SUBROUTINE_UNIFORM, gl.TESS_EVALUATION_SUBROUTINE_UNIFORM,
+    gl.GEOMETRY_SUBROUTINE_UNIFORM, gl.FRAGMENT_SUBROUTINE_UNIFORM,
+    gl.COMPUTE_SUBROUTINE_UNIFORM, or gl.TRANSFORM_FEEDBACK_BUFFER.
     
     Args:
-        program: The name of a program object whose resources to query
-        programinterface: A token identifying the interface within program
-            containing the resource named name
-        name: The name of the resource to query the location of
+        program: the name of a program object whose resources to query.
+        programinterface: a token identifying the interface within program
+            containing the resource named name.
+        name: the name of the resource to query the location of.
     '''
 
 UNIFORM = 0x92E1
@@ -200,15 +250,23 @@ LOCATION = 0x930E
 @binds(dll)
 def use_program_stages(pipeline, stages, program):
     '''
-    bind stages of a program object to a program pipeline
+    bind stages of a program object to a program pipeline.
+    
+    gl.use_program_stages binds executables from a program object associated
+    with a specified set of shader stages to the program pipeline object given
+    by pipeline. pipeline specifies the program pipeline object to which to bind
+    the executables. stages contains a logical combination of bits indicating
+    the shader stages to use within program with the program pipeline object
+    pipeline. stages must be a logical combination of gl.VERTEX_SHADER_BIT,
+    gl.TESS_CONTROL_SHADER_BIT, gl.TESS_EVALUATION_SHADER_BIT,
+    gl.GEOMETRY_SHADER_BIT, gl.FRAGMENT_SHADER_BIT and gl.COMPUTE_SHADER_BIT.
     
     Args:
-        pipeline: Specifies the program pipeline object to which to bind stages
-            from program
-        stages: Specifies a set of program stages to bind to the program
-            pipeline object
-        program: Specifies the program object containing the shader executables
-            to use in pipeline
+        pipeline: the program pipeline object to which to bind stages from
+            program.
+        stages: a set of program stages to bind to the program pipeline object.
+        program: the program object containing the shader executables to use in
+            pipeline.
     '''
 
 @accepts(t.uint, t.uint)
@@ -216,13 +274,18 @@ def use_program_stages(pipeline, stages, program):
 @binds(dll)
 def active_shader_program(pipeline, program):
     '''
-    set the active program object for a program pipeline object
+    set the active program object for a program pipeline object.
+    
+    gl.active_shader_program sets the linked program named by program to be the
+    active program for the program pipeline object pipeline. The active program
+    in the active program pipeline object is the target of calls to gl.uniform
+    when no program has been made current through a call to gl.use_program.
     
     Args:
-        pipeline: Specifies the program pipeline object to set the active
-            program object for
-        program: Specifies the program object to set as the active program
-            pipeline object pipeline
+        pipeline: the program pipeline object to set the active program object
+            for.
+        program: the program object to set as the active program pipeline object
+            pipeline.
     '''
 
 @accepts(t.enum, t.sizei, POINTER(t.char_p))
@@ -236,11 +299,16 @@ def create_shader_programv(type, count, strings):
 @binds(dll)
 def bind_program_pipeline(pipeline):
     '''
-    bind a program pipeline to the current context
+    bind a program pipeline to the current context.
+    
+    gl.bind_program_pipeline binds a program pipeline object to the current
+    context. pipeline must be a name previously returned from a call to
+    gl.gen_program_pipelines. If no program pipeline exists with name pipeline
+    then a new pipeline object is created with that name and initialized to the
+    default state vector.
     
     Args:
-        pipeline: Specifies the name of the pipeline object to bind to the
-            context
+        pipeline: the name of the pipeline object to bind to the context.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -248,12 +316,18 @@ def bind_program_pipeline(pipeline):
 @binds(dll)
 def delete_program_pipelines(n, pipelines):
     '''
-    delete program pipeline objects
+    delete program pipeline objects.
+    
+    gl.delete_program_pipelines deletes the n program pipeline objects whose
+    names are stored in the array pipelines. Unused names in pipelines are
+    ignored, as is the name zero. After a program pipeline object is deleted,
+    its name is again unused and it has no contents. If program pipeline object
+    that is currently bound is deleted, the binding for that object reverts to
+    zero and no program pipeline object becomes current.
     
     Args:
-        n: Specifies the number of program pipeline objects to delete
-        pipelines: Specifies an array of names of program pipeline objects to
-            delete
+        n: the number of program pipeline objects to delete.
+        pipelines: an array of names of program pipeline objects to delete.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -261,12 +335,16 @@ def delete_program_pipelines(n, pipelines):
 @binds(dll)
 def gen_program_pipelines(n, pipelines):
     '''
-    reserve program pipeline object names
+    reserve program pipeline object names.
+    
+    gl.gen_program_pipelines returns n previously unused program pipeline object
+    names in pipelines. These names are marked as used, for the purposes of
+    gl.gen_program_pipelines only, but they acquire program pipeline state only
+    when they are first bound.
     
     Args:
-        n: Specifies the number of program pipeline object names to reserve
-        pipelines: Specifies an array of into which the reserved names will be
-            written
+        n: the number of program pipeline object names to reserve.
+        pipelines: an array of into which the reserved names will be written.
     '''
 
 @accepts(t.uint)
@@ -274,11 +352,18 @@ def gen_program_pipelines(n, pipelines):
 @binds(dll)
 def is_program_pipeline(pipeline):
     '''
-    determine if a name corresponds to a program pipeline object
+    determine if a name corresponds to a program pipeline object.
+    
+    gl.is_program_pipeline returns gl.TRUE if pipeline is currently the name of
+    a program pipeline object. If pipeline is zero, or if pipeline is not the
+    name of a program pipeline object, or if an error occurs,
+    gl.is_program_pipeline returns gl.FALSE. If pipeline is a name returned by
+    gl.gen_program_pipelines, but that has not yet been bound through a call to
+    gl.bind_program_pipeline, then the name is not a program pipeline object and
+    gl.is_program_pipeline returns gl.FALSE.
     
     Args:
-        pipeline: Specifies a value that may be the name of a program pipeline
-            object
+        pipeline: a value that may be the name of a program pipeline object.
     '''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
@@ -490,10 +575,16 @@ def program_uniform_matrix4x3fv(program, location, count, transpose, value):
 @binds(dll)
 def validate_program_pipeline(pipeline):
     '''
-    validate a program pipeline object against current GL state
+    validate a program pipeline object against current GL state.
+    
+    gl.validate_program_pipeline instructs the implementation to validate the
+    shader executables contained in pipeline against the current GL state. The
+    implementation may use this as an opportunity to perform any internal shader
+    modifications that may be required to ensure correct operation of the
+    installed shaders given the current GL state.
     
     Args:
-        pipeline: Specifies the name of a program pipeline object to validate
+        pipeline: the name of a program pipeline object to validate.
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.sizei), t.char_p)
@@ -501,17 +592,25 @@ def validate_program_pipeline(pipeline):
 @binds(dll)
 def get_program_pipeline_info_log(pipeline, bufsize, length, infolog):
     '''
-    retrieve the info log string from a program pipeline object
+    retrieve the info log string from a program pipeline object.
+    
+    gl.get_program_pipeline_info_log retrieves the info log for the program
+    pipeline object pipeline. The info log, including its null terminator, is
+    written into the array of characters whose address is given by infoLog. The
+    maximum number of characters that may be written into infoLog is given by
+    bufSize, and the actual number of characters written into infoLog is
+    returned in the integer whose address is given by length. If length is None,
+    no length is returned.
     
     Args:
-        pipeline: Specifies the name of a program pipeline object from which to
-            retrieve the info log
-        bufsize: Specifies the maximum number of characters, including the null
-            terminator, that may be written into infoLog
-        length: Specifies the address of a variable into which will be written
-            the number of characters written into infoLog
-        infolog: Specifies the address of an array of characters into which will
-            be written the info log for pipeline
+        pipeline: the name of a program pipeline object from which to retrieve
+            the info log.
+        bufsize: the maximum number of characters, including the null
+            terminator, that may be written into infolog.
+        length: the address of a variable into which will be written the number
+            of characters written into infolog.
+        infolog: the address of an array of characters into which will be
+            written the info log for pipeline.
     '''
 
 VERTEX_SHADER_BIT = 0x00000001
@@ -541,20 +640,25 @@ UNSIGNED_INT_ATOMIC_COUNTER = 0x92DB
 @binds(dll)
 def bind_image_texture(unit, texture, level, layered, layer, access, format):
     '''
-    bind a level of a texture to an image unit
+    bind a level of a texture to an image unit.
+    
+    gl.bind_image_texture binds a single level of a texture to an image unit for
+    the purpose of reading and writing it from shaders. unit specifies the zero-
+    based index of the image unit to which to bind the texture level. texture
+    specifies the name of an existing texture object to bind to the image unit.
+    If texture is zero, then any existing binding to the image unit is broken.
     
     Args:
-        unit: Specifies the index of the image unit to which to bind the texture
-        texture: Specifies the name of the texture to bind to the image unit
-        level: Specifies the level of the texture that is to be bound
-        layered: Specifies whether a layered texture binding is to be
-            established
-        layer: If layered is gl.FALSE, specifies the layer of texture to be
-            bound to the image unit
-        access: Specifies a token indicating the type of access that will be
-            performed on the image
-        format: Specifies the format that the elements of the image will be
-            treated as for the purposes of formatted stores
+        unit: the index of the image unit to which to bind the texture.
+        texture: the name of the texture to bind to the image unit.
+        level: the level of the texture that is to be bound.
+        layered: whether a layered texture binding is to be established.
+        layer: if layered is gl_false, specifies the layer of texture to be
+            bound to the image unit.
+        access: a token indicating the type of access that will be performed on
+            the image.
+        format: the format that the elements of the image will be treated as for
+            the purposes of formatted stores.
     '''
 
 @accepts(t.enum, t.uint, POINTER(t.boolean))
@@ -568,10 +672,16 @@ def get_booleani_v(target, index, data):
 @binds(dll)
 def memory_barrier(barriers):
     '''
-    defines a barrier ordering memory transactions
+    defines a barrier ordering memory transactions.
+    
+    gl.memory_barrier defines a barrier ordering the memory transactions issued
+    prior to the command relative to those issued after the barrier. For the
+    purposes of this ordering, memory transactions performed by shaders are
+    considered to be issued by the rendering command that triggered the
+    execution of the shader.
     
     Args:
-        barriers: Specifies the barriers to insert
+        barriers: the barriers to insert.
     '''
 
 @accepts(t.bitfield)
@@ -644,20 +754,20 @@ MAX_PROGRAM_TEXTURE_GATHER_OFFSET = 0x8E5F
 @binds(dll)
 def tex_storage2_d_multisample(target, samples, internalformat, width, height, fixedsamplelocations):
     '''
-    specify storage for a two-dimensional multisample texture
+    specify storage for a two-dimensional multisample texture.
     
     Args:
-        target: Specifies the target to which the texture object is bound for
-            gl.tex_storage2DMultisample
-        samples: Specify the number of samples in the texture
-        internalformat: Specifies the sized internal format to be used to store
-            texture image data
-        width: Specifies the width of the texture, in texels
-        height: Specifies the height of the texture, in texels
-        fixedsamplelocations: Specifies whether the image will use identical
-            sample locations and the same number of samples for all texels in
-            the image, and the sample locations will not depend on the internal
-            format or size of the image
+        target: the target to which the texture object is bound for
+            gltexstorage2dmultisample.
+        samples: the number of samples in the texture.
+        internalformat: the sized internal format to be used to store texture
+            image data.
+        width: the width of the texture, in texels.
+        height: the height of the texture, in texels.
+        fixedsamplelocations: whether the image will use identical sample
+            locations and the same number of samples for all texels in the
+            image, and the sample locations will not depend on the internal
+            format or size of the image.
     '''
 
 @accepts(t.enum, t.uint, POINTER(t.float))
@@ -671,11 +781,14 @@ def get_multisamplefv(pname, index, val):
 @binds(dll)
 def sample_maski(masknumber, mask):
     '''
-    set the value of a sub-word of the sample mask
+    set the value of a sub-word of the sample mask.
+    
+    gl.sample_maski sets one 32-bit sub-word of the multi-word sample mask,
+    gl.SAMPLE_MASK_VALUE.
     
     Args:
-        masknumber: Specifies which 32-bit sub-word of the sample mask to update
-        mask: Specifies the new value of the mask sub-word
+        masknumber: which 32-bit sub-word of the sample mask to update.
+        mask: the new value of the mask sub-word.
     '''
 
 @accepts(t.enum, t.int, t.enum, POINTER(t.int))
@@ -726,14 +839,25 @@ UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE = 0x910A
 @binds(dll)
 def bind_vertex_buffer(bindingindex, buffer, offset, stride):
     '''
-    bind a buffer to a vertex buffer bind point
+    bind a buffer to a vertex buffer bind point.
+    
+    gl.bind_vertex_buffer and gl.vertex_array_vertex_buffer bind the buffer
+    named buffer to the vertex buffer binding point whose index is given by
+    bindingindex. gl.bind_vertex_buffer modifies the binding of the currently
+    bound vertex array object, whereas gl.vertex_array_vertex_buffer allows the
+    caller to specify ID of the vertex array object with an argument named
+    vaobj, for which the binding should be modified. offset and stride specify
+    the offset of the first element within the buffer and the distance between
+    elements within the buffer, respectively, and are both measured in basic
+    machine units. bindingindex must be less than the value of
+    gl.MAX_VERTEX_ATTRIB_BINDINGS.
     
     Args:
-        bindingindex: The index of the vertex buffer binding point to which to
-            bind the buffer
-        buffer: The name of a buffer to bind to the vertex buffer binding point
-        offset: The offset of the first element of the buffer
-        stride: The distance between elements within the buffer
+        bindingindex: the index of the vertex buffer binding point to which to
+            bind the buffer.
+        buffer: the name of a buffer to bind to the vertex buffer binding point.
+        offset: the offset of the first element of the buffer.
+        stride: the distance between elements within the buffer.
     '''
 
 @accepts(t.uint, t.int, t.enum, t.boolean, t.uint)
@@ -741,14 +865,23 @@ def bind_vertex_buffer(bindingindex, buffer, offset, stride):
 @binds(dll)
 def vertex_attrib_format(attribindex, size, type, normalized, relativeoffset):
     '''
-    specify the organization of vertex arrays
+    specify the organization of vertex arrays.
+    
+    gl.vertex_attrib_format, gl.vertex_attrib_i_format and
+    gl.vertex_attrib_l_format, as well as gl.vertex_array_attrib_format,
+    gl.vertex_array_attrib_i_format and gl.vertex_array_attrib_l_format specify
+    the organization of data in vertex arrays. The first three calls operate on
+    the bound vertex array object, whereas the last three ones modify the state
+    of a vertex array object with ID vaobj. attribindex specifies the index of
+    the generic vertex attribute array whose data layout is being described, and
+    must be less than the value of gl.MAX_VERTEX_ATTRIBS.
     
     Args:
-        attribindex: The generic vertex attribute array being described
-        size: The number of values per vertex that are stored in the array
-        type: The type of the data stored in the array
-        normalized: The distance between elements within the buffer
-        relativeoffset: The distance between elements within the buffer
+        attribindex: the generic vertex attribute array being described.
+        size: the number of values per vertex that are stored in the array.
+        type: the type of the data stored in the array.
+        normalized: the distance between elements within the buffer.
+        relativeoffset: the distance between elements within the buffer.
     '''
 
 @accepts(t.uint, t.int, t.enum, t.uint)
@@ -763,13 +896,20 @@ def vertex_attrib_i_format(attribindex, size, type, relativeoffset):
 def vertex_attrib_binding(attribindex, bindingindex):
     '''
     associate a vertex attribute and a vertex buffer binding for a vertex array
-object
+object.
+    
+    gl.vertex_attrib_binding and gl.vertex_array_attrib_binding establishes an
+    association between the generic vertex attribute of a vertex array object
+    whose index is given by attribindex, and a vertex buffer binding whose index
+    is given by bindingindex. For gl.vertex_attrib_binding, the vertex array
+    object affected is that currently bound. For gl.vertex_array_attrib_binding,
+    vaobj is the name of the vertex array object.
     
     Args:
-        attribindex: The index of the attribute to associate with a vertex
-            buffer binding
-        bindingindex: The index of the vertex buffer binding with which to
-            associate the generic vertex attribute
+        attribindex: the index of the attribute to associate with a vertex
+            buffer binding.
+        bindingindex: the index of the vertex buffer binding with which to
+            associate the generic vertex attribute.
     '''
 
 @accepts(t.uint, t.uint)
@@ -777,11 +917,19 @@ object
 @binds(dll)
 def vertex_binding_divisor(bindingindex, divisor):
     '''
-    modify the rate at which generic vertex attributes advance
+    modify the rate at which generic vertex attributes advance.
+    
+    gl.vertex_binding_divisor and gl.vertex_array_binding_divisor modify the
+    rate at which generic vertex attributes advance when rendering multiple
+    instances of primitives in a single draw command. If divisor is zero, the
+    attributes using the buffer bound to bindingindex advance once per vertex.
+    If divisor is non-zero, the attributes advance once per divisor instances of
+    the set(s) of vertices being rendered. An attribute is referred to as
+    instanced if the corresponding divisor value is non-zero.
     
     Args:
-        bindingindex: The index of the binding whose divisor to modify
-        divisor: The new value for the instance step rate to apply
+        bindingindex: the index of the binding whose divisor to modify.
+        divisor: the new value for the instance step rate to apply.
     '''
 
 VERTEX_ATTRIB_BINDING = 0x82D4

@@ -8,12 +8,18 @@ from opengl.gl.raw.bindings import *
 @binds(dll)
 def draw_arrays(mode, first, count):
     '''
-    render primitives from array data
+    render primitives from array data.
+    
+    gl.draw_arrays specifies multiple geometric primitives with very few
+    subroutine calls. Instead of calling a GL procedure to pass each individual
+    vertex, normal, texture coordinate, edge flag, or color, you can prespecify
+    separate arrays of vertices, normals, and colors and use them to construct a
+    sequence of primitives with a single call to gl.draw_arrays.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        first: Specifies the starting index in the enabled arrays
-        count: Specifies the number of indices to be rendered
+        mode: what kind of primitives to render.
+        first: the starting index in the enabled arrays.
+        count: the number of indices to be rendered.
     '''
 
 @accepts(t.enum, t.sizei, t.enum, t.void)
@@ -21,14 +27,19 @@ def draw_arrays(mode, first, count):
 @binds(dll)
 def draw_elements(mode, count, type, indices):
     '''
-    render primitives from array data
+    render primitives from array data.
+    
+    gl.draw_elements specifies multiple geometric primitives with very few
+    subroutine calls. Instead of calling a GL function to pass each individual
+    vertex, normal, texture coordinate, edge flag, or color, you can prespecify
+    separate arrays of vertices, normals, and so on, and use them to construct a
+    sequence of primitives with a single call to gl.draw_elements.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        count: Specifies the number of elements to be rendered
-        type: Specifies the type of the values in indices
-        indices: Specifies a pointer to the location where the indices are
-            stored
+        mode: what kind of primitives to render.
+        count: the number of elements to be rendered.
+        type: the type of the values in indices.
+        indices: a pointer to the location where the indices are stored.
     '''
 
 @accepts(t.enum, t.void)
@@ -36,11 +47,15 @@ def draw_elements(mode, count, type, indices):
 @binds(dll)
 def get_pointerv(pname, params):
     '''
-    return the address of the specified pointer
+    return the address of the specified pointer.
+    
+    gl.get_pointerv returns pointer information. pname indicates the pointer to
+    be returned, and params is a pointer to a location in which to place the
+    returned data.
     
     Args:
-        pname: Specifies the pointer to be returned
-        params: Returns the pointer value specified by pname
+        pname: the pointer to be returned.
+        params: returns the pointer value specified by pname.
     '''
 
 @accepts(t.float, t.float)
@@ -48,13 +63,16 @@ def get_pointerv(pname, params):
 @binds(dll)
 def polygon_offset(factor, units):
     '''
-    set the scale and units used to calculate depth values
+    set the scale and units used to calculate depth values.
+    
+    gl.polygon_offset is useful for rendering hidden-line images, for applying
+    decals to surfaces, and for rendering solids with highlighted edges.
     
     Args:
-        factor: Specifies a scale factor that is used to create a variable depth
-            offset for each polygon
-        units: Is multiplied by an implementation-specific value to create a
-            constant depth offset
+        factor: a scale factor that is used to create a variable depth offset
+            for each polygon.
+        units: is multiplied by an implementation-specific value to create a
+            constant depth offset.
     '''
 
 @accepts(t.enum, t.int, t.enum, t.int, t.int, t.sizei, t.int)
@@ -62,18 +80,18 @@ def polygon_offset(factor, units):
 @binds(dll)
 def copy_tex_image1_d(target, level, internalformat, x, y, width, border):
     '''
-    copy pixels into a 1D texture image
+    copy pixels into a 1D texture image.
     
     Args:
-        target: Specifies the target texture
-        level: Specifies the level-of-detail number
-        internalformat: Specifies the internal format of the texture
-        x: Specify the window coordinates of the left corner of the row of
-            pixels to be copied
-        y: Specify the window coordinates of the left corner of the row of
-            pixels to be copied
-        width: Specifies the width of the texture image
-        border: Must be 0
+        target: the target texture.
+        level: the level-of-detail number.
+        internalformat: the internal format of the texture.
+        x: the window coordinates of the left corner of the row of pixels to be
+            copied.
+        y: the window coordinates of the left corner of the row of pixels to be
+            copied.
+        width: the width of the texture image.
+        border: must be 0.
     '''
 
 @accepts(t.enum, t.int, t.enum, t.int, t.int, t.sizei, t.sizei, t.int)
@@ -81,19 +99,19 @@ def copy_tex_image1_d(target, level, internalformat, x, y, width, border):
 @binds(dll)
 def copy_tex_image2_d(target, level, internalformat, x, y, width, height, border):
     '''
-    copy pixels into a 2D texture image
+    copy pixels into a 2D texture image.
     
     Args:
-        target: Specifies the target texture
-        level: Specifies the level-of-detail number
-        internalformat: Specifies the internal format of the texture
-        x: Specify the window coordinates of the lower left corner of the
-            rectangular region of pixels to be copied
-        y: Specify the window coordinates of the lower left corner of the
-            rectangular region of pixels to be copied
-        width: Specifies the width of the texture image
-        height: Specifies the height of the texture image
-        border: Must be 0
+        target: the target texture.
+        level: the level-of-detail number.
+        internalformat: the internal format of the texture.
+        x: the window coordinates of the lower left corner of the rectangular
+            region of pixels to be copied.
+        y: the window coordinates of the lower left corner of the rectangular
+            region of pixels to be copied.
+        width: the width of the texture image.
+        height: the height of the texture image.
+        border: must be 0.
     '''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.sizei)
@@ -101,18 +119,18 @@ def copy_tex_image2_d(target, level, internalformat, x, y, width, height, border
 @binds(dll)
 def copy_tex_sub_image1_d(target, level, xoffset, x, y, width):
     '''
-    copy a one-dimensional texture subimage
+    copy a one-dimensional texture subimage.
     
     Args:
-        target: Specifies the target to which the texture object is bound for
-            gl.copy_tex_sub_image1D function
-        level: Specifies the level-of-detail number
-        xoffset: Specifies the texel offset within the texture array
-        x: Specify the window coordinates of the left corner of the row of
-            pixels to be copied
-        y: Specify the window coordinates of the left corner of the row of
-            pixels to be copied
-        width: Specifies the width of the texture subimage
+        target: the target to which the texture object is bound for
+            glcopytexsubimage1d function.
+        level: the level-of-detail number.
+        xoffset: the texel offset within the texture array.
+        x: the window coordinates of the left corner of the row of pixels to be
+            copied.
+        y: the window coordinates of the left corner of the row of pixels to be
+            copied.
+        width: the width of the texture subimage.
     '''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.int, t.sizei, t.sizei)
@@ -120,22 +138,20 @@ def copy_tex_sub_image1_d(target, level, xoffset, x, y, width):
 @binds(dll)
 def copy_tex_sub_image2_d(target, level, xoffset, yoffset, x, y, width, height):
     '''
-    copy a two-dimensional texture subimage
+    copy a two-dimensional texture subimage.
     
     Args:
-        target: Specifies the target to which the texture object is bound for
-            gl.copy_tex_sub_image2D function
-        level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture
-            array
-        yoffset: Specifies a texel offset in the y direction within the texture
-            array
-        x: Specify the window coordinates of the lower left corner of the
-            rectangular region of pixels to be copied
-        y: Specify the window coordinates of the lower left corner of the
-            rectangular region of pixels to be copied
-        width: Specifies the width of the texture subimage
-        height: Specifies the height of the texture subimage
+        target: the target to which the texture object is bound for
+            glcopytexsubimage2d function.
+        level: the level-of-detail number.
+        xoffset: a texel offset in the x direction within the texture array.
+        yoffset: a texel offset in the y direction within the texture array.
+        x: the window coordinates of the lower left corner of the rectangular
+            region of pixels to be copied.
+        y: the window coordinates of the lower left corner of the rectangular
+            region of pixels to be copied.
+        width: the width of the texture subimage.
+        height: the height of the texture subimage.
     '''
 
 @accepts(t.enum, t.int, t.int, t.sizei, t.enum, t.enum, t.void)
@@ -143,18 +159,16 @@ def copy_tex_sub_image2_d(target, level, xoffset, yoffset, x, y, width, height):
 @binds(dll)
 def tex_sub_image1_d(target, level, xoffset, width, format, type, pixels):
     '''
-    specify a one-dimensional texture subimage
+    specify a one-dimensional texture subimage.
     
     Args:
-        target: Specifies the target to which the texture is bound for
-            gl.tex_sub_image1D
-        level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture
-            array
-        width: Specifies the width of the texture subimage
-        format: Specifies the format of the pixel data
-        type: Specifies the data type of the pixel data
-        pixels: Specifies a pointer to the image data in memory
+        target: the target to which the texture is bound for gltexsubimage1d.
+        level: the level-of-detail number.
+        xoffset: a texel offset in the x direction within the texture array.
+        width: the width of the texture subimage.
+        format: the format of the pixel data.
+        type: the data type of the pixel data.
+        pixels: a pointer to the image data in memory.
     '''
 
 @accepts(t.enum, t.int, t.int, t.int, t.sizei, t.sizei, t.enum, t.enum, t.void)
@@ -162,21 +176,18 @@ def tex_sub_image1_d(target, level, xoffset, width, format, type, pixels):
 @binds(dll)
 def tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, type, pixels):
     '''
-    specify a two-dimensional texture subimage
+    specify a two-dimensional texture subimage.
     
     Args:
-        target: Specifies the target to which the texture is bound for
-            gl.tex_sub_image2D
-        level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture
-            array
-        yoffset: Specifies a texel offset in the y direction within the texture
-            array
-        width: Specifies the width of the texture subimage
-        height: Specifies the height of the texture subimage
-        format: Specifies the format of the pixel data
-        type: Specifies the data type of the pixel data
-        pixels: Specifies a pointer to the image data in memory
+        target: the target to which the texture is bound for gltexsubimage2d.
+        level: the level-of-detail number.
+        xoffset: a texel offset in the x direction within the texture array.
+        yoffset: a texel offset in the y direction within the texture array.
+        width: the width of the texture subimage.
+        height: the height of the texture subimage.
+        format: the format of the pixel data.
+        type: the data type of the pixel data.
+        pixels: a pointer to the image data in memory.
     '''
 
 @accepts(t.enum, t.uint)
@@ -184,11 +195,20 @@ def tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, typ
 @binds(dll)
 def bind_texture(target, texture):
     '''
-    bind a named texture to a texturing target
+    bind a named texture to a texturing target.
+    
+    gl.bind_texture lets you create or use a named texture. Calling
+    gl.bind_texture with target set to gl.TEXTURE_1D, gl.TEXTURE_2D,
+    gl.TEXTURE_3D, gl.TEXTURE_1D_ARRAY, gl.TEXTURE_2D_ARRAY,
+    gl.TEXTURE_RECTANGLE, gl.TEXTURE_CUBE_MAP, gl.TEXTURE_CUBE_MAP_ARRAY,
+    gl.TEXTURE_BUFFER, gl.TEXTURE_2D_MULTISAMPLE or
+    gl.TEXTURE_2D_MULTISAMPLE_ARRAY and texture set to the name of the new
+    texture binds the texture name to the target. When a texture is bound to a
+    target, the previous binding for that target is automatically broken.
     
     Args:
-        target: Specifies the target to which the texture is bound
-        texture: Specifies the name of a texture
+        target: the target to which the texture is bound.
+        texture: the name of a texture.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -196,11 +216,17 @@ def bind_texture(target, texture):
 @binds(dll)
 def delete_textures(n, textures):
     '''
-    delete named textures
+    delete named textures.
+    
+    gl.delete_textures deletes n textures named by the elements of the array
+    textures. After a texture is deleted, it has no contents or dimensionality,
+    and its name is free for reuse (for example by gl.gen_textures). If a
+    texture that is currently bound is deleted, the binding reverts to 0 (the
+    default texture).
     
     Args:
-        n: Specifies the number of textures to be deleted
-        textures: Specifies an array of textures to be deleted
+        n: the number of textures to be deleted.
+        textures: an array of textures to be deleted.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -208,12 +234,16 @@ def delete_textures(n, textures):
 @binds(dll)
 def gen_textures(n, textures):
     '''
-    generate texture names
+    generate texture names.
+    
+    gl.gen_textures returns n texture names in textures. There is no guarantee
+    that the names form a contiguous set of integers; however, it is guaranteed
+    that none of the returned names was in use immediately before the call to
+    gl.gen_textures.
     
     Args:
-        n: Specifies the number of texture names to be generated
-        textures: Specifies an array in which the generated texture names are
-            stored
+        n: the number of texture names to be generated.
+        textures: an array in which the generated texture names are stored.
     '''
 
 @accepts(t.uint)
@@ -221,10 +251,14 @@ def gen_textures(n, textures):
 @binds(dll)
 def is_texture(texture):
     '''
-    determine if a name corresponds to a texture
+    determine if a name corresponds to a texture.
+    
+    gl.is_texture returns gl.TRUE if texture is currently the name of a texture.
+    If texture is zero, or is a non-zero value that is not currently the name of
+    a texture, or if an error occurs, gl.is_texture returns gl.FALSE.
     
     Args:
-        texture: Specifies a value that may be the name of a texture
+        texture: a value that may be the name of a texture.
     '''
 
 @accepts(t.int)
@@ -232,10 +266,17 @@ def is_texture(texture):
 @binds(dll)
 def array_element(i):
     '''
-    render a vertex using the specified vertex array element
+    render a vertex using the specified vertex array element.
+    
+    gl.array_element commands are used within gl.begin/gl.end pairs to specify
+    vertex and attribute data for point, line, and polygon primitives. If
+    gl.VERTEX_ARRAY is enabled when gl.array_element is called, a single vertex
+    is drawn, using vertex and attribute data taken from location i of the
+    enabled arrays. If gl.VERTEX_ARRAY is not enabled, no drawing occurs but the
+    attributes corresponding to the enabled arrays are modified.
     
     Args:
-        i: Specifies an index into the enabled vertex data arrays
+        i: an index into the enabled vertex data arrays.
     '''
 
 @accepts(t.int, t.enum, t.sizei, t.void)
@@ -243,14 +284,22 @@ def array_element(i):
 @binds(dll)
 def color_pointer(size, type, stride, pointer):
     '''
-    define an array of colors
+    define an array of colors.
+    
+    gl.color_pointer specifies the location and data format of an array of color
+    components to use when rendering. size specifies the number of components
+    per color, and must be 3 or 4. type specifies the data type of each color
+    component, and stride specifies the byte stride from one color to the next,
+    allowing vertices and attributes to be packed into a single array or stored
+    in separate arrays. (Single-array storage may be more efficient on some
+    implementations; see gl.interleaved_arrays.
     
     Args:
-        size: Specifies the number of components per color
-        type: Specifies the data type of each color component in the array
-        stride: Specifies the byte offset between consecutive colors
-        pointer: Specifies a pointer to the first component of the first color
-            element in the array
+        size: the number of components per color.
+        type: the data type of each color component in the array.
+        stride: the byte offset between consecutive colors.
+        pointer: a pointer to the first component of the first color element in
+            the array.
     '''
 
 @accepts(t.enum)
@@ -264,11 +313,16 @@ def disable_client_state(array):
 @binds(dll)
 def edge_flag_pointer(stride, pointer):
     '''
-    define an array of edge flags
+    define an array of edge flags.
+    
+    gl.edge_flag_pointer specifies the location and data format of an array of
+    boolean edge flags to use when rendering. stride specifies the byte stride
+    from one edge flag to the next, allowing vertices and attributes to be
+    packed into a single array or stored in separate arrays.
     
     Args:
-        stride: Specifies the byte offset between consecutive edge flags
-        pointer: Specifies a pointer to the first edge flag in the array
+        stride: the byte offset between consecutive edge flags.
+        pointer: a pointer to the first edge flag in the array.
     '''
 
 @accepts(t.enum)
@@ -276,10 +330,10 @@ def edge_flag_pointer(stride, pointer):
 @binds(dll)
 def enable_client_state(array):
     '''
-    enable or disable client-side capability
+    enable or disable client-side capability.
     
     Args:
-        array: Specifies the capability to enable
+        array: the capability to enable.
     '''
 
 @accepts(t.enum, t.sizei, t.void)
@@ -287,12 +341,18 @@ def enable_client_state(array):
 @binds(dll)
 def index_pointer(type, stride, pointer):
     '''
-    define an array of color indexes
+    define an array of color indexes.
+    
+    gl.index_pointer specifies the location and data format of an array of color
+    indexes to use when rendering. type specifies the data type of each color
+    index and stride specifies the byte stride from one color index to the next,
+    allowing vertices and attributes to be packed into a single array or stored
+    in separate arrays.
     
     Args:
-        type: Specifies the data type of each color index in the array
-        stride: Specifies the byte offset between consecutive color indexes
-        pointer: Specifies a pointer to the first index in the array
+        type: the data type of each color index in the array.
+        stride: the byte offset between consecutive color indexes.
+        pointer: a pointer to the first index in the array.
     '''
 
 @accepts(t.enum, t.sizei, t.void)
@@ -300,12 +360,16 @@ def index_pointer(type, stride, pointer):
 @binds(dll)
 def interleaved_arrays(format, stride, pointer):
     '''
-    simultaneously specify and enable several interleaved arrays
+    simultaneously specify and enable several interleaved arrays.
+    
+    gl.interleaved_arrays lets you specify and enable individual color, normal,
+    texture and vertex arrays whose elements are part of a larger aggregate
+    array element. For some implementations, this is more efficient than
+    specifying the arrays separately.
     
     Args:
-        format: Specifies the type of array to enable
-        stride: Specifies the offset in bytes between each aggregate array
-            element
+        format: the type of array to enable.
+        stride: the offset in bytes between each aggregate array element.
     '''
 
 @accepts(t.enum, t.sizei, t.void)
@@ -313,13 +377,20 @@ def interleaved_arrays(format, stride, pointer):
 @binds(dll)
 def normal_pointer(type, stride, pointer):
     '''
-    define an array of normals
+    define an array of normals.
+    
+    gl.normal_pointer specifies the location and data format of an array of
+    normals to use when rendering. type specifies the data type of each normal
+    coordinate, and stride specifies the byte stride from one normal to the
+    next, allowing vertices and attributes to be packed into a single array or
+    stored in separate arrays. (Single-array storage may be more efficient on
+    some implementations; see gl.interleaved_arrays.).
     
     Args:
-        type: Specifies the data type of each coordinate in the array
-        stride: Specifies the byte offset between consecutive normals
-        pointer: Specifies a pointer to the first coordinate of the first normal
-            in the array
+        type: the data type of each coordinate in the array.
+        stride: the byte offset between consecutive normals.
+        pointer: a pointer to the first coordinate of the first normal in the
+            array.
     '''
 
 @accepts(t.int, t.enum, t.sizei, t.void)
@@ -327,15 +398,23 @@ def normal_pointer(type, stride, pointer):
 @binds(dll)
 def tex_coord_pointer(size, type, stride, pointer):
     '''
-    define an array of texture coordinates
+    define an array of texture coordinates.
+    
+    gl.tex_coord_pointer specifies the location and data format of an array of
+    texture coordinates to use when rendering. size specifies the number of
+    coordinates per texture coordinate set, and must be 1, 2, 3, or 4. type
+    specifies the data type of each texture coordinate, and stride specifies the
+    byte stride from one texture coordinate set to the next, allowing vertices
+    and attributes to be packed into a single array or stored in separate
+    arrays. (Single-array storage may be more efficient on some implementations;
+    see gl.interleaved_arrays.
     
     Args:
-        size: Specifies the number of coordinates per array element
-        type: Specifies the data type of each texture coordinate
-        stride: Specifies the byte offset between consecutive texture coordinate
-            sets
-        pointer: Specifies a pointer to the first coordinate of the first
-            texture coordinate set in the array
+        size: the number of coordinates per array element.
+        type: the data type of each texture coordinate.
+        stride: the byte offset between consecutive texture coordinate sets.
+        pointer: a pointer to the first coordinate of the first texture
+            coordinate set in the array.
     '''
 
 @accepts(t.int, t.enum, t.sizei, t.void)
@@ -343,14 +422,22 @@ def tex_coord_pointer(size, type, stride, pointer):
 @binds(dll)
 def vertex_pointer(size, type, stride, pointer):
     '''
-    define an array of vertex data
+    define an array of vertex data.
+    
+    gl.vertex_pointer specifies the location and data format of an array of
+    vertex coordinates to use when rendering. size specifies the number of
+    coordinates per vertex, and must be 2, 3, or 4. type specifies the data type
+    of each coordinate, and stride specifies the byte stride from one vertex to
+    the next, allowing vertices and attributes to be packed into a single array
+    or stored in separate arrays. (Single-array storage may be more efficient on
+    some implementations; see gl.interleaved_arrays.
     
     Args:
-        size: Specifies the number of coordinates per vertex
-        type: Specifies the data type of each coordinate in the array
-        stride: Specifies the byte offset between consecutive vertices
-        pointer: Specifies a pointer to the first coordinate of the first vertex
-            in the array
+        size: the number of coordinates per vertex.
+        type: the data type of each coordinate in the array.
+        stride: the byte offset between consecutive vertices.
+        pointer: a pointer to the first coordinate of the first vertex in the
+            array.
     '''
 
 @accepts(t.sizei, POINTER(t.uint), POINTER(t.boolean))
@@ -358,14 +445,20 @@ def vertex_pointer(size, type, stride, pointer):
 @binds(dll)
 def are_textures_resident(n, textures, residences):
     '''
-    determine if textures are loaded in texture memory
+    determine if textures are loaded in texture memory.
+    
+    gl.are_textures_resident queries the texture residence status of the n
+    textures named by the elements of textures. If all the named textures are
+    resident, gl.are_textures_resident returns gl.TRUE, and the contents of
+    residences are undisturbed. If not all the named textures are resident,
+    gl.are_textures_resident returns gl.FALSE, and detailed status is returned
+    in the n elements of residences. If an element of residences is gl.TRUE,
+    then the texture named by the corresponding element of textures is resident.
     
     Args:
-        n: Specifies the number of textures to be queried
-        textures: Specifies an array containing the names of the textures to be
-            queried
-        residences: Specifies an array in which the texture residence status is
-            returned
+        n: the number of textures to be queried.
+        textures: an array containing the names of the textures to be queried.
+        residences: an array in which the texture residence status is returned.
     '''
 
 @accepts(t.sizei, POINTER(t.uint), POINTER(t.float))
@@ -373,13 +466,16 @@ def are_textures_resident(n, textures, residences):
 @binds(dll)
 def prioritize_textures(n, textures, priorities):
     '''
-    set texture residence priority
+    set texture residence priority.
+    
+    gl.prioritize_textures assigns the n texture priorities given in priorities
+    to the n textures named in textures.
     
     Args:
-        n: Specifies the number of textures to be prioritized
-        textures: Specifies an array containing the names of the textures to be
-            prioritized
-        priorities: Specifies an array containing the texture priorities
+        n: the number of textures to be prioritized.
+        textures: an array containing the names of the textures to be
+            prioritized.
+        priorities: an array containing the texture priorities.
     '''
 
 @accepts(t.ubyte)
@@ -405,10 +501,17 @@ def pop_client_attrib():
 @binds(dll)
 def push_client_attrib(mask):
     '''
-    push and pop the client attribute stack
+    push and pop the client attribute stack.
+    
+    gl.push_client_attrib takes one argument, a mask that indicates which groups
+    of client-state variables to save on the client attribute stack. Symbolic
+    constants are used to set bits in the mask. mask is typically constructed by
+    specifying the bitwise-or of several \t of these constants together. The
+    special mask gl.CLIENT_ALL_ATTRIB_BITS can be used to save all stackable
+    client state.
     
     Args:
-        mask: Specifies a mask that indicates which attributes to save
+        mask: a mask that indicates which attributes to save.
     '''
 
 DEPTH_BUFFER_BIT = 0x00000100

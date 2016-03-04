@@ -8,10 +8,21 @@ from opengl.gl.raw.bindings import *
 @binds(dll)
 def read_buffer(src):
     '''
-    select a color buffer source for pixels
+    select a color buffer source for pixels.
+    
+    gl.read_buffer specifies a color buffer as the source for subsequent
+    gl.read_pixels, gl.copy_tex_image1D, gl.copy_tex_image2D,
+    gl.copy_tex_sub_image1D, gl.copy_tex_sub_image2D, and
+    gl.copy_tex_sub_image3D commands. mode accepts one of twelve or more
+    predefined values. In a fully configured system, gl.FRONT, gl.LEFT, and
+    gl.FRONT_LEFT all name the front left buffer, gl.FRONT_RIGHT and gl.RIGHT
+    name the front right buffer, and gl.BACK_LEFT and gl.BACK name the back left
+    buffer. Further more, the constants gl.COLOR_ATTACHMENTi may be used to
+    indicate the ith color attachment where i ranges from zero to the value of
+    gl.MAX_COLOR_ATTACHMENTS minus one.
     
     Args:
-        src: Specifies a color buffer
+        src: a color buffer.
     '''
 
 @accepts(t.enum, t.uint, t.uint, t.sizei, t.enum, t.void)
@@ -19,16 +30,20 @@ def read_buffer(src):
 @binds(dll)
 def draw_range_elements(mode, start, end, count, type, indices):
     '''
-    render primitives from array data
+    render primitives from array data.
+    
+    gl.draw_range_elements is a restricted form of gl.draw_elements. mode,
+    start, end, and count match the corresponding arguments to gl.draw_elements,
+    with the additional constraint that all values in the arrays count must lie
+    between start and end, inclusive.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        start: Specifies the minimum array index contained in indices
-        end: Specifies the maximum array index contained in indices
-        count: Specifies the number of elements to be rendered
-        type: Specifies the type of the values in indices
-        indices: Specifies a pointer to the location where the indices are
-            stored
+        mode: what kind of primitives to render.
+        start: the minimum array index contained in indices.
+        end: the maximum array index contained in indices.
+        count: the number of elements to be rendered.
+        type: the type of the values in indices.
+        indices: a pointer to the location where the indices are stored.
     '''
 
 @accepts(t.enum, t.int, t.int, t.sizei, t.sizei, t.sizei, t.int, t.enum, t.enum, t.void)
@@ -36,20 +51,20 @@ def draw_range_elements(mode, start, end, count, type, indices):
 @binds(dll)
 def tex_image3_d(target, level, internalformat, width, height, depth, border, format, type, pixels):
     '''
-    specify a three-dimensional texture image
+    specify a three-dimensional texture image.
     
     Args:
-        target: Specifies the target texture
-        level: Specifies the level-of-detail number
-        internalformat: Specifies the number of color components in the texture
-        width: Specifies the width of the texture image
-        height: Specifies the height of the texture image
-        depth: Specifies the depth of the texture image, or the number of layers
-            in a texture array
-        border: This value must be 0
-        format: Specifies the format of the pixel data
-        type: Specifies the data type of the pixel data
-        pixels: Specifies a pointer to the image data in memory
+        target: the target texture.
+        level: the level-of-detail number.
+        internalformat: the number of color components in the texture.
+        width: the width of the texture image.
+        height: the height of the texture image.
+        depth: the depth of the texture image, or the number of layers in a
+            texture array.
+        border: this value must be 0.
+        format: the format of the pixel data.
+        type: the data type of the pixel data.
+        pixels: a pointer to the image data in memory.
     '''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.enum, t.enum, t.void)
@@ -57,24 +72,20 @@ def tex_image3_d(target, level, internalformat, width, height, depth, border, fo
 @binds(dll)
 def tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels):
     '''
-    specify a three-dimensional texture subimage
+    specify a three-dimensional texture subimage.
     
     Args:
-        target: Specifies the target to which the texture is bound for
-            gl.tex_sub_image3D
-        level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture
-            array
-        yoffset: Specifies a texel offset in the y direction within the texture
-            array
-        zoffset: Specifies a texel offset in the z direction within the texture
-            array
-        width: Specifies the width of the texture subimage
-        height: Specifies the height of the texture subimage
-        depth: Specifies the depth of the texture subimage
-        format: Specifies the format of the pixel data
-        type: Specifies the data type of the pixel data
-        pixels: Specifies a pointer to the image data in memory
+        target: the target to which the texture is bound for gltexsubimage3d.
+        level: the level-of-detail number.
+        xoffset: a texel offset in the x direction within the texture array.
+        yoffset: a texel offset in the y direction within the texture array.
+        zoffset: a texel offset in the z direction within the texture array.
+        width: the width of the texture subimage.
+        height: the height of the texture subimage.
+        depth: the depth of the texture subimage.
+        format: the format of the pixel data.
+        type: the data type of the pixel data.
+        pixels: a pointer to the image data in memory.
     '''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.int, t.int, t.sizei, t.sizei)
@@ -82,24 +93,21 @@ def tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, width, height, de
 @binds(dll)
 def copy_tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, x, y, width, height):
     '''
-    copy a three-dimensional texture subimage
+    copy a three-dimensional texture subimage.
     
     Args:
-        target: Specifies the target to which the texture object is bound for
-            gl.copy_tex_sub_image3D function
-        level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture
-            array
-        yoffset: Specifies a texel offset in the y direction within the texture
-            array
-        zoffset: Specifies a texel offset in the z direction within the texture
-            array
-        x: Specify the window coordinates of the lower left corner of the
-            rectangular region of pixels to be copied
-        y: Specify the window coordinates of the lower left corner of the
-            rectangular region of pixels to be copied
-        width: Specifies the width of the texture subimage
-        height: Specifies the height of the texture subimage
+        target: the target to which the texture object is bound for
+            glcopytexsubimage3d function.
+        level: the level-of-detail number.
+        xoffset: a texel offset in the x direction within the texture array.
+        yoffset: a texel offset in the y direction within the texture array.
+        zoffset: a texel offset in the z direction within the texture array.
+        x: the window coordinates of the lower left corner of the rectangular
+            region of pixels to be copied.
+        y: the window coordinates of the lower left corner of the rectangular
+            region of pixels to be copied.
+        width: the width of the texture subimage.
+        height: the height of the texture subimage.
     '''
 
 @accepts(t.enum, t.int, t.enum, t.sizei, t.sizei, t.sizei, t.int, t.sizei, t.void)
@@ -107,20 +115,20 @@ def copy_tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, x, y, width,
 @binds(dll)
 def compressed_tex_image3_d(target, level, internalformat, width, height, depth, border, imagesize, data):
     '''
-    specify a three-dimensional texture image in a compressed format
+    specify a three-dimensional texture image in a compressed format.
     
     Args:
-        target: Specifies the target texture
-        level: Specifies the level-of-detail number
-        internalformat: Specifies the format of the compressed image data stored
-            at address data
-        width: Specifies the width of the texture image
-        height: Specifies the height of the texture image
-        depth: Specifies the depth of the texture image
-        border: This value must be 0
-        imagesize: Specifies the number of unsigned bytes of image data starting
-            at the address specified by data
-        data: Specifies a pointer to the compressed image data in memory
+        target: the target texture.
+        level: the level-of-detail number.
+        internalformat: the format of the compressed image data stored at
+            address data.
+        width: the width of the texture image.
+        height: the height of the texture image.
+        depth: the depth of the texture image.
+        border: this value must be 0.
+        imagesize: the number of unsigned bytes of image data starting at the
+            address specified by data.
+        data: a pointer to the compressed image data in memory.
     '''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.enum, t.sizei, t.void)
@@ -128,24 +136,21 @@ def compressed_tex_image3_d(target, level, internalformat, width, height, depth,
 @binds(dll)
 def compressed_tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imagesize, data):
     '''
-    specify a three-dimensional texture subimage in a compressed format
+    specify a three-dimensional texture subimage in a compressed format.
     
     Args:
-        target: Specifies the target to which the texture is bound for
-            gl.compressed_tex_sub_image3D function
-        level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture
-            array
-        yoffset: Specifies a texel offset in the y direction within the texture
-            array
-        width: Specifies the width of the texture subimage
-        height: Specifies the height of the texture subimage
-        depth: Specifies the depth of the texture subimage
-        format: Specifies the format of the compressed image data stored at
-            address data
-        imagesize: Specifies the number of unsigned bytes of image data starting
-            at the address specified by data
-        data: Specifies a pointer to the compressed image data in memory
+        target: the target to which the texture is bound for
+            glcompressedtexsubimage3d function.
+        level: the level-of-detail number.
+        xoffset: a texel offset in the x direction within the texture array.
+        yoffset: a texel offset in the y direction within the texture array.
+        width: the width of the texture subimage.
+        height: the height of the texture subimage.
+        depth: the depth of the texture subimage.
+        format: the format of the compressed image data stored at address data.
+        imagesize: the number of unsigned bytes of image data starting at the
+            address specified by data.
+        data: a pointer to the compressed image data in memory.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -153,12 +158,16 @@ def compressed_tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, width,
 @binds(dll)
 def gen_queries(n, ids):
     '''
-    generate query object names
+    generate query object names.
+    
+    gl.gen_queries returns n query object names in ids. There is no guarantee
+    that the names form a contiguous set of integers; however, it is guaranteed
+    that none of the returned names was in use immediately before the call to
+    gl.gen_queries.
     
     Args:
-        n: Specifies the number of query object names to be generated
-        ids: Specifies an array in which the generated query object names are
-            stored
+        n: the number of query object names to be generated.
+        ids: an array in which the generated query object names are stored.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -166,11 +175,15 @@ def gen_queries(n, ids):
 @binds(dll)
 def delete_queries(n, ids):
     '''
-    delete named query objects
+    delete named query objects.
+    
+    gl.delete_queries deletes n query objects named by the elements of the array
+    ids. After a query object is deleted, it has no contents, and its name is
+    free for reuse (for example by gl.gen_queries).
     
     Args:
-        n: Specifies the number of query objects to be deleted
-        ids: Specifies an array of query objects to be deleted
+        n: the number of query objects to be deleted.
+        ids: an array of query objects to be deleted.
     '''
 
 @accepts(t.uint)
@@ -178,10 +191,14 @@ def delete_queries(n, ids):
 @binds(dll)
 def is_query(id):
     '''
-    determine if a name corresponds to a query object
+    determine if a name corresponds to a query object.
+    
+    gl.is_query returns gl.TRUE if id is currently the name of a query object.
+    If id is zero, or is a non-zero value that is not currently the name of a
+    query object, or if an error occurs, gl.is_query returns gl.FALSE.
     
     Args:
-        id: Specifies a value that may be the name of a query object
+        id: a value that may be the name of a query object.
     '''
 
 @accepts(t.enum, t.uint)
@@ -189,12 +206,12 @@ def is_query(id):
 @binds(dll)
 def begin_query(target, id):
     '''
-    delimit the boundaries of a query object
+    delimit the boundaries of a query object.
     
     Args:
-        target: Specifies the target type of query object established between
-            gl.begin_query and the subsequent gl.end_query
-        id: Specifies the name of a query object
+        target: the target type of query object established between glbeginquery
+            and the subsequent glendquery.
+        id: the name of a query object.
     '''
 
 @accepts(t.enum)
@@ -208,12 +225,15 @@ def end_query(target):
 @binds(dll)
 def get_queryiv(target, pname, params):
     '''
-    return parameters of a query object target
+    return parameters of a query object target.
+    
+    gl.get_queryiv returns in params a selected parameter of the query object
+    target specified by target.
     
     Args:
-        target: Specifies a query object target
-        pname: Specifies the symbolic name of a query object target parameter
-        params: Returns the requested data
+        target: a query object target.
+        pname: the symbolic name of a query object target parameter.
+        params: returns the requested data.
     '''
 
 @accepts(t.uint, t.enum, POINTER(t.uint))
@@ -228,12 +248,16 @@ def get_query_objectuiv(id, pname, params):
 def unmap_buffer(target):
     '''
     release the mapping of a buffer object's data store into the client's address
-space
+space.
+    
+    gl.unmap_buffer and gl.unmap_named_buffer unmap (release) any mapping of a
+    specified buffer object into the client's address space (see
+    gl.map_buffer_range and gl.map_buffer).
     
     Args:
-        target: Specifies the target to which the buffer object is bound for
-            gl.unmap_buffer, which must be one of the buffer binding targets in
-            the following table:
+        target: the target to which the buffer object is bound for
+            glunmapbuffer, which must be one of the buffer binding targets in
+            the following table:.
     '''
 
 @accepts(t.enum, t.enum, t.void)
@@ -241,14 +265,21 @@ space
 @binds(dll)
 def get_buffer_pointerv(target, pname, params):
     '''
-    return the pointer to a mapped buffer object's data store
+    return the pointer to a mapped buffer object's data store.
+    
+    gl.get_buffer_pointerv and gl.get_named_buffer_pointerv return the buffer
+    pointer pname, which must be gl.BUFFER_MAP_POINTER. The single buffer map
+    pointer is returned in params. A None pointer is returned if the buffer
+    object's data store is not currently mapped; or if the requesting context
+    did not map the buffer object's data store, and the implementation is unable
+    to support mappings on multiple clients.
     
     Args:
-        target: Specifies the target to which the buffer object is bound for
-            gl.get_buffer_pointerv, which must be one of the buffer binding
-            targets in the following table:
-        pname: Specifies the name of the pointer to be returned
-        params: Returns the pointer value specified by pname
+        target: the target to which the buffer object is bound for
+            glgetbufferpointerv, which must be one of the buffer binding targets
+            in the following table:.
+        pname: the name of the pointer to be returned.
+        params: returns the pointer value specified by pname.
     '''
 
 @accepts(t.sizei, POINTER(t.enum))
@@ -256,12 +287,21 @@ def get_buffer_pointerv(target, pname, params):
 @binds(dll)
 def draw_buffers(n, bufs):
     '''
-    Specifies a list of color buffers to be drawn into
+    Specifies a list of color buffers to be drawn into.
+    
+    gl.draw_buffers and gl.named_framebuffer_draw_buffers define an array of
+    buffers into which outputs from the fragment shader data will be written. If
+    a fragment shader writes a value to one or more user defined output
+    variables, then the value of each variable will be written into the buffer
+    specified at a location within bufs corresponding to the location assigned
+    to that user defined output. The draw buffer used for user defined outputs
+    assigned to locations greater than or equal to n is implicitly set to
+    gl.NONE and any data written to such an output is discarded.
     
     Args:
-        n: Specifies the number of buffers in bufs
-        bufs: Points to an array of symbolic constants specifying the buffers
-            into which fragment colors or data values will be written
+        n: the number of buffers in bufs.
+        bufs: points to an array of symbolic constants specifying the buffers
+            into which fragment colors or data values will be written.
     '''
 
 @accepts(t.int, t.sizei, t.boolean, POINTER(t.float))
@@ -305,29 +345,32 @@ def uniform_matrix4x3fv(location, count, transpose, value):
 @binds(dll)
 def blit_framebuffer(srcx0, srcy0, srcx1, srcy1, dstx0, dsty0, dstx1, dsty1, mask, filter):
     '''
-    copy a block of pixels from one framebuffer object to another
+    copy a block of pixels from one framebuffer object to another.
+    
+    gl.blit_framebuffer and gl.blit_named_framebuffer transfer a rectangle of
+    pixel values from one region of a read framebuffer to another region of a
+    draw framebuffer.
     
     Args:
-        srcx0: Specify the bounds of the source rectangle within the read buffer
-            of the read framebuffer
-        srcy0: Specify the bounds of the source rectangle within the read buffer
-            of the read framebuffer
-        srcx1: Specify the bounds of the source rectangle within the read buffer
-            of the read framebuffer
-        srcy1: Specify the bounds of the source rectangle within the read buffer
-            of the read framebuffer
-        dstx0: Specify the bounds of the destination rectangle within the write
-            buffer of the write framebuffer
-        dsty0: Specify the bounds of the destination rectangle within the write
-            buffer of the write framebuffer
-        dstx1: Specify the bounds of the destination rectangle within the write
-            buffer of the write framebuffer
-        dsty1: Specify the bounds of the destination rectangle within the write
-            buffer of the write framebuffer
-        mask: The bitwise OR of the flags indicating which buffers are to be
-            copied
-        filter: Specifies the interpolation to be applied if the image is
-            stretched
+        srcx0: the bounds of the source rectangle within the read buffer of the
+            read framebuffer.
+        srcy0: the bounds of the source rectangle within the read buffer of the
+            read framebuffer.
+        srcx1: the bounds of the source rectangle within the read buffer of the
+            read framebuffer.
+        srcy1: the bounds of the source rectangle within the read buffer of the
+            read framebuffer.
+        dstx0: the bounds of the destination rectangle within the write buffer
+            of the write framebuffer.
+        dsty0: the bounds of the destination rectangle within the write buffer
+            of the write framebuffer.
+        dstx1: the bounds of the destination rectangle within the write buffer
+            of the write framebuffer.
+        dsty1: the bounds of the destination rectangle within the write buffer
+            of the write framebuffer.
+        mask: the bitwise or of the flags indicating which buffers are to be
+            copied.
+        filter: the interpolation to be applied if the image is stretched.
     '''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei)
@@ -336,17 +379,21 @@ def blit_framebuffer(srcx0, srcy0, srcx1, srcy1, dstx0, dsty0, dstx1, dsty1, mas
 def renderbuffer_storage_multisample(target, samples, internalformat, width, height):
     '''
     establish data storage, format, dimensions and sample count of a renderbuffer
-object's image
+object's image.
+    
+    gl.renderbuffer_storage_multisample and
+    gl.named_renderbuffer_storage_multisample establish the data storage,
+    format, dimensions and number of samples of a renderbuffer object's image.
     
     Args:
-        target: Specifies a binding target of the allocation for
-            gl.renderbuffer_storage_multisample function
-        samples: Specifies the number of samples to be used for the renderbuffer
-            object's storage
-        internalformat: Specifies the internal format to use for the
-            renderbuffer object's image
-        width: Specifies the width of the renderbuffer, in pixels
-        height: Specifies the height of the renderbuffer, in pixels
+        target: a binding target of the allocation for
+            glrenderbufferstoragemultisample function.
+        samples: the number of samples to be used for the renderbuffer object's
+            storage.
+        internalformat: the internal format to use for the renderbuffer object's
+            image.
+        width: the width of the renderbuffer, in pixels.
+        height: the height of the renderbuffer, in pixels.
     '''
 
 @accepts(t.enum, t.enum, t.uint, t.int, t.int)
@@ -355,15 +402,21 @@ object's image
 def framebuffer_texture_layer(target, attachment, texture, level, layer):
     '''
     attach a single layer of a texture object as a logical buffer of a framebuffer
-object
+object.
+    
+    gl.framebuffer_texture_layer and gl.named_framebuffer_texture_layer attach a
+    single layer of a three-dimensional or array texture object as one of the
+    logical buffers of the specified framebuffer object. Textures cannot be
+    attached to the default draw and read framebuffer, so they are not valid
+    targets of these commands.
     
     Args:
-        target: Specifies the target to which the framebuffer is bound for
-            gl.framebuffer_texture_layer
-        attachment: Specifies the attachment point of the framebuffer
-        texture: Specifies the name of an existing texture object to attach
-        level: Specifies the mipmap level of the texture object to attach
-        layer: Specifies the layer of the texture object to attach
+        target: the target to which the framebuffer is bound for
+            glframebuffertexturelayer.
+        attachment: the attachment point of the framebuffer.
+        texture: the name of an existing texture object to attach.
+        level: the mipmap level of the texture object to attach.
+        layer: the layer of the texture object to attach.
     '''
 
 @accepts(t.enum, t.intptr, t.sizeiptr, t.bitfield)
@@ -371,17 +424,22 @@ object
 @binds(dll)
 def map_buffer_range(target, offset, length, access):
     '''
-    map all or part of a buffer object's data store into the client's address space
+    map all or part of a buffer object's data store into the client's address space.
+    
+    gl.map_buffer_range and gl.map_named_buffer_range map all or part of the
+    data store of a specified buffer object into the client's address space.
+    offset and length indicate the range of data in the buffer object that is to
+    be mapped, in terms of basic machine units. access is a bitfield containing
+    flags which describe the requested mapping. These flags are described below.
     
     Args:
-        target: Specifies the target to which the buffer object is bound for
-            gl.map_buffer_range, which must be one of the buffer binding targets
-            in the following table:
-        offset: Specifies the starting offset within the buffer of the range to
-            be mapped
-        length: Specifies the length of the range to be mapped
-        access: Specifies a combination of access flags indicating the desired
-            access to the mapped range
+        target: the target to which the buffer object is bound for
+            glmapbufferrange, which must be one of the buffer binding targets in
+            the following table:.
+        offset: the starting offset within the buffer of the range to be mapped.
+        length: the length of the range to be mapped.
+        access: a combination of access flags indicating the desired access to
+            the mapped range.
     '''
 
 @accepts(t.enum, t.intptr, t.sizeiptr)
@@ -389,16 +447,18 @@ def map_buffer_range(target, offset, length, access):
 @binds(dll)
 def flush_mapped_buffer_range(target, offset, length):
     '''
-    indicate modifications to a range of a mapped buffer
+    indicate modifications to a range of a mapped buffer.
+    
+    gl.flush_mapped_buffer_range indicates that modifications have been made to
+    a range of a mapped buffer object. The buffer object must previously have
+    been mapped with the gl.MAP_FLUSH_EXPLICIT_BIT flag.
     
     Args:
-        target: Specifies the target to which the buffer object is bound for
-            gl.flush_mapped_buffer_range, which must be one of the buffer
-            binding targets in the following table:
-        offset: Specifies the start of the buffer subrange, in basic machine
-            units
-        length: Specifies the length of the buffer subrange, in basic machine
-            units
+        target: the target to which the buffer object is bound for
+            glflushmappedbufferrange, which must be one of the buffer binding
+            targets in the following table:.
+        offset: the start of the buffer subrange, in basic machine units.
+        length: the length of the buffer subrange, in basic machine units.
     '''
 
 @accepts(t.uint)
@@ -406,10 +466,15 @@ def flush_mapped_buffer_range(target, offset, length):
 @binds(dll)
 def bind_vertex_array(array):
     '''
-    bind a vertex array object
+    bind a vertex array object.
+    
+    gl.bind_vertex_array binds the vertex array object with name array. array is
+    the name of a vertex array object previously returned from a call to
+    gl.gen_vertex_arrays, or zero to break the existing vertex array object
+    binding.
     
     Args:
-        array: Specifies the name of the vertex array to bind
+        array: the name of the vertex array to bind.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -417,12 +482,19 @@ def bind_vertex_array(array):
 @binds(dll)
 def delete_vertex_arrays(n, arrays):
     '''
-    delete vertex array objects
+    delete vertex array objects.
+    
+    gl.delete_vertex_arrays deletes n vertex array objects whose names are
+    stored in the array addressed by arrays. Once a vertex array object is
+    deleted it has no contents and its name is again unused. If a vertex array
+    object that is currently bound is deleted, the binding for that object
+    reverts to zero and the default vertex array becomes current. Unused names
+    in arrays are silently ignored, as is the value zero.
     
     Args:
-        n: Specifies the number of vertex array objects to be deleted
-        arrays: Specifies the address of an array containing the n names of the
-            objects to be deleted
+        n: the number of vertex array objects to be deleted.
+        arrays: the address of an array containing the n names of the objects to
+            be deleted.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -430,12 +502,17 @@ def delete_vertex_arrays(n, arrays):
 @binds(dll)
 def gen_vertex_arrays(n, arrays):
     '''
-    generate vertex array object names
+    generate vertex array object names.
+    
+    gl.gen_vertex_arrays returns n vertex array object names in arrays. There is
+    no guarantee that the names form a contiguous set of integers; however, it
+    is guaranteed that none of the returned names was in use immediately before
+    the call to gl.gen_vertex_arrays.
     
     Args:
-        n: Specifies the number of vertex array object names to generate
-        arrays: Specifies an array in which the generated vertex array object
-            names are stored
+        n: the number of vertex array object names to generate.
+        arrays: an array in which the generated vertex array object names are
+            stored.
     '''
 
 @accepts(t.uint)
@@ -443,10 +520,17 @@ def gen_vertex_arrays(n, arrays):
 @binds(dll)
 def is_vertex_array(array):
     '''
-    determine if a name corresponds to a vertex array object
+    determine if a name corresponds to a vertex array object.
+    
+    gl.is_vertex_array returns gl.TRUE if array is currently the name of a
+    vertex array object. If array is zero, or if array is not the name of a
+    vertex array object, or if an error occurs, gl.is_vertex_array returns
+    gl.FALSE. If array is a name returned by gl.gen_vertex_arrays, by that has
+    not yet been bound through a call to gl.bind_vertex_array, then the name is
+    not a vertex array object and gl.is_vertex_array returns gl.FALSE.
     
     Args:
-        array: Specifies a value that may be the name of a vertex array object
+        array: a value that may be the name of a vertex array object.
     '''
 
 @accepts(t.enum, t.uint, POINTER(t.int))
@@ -460,12 +544,11 @@ def get_integeri_v(target, index, data):
 @binds(dll)
 def begin_transform_feedback(primitivemode):
     '''
-    start transform feedback operation
+    start transform feedback operation.
     
     Args:
-        primitivemode: Specify the output type of the primitives that will be
-            recorded into the buffer objects that are bound for transform
-            feedback
+        primitivemode: the output type of the primitives that will be recorded
+            into the buffer objects that are bound for transform feedback.
     '''
 
 @accepts()
@@ -479,18 +562,27 @@ def end_transform_feedback():
 @binds(dll)
 def bind_buffer_range(target, index, buffer, offset, size):
     '''
-    bind a range within a buffer object to an indexed buffer target
+    bind a range within a buffer object to an indexed buffer target.
+    
+    gl.bind_buffer_range binds a range the buffer object buffer represented by
+    offset and size to the binding point at index index of the array of targets
+    specified by target. Each target represents an indexed array of buffer
+    binding points, as well as a single general binding point that can be used
+    by other buffer manipulation functions such as gl.bind_buffer or
+    gl.map_buffer. In addition to binding a range of buffer to the indexed
+    buffer binding target, gl.bind_buffer_range also binds the range to the
+    generic buffer binding point specified by target.
     
     Args:
-        target: Specify the target of the bind operation
-        index: Specify the index of the binding point within the array specified
-            by target
-        buffer: The name of a buffer object to bind to the specified binding
-            point
-        offset: The starting offset in basic machine units into the buffer
-            object buffer
-        size: The amount of data in machine units that can be read from the
-            buffer object while used as an indexed target
+        target: the target of the bind operation.
+        index: the index of the binding point within the array specified by
+            target.
+        buffer: the name of a buffer object to bind to the specified binding
+            point.
+        offset: the starting offset in basic machine units into the buffer
+            object buffer.
+        size: the amount of data in machine units that can be read from the
+            buffer object while used as an indexed target.
     '''
 
 @accepts(t.enum, t.uint, t.uint)
@@ -498,14 +590,22 @@ def bind_buffer_range(target, index, buffer, offset, size):
 @binds(dll)
 def bind_buffer_base(target, index, buffer):
     '''
-    bind a buffer object to an indexed buffer target
+    bind a buffer object to an indexed buffer target.
+    
+    gl.bind_buffer_base binds the buffer object buffer to the binding point at
+    index index of the array of targets specified by target. Each target
+    represents an indexed array of buffer binding points, as well as a single
+    general binding point that can be used by other buffer manipulation
+    functions such as gl.bind_buffer or gl.map_buffer. In addition to binding
+    buffer to the indexed buffer binding target, gl.bind_buffer_base also binds
+    buffer to the generic buffer binding point specified by target.
     
     Args:
-        target: Specify the target of the bind operation
-        index: Specify the index of the binding point within the array specified
-            by target
-        buffer: The name of a buffer object to bind to the specified binding
-            point
+        target: the target of the bind operation.
+        index: the index of the binding point within the array specified by
+            target.
+        buffer: the name of a buffer object to bind to the specified binding
+            point.
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.char_p), t.enum)
@@ -513,15 +613,15 @@ def bind_buffer_base(target, index, buffer):
 @binds(dll)
 def transform_feedback_varyings(program, count, varyings, buffermode):
     '''
-    specify values to record in transform feedback buffers
+    specify values to record in transform feedback buffers.
     
     Args:
-        program: The name of the target program object
-        count: The number of varying variables used for transform feedback
-        varyings: An array of count zero-terminated strings specifying the names
-            of the varying variables to use for transform feedback
-        buffermode: Identifies the mode used to capture the varying variables
-            when transform feedback is active
+        program: the name of the target program object.
+        count: the number of varying variables used for transform feedback.
+        varyings: an array of count zero-terminated strings specifying the names
+            of the varying variables to use for transform feedback.
+        buffermode: identifies the mode used to capture the varying variables
+            when transform feedback is active.
     '''
 
 @accepts(t.uint, t.uint, t.sizei, POINTER(t.sizei), POINTER(t.sizei), POINTER(t.enum), t.char_p)
@@ -529,21 +629,21 @@ def transform_feedback_varyings(program, count, varyings, buffermode):
 @binds(dll)
 def get_transform_feedback_varying(program, index, bufsize, length, size, type, name):
     '''
-    retrieve information about varying variables selected for transform feedback
+    retrieve information about varying variables selected for transform feedback.
     
     Args:
-        program: The name of the target program object
-        index: The index of the varying variable whose information to retrieve
-        bufsize: The maximum number of characters, including the null
-            terminator, that may be written into name
-        length: The address of a variable which will receive the number of
-            characters written into name, excluding the null-terminator
-        size: The address of a variable that will receive the size of the
-            varying
-        type: The address of a variable that will recieve the type of the
-            varying
-        name: The address of a buffer into which will be written the name of the
-            varying
+        program: the name of the target program object.
+        index: the index of the varying variable whose information to retrieve.
+        bufsize: the maximum number of characters, including the null
+            terminator, that may be written into name.
+        length: the address of a variable which will receive the number of
+            characters written into name, excluding the null-terminator.
+        size: the address of a variable that will receive the size of the
+            varying.
+        type: the address of a variable that will recieve the type of the
+            varying.
+        name: the address of a buffer into which will be written the name of the
+            varying.
     '''
 
 @accepts(t.uint, t.int, t.enum, t.sizei, t.void)
@@ -599,13 +699,19 @@ def get_uniformuiv(program, location, params):
 @binds(dll)
 def get_frag_data_location(program, name):
     '''
-    query the bindings of color numbers to user-defined varying out variables
+    query the bindings of color numbers to user-defined varying out variables.
+    
+    gl.get_frag_data_location retrieves the assigned color number binding for
+    the user-defined varying out variable name for program program. program must
+    have previously been linked. name must be a null-terminated string. If name
+    is not the name of an active user-defined varying out fragment shader
+    variable within program, -1 will be returned.
     
     Args:
-        program: The name of the program containing varying out variable whose
-            binding to query
-        name: The name of the user-defined varying out variable whose binding to
-            query
+        program: the name of the program containing varying out variable whose
+            binding to query.
+        name: the name of the user-defined varying out variable whose binding to
+            query.
     '''
 
 @accepts(t.int, t.uint)
@@ -692,21 +798,26 @@ def get_stringi(name, index):
 def copy_buffer_sub_data(readtarget, writetarget, readoffset, writeoffset, size):
     '''
     copy all or part of the data store of a buffer object to the data store of
-another buffer object
+another buffer object.
+    
+    gl.copy_buffer_sub_data and gl.copy_named_buffer_sub_data copy part of the
+    data store attached to a source buffer object to the data store attached to
+    a destination buffer object. The number of basic machine units indicated by
+    size is copied from the source at offset readOffset to the destination at
+    writeOffset. readOffset, writeOffset and size are in terms of basic machine
+    units.
     
     Args:
-        readtarget: Specifies the target to which the source buffer object is
-            bound for gl.copy_buffer_sub_data
-        writetarget: Specifies the target to which the destination buffer object
-            is bound for gl.copy_buffer_sub_data
-        readoffset: Specifies the offset, in basic machine units, within the
-            data store of the source buffer object at which data will be read
-        writeoffset: Specifies the offset, in basic machine units, within the
-            data store of the destination buffer object at which data will be
-            written
-        size: Specifies the size, in basic machine units, of the data to be
-            copied from the source buffer object to the destination buffer
-            object
+        readtarget: the target to which the source buffer object is bound for
+            glcopybuffersubdata.
+        writetarget: the target to which the destination buffer object is bound
+            for glcopybuffersubdata.
+        readoffset: the offset, in basic machine units, within the data store of
+            the source buffer object at which data will be read.
+        writeoffset: the offset, in basic machine units, within the data store
+            of the destination buffer object at which data will be written.
+        size: the size, in basic machine units, of the data to be copied from
+            the source buffer object to the destination buffer object.
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.char_p), POINTER(t.uint))
@@ -714,16 +825,19 @@ another buffer object
 @binds(dll)
 def get_uniform_indices(program, uniformcount, uniformnames, uniformindices):
     '''
-    retrieve the index of a named uniform block
+    retrieve the index of a named uniform block.
+    
+    gl.get_uniform_indices retrieves the indices of a number of uniforms within
+    program.
     
     Args:
-        program: Specifies the name of a program containing uniforms whose
-            indices to query
-        uniformcount: Specifies the number of uniforms whose indices to query
-        uniformnames: Specifies the address of an array of pointers to buffers
-            containing the names of the queried uniforms
-        uniformindices: Specifies the address of an array that will receive the
-            indices of the uniforms
+        program: the name of a program containing uniforms whose indices to
+            query.
+        uniformcount: the number of uniforms whose indices to query.
+        uniformnames: the address of an array of pointers to buffers containing
+            the names of the queried uniforms.
+        uniformindices: the address of an array that will receive the indices of
+            the uniforms.
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.uint), t.enum, POINTER(t.int))
@@ -732,20 +846,27 @@ def get_uniform_indices(program, uniformcount, uniformnames, uniformindices):
 def get_active_uniformsiv(program, uniformcount, uniformindices, pname, params):
     '''
     Returns information about several active uniform variables for the specified
-program object
+program object.
+    
+    gl.get_active_uniformsiv queries the value of the parameter named pname for
+    each of the uniforms within program whose indices are specified in the array
+    of uniformCount unsigned integers uniformIndices. Upon success, the value of
+    the parameter for each uniform is written into the corresponding entry in
+    the array whose address is given in params. If an error is generated,
+    nothing is written into params.
     
     Args:
-        program: Specifies the program object to be queried
-        uniformcount: Specifies both the number of elements in the array of
-            indices uniformIndices and the number of parameters written to
-            params upon successful return
-        uniformindices: Specifies the address of an array of uniformCount
-            integers containing the indices of uniforms within program whose
-            parameter pname should be queried
-        pname: Specifies the property of each uniform in uniformIndices that
-            should be written into the corresponding element of params
-        params: Specifies the address of an array of uniformCount integers which
-            are to receive the value of pname for each uniform in uniformIndices
+        program: the program object to be queried.
+        uniformcount: both the number of elements in the array of indices
+            uniformindices and the number of parameters written to params upon
+            successful return.
+        uniformindices: the address of an array of uniformcount integers
+            containing the indices of uniforms within program whose parameter
+            pname should be queried.
+        pname: the property of each uniform in uniformindices that should be
+            written into the corresponding element of params.
+        params: the address of an array of uniformcount integers which are to
+            receive the value of pname for each uniform in uniformindices.
     '''
 
 @accepts(t.uint, t.char_p)
@@ -753,12 +874,15 @@ program object
 @binds(dll)
 def get_uniform_block_index(program, uniformblockname):
     '''
-    retrieve the index of a named uniform block
+    retrieve the index of a named uniform block.
+    
+    gl.get_uniform_block_index retrieves the index of a uniform block within
+    program.
     
     Args:
-        program: Specifies the name of a program containing the uniform block
-        uniformblockname: Specifies the address an array of characters to
-            containing the name of the uniform block whose index to retrieve
+        program: the name of a program containing the uniform block.
+        uniformblockname: the address an array of characters to containing the
+            name of the uniform block whose index to retrieve.
     '''
 
 @accepts(t.uint, t.uint, t.enum, POINTER(t.int))
@@ -772,17 +896,19 @@ def get_active_uniform_blockiv(program, uniformblockindex, pname, params):
 @binds(dll)
 def get_active_uniform_block_name(program, uniformblockindex, bufsize, length, uniformblockname):
     '''
-    retrieve the name of an active uniform block
+    retrieve the name of an active uniform block.
+    
+    gl.get_active_uniform_block_name retrieves the name of the active uniform
+    block at uniformBlockIndex within program.
     
     Args:
-        program: Specifies the name of a program containing the uniform block
-        uniformblockindex: Specifies the index of the uniform block within
-            program
-        bufsize: Specifies the size of the buffer addressed by uniformBlockName
-        length: Specifies the address of a variable to receive the number of
-            characters that were written to uniformBlockName
-        uniformblockname: Specifies the address an array of characters to
-            receive the name of the uniform block at uniformBlockIndex
+        program: the name of a program containing the uniform block.
+        uniformblockindex: the index of the uniform block within program.
+        bufsize: the size of the buffer addressed by uniformblockname.
+        length: the address of a variable to receive the number of characters
+            that were written to uniformblockname.
+        uniformblockname: the address an array of characters to receive the name
+            of the uniform block at uniformblockindex.
     '''
 
 @accepts(t.uint, t.uint, t.uint)
@@ -790,15 +916,15 @@ def get_active_uniform_block_name(program, uniformblockindex, bufsize, length, u
 @binds(dll)
 def uniform_block_binding(program, uniformblockindex, uniformblockbinding):
     '''
-    assign a binding point to an active uniform block
+    assign a binding point to an active uniform block.
     
     Args:
-        program: The name of a program object containing the active uniform
-            block whose binding to assign
-        uniformblockindex: The index of the active uniform block within program
-            whose binding to assign
-        uniformblockbinding: Specifies the binding point to which to bind the
-            uniform block with index uniformBlockIndex within program
+        program: the name of a program object containing the active uniform
+            block whose binding to assign.
+        uniformblockindex: the index of the active uniform block within program
+            whose binding to assign.
+        uniformblockbinding: the binding point to which to bind the uniform
+            block with index uniformblockindex within program.
     '''
 
 @accepts(t.enum, t.int, t.sizei, t.sizei)
@@ -806,14 +932,20 @@ def uniform_block_binding(program, uniformblockindex, uniformblockbinding):
 @binds(dll)
 def draw_arrays_instanced(mode, first, count, instancecount):
     '''
-    draw multiple instances of a range of elements
+    draw multiple instances of a range of elements.
+    
+    gl.draw_arrays_instanced behaves identically to gl.draw_arrays except that
+    primcount instances of the range of elements are executed and the value of
+    the internal counter instanceID advances for each iteration. instanceID is
+    an internal 32-bit integer counter that may be read by a vertex shader as
+    gl_InstanceID.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        first: Specifies the starting index in the enabled arrays
-        count: Specifies the number of indices to be rendered
-        instancecount: Specifies the number of instances of the specified range
-            of indices to be rendered
+        mode: what kind of primitives to render.
+        first: the starting index in the enabled arrays.
+        count: the number of indices to be rendered.
+        instancecount: the number of instances of the specified range of indices
+            to be rendered.
     '''
 
 @accepts(t.enum, t.sizei, t.enum, t.void, t.sizei)
@@ -821,16 +953,21 @@ def draw_arrays_instanced(mode, first, count, instancecount):
 @binds(dll)
 def draw_elements_instanced(mode, count, type, indices, instancecount):
     '''
-    draw multiple instances of a set of elements
+    draw multiple instances of a set of elements.
+    
+    gl.draw_elements_instanced behaves identically to gl.draw_elements except
+    that primcount instances of the set of elements are executed and the value
+    of the internal counter instanceID advances for each iteration. instanceID
+    is an internal 32-bit integer counter that may be read by a vertex shader as
+    gl_InstanceID.
     
     Args:
-        mode: Specifies what kind of primitives to render
-        count: Specifies the number of elements to be rendered
-        type: Specifies the type of the values in indices
-        indices: Specifies a pointer to the location where the indices are
-            stored
-        instancecount: Specifies the number of instances of the specified range
-            of indices to be rendered
+        mode: what kind of primitives to render.
+        count: the number of elements to be rendered.
+        type: the type of the values in indices.
+        indices: a pointer to the location where the indices are stored.
+        instancecount: the number of instances of the specified range of indices
+            to be rendered.
     '''
 
 @accepts(t.enum, t.bitfield)
@@ -838,13 +975,17 @@ def draw_elements_instanced(mode, count, type, indices, instancecount):
 @binds(dll)
 def fence_sync(condition, flags):
     '''
-    create a new sync object and insert it into the GL command stream
+    create a new sync object and insert it into the GL command stream.
+    
+    gl.fence_sync creates a new fence sync object, inserts a fence command into
+    the GL command stream and associates it with that sync object, and returns a
+    non-zero name corresponding to the sync object.
     
     Args:
-        condition: Specifies the condition that must be met to set the sync
-            object's state to signaled
-        flags: Specifies a bitwise combination of flags controlling the behavior
-            of the sync object
+        condition: the condition that must be met to set the sync object's state
+            to signaled.
+        flags: a bitwise combination of flags controlling the behavior of the
+            sync object.
     '''
 
 @accepts(t.sync)
@@ -852,10 +993,14 @@ def fence_sync(condition, flags):
 @binds(dll)
 def is_sync(sync):
     '''
-    determine if a name corresponds to a sync object
+    determine if a name corresponds to a sync object.
+    
+    gl.is_sync returns gl.TRUE if sync is currently the name of a sync object.
+    If sync is not the name of a sync object, or if an error occurs, gl.is_sync
+    returns gl.FALSE. Note that zero is not the name of a sync object.
     
     Args:
-        sync: Specifies a value that may be the name of a sync object
+        sync: a value that may be the name of a sync object.
     '''
 
 @accepts(t.sync)
@@ -863,10 +1008,19 @@ def is_sync(sync):
 @binds(dll)
 def delete_sync(sync):
     '''
-    delete a sync object
+    delete a sync object.
+    
+    gl.delete_sync deletes the sync object specified by sync. If the fence
+    command corresponding to the specified sync object has completed, or if no
+    gl.wait_sync or gl.client_wait_sync commands are blocking on sync, the
+    object is deleted immediately. Otherwise, sync is flagged for deletion and
+    will be deleted when it is no longer associated with any fence command and
+    is no longer blocking any gl.wait_sync or gl.client_wait_sync command. In
+    either case, after gl.delete_sync returns, the name sync is invalid and can
+    no longer be used to refer to the sync object.
     
     Args:
-        sync: The sync object to be deleted
+        sync: the sync object to be deleted.
     '''
 
 @accepts(t.sync, t.bitfield, t.uint64)
@@ -874,13 +1028,19 @@ def delete_sync(sync):
 @binds(dll)
 def client_wait_sync(sync, flags, timeout):
     '''
-    block and wait for a sync object to become signaled
+    block and wait for a sync object to become signaled.
+    
+    gl.client_wait_sync causes the client to block and wait for the sync object
+    specified by sync to become signaled. If sync is signaled when
+    gl.client_wait_sync is called, gl.client_wait_sync returns immediately,
+    otherwise it will block and wait for up to timeout nanoseconds for sync to
+    become signaled.
     
     Args:
-        sync: The sync object whose status to wait on
-        flags: A bitfield controlling the command flushing behavior
-        timeout: The timeout, specified in nanoseconds, for which the
-            implementation should wait for sync to become signaled
+        sync: the sync object whose status to wait on.
+        flags: a bitfield controlling the command flushing behavior.
+        timeout: the timeout, specified in nanoseconds, for which the
+            implementation should wait for sync to become signaled.
     '''
 
 @accepts(t.sync, t.bitfield, t.uint64)
@@ -888,13 +1048,20 @@ def client_wait_sync(sync, flags, timeout):
 @binds(dll)
 def wait_sync(sync, flags, timeout):
     '''
-    instruct the GL server to block until the specified sync object becomes signaled
+    instruct the GL server to block until the specified sync object becomes signaled.
+    
+    gl.wait_sync causes the GL server to block and wait until sync becomes
+    signaled. sync is the name of an existing sync object upon which to wait.
+    flags and timeout are currently not used and must be set to zero and the
+    special value gl.TIMEOUT_IGNORED, respectivelyflags and timeout are
+    placeholders for anticipated future extensions of sync object capabilities.
+    They must have these reserved values in order that existing code calling
+    gl.wait_sync operate properly in the presence of such extensions.
     
     Args:
-        sync: Specifies the sync object whose status to wait on
-        flags: A bitfield controlling the command flushing behavior
-        timeout: Specifies the timeout that the server should wait before
-            continuing
+        sync: the sync object whose status to wait on.
+        flags: a bitfield controlling the command flushing behavior.
+        timeout: the timeout that the server should wait before continuing.
     '''
 
 @accepts(t.enum, POINTER(t.int64))
@@ -926,12 +1093,17 @@ def get_buffer_parameteri64v(target, pname, params):
 @binds(dll)
 def gen_samplers(count, samplers):
     '''
-    generate sampler object names
+    generate sampler object names.
+    
+    gl.gen_samplers returns n sampler object names in samplers. There is no
+    guarantee that the names form a contiguous set of integers; however, it is
+    guaranteed that none of the returned names was in use immediately before the
+    call to gl.gen_samplers.
     
     Args:
-        count: Specifies the number of sampler object names to generate
-        samplers: Specifies an array in which the generated sampler object names
-            are stored
+        count: the number of sampler object names to generate.
+        samplers: an array in which the generated sampler object names are
+            stored.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -939,11 +1111,18 @@ def gen_samplers(count, samplers):
 @binds(dll)
 def delete_samplers(count, samplers):
     '''
-    delete named sampler objects
+    delete named sampler objects.
+    
+    gl.delete_samplers deletes n sampler objects named by the elements of the
+    array samplers. After a sampler object is deleted, its name is again unused.
+    If a sampler object that is currently bound to a sampler unit is deleted, it
+    is as though gl.bind_sampler is called with unit set to the unit the sampler
+    is bound to and sampler zero. Unused names in samplers are silently ignored,
+    as is the reserved name zero.
     
     Args:
-        count: Specifies the number of sampler objects to be deleted
-        samplers: Specifies an array of sampler objects to be deleted
+        count: the number of sampler objects to be deleted.
+        samplers: an array of sampler objects to be deleted.
     '''
 
 @accepts(t.uint)
@@ -951,10 +1130,14 @@ def delete_samplers(count, samplers):
 @binds(dll)
 def is_sampler(sampler):
     '''
-    determine if a name corresponds to a sampler object
+    determine if a name corresponds to a sampler object.
+    
+    gl.is_sampler returns gl.TRUE if id is currently the name of a sampler
+    object. If id is zero, or is a non-zero value that is not currently the name
+    of a sampler object, or if an error occurs, gl.is_sampler returns gl.FALSE.
     
     Args:
-        sampler: Specifies a value that may be the name of a sampler object
+        sampler: a value that may be the name of a sampler object.
     '''
 
 @accepts(t.uint, t.uint)
@@ -962,12 +1145,16 @@ def is_sampler(sampler):
 @binds(dll)
 def bind_sampler(unit, sampler):
     '''
-    bind a named sampler to a texturing target
+    bind a named sampler to a texturing target.
+    
+    gl.bind_sampler binds sampler to the texture unit at index unit. sampler
+    must be zero or the name of a sampler object previously returned from a call
+    to gl.gen_samplers. unit must be less than the value of
+    gl.MAX_COMBINED_TEXTURE_IMAGE_UNITS.
     
     Args:
-        unit: Specifies the index of the texture unit to which the sampler is
-            bound
-        sampler: Specifies the name of a sampler
+        unit: the index of the texture unit to which the sampler is bound.
+        sampler: the name of a sampler.
     '''
 
 @accepts(t.uint, t.enum, t.int)
@@ -1012,12 +1199,20 @@ def get_sampler_parameterfv(sampler, pname, params):
 def vertex_attrib_divisor(index, divisor):
     '''
     modify the rate at which generic vertex attributes advance during instanced
-rendering
+rendering.
+    
+    gl.vertex_attrib_divisor modifies the rate at which generic vertex
+    attributes advance when rendering multiple instances of primitives in a
+    single draw call. If divisor is zero, the attribute at slot index advances
+    once per vertex. If divisor is non-zero, the attribute advances once per
+    divisor instances of the set(s) of vertices being rendered. An attribute is
+    referred to as instanced if its gl.VERTEX_ATTRIB_ARRAY_DIVISOR value is non-
+    zero.
     
     Args:
-        index: Specify the index of the generic vertex attribute
-        divisor: Specify the number of instances that will pass between updates
-            of the generic attribute at slot index
+        index: the index of the generic vertex attribute.
+        divisor: the number of instances that will pass between updates of the
+            generic attribute at slot index.
     '''
 
 @accepts(t.enum, t.uint)
@@ -1025,13 +1220,18 @@ rendering
 @binds(dll)
 def bind_transform_feedback(target, id):
     '''
-    bind a transform feedback object
+    bind a transform feedback object.
+    
+    gl.bind_transform_feedback binds the transform feedback object with name id
+    to the current GL state. id must be a name previously returned from a call
+    to gl.gen_transform_feedbacks. If id has not previously been bound, a new
+    transform feedback object with name id and initialized with with the default
+    transform state vector is created.
     
     Args:
-        target: Specifies the target to which to bind the transform feedback
-            object id
-        id: Specifies the name of a transform feedback object reserved by
-            gl.gen_transform_feedbacks
+        target: the target to which to bind the transform feedback object id.
+        id: the name of a transform feedback object reserved by
+            glgentransformfeedbacks.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -1039,11 +1239,18 @@ def bind_transform_feedback(target, id):
 @binds(dll)
 def delete_transform_feedbacks(n, ids):
     '''
-    delete transform feedback objects
+    delete transform feedback objects.
+    
+    gl.delete_transform_feedbacks deletes the n transform feedback objects whose
+    names are stored in the array ids. Unused names in ids are ignored, as is
+    the name zero. After a transform feedback object is deleted, its name is
+    again unused and it has no contents. If an active transform feedback object
+    is deleted, its name immediately becomes unused, but the underlying object
+    is not deleted until it is no longer active.
     
     Args:
-        n: Specifies the number of transform feedback objects to delete
-        ids: Specifies an array of names of transform feedback objects to delete
+        n: the number of transform feedback objects to delete.
+        ids: an array of names of transform feedback objects to delete.
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -1051,11 +1258,16 @@ def delete_transform_feedbacks(n, ids):
 @binds(dll)
 def gen_transform_feedbacks(n, ids):
     '''
-    reserve transform feedback object names
+    reserve transform feedback object names.
+    
+    gl.gen_transform_feedbacks returns n previously unused transform feedback
+    object names in ids. These names are marked as used, for the purposes of
+    gl.gen_transform_feedbacks only, but they acquire transform feedback state
+    only when they are first bound.
     
     Args:
-        n: Specifies the number of transform feedback object names to reserve
-        ids: Specifies an array of into which the reserved names will be written
+        n: the number of transform feedback object names to reserve.
+        ids: an array of into which the reserved names will be written.
     '''
 
 @accepts(t.uint)
@@ -1063,11 +1275,18 @@ def gen_transform_feedbacks(n, ids):
 @binds(dll)
 def is_transform_feedback(id):
     '''
-    determine if a name corresponds to a transform feedback object
+    determine if a name corresponds to a transform feedback object.
+    
+    gl.is_transform_feedback returns gl.TRUE if id is currently the name of a
+    transform feedback object. If id is zero, or if id is not the name of a
+    transform feedback object, or if an error occurs, gl.is_transform_feedback
+    returns gl.FALSE. If id is a name returned by gl.gen_transform_feedbacks,
+    but that has not yet been bound through a call to
+    gl.bind_transform_feedback, then the name is not a transform feedback object
+    and gl.is_transform_feedback returns gl.FALSE.
     
     Args:
-        id: Specifies a value that may be the name of a transform feedback
-            object
+        id: a value that may be the name of a transform feedback object.
     '''
 
 @accepts()
@@ -1075,7 +1294,7 @@ def is_transform_feedback(id):
 @binds(dll)
 def pause_transform_feedback():
     '''
-    pause transform feedback operations
+    pause transform feedback operations.
     '''
 
 @accepts()
@@ -1083,7 +1302,7 @@ def pause_transform_feedback():
 @binds(dll)
 def resume_transform_feedback():
     '''
-    resume transform feedback operations
+    resume transform feedback operations.
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.sizei), POINTER(t.enum), t.void)
@@ -1092,17 +1311,25 @@ def resume_transform_feedback():
 def get_program_binary(program, bufsize, length, binaryformat, binary):
     '''
     return a binary representation of a program object's compiled and linked
-executable source
+executable source.
+    
+    gl.get_program_binary returns a binary representation of the compiled and
+    linked executable for program into the array of bytes whose address is
+    specified in binary. The maximum number of bytes that may be written into
+    binary is specified by bufSize. If the program binary is greater in size
+    than bufSize bytes, then an error is generated, otherwise the actual number
+    of bytes written into binary is returned in the variable whose address is
+    given by length. If length is None, then no length is returned.
     
     Args:
-        program: Specifies the name of a program object whose binary
-            representation to retrieve
-        length: Specifies the address of a variable to receive the number of
-            bytes written into binary
-        binaryformat: Specifies the address of a variable to receive a token
-            indicating the format of the binary data returned by the GL
-        binary: Specifies the address an array into which the GL will return
-            program's binary representation
+        program: the name of a program object whose binary representation to
+            retrieve.
+        length: the address of a variable to receive the number of bytes written
+            into binary.
+        binaryformat: the address of a variable to receive a token indicating
+            the format of the binary data returned by the gl.
+        binary: the address an array into which the gl will return program's
+            binary representation.
     '''
 
 @accepts(t.uint, t.enum, t.void, t.sizei)
@@ -1110,15 +1337,23 @@ executable source
 @binds(dll)
 def program_binary(program, binaryformat, binary, length):
     '''
-    load a program object with a program binary
+    load a program object with a program binary.
+    
+    gl.program_binary loads a program object with a program binary previously
+    returned from gl.get_program_binary. binaryFormat and binary must be those
+    returned by a previous call to gl.get_program_binary, and length must be the
+    length returned by gl.get_program_binary, or by gl.get_program when called
+    with pname set to gl.PROGRAM_BINARY_LENGTH. If these conditions are not met,
+    loading the program binary will fail and program's gl.LINK_STATUS will be
+    set to gl.FALSE.
     
     Args:
-        program: Specifies the name of a program object into which to load a
-            program binary
-        binaryformat: Specifies the format of the binary data in binary
-        binary: Specifies the address an array containing the binary to be
-            loaded into program
-        length: Specifies the number of bytes contained in binary
+        program: the name of a program object into which to load a program
+            binary.
+        binaryformat: the format of the binary data in binary.
+        binary: the address an array containing the binary to be loaded into
+            program.
+        length: the number of bytes contained in binary.
     '''
 
 @accepts(t.uint, t.enum, t.int)
@@ -1132,14 +1367,18 @@ def program_parameteri(program, pname, value):
 @binds(dll)
 def invalidate_framebuffer(target, numattachments, attachments):
     '''
-    invalidate the content of some or all of a framebuffer's attachments
+    invalidate the content of some or all of a framebuffer's attachments.
+    
+    gl.invalidate_framebuffer and gl.invalidate_named_framebuffer_data
+    invalidate the entire contents of a specified set of attachments of a
+    framebuffer.
     
     Args:
-        target: Specifies the target to which the framebuffer object is attached
-            for gl.invalidate_framebuffer
-        numattachments: Specifies the number of entries in the attachments array
-        attachments: Specifies a pointer to an array identifying the attachments
-            to be invalidated
+        target: the target to which the framebuffer object is attached for
+            glinvalidateframebuffer.
+        numattachments: the number of entries in the attachments array.
+        attachments: a pointer to an array identifying the attachments to be
+            invalidated.
     '''
 
 @accepts(t.enum, t.sizei, POINTER(t.enum), t.int, t.int, t.sizei, t.sizei)
@@ -1147,18 +1386,22 @@ def invalidate_framebuffer(target, numattachments, attachments):
 @binds(dll)
 def invalidate_sub_framebuffer(target, numattachments, attachments, x, y, width, height):
     '''
-    invalidate the content of a region of some or all of a framebuffer's attachments
+    invalidate the content of a region of some or all of a framebuffer's attachments.
+    
+    gl.invalidate_sub_framebuffer and gl.invalidate_named_framebuffer_sub_data
+    invalidate the contents of a specified region of a specified set of
+    attachments of a framebuffer.
     
     Args:
-        target: Specifies the target to which the framebuffer object is attached
-            for gl.invalidate_sub_framebuffer
-        numattachments: Specifies the number of entries in the attachments array
-        attachments: Specifies a pointer to an array identifying the attachments
-            to be invalidated
-        x: Specifies the X offset of the region to be invalidated
-        y: Specifies the Y offset of the region to be invalidated
-        width: Specifies the width of the region to be invalidated
-        height: Specifies the height of the region to be invalidated
+        target: the target to which the framebuffer object is attached for
+            glinvalidatesubframebuffer.
+        numattachments: the number of entries in the attachments array.
+        attachments: a pointer to an array identifying the attachments to be
+            invalidated.
+        x: the x offset of the region to be invalidated.
+        y: the y offset of the region to be invalidated.
+        width: the width of the region to be invalidated.
+        height: the height of the region to be invalidated.
     '''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei)
@@ -1167,16 +1410,16 @@ def invalidate_sub_framebuffer(target, numattachments, attachments, x, y, width,
 def tex_storage2_d(target, levels, internalformat, width, height):
     '''
     simultaneously specify storage for all levels of a two-dimensional or one-
-dimensional array texture
+dimensional array texture.
     
     Args:
-        target: Specifies the target to which the texture object is bound for
-            gl.tex_storage2D
-        levels: Specify the number of texture levels
-        internalformat: Specifies the sized internal format to be used to store
-            texture image data
-        width: Specifies the width of the texture, in texels
-        height: Specifies the height of the texture, in texels
+        target: the target to which the texture object is bound for
+            gltexstorage2d.
+        levels: the number of texture levels.
+        internalformat: the sized internal format to be used to store texture
+            image data.
+        width: the width of the texture, in texels.
+        height: the height of the texture, in texels.
     '''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei, t.sizei)
@@ -1185,17 +1428,17 @@ dimensional array texture
 def tex_storage3_d(target, levels, internalformat, width, height, depth):
     '''
     simultaneously specify storage for all levels of a three-dimensional, two-
-dimensional array or cube-map array texture
+dimensional array or cube-map array texture.
     
     Args:
-        target: Specifies the target to which the texture object is bound for
-            gl.tex_storage3D
-        levels: Specify the number of texture levels
-        internalformat: Specifies the sized internal format to be used to store
-            texture image data
-        width: Specifies the width of the texture, in texels
-        height: Specifies the height of the texture, in texels
-        depth: Specifies the depth of the texture, in texels
+        target: the target to which the texture object is bound for
+            gltexstorage3d.
+        levels: the number of texture levels.
+        internalformat: the sized internal format to be used to store texture
+            image data.
+        width: the width of the texture, in texels.
+        height: the height of the texture, in texels.
+        depth: the depth of the texture, in texels.
     '''
 
 @accepts(t.enum, t.enum, t.enum, t.sizei, POINTER(t.int))
