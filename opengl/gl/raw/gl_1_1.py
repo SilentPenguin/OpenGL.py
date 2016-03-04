@@ -6,181 +6,181 @@ from opengl.gl.raw.bindings import *
 @accepts(t.enum, t.int, t.sizei)
 @returns(t.void)
 @binds(dll)
-def draw_arrays(mode, first, count): 
+def draw_arrays(mode, first, count):
     '''render primitives from array data'''
 
 @accepts(t.enum, t.sizei, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def draw_elements(mode, count, type, indices): 
+def draw_elements(mode, count, type, indices):
     '''render primitives from array data'''
 
 @accepts(t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def get_pointerv(pname, params): 
+def get_pointerv(pname, params):
     '''return the address of the specified pointer'''
 
 @accepts(t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def polygon_offset(factor, units): 
+def polygon_offset(factor, units):
     '''set the scale and units used to calculate depth values'''
 
 @accepts(t.enum, t.int, t.enum, t.int, t.int, t.sizei, t.int)
 @returns(t.void)
 @binds(dll)
-def copy_tex_image1_d(target, level, internalformat, x, y, width, border): 
+def copy_tex_image1_d(target, level, internalformat, x, y, width, border):
     '''copy pixels into a 1D texture image'''
 
 @accepts(t.enum, t.int, t.enum, t.int, t.int, t.sizei, t.sizei, t.int)
 @returns(t.void)
 @binds(dll)
-def copy_tex_image2_d(target, level, internalformat, x, y, width, height, border): 
+def copy_tex_image2_d(target, level, internalformat, x, y, width, height, border):
     '''copy pixels into a 2D texture image'''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.sizei)
 @returns(t.void)
 @binds(dll)
-def copy_tex_sub_image1_d(target, level, xoffset, x, y, width): 
+def copy_tex_sub_image1_d(target, level, xoffset, x, y, width):
     '''copy a one-dimensional texture subimage'''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def copy_tex_sub_image2_d(target, level, xoffset, yoffset, x, y, width, height): 
+def copy_tex_sub_image2_d(target, level, xoffset, yoffset, x, y, width, height):
     '''copy a two-dimensional texture subimage'''
 
 @accepts(t.enum, t.int, t.int, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def tex_sub_image1_d(target, level, xoffset, width, format, type, pixels): 
+def tex_sub_image1_d(target, level, xoffset, width, format, type, pixels):
     '''specify a one-dimensional texture subimage'''
 
 @accepts(t.enum, t.int, t.int, t.int, t.sizei, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, type, pixels): 
+def tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, type, pixels):
     '''specify a two-dimensional texture subimage'''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def bind_texture(target, texture): 
+def bind_texture(target, texture):
     '''bind a named texture to a texturing target'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def delete_textures(n, textures): 
+def delete_textures(n, textures):
     '''delete named textures'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def gen_textures(n, textures): 
+def gen_textures(n, textures):
     '''generate texture names'''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
-def is_texture(texture): 
+def is_texture(texture):
     '''determine if a name corresponds to a texture'''
 
 @accepts(t.int)
 @returns(t.void)
 @binds(dll)
-def array_element(i): 
+def array_element(i):
     '''render a vertex using the specified vertex array element'''
 
 @accepts(t.int, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def color_pointer(size, type, stride, pointer): 
+def color_pointer(size, type, stride, pointer):
     '''define an array of colors'''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def disable_client_state(array): 
+def disable_client_state(array):
     pass
 
 @accepts(t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def edge_flag_pointer(stride, pointer): 
+def edge_flag_pointer(stride, pointer):
     '''define an array of edge flags'''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def enable_client_state(array): 
+def enable_client_state(array):
     '''enable or disable client-side capability'''
 
 @accepts(t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def index_pointer(type, stride, pointer): 
+def index_pointer(type, stride, pointer):
     '''define an array of color indexes'''
 
 @accepts(t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def interleaved_arrays(format, stride, pointer): 
+def interleaved_arrays(format, stride, pointer):
     '''simultaneously specify and enable several interleaved arrays'''
 
 @accepts(t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def normal_pointer(type, stride, pointer): 
+def normal_pointer(type, stride, pointer):
     '''define an array of normals'''
 
 @accepts(t.int, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def tex_coord_pointer(size, type, stride, pointer): 
+def tex_coord_pointer(size, type, stride, pointer):
     '''define an array of texture coordinates'''
 
 @accepts(t.int, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def vertex_pointer(size, type, stride, pointer): 
+def vertex_pointer(size, type, stride, pointer):
     '''define an array of vertex data'''
 
 @accepts(t.sizei, POINTER(t.uint), POINTER(t.boolean))
 @returns(t.boolean)
 @binds(dll)
-def are_textures_resident(n, textures, residences): 
+def are_textures_resident(n, textures, residences):
     '''determine if textures are loaded in texture memory'''
 
 @accepts(t.sizei, POINTER(t.uint), POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def prioritize_textures(n, textures, priorities): 
+def prioritize_textures(n, textures, priorities):
     '''set texture residence priority'''
 
 @accepts(t.ubyte)
 @returns(t.void)
 @binds(dll)
-def indexub(c): 
+def indexub(c):
     pass
 
 @accepts(POINTER(t.ubyte))
 @returns(t.void)
 @binds(dll)
-def indexubv(c): 
+def indexubv(c):
     pass
 
 @accepts()
 @returns(t.void)
 @binds(dll)
-def pop_client_attrib(): 
+def pop_client_attrib():
     pass
 
 @accepts(t.bitfield)
 @returns(t.void)
 @binds(dll)
-def push_client_attrib(mask): 
+def push_client_attrib(mask):
     '''push and pop the client attribute stack'''
 
 DEPTH_BUFFER_BIT = 0x00000100

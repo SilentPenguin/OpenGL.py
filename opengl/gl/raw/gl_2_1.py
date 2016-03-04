@@ -6,37 +6,37 @@ from opengl.gl.raw.bindings import *
 @accepts(t.int, t.sizei, t.boolean, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def uniform_matrix2x3fv(location, count, transpose, value): 
+def uniform_matrix2x3fv(location, count, transpose, value):
     pass
 
 @accepts(t.int, t.sizei, t.boolean, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def uniform_matrix3x2fv(location, count, transpose, value): 
+def uniform_matrix3x2fv(location, count, transpose, value):
     pass
 
 @accepts(t.int, t.sizei, t.boolean, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def uniform_matrix2x4fv(location, count, transpose, value): 
+def uniform_matrix2x4fv(location, count, transpose, value):
     pass
 
 @accepts(t.int, t.sizei, t.boolean, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def uniform_matrix4x2fv(location, count, transpose, value): 
+def uniform_matrix4x2fv(location, count, transpose, value):
     pass
 
 @accepts(t.int, t.sizei, t.boolean, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def uniform_matrix3x4fv(location, count, transpose, value): 
+def uniform_matrix3x4fv(location, count, transpose, value):
     pass
 
 @accepts(t.int, t.sizei, t.boolean, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def uniform_matrix4x3fv(location, count, transpose, value): 
+def uniform_matrix4x3fv(location, count, transpose, value):
     pass
 
 PIXEL_PACK_BUFFER = 0x88EB

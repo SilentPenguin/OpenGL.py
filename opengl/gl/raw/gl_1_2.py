@@ -6,25 +6,25 @@ from opengl.gl.raw.bindings import *
 @accepts(t.enum, t.uint, t.uint, t.sizei, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def draw_range_elements(mode, start, end, count, type, indices): 
+def draw_range_elements(mode, start, end, count, type, indices):
     '''render primitives from array data'''
 
 @accepts(t.enum, t.int, t.int, t.sizei, t.sizei, t.sizei, t.int, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def tex_image3_d(target, level, internalformat, width, height, depth, border, format, type, pixels): 
+def tex_image3_d(target, level, internalformat, width, height, depth, border, format, type, pixels):
     '''specify a three-dimensional texture image'''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels): 
+def tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels):
     '''specify a three-dimensional texture subimage'''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def copy_tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, x, y, width, height): 
+def copy_tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, x, y, width, height):
     '''copy a three-dimensional texture subimage'''
 
 UNSIGNED_BYTE_3_3_2 = 0x8032

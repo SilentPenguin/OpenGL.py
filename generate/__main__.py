@@ -45,7 +45,7 @@ class write:
         lines.append('@accepts({})'.format(types))
         lines.append('@returns({})'.format(ret))
         lines.append('@binds(dll)')
-        lines.append('def {}({}): '.format(pep.command(name), params))
+        lines.append('def {}({}):'.format(pep.command(name), params))
         document.command(lines, command)
         lines.append('')
         

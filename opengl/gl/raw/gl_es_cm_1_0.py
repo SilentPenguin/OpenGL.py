@@ -339,863 +339,863 @@ DOT3_RGBA = 0x86AF
 @accepts(t.enum, t.float)
 @returns(t.void)
 @binds(dll)
-def alpha_func(func, ref): 
+def alpha_func(func, ref):
     '''specify the alpha test function'''
 
 @accepts(t.float, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def clear_color(red, green, blue, alpha): 
+def clear_color(red, green, blue, alpha):
     '''specify clear values for the color buffers'''
 
 @accepts(t.float)
 @returns(t.void)
 @binds(dll)
-def clear_depthf(d): 
+def clear_depthf(d):
     pass
 
 @accepts(t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def clip_planef(p, eqn): 
+def clip_planef(p, eqn):
     pass
 
 @accepts(t.float, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def color4f(red, green, blue, alpha): 
+def color4f(red, green, blue, alpha):
     pass
 
 @accepts(t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def depth_rangef(n, f): 
+def depth_rangef(n, f):
     pass
 
 @accepts(t.enum, t.float)
 @returns(t.void)
 @binds(dll)
-def fogf(pname, param): 
+def fogf(pname, param):
     pass
 
 @accepts(t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def fogfv(pname, params): 
+def fogfv(pname, params):
     pass
 
 @accepts(t.float, t.float, t.float, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def frustumf(l, r, b, t, n, f): 
+def frustumf(l, r, b, t, n, f):
     pass
 
 @accepts(t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def get_clip_planef(plane, equation): 
+def get_clip_planef(plane, equation):
     pass
 
 @accepts(t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def get_floatv(pname, data): 
+def get_floatv(pname, data):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def get_lightfv(light, pname, params): 
+def get_lightfv(light, pname, params):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def get_materialfv(face, pname, params): 
+def get_materialfv(face, pname, params):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def get_tex_envfv(target, pname, params): 
+def get_tex_envfv(target, pname, params):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def get_tex_parameterfv(target, pname, params): 
+def get_tex_parameterfv(target, pname, params):
     pass
 
 @accepts(t.enum, t.float)
 @returns(t.void)
 @binds(dll)
-def light_modelf(pname, param): 
+def light_modelf(pname, param):
     pass
 
 @accepts(t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def light_modelfv(pname, params): 
+def light_modelfv(pname, params):
     pass
 
 @accepts(t.enum, t.enum, t.float)
 @returns(t.void)
 @binds(dll)
-def lightf(light, pname, param): 
+def lightf(light, pname, param):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def lightfv(light, pname, params): 
+def lightfv(light, pname, params):
     pass
 
 @accepts(t.float)
 @returns(t.void)
 @binds(dll)
-def line_width(width): 
+def line_width(width):
     '''specify the width of rasterized lines'''
 
 @accepts(POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def load_matrixf(m): 
+def load_matrixf(m):
     pass
 
 @accepts(t.enum, t.enum, t.float)
 @returns(t.void)
 @binds(dll)
-def materialf(face, pname, param): 
+def materialf(face, pname, param):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def materialfv(face, pname, params): 
+def materialfv(face, pname, params):
     pass
 
 @accepts(POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def mult_matrixf(m): 
+def mult_matrixf(m):
     pass
 
 @accepts(t.enum, t.float, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord4f(target, s, t, r, q): 
+def multi_tex_coord4f(target, s, t, r, q):
     pass
 
 @accepts(t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def normal3f(nx, ny, nz): 
+def normal3f(nx, ny, nz):
     pass
 
 @accepts(t.float, t.float, t.float, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def orthof(l, r, b, t, n, f): 
+def orthof(l, r, b, t, n, f):
     pass
 
 @accepts(t.enum, t.float)
 @returns(t.void)
 @binds(dll)
-def point_parameterf(pname, param): 
+def point_parameterf(pname, param):
     pass
 
 @accepts(t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def point_parameterfv(pname, params): 
+def point_parameterfv(pname, params):
     pass
 
 @accepts(t.float)
 @returns(t.void)
 @binds(dll)
-def point_size(size): 
+def point_size(size):
     '''specify the diameter of rasterized points'''
 
 @accepts(t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def polygon_offset(factor, units): 
+def polygon_offset(factor, units):
     '''set the scale and units used to calculate depth values'''
 
 @accepts(t.float, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def rotatef(angle, x, y, z): 
+def rotatef(angle, x, y, z):
     pass
 
 @accepts(t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def scalef(x, y, z): 
+def scalef(x, y, z):
     pass
 
 @accepts(t.enum, t.enum, t.float)
 @returns(t.void)
 @binds(dll)
-def tex_envf(target, pname, param): 
+def tex_envf(target, pname, param):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def tex_envfv(target, pname, params): 
+def tex_envfv(target, pname, params):
     pass
 
 @accepts(t.enum, t.enum, t.float)
 @returns(t.void)
 @binds(dll)
-def tex_parameterf(target, pname, param): 
+def tex_parameterf(target, pname, param):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def tex_parameterfv(target, pname, params): 
+def tex_parameterfv(target, pname, params):
     pass
 
 @accepts(t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def translatef(x, y, z): 
+def translatef(x, y, z):
     pass
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def active_texture(texture): 
+def active_texture(texture):
     '''select active texture unit'''
 
 @accepts(t.enum, t.fixed)
 @returns(t.void)
 @binds(dll)
-def alpha_funcx(func, ref): 
+def alpha_funcx(func, ref):
     pass
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def bind_buffer(target, buffer): 
+def bind_buffer(target, buffer):
     '''bind a named buffer object'''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def bind_texture(target, texture): 
+def bind_texture(target, texture):
     '''bind a named texture to a texturing target'''
 
 @accepts(t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
-def blend_func(sfactor, dfactor): 
+def blend_func(sfactor, dfactor):
     '''specify pixel arithmetic'''
 
 @accepts(t.enum, t.sizeiptr, t.void, t.enum)
 @returns(t.void)
 @binds(dll)
-def buffer_data(target, size, data, usage): 
+def buffer_data(target, size, data, usage):
     '''creates and initializes a buffer object's data store'''
 
 @accepts(t.enum, t.intptr, t.sizeiptr, t.void)
 @returns(t.void)
 @binds(dll)
-def buffer_sub_data(target, offset, size, data): 
+def buffer_sub_data(target, offset, size, data):
     '''updates a subset of a buffer object's data store'''
 
 @accepts(t.bitfield)
 @returns(t.void)
 @binds(dll)
-def clear(mask): 
+def clear(mask):
     '''clear buffers to preset values'''
 
 @accepts(t.fixed, t.fixed, t.fixed, t.fixed)
 @returns(t.void)
 @binds(dll)
-def clear_colorx(red, green, blue, alpha): 
+def clear_colorx(red, green, blue, alpha):
     pass
 
 @accepts(t.fixed)
 @returns(t.void)
 @binds(dll)
-def clear_depthx(depth): 
+def clear_depthx(depth):
     pass
 
 @accepts(t.int)
 @returns(t.void)
 @binds(dll)
-def clear_stencil(s): 
+def clear_stencil(s):
     '''specify the clear value for the stencil buffer'''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def client_active_texture(texture): 
+def client_active_texture(texture):
     '''select active texture unit'''
 
 @accepts(t.enum, POINTER(t.fixed))
 @returns(t.void)
 @binds(dll)
-def clip_planex(plane, equation): 
+def clip_planex(plane, equation):
     pass
 
 @accepts(t.ubyte, t.ubyte, t.ubyte, t.ubyte)
 @returns(t.void)
 @binds(dll)
-def color4ub(red, green, blue, alpha): 
+def color4ub(red, green, blue, alpha):
     pass
 
 @accepts(t.fixed, t.fixed, t.fixed, t.fixed)
 @returns(t.void)
 @binds(dll)
-def color4x(red, green, blue, alpha): 
+def color4x(red, green, blue, alpha):
     pass
 
 @accepts(t.boolean, t.boolean, t.boolean, t.boolean)
 @returns(t.void)
 @binds(dll)
-def color_mask(red, green, blue, alpha): 
+def color_mask(red, green, blue, alpha):
     '''enable and disable writing of frame buffer color components'''
 
 @accepts(t.int, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def color_pointer(size, type, stride, pointer): 
+def color_pointer(size, type, stride, pointer):
     '''define an array of colors'''
 
 @accepts(t.enum, t.int, t.enum, t.sizei, t.sizei, t.int, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def compressed_tex_image2_d(target, level, internalformat, width, height, border, imageSize, data): 
+def compressed_tex_image2_d(target, level, internalformat, width, height, border, imageSize, data):
     '''specify a two-dimensional texture image in a compressed format'''
 
 @accepts(t.enum, t.int, t.int, t.int, t.sizei, t.sizei, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def compressed_tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, imageSize, data): 
+def compressed_tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, imageSize, data):
     '''specify a two-dimensional texture subimage in a compressed format'''
 
 @accepts(t.enum, t.int, t.enum, t.int, t.int, t.sizei, t.sizei, t.int)
 @returns(t.void)
 @binds(dll)
-def copy_tex_image2_d(target, level, internalformat, x, y, width, height, border): 
+def copy_tex_image2_d(target, level, internalformat, x, y, width, height, border):
     '''copy pixels into a 2D texture image'''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def copy_tex_sub_image2_d(target, level, xoffset, yoffset, x, y, width, height): 
+def copy_tex_sub_image2_d(target, level, xoffset, yoffset, x, y, width, height):
     '''copy a two-dimensional texture subimage'''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def cull_face(mode): 
+def cull_face(mode):
     '''specify whether front- or back-facing facets can be culled'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def delete_buffers(n, buffers): 
+def delete_buffers(n, buffers):
     '''delete named buffer objects'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def delete_textures(n, textures): 
+def delete_textures(n, textures):
     '''delete named textures'''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def depth_func(func): 
+def depth_func(func):
     '''specify the value used for depth buffer comparisons'''
 
 @accepts(t.boolean)
 @returns(t.void)
 @binds(dll)
-def depth_mask(flag): 
+def depth_mask(flag):
     '''enable or disable writing into the depth buffer'''
 
 @accepts(t.fixed, t.fixed)
 @returns(t.void)
 @binds(dll)
-def depth_rangex(n, f): 
+def depth_rangex(n, f):
     pass
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def disable(cap): 
+def disable(cap):
     pass
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def disable_client_state(array): 
+def disable_client_state(array):
     pass
 
 @accepts(t.enum, t.int, t.sizei)
 @returns(t.void)
 @binds(dll)
-def draw_arrays(mode, first, count): 
+def draw_arrays(mode, first, count):
     '''render primitives from array data'''
 
 @accepts(t.enum, t.sizei, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def draw_elements(mode, count, type, indices): 
+def draw_elements(mode, count, type, indices):
     '''render primitives from array data'''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def enable(cap): 
+def enable(cap):
     '''enable or disable server-side GL capabilities'''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def enable_client_state(array): 
+def enable_client_state(array):
     '''enable or disable client-side capability'''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
-def finish(): 
+def finish():
     '''block until all GL execution is complete'''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
-def flush(): 
+def flush():
     '''force execution of GL commands in finite time'''
 
 @accepts(t.enum, t.fixed)
 @returns(t.void)
 @binds(dll)
-def fogx(pname, param): 
+def fogx(pname, param):
     pass
 
 @accepts(t.enum, POINTER(t.fixed))
 @returns(t.void)
 @binds(dll)
-def fogxv(pname, param): 
+def fogxv(pname, param):
     pass
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def front_face(mode): 
+def front_face(mode):
     '''define front- and back-facing polygons'''
 
 @accepts(t.fixed, t.fixed, t.fixed, t.fixed, t.fixed, t.fixed)
 @returns(t.void)
 @binds(dll)
-def frustumx(l, r, b, t, n, f): 
+def frustumx(l, r, b, t, n, f):
     pass
 
 @accepts(t.enum, POINTER(t.boolean))
 @returns(t.void)
 @binds(dll)
-def get_booleanv(pname, data): 
+def get_booleanv(pname, data):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_buffer_parameteriv(target, pname, params): 
+def get_buffer_parameteriv(target, pname, params):
     '''return parameters of a buffer object'''
 
 @accepts(t.enum, POINTER(t.fixed))
 @returns(t.void)
 @binds(dll)
-def get_clip_planex(plane, equation): 
+def get_clip_planex(plane, equation):
     pass
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def gen_buffers(n, buffers): 
+def gen_buffers(n, buffers):
     '''generate buffer object names'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def gen_textures(n, textures): 
+def gen_textures(n, textures):
     '''generate texture names'''
 
 @accepts()
 @returns(t.enum)
 @binds(dll)
-def get_error(): 
+def get_error():
     '''return error information'''
 
 @accepts(t.enum, POINTER(t.fixed))
 @returns(t.void)
 @binds(dll)
-def get_fixedv(pname, params): 
+def get_fixedv(pname, params):
     pass
 
 @accepts(t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_integerv(pname, data): 
+def get_integerv(pname, data):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.fixed))
 @returns(t.void)
 @binds(dll)
-def get_lightxv(light, pname, params): 
+def get_lightxv(light, pname, params):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.fixed))
 @returns(t.void)
 @binds(dll)
-def get_materialxv(face, pname, params): 
+def get_materialxv(face, pname, params):
     pass
 
 @accepts(t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def get_pointerv(pname, params): 
+def get_pointerv(pname, params):
     '''return the address of the specified pointer'''
 
 @accepts(t.enum)
 @returns(POINTER(t.ubyte))
 @binds(dll)
-def get_string(name): 
+def get_string(name):
     '''return a string describing the current GL connection'''
 
 @accepts(t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_tex_enviv(target, pname, params): 
+def get_tex_enviv(target, pname, params):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.fixed))
 @returns(t.void)
 @binds(dll)
-def get_tex_envxv(target, pname, params): 
+def get_tex_envxv(target, pname, params):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_tex_parameteriv(target, pname, params): 
+def get_tex_parameteriv(target, pname, params):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.fixed))
 @returns(t.void)
 @binds(dll)
-def get_tex_parameterxv(target, pname, params): 
+def get_tex_parameterxv(target, pname, params):
     pass
 
 @accepts(t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
-def hint(target, mode): 
+def hint(target, mode):
     '''specify implementation-specific hints'''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
-def is_buffer(buffer): 
+def is_buffer(buffer):
     '''determine if a name corresponds to a buffer object'''
 
 @accepts(t.enum)
 @returns(t.boolean)
 @binds(dll)
-def is_enabled(cap): 
+def is_enabled(cap):
     '''test whether a capability is enabled'''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
-def is_texture(texture): 
+def is_texture(texture):
     '''determine if a name corresponds to a texture'''
 
 @accepts(t.enum, t.fixed)
 @returns(t.void)
 @binds(dll)
-def light_modelx(pname, param): 
+def light_modelx(pname, param):
     pass
 
 @accepts(t.enum, POINTER(t.fixed))
 @returns(t.void)
 @binds(dll)
-def light_modelxv(pname, param): 
+def light_modelxv(pname, param):
     pass
 
 @accepts(t.enum, t.enum, t.fixed)
 @returns(t.void)
 @binds(dll)
-def lightx(light, pname, param): 
+def lightx(light, pname, param):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.fixed))
 @returns(t.void)
 @binds(dll)
-def lightxv(light, pname, params): 
+def lightxv(light, pname, params):
     pass
 
 @accepts(t.fixed)
 @returns(t.void)
 @binds(dll)
-def line_widthx(width): 
+def line_widthx(width):
     pass
 
 @accepts()
 @returns(t.void)
 @binds(dll)
-def load_identity(): 
+def load_identity():
     '''replace the current matrix with the identity matrix'''
 
 @accepts(POINTER(t.fixed))
 @returns(t.void)
 @binds(dll)
-def load_matrixx(m): 
+def load_matrixx(m):
     pass
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def logic_op(opcode): 
+def logic_op(opcode):
     '''specify a logical pixel operation for rendering'''
 
 @accepts(t.enum, t.enum, t.fixed)
 @returns(t.void)
 @binds(dll)
-def materialx(face, pname, param): 
+def materialx(face, pname, param):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.fixed))
 @returns(t.void)
 @binds(dll)
-def materialxv(face, pname, param): 
+def materialxv(face, pname, param):
     pass
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def matrix_mode(mode): 
+def matrix_mode(mode):
     '''specify which matrix is the current matrix'''
 
 @accepts(POINTER(t.fixed))
 @returns(t.void)
 @binds(dll)
-def mult_matrixx(m): 
+def mult_matrixx(m):
     pass
 
 @accepts(t.enum, t.fixed, t.fixed, t.fixed, t.fixed)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord4x(texture, s, t, r, q): 
+def multi_tex_coord4x(texture, s, t, r, q):
     pass
 
 @accepts(t.fixed, t.fixed, t.fixed)
 @returns(t.void)
 @binds(dll)
-def normal3x(nx, ny, nz): 
+def normal3x(nx, ny, nz):
     pass
 
 @accepts(t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def normal_pointer(type, stride, pointer): 
+def normal_pointer(type, stride, pointer):
     '''define an array of normals'''
 
 @accepts(t.fixed, t.fixed, t.fixed, t.fixed, t.fixed, t.fixed)
 @returns(t.void)
 @binds(dll)
-def orthox(l, r, b, t, n, f): 
+def orthox(l, r, b, t, n, f):
     pass
 
 @accepts(t.enum, t.int)
 @returns(t.void)
 @binds(dll)
-def pixel_storei(pname, param): 
+def pixel_storei(pname, param):
     pass
 
 @accepts(t.enum, t.fixed)
 @returns(t.void)
 @binds(dll)
-def point_parameterx(pname, param): 
+def point_parameterx(pname, param):
     pass
 
 @accepts(t.enum, POINTER(t.fixed))
 @returns(t.void)
 @binds(dll)
-def point_parameterxv(pname, params): 
+def point_parameterxv(pname, params):
     pass
 
 @accepts(t.fixed)
 @returns(t.void)
 @binds(dll)
-def point_sizex(size): 
+def point_sizex(size):
     pass
 
 @accepts(t.fixed, t.fixed)
 @returns(t.void)
 @binds(dll)
-def polygon_offsetx(factor, units): 
+def polygon_offsetx(factor, units):
     pass
 
 @accepts()
 @returns(t.void)
 @binds(dll)
-def pop_matrix(): 
+def pop_matrix():
     pass
 
 @accepts()
 @returns(t.void)
 @binds(dll)
-def push_matrix(): 
+def push_matrix():
     '''push and pop the current matrix stack'''
 
 @accepts(t.int, t.int, t.sizei, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def read_pixels(x, y, width, height, format, type, pixels): 
+def read_pixels(x, y, width, height, format, type, pixels):
     '''read a block of pixels from the frame buffer'''
 
 @accepts(t.fixed, t.fixed, t.fixed, t.fixed)
 @returns(t.void)
 @binds(dll)
-def rotatex(angle, x, y, z): 
+def rotatex(angle, x, y, z):
     pass
 
 @accepts(t.float, t.boolean)
 @returns(t.void)
 @binds(dll)
-def sample_coverage(value, invert): 
+def sample_coverage(value, invert):
     '''specify multisample coverage parameters'''
 
 @accepts(t.clampx, t.boolean)
 @returns(t.void)
 @binds(dll)
-def sample_coveragex(value, invert): 
+def sample_coveragex(value, invert):
     pass
 
 @accepts(t.fixed, t.fixed, t.fixed)
 @returns(t.void)
 @binds(dll)
-def scalex(x, y, z): 
+def scalex(x, y, z):
     pass
 
 @accepts(t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def scissor(x, y, width, height): 
+def scissor(x, y, width, height):
     '''define the scissor box'''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def shade_model(mode): 
+def shade_model(mode):
     '''select flat or smooth shading'''
 
 @accepts(t.enum, t.int, t.uint)
 @returns(t.void)
 @binds(dll)
-def stencil_func(func, ref, mask): 
+def stencil_func(func, ref, mask):
     '''set front and back function and reference value for stencil testing'''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
-def stencil_mask(mask): 
+def stencil_mask(mask):
     '''control the front and back writing of individual bits in the stencil planes'''
 
 @accepts(t.enum, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
-def stencil_op(fail, zfail, zpass): 
+def stencil_op(fail, zfail, zpass):
     '''set front and back stencil test actions'''
 
 @accepts(t.int, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def tex_coord_pointer(size, type, stride, pointer): 
+def tex_coord_pointer(size, type, stride, pointer):
     '''define an array of texture coordinates'''
 
 @accepts(t.enum, t.enum, t.int)
 @returns(t.void)
 @binds(dll)
-def tex_envi(target, pname, param): 
+def tex_envi(target, pname, param):
     pass
 
 @accepts(t.enum, t.enum, t.fixed)
 @returns(t.void)
 @binds(dll)
-def tex_envx(target, pname, param): 
+def tex_envx(target, pname, param):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def tex_enviv(target, pname, params): 
+def tex_enviv(target, pname, params):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.fixed))
 @returns(t.void)
 @binds(dll)
-def tex_envxv(target, pname, params): 
+def tex_envxv(target, pname, params):
     pass
 
 @accepts(t.enum, t.int, t.int, t.sizei, t.sizei, t.int, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def tex_image2_d(target, level, internalformat, width, height, border, format, type, pixels): 
+def tex_image2_d(target, level, internalformat, width, height, border, format, type, pixels):
     '''specify a two-dimensional texture image'''
 
 @accepts(t.enum, t.enum, t.int)
 @returns(t.void)
 @binds(dll)
-def tex_parameteri(target, pname, param): 
+def tex_parameteri(target, pname, param):
     pass
 
 @accepts(t.enum, t.enum, t.fixed)
 @returns(t.void)
 @binds(dll)
-def tex_parameterx(target, pname, param): 
+def tex_parameterx(target, pname, param):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def tex_parameteriv(target, pname, params): 
+def tex_parameteriv(target, pname, params):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.fixed))
 @returns(t.void)
 @binds(dll)
-def tex_parameterxv(target, pname, params): 
+def tex_parameterxv(target, pname, params):
     pass
 
 @accepts(t.enum, t.int, t.int, t.int, t.sizei, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, type, pixels): 
+def tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, type, pixels):
     '''specify a two-dimensional texture subimage'''
 
 @accepts(t.fixed, t.fixed, t.fixed)
 @returns(t.void)
 @binds(dll)
-def translatex(x, y, z): 
+def translatex(x, y, z):
     pass
 
 @accepts(t.int, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def vertex_pointer(size, type, stride, pointer): 
+def vertex_pointer(size, type, stride, pointer):
     '''define an array of vertex data'''
 
 @accepts(t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def viewport(x, y, width, height): 
+def viewport(x, y, width, height):
     '''set the viewport'''

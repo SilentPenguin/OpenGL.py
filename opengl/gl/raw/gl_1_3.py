@@ -6,277 +6,277 @@ from opengl.gl.raw.bindings import *
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def active_texture(texture): 
+def active_texture(texture):
     '''select active texture unit'''
 
 @accepts(t.float, t.boolean)
 @returns(t.void)
 @binds(dll)
-def sample_coverage(value, invert): 
+def sample_coverage(value, invert):
     '''specify multisample coverage parameters'''
 
 @accepts(t.enum, t.int, t.enum, t.sizei, t.sizei, t.sizei, t.int, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def compressed_tex_image3_d(target, level, internalformat, width, height, depth, border, imageSize, data): 
+def compressed_tex_image3_d(target, level, internalformat, width, height, depth, border, imageSize, data):
     '''specify a three-dimensional texture image in a compressed format'''
 
 @accepts(t.enum, t.int, t.enum, t.sizei, t.sizei, t.int, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def compressed_tex_image2_d(target, level, internalformat, width, height, border, imageSize, data): 
+def compressed_tex_image2_d(target, level, internalformat, width, height, border, imageSize, data):
     '''specify a two-dimensional texture image in a compressed format'''
 
 @accepts(t.enum, t.int, t.enum, t.sizei, t.int, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def compressed_tex_image1_d(target, level, internalformat, width, border, imageSize, data): 
+def compressed_tex_image1_d(target, level, internalformat, width, border, imageSize, data):
     '''specify a one-dimensional texture image in a compressed format'''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def compressed_tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data): 
+def compressed_tex_sub_image3_d(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data):
     '''specify a three-dimensional texture subimage in a compressed format'''
 
 @accepts(t.enum, t.int, t.int, t.int, t.sizei, t.sizei, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def compressed_tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, imageSize, data): 
+def compressed_tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, imageSize, data):
     '''specify a two-dimensional texture subimage in a compressed format'''
 
 @accepts(t.enum, t.int, t.int, t.sizei, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def compressed_tex_sub_image1_d(target, level, xoffset, width, format, imageSize, data): 
+def compressed_tex_sub_image1_d(target, level, xoffset, width, format, imageSize, data):
     '''specify a one-dimensional texture subimage in a compressed format'''
 
 @accepts(t.enum, t.int, t.void)
 @returns(t.void)
 @binds(dll)
-def get_compressed_tex_image(target, level, img): 
+def get_compressed_tex_image(target, level, img):
     '''return a compressed texture image'''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def client_active_texture(texture): 
+def client_active_texture(texture):
     '''select active texture unit'''
 
 @accepts(t.enum, t.double)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord1d(target, s): 
+def multi_tex_coord1d(target, s):
     pass
 
 @accepts(t.enum, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord1dv(target, v): 
+def multi_tex_coord1dv(target, v):
     pass
 
 @accepts(t.enum, t.float)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord1f(target, s): 
+def multi_tex_coord1f(target, s):
     pass
 
 @accepts(t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord1fv(target, v): 
+def multi_tex_coord1fv(target, v):
     pass
 
 @accepts(t.enum, t.int)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord1i(target, s): 
+def multi_tex_coord1i(target, s):
     pass
 
 @accepts(t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord1iv(target, v): 
+def multi_tex_coord1iv(target, v):
     pass
 
 @accepts(t.enum, t.short)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord1s(target, s): 
+def multi_tex_coord1s(target, s):
     pass
 
 @accepts(t.enum, POINTER(t.short))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord1sv(target, v): 
+def multi_tex_coord1sv(target, v):
     pass
 
 @accepts(t.enum, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord2d(target, s, t): 
+def multi_tex_coord2d(target, s, t):
     pass
 
 @accepts(t.enum, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord2dv(target, v): 
+def multi_tex_coord2dv(target, v):
     pass
 
 @accepts(t.enum, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord2f(target, s, t): 
+def multi_tex_coord2f(target, s, t):
     pass
 
 @accepts(t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord2fv(target, v): 
+def multi_tex_coord2fv(target, v):
     pass
 
 @accepts(t.enum, t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord2i(target, s, t): 
+def multi_tex_coord2i(target, s, t):
     pass
 
 @accepts(t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord2iv(target, v): 
+def multi_tex_coord2iv(target, v):
     pass
 
 @accepts(t.enum, t.short, t.short)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord2s(target, s, t): 
+def multi_tex_coord2s(target, s, t):
     pass
 
 @accepts(t.enum, POINTER(t.short))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord2sv(target, v): 
+def multi_tex_coord2sv(target, v):
     pass
 
 @accepts(t.enum, t.double, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord3d(target, s, t, r): 
+def multi_tex_coord3d(target, s, t, r):
     pass
 
 @accepts(t.enum, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord3dv(target, v): 
+def multi_tex_coord3dv(target, v):
     pass
 
 @accepts(t.enum, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord3f(target, s, t, r): 
+def multi_tex_coord3f(target, s, t, r):
     pass
 
 @accepts(t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord3fv(target, v): 
+def multi_tex_coord3fv(target, v):
     pass
 
 @accepts(t.enum, t.int, t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord3i(target, s, t, r): 
+def multi_tex_coord3i(target, s, t, r):
     pass
 
 @accepts(t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord3iv(target, v): 
+def multi_tex_coord3iv(target, v):
     pass
 
 @accepts(t.enum, t.short, t.short, t.short)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord3s(target, s, t, r): 
+def multi_tex_coord3s(target, s, t, r):
     pass
 
 @accepts(t.enum, POINTER(t.short))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord3sv(target, v): 
+def multi_tex_coord3sv(target, v):
     pass
 
 @accepts(t.enum, t.double, t.double, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord4d(target, s, t, r, q): 
+def multi_tex_coord4d(target, s, t, r, q):
     pass
 
 @accepts(t.enum, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord4dv(target, v): 
+def multi_tex_coord4dv(target, v):
     pass
 
 @accepts(t.enum, t.float, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord4f(target, s, t, r, q): 
+def multi_tex_coord4f(target, s, t, r, q):
     pass
 
 @accepts(t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord4fv(target, v): 
+def multi_tex_coord4fv(target, v):
     pass
 
 @accepts(t.enum, t.int, t.int, t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord4i(target, s, t, r, q): 
+def multi_tex_coord4i(target, s, t, r, q):
     pass
 
 @accepts(t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord4iv(target, v): 
+def multi_tex_coord4iv(target, v):
     pass
 
 @accepts(t.enum, t.short, t.short, t.short, t.short)
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord4s(target, s, t, r, q): 
+def multi_tex_coord4s(target, s, t, r, q):
     pass
 
 @accepts(t.enum, POINTER(t.short))
 @returns(t.void)
 @binds(dll)
-def multi_tex_coord4sv(target, v): 
+def multi_tex_coord4sv(target, v):
     pass
 
 @accepts(POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def load_transpose_matrixf(m): 
+def load_transpose_matrixf(m):
     pass
 
 @accepts(POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def load_transpose_matrixd(m): 
+def load_transpose_matrixd(m):
     pass
 
 @accepts(POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def mult_transpose_matrixf(m): 
+def mult_transpose_matrixf(m):
     pass
 
 @accepts(POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def mult_transpose_matrixd(m): 
+def mult_transpose_matrixd(m):
     pass
 
 TEXTURE0 = 0x84C0

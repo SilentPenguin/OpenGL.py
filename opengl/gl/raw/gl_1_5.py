@@ -6,115 +6,115 @@ from opengl.gl.raw.bindings import *
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def gen_queries(n, ids): 
+def gen_queries(n, ids):
     '''generate query object names'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def delete_queries(n, ids): 
+def delete_queries(n, ids):
     '''delete named query objects'''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
-def is_query(id): 
+def is_query(id):
     '''determine if a name corresponds to a query object'''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def begin_query(target, id): 
+def begin_query(target, id):
     '''delimit the boundaries of a query object'''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def end_query(target): 
+def end_query(target):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_queryiv(target, pname, params): 
+def get_queryiv(target, pname, params):
     '''return parameters of a query object target'''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_query_objectiv(id, pname, params): 
+def get_query_objectiv(id, pname, params):
     pass
 
 @accepts(t.uint, t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def get_query_objectuiv(id, pname, params): 
+def get_query_objectuiv(id, pname, params):
     pass
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def bind_buffer(target, buffer): 
+def bind_buffer(target, buffer):
     '''bind a named buffer object'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def delete_buffers(n, buffers): 
+def delete_buffers(n, buffers):
     '''delete named buffer objects'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def gen_buffers(n, buffers): 
+def gen_buffers(n, buffers):
     '''generate buffer object names'''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
-def is_buffer(buffer): 
+def is_buffer(buffer):
     '''determine if a name corresponds to a buffer object'''
 
 @accepts(t.enum, t.sizeiptr, t.void, t.enum)
 @returns(t.void)
 @binds(dll)
-def buffer_data(target, size, data, usage): 
+def buffer_data(target, size, data, usage):
     '''creates and initializes a buffer object's data store'''
 
 @accepts(t.enum, t.intptr, t.sizeiptr, t.void)
 @returns(t.void)
 @binds(dll)
-def buffer_sub_data(target, offset, size, data): 
+def buffer_sub_data(target, offset, size, data):
     '''updates a subset of a buffer object's data store'''
 
 @accepts(t.enum, t.intptr, t.sizeiptr, t.void)
 @returns(t.void)
 @binds(dll)
-def get_buffer_sub_data(target, offset, size, data): 
+def get_buffer_sub_data(target, offset, size, data):
     '''returns a subset of a buffer object's data store'''
 
 @accepts(t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
-def map_buffer(target, access): 
+def map_buffer(target, access):
     '''map all of a buffer object's data store into the client's address space'''
 
 @accepts(t.enum)
 @returns(t.boolean)
 @binds(dll)
-def unmap_buffer(target): 
+def unmap_buffer(target):
     '''release the mapping of a buffer object's data store into the client's address space'''
 
 @accepts(t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_buffer_parameteriv(target, pname, params): 
+def get_buffer_parameteriv(target, pname, params):
     '''return parameters of a buffer object'''
 
 @accepts(t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def get_buffer_pointerv(target, pname, params): 
+def get_buffer_pointerv(target, pname, params):
     '''return the pointer to a mapped buffer object's data store'''
 
 BUFFER_SIZE = 0x8764
