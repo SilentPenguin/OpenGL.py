@@ -29,6 +29,10 @@ def errors(**errors):
         
 def binds(dll, name=None):
     def decorator(func):
-        try: return getattr(dll, name or 'gl' + convert(func.__name__))
-        except: return False
+        try:
+            binding = getattr(dll, name or 'gl' + convert(func.__name__))
+            binding.__doc__ = func.__doc__
+            return binding
+        except:
+            return False
     return decorator

@@ -428,7 +428,7 @@ def generate_texture_mipmap(texture):
 @returns(t.void)
 @binds(dll)
 def bind_texture_unit(unit, texture): 
-    '''bind an existing texture object to the specified texture unit '''
+    '''bind an existing texture object to the specified texture unit'''
 
 @accepts(t.uint, t.int, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
@@ -628,13 +628,13 @@ BACK = 0x0405
 @returns(t.void)
 @binds(dll)
 def get_texture_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, pixels): 
-    pass
+    '''retrieve a sub-region of a texture image from a texture object'''
 
 @accepts(t.uint, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
 def get_compressed_texture_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth, bufSize, pixels): 
-    pass
+    '''retrieve a sub-region of a compressed texture image from a compressed texture object'''
 
 @accepts()
 @returns(t.enum)

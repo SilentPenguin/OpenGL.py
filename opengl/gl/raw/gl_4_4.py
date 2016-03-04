@@ -10,7 +10,7 @@ TEXTURE_BUFFER_BINDING = 0x8C2A
 @returns(t.void)
 @binds(dll)
 def buffer_storage(target, size, data, flags): 
-    pass
+    '''creates and initializes a buffer object's immutable data store'''
 
 MAP_READ_BIT = 0x0001
 MAP_WRITE_BIT = 0x0002

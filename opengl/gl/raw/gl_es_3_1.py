@@ -577,7 +577,7 @@ def vertex_attrib_binding(attribindex, bindingindex):
 @returns(t.void)
 @binds(dll)
 def vertex_binding_divisor(bindingindex, divisor): 
-    pass
+    '''modify the rate at which generic vertex attributes advance'''
 
 VERTEX_ATTRIB_BINDING = 0x82D4
 VERTEX_ATTRIB_RELATIVE_OFFSET = 0x82D5
