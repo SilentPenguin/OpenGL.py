@@ -14,9 +14,12 @@ def buffer_storage(target, size, data, flags):
     creates and initializes a buffer object's immutable data store
     
     Args:
-        target: Specifies the target to which the buffer object is bound for gl.buffer_storage, which must be one of the buffer binding targets in the following table:
+        target: Specifies the target to which the buffer object is bound for
+            gl.buffer_storage, which must be one of the buffer binding targets
+            in the following table:
         size: Specifies the size in bytes of the buffer object's new data store
-        data: Specifies a pointer to data that will be copied into the data store for initialization, or None if no data is to be copied
+        data: Specifies a pointer to data that will be copied into the data
+            store for initialization, or None if no data is to be copied
         flags: Specifies the intended usage of the buffer's data store
     '''
 
@@ -37,11 +40,13 @@ def clear_tex_image(texture, level, format, type, data):
     fills all a texture image with a constant value
     
     Args:
-        texture: The name of an existing texture object containing the image to be cleared
+        texture: The name of an existing texture object containing the image to
+            be cleared
         level: The level of texture containing the region to be cleared
         format: The format of the data whose address in memory is given by data
         type: The type of the data whose address in memory is given by data
-        data: The address in memory of the data to be used to clear the specified region
+        data: The address in memory of the data to be used to clear the
+            specified region
     '''
 
 @accepts(t.uint, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.enum, t.enum, t.void)
@@ -52,7 +57,8 @@ def clear_tex_sub_image(texture, level, xoffset, yoffset, zoffset, width, height
     fills all or part of a texture image with a constant value
     
     Args:
-        texture: The name of an existing texture object containing the image to be cleared
+        texture: The name of an existing texture object containing the image to
+            be cleared
         level: The level of texture containing the region to be cleared
         xoffset: The coordinate of the left edge of the region to be cleared
         yoffset: The coordinate of the lower edge of the region to be cleared
@@ -62,7 +68,8 @@ def clear_tex_sub_image(texture, level, xoffset, yoffset, zoffset, width, height
         depth: The depth of the region to be cleared
         format: The format of the data whose address in memory is given by data
         type: The type of the data whose address in memory is given by data
-        data: The address in memory of the data to be used to clear the specified region
+        data: The address in memory of the data to be used to clear the
+            specified region
     '''
 
 CLEAR_TEXTURE = 0x9365
@@ -79,8 +86,10 @@ def bind_buffers_base(target, first, count, buffers):
     
     Args:
         target: Specify the target of the bind operation
-        count: Specify the number of contiguous binding points to which to bind buffers
-        buffers: A pointer to an array of names of buffer objects to bind to the targets on the specified binding point, or None
+        count: Specify the number of contiguous binding points to which to bind
+            buffers
+        buffers: A pointer to an array of names of buffer objects to bind to the
+            targets on the specified binding point, or None
     '''
 
 @accepts(t.enum, t.uint, t.sizei, POINTER(t.uint), POINTER(t.intptr), POINTER(t.sizeiptr))
@@ -88,12 +97,15 @@ def bind_buffers_base(target, first, count, buffers):
 @binds(dll)
 def bind_buffers_range(target, first, count, buffers, offsets, sizes):
     '''
-    bind ranges of one or more buffer objects to a sequence of indexed buffer targets
+    bind ranges of one or more buffer objects to a sequence of indexed buffer
+targets
     
     Args:
         target: Specify the target of the bind operation
-        count: Specify the number of contiguous binding points to which to bind buffers
-        buffers: A pointer to an array of names of buffer objects to bind to the targets on the specified binding point, or None
+        count: Specify the number of contiguous binding points to which to bind
+            buffers
+        buffers: A pointer to an array of names of buffer objects to bind to the
+            targets on the specified binding point, or None
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.uint))
@@ -104,9 +116,11 @@ def bind_textures(first, count, textures):
     bind one or more named textures to a sequence of consecutive texture units
     
     Args:
-        first: Specifies the first texture unit to which a texture is to be bound
+        first: Specifies the first texture unit to which a texture is to be
+            bound
         count: Specifies the number of textures to bind
-        textures: Specifies the address of an array of names of existing texture objects
+        textures: Specifies the address of an array of names of existing texture
+            objects
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.uint))
@@ -114,12 +128,15 @@ def bind_textures(first, count, textures):
 @binds(dll)
 def bind_samplers(first, count, samplers):
     '''
-    bind one or more named sampler objects to a sequence of consecutive sampler units
+    bind one or more named sampler objects to a sequence of consecutive sampler
+units
     
     Args:
-        first: Specifies the first sampler unit to which a sampler object is to be bound
+        first: Specifies the first sampler unit to which a sampler object is to
+            be bound
         count: Specifies the number of samplers to bind
-        samplers: Specifies the address of an array of names of existing sampler objects
+        samplers: Specifies the address of an array of names of existing sampler
+            objects
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.uint))
@@ -132,7 +149,8 @@ def bind_image_textures(first, count, textures):
     Args:
         first: Specifies the first image unit to which a texture is to be bound
         count: Specifies the number of textures to bind
-        textures: Specifies the address of an array of names of existing texture objects
+        textures: Specifies the address of an array of names of existing texture
+            objects
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.uint), POINTER(t.intptr), POINTER(t.sizei))
@@ -143,11 +161,13 @@ def bind_vertex_buffers(first, count, buffers, offsets, strides):
     attach multiple buffer objects to a vertex array object
     
     Args:
-        first: Specifies the first vertex buffer binding point to which a buffer object is to be bound
+        first: Specifies the first vertex buffer binding point to which a buffer
+            object is to be bound
         count: Specifies the number of buffers to bind
-        buffers: Specifies the address of an array of names of existing buffer objects
-        offsets: Specifies the address of an array of offsets to associate with the binding points
-        buffers: Specifies the address of an array of strides to associate with the binding points
+        buffers: Specifies the address of an array of strides to associate with
+            the binding points
+        offsets: Specifies the address of an array of offsets to associate with
+            the binding points
     '''
 
 QUERY_BUFFER = 0x9192

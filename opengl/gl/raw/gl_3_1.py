@@ -14,6 +14,8 @@ def draw_arrays_instanced(mode, first, count, instancecount):
         mode: Specifies what kind of primitives to render
         first: Specifies the starting index in the enabled arrays
         count: Specifies the number of indices to be rendered
+        instancecount: Specifies the number of instances of the specified range
+            of indices to be rendered
     '''
 
 @accepts(t.enum, t.sizei, t.enum, t.void, t.sizei)
@@ -27,7 +29,10 @@ def draw_elements_instanced(mode, count, type, indices, instancecount):
         mode: Specifies what kind of primitives to render
         count: Specifies the number of elements to be rendered
         type: Specifies the type of the values in indices
-        indices: Specifies a pointer to the location where the indices are stored
+        indices: Specifies a pointer to the location where the indices are
+            stored
+        instancecount: Specifies the number of instances of the specified range
+            of indices to be rendered
     '''
 
 @accepts(t.enum, t.enum, t.uint)
@@ -38,9 +43,12 @@ def tex_buffer(target, internalformat, buffer):
     attach a buffer object's data store to a buffer texture object
     
     Args:
-        target: Specifies the target to which the texture is bound for gl.tex_buffer
-        internalformat: Specifies the internal format of the data in the store belonging to buffer
-        buffer: Specifies the name of the buffer object whose storage to attach to the active buffer texture
+        target: Specifies the target to which the texture is bound for
+            gl.tex_buffer
+        internalformat: Specifies the internal format of the data in the store
+            belonging to buffer
+        buffer: Specifies the name of the buffer object whose storage to attach
+            to the active buffer texture
     '''
 
 @accepts(t.uint)
@@ -51,7 +59,8 @@ def primitive_restart_index(index):
     specify the primitive restart index
     
     Args:
-        index: Specifies the value to be interpreted as the primitive restart index
+        index: Specifies the value to be interpreted as the primitive restart
+            index
     '''
 
 SAMPLER_2D_RECT = 0x8B63
@@ -85,14 +94,22 @@ PRIMITIVE_RESTART_INDEX = 0x8F9E
 @binds(dll)
 def copy_buffer_sub_data(readtarget, writetarget, readoffset, writeoffset, size):
     '''
-    copy all or part of the data store of a buffer object to the data store of another buffer object
+    copy all or part of the data store of a buffer object to the data store of
+another buffer object
     
     Args:
-        readtarget: Specifies the target to which the source buffer object is bound for gl.copy_buffer_sub_data
-        writetarget: Specifies the target to which the destination buffer object is bound for gl.copy_buffer_sub_data
-        readoffset: Specifies the offset, in basic machine units, within the data store of the source buffer object at which data will be read
-        writeoffset: Specifies the offset, in basic machine units, within the data store of the destination buffer object at which data will be written
-        size: Specifies the size, in basic machine units, of the data to be copied from the source buffer object to the destination buffer object
+        readtarget: Specifies the target to which the source buffer object is
+            bound for gl.copy_buffer_sub_data
+        writetarget: Specifies the target to which the destination buffer object
+            is bound for gl.copy_buffer_sub_data
+        readoffset: Specifies the offset, in basic machine units, within the
+            data store of the source buffer object at which data will be read
+        writeoffset: Specifies the offset, in basic machine units, within the
+            data store of the destination buffer object at which data will be
+            written
+        size: Specifies the size, in basic machine units, of the data to be
+            copied from the source buffer object to the destination buffer
+            object
     '''
 
 COPY_READ_BUFFER = 0x8F36
@@ -105,10 +122,13 @@ def get_uniform_indices(program, uniformcount, uniformnames, uniformindices):
     retrieve the index of a named uniform block
     
     Args:
-        program: Specifies the name of a program containing uniforms whose indices to query
+        program: Specifies the name of a program containing uniforms whose
+            indices to query
         uniformcount: Specifies the number of uniforms whose indices to query
-        uniformnames: Specifies the address of an array of pointers to buffers containing the names of the queried uniforms
-        uniformindices: Specifies the address of an array that will receive the indices of the uniforms
+        uniformnames: Specifies the address of an array of pointers to buffers
+            containing the names of the queried uniforms
+        uniformindices: Specifies the address of an array that will receive the
+            indices of the uniforms
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.uint), t.enum, POINTER(t.int))
@@ -116,14 +136,21 @@ def get_uniform_indices(program, uniformcount, uniformnames, uniformindices):
 @binds(dll)
 def get_active_uniformsiv(program, uniformcount, uniformindices, pname, params):
     '''
-    Returns information about several active uniform variables for the specified program object
+    Returns information about several active uniform variables for the specified
+program object
     
     Args:
         program: Specifies the program object to be queried
-        uniformcount: Specifies both the number of elements in the array of indices uniformIndices and the number of parameters written to params upon successful return
-        uniformindices: Specifies the address of an array of uniformCount integers containing the indices of uniforms within program whose parameter pname should be queried
-        pname: Specifies the property of each uniform in uniformIndices that should be written into the corresponding element of params
-        params: Specifies the address of an array of uniformCount integers which are to receive the value of pname for each uniform in uniformIndices
+        uniformcount: Specifies both the number of elements in the array of
+            indices uniformIndices and the number of parameters written to
+            params upon successful return
+        uniformindices: Specifies the address of an array of uniformCount
+            integers containing the indices of uniforms within program whose
+            parameter pname should be queried
+        pname: Specifies the property of each uniform in uniformIndices that
+            should be written into the corresponding element of params
+        params: Specifies the address of an array of uniformCount integers which
+            are to receive the value of pname for each uniform in uniformIndices
     '''
 
 @accepts(t.uint, t.uint, t.sizei, POINTER(t.sizei), t.char_p)
@@ -134,11 +161,17 @@ def get_active_uniform_name(program, uniformindex, bufsize, length, uniformname)
     query the name of an active uniform
     
     Args:
-        program: Specifies the program containing the active uniform index uniformIndex
-        uniformindex: Specifies the index of the active uniform whose name to query
-        bufsize: Specifies the size of the buffer, in units of GLchar, of the buffer whose address is specified in uniformName
-        length: Specifies the address of a variable that will receive the number of characters that were or would have been written to the buffer addressed by uniformName
-        uniformname: Specifies the address of a buffer into which the GL will place the name of the active uniform at uniformIndex within program
+        program: Specifies the program containing the active uniform index
+            uniformIndex
+        uniformindex: Specifies the index of the active uniform whose name to
+            query
+        bufsize: Specifies the size of the buffer, in units of GLchar, of the
+            buffer whose address is specified in uniformName
+        length: Specifies the address of a variable that will receive the number
+            of characters that were or would have been written to the buffer
+            addressed by uniformName
+        uniformname: Specifies the address of a buffer into which the GL will
+            place the name of the active uniform at uniformIndex within program
     '''
 
 @accepts(t.uint, t.char_p)
@@ -150,7 +183,8 @@ def get_uniform_block_index(program, uniformblockname):
     
     Args:
         program: Specifies the name of a program containing the uniform block
-        uniformblockname: Specifies the address an array of characters to containing the name of the uniform block whose index to retrieve
+        uniformblockname: Specifies the address an array of characters to
+            containing the name of the uniform block whose index to retrieve
     '''
 
 @accepts(t.uint, t.uint, t.enum, POINTER(t.int))
@@ -168,10 +202,13 @@ def get_active_uniform_block_name(program, uniformblockindex, bufsize, length, u
     
     Args:
         program: Specifies the name of a program containing the uniform block
-        uniformblockindex: Specifies the index of the uniform block within program
+        uniformblockindex: Specifies the index of the uniform block within
+            program
         bufsize: Specifies the size of the buffer addressed by uniformBlockName
-        length: Specifies the address of a variable to receive the number of characters that were written to uniformBlockName
-        uniformblockname: Specifies the address an array of characters to receive the name of the uniform block at uniformBlockIndex
+        length: Specifies the address of a variable to receive the number of
+            characters that were written to uniformBlockName
+        uniformblockname: Specifies the address an array of characters to
+            receive the name of the uniform block at uniformBlockIndex
     '''
 
 @accepts(t.uint, t.uint, t.uint)
@@ -182,9 +219,12 @@ def uniform_block_binding(program, uniformblockindex, uniformblockbinding):
     assign a binding point to an active uniform block
     
     Args:
-        program: The name of a program object containing the active uniform block whose binding to assign
-        uniformblockindex: The index of the active uniform block within program whose binding to assign
-        uniformblockbinding: Specifies the binding point to which to bind the uniform block with index uniformBlockIndex within program
+        program: The name of a program object containing the active uniform
+            block whose binding to assign
+        uniformblockindex: The index of the active uniform block within program
+            whose binding to assign
+        uniformblockbinding: Specifies the binding point to which to bind the
+            uniform block with index uniformBlockIndex within program
     '''
 
 @accepts(t.enum, t.uint, t.uint, t.intptr, t.sizeiptr)
@@ -196,10 +236,14 @@ def bind_buffer_range(target, index, buffer, offset, size):
     
     Args:
         target: Specify the target of the bind operation
-        index: Specify the index of the binding point within the array specified by target
-        buffer: The name of a buffer object to bind to the specified binding point
-        offset: The starting offset in basic machine units into the buffer object buffer
-        size: The amount of data in machine units that can be read from the buffer object while used as an indexed target
+        index: Specify the index of the binding point within the array specified
+            by target
+        buffer: The name of a buffer object to bind to the specified binding
+            point
+        offset: The starting offset in basic machine units into the buffer
+            object buffer
+        size: The amount of data in machine units that can be read from the
+            buffer object while used as an indexed target
     '''
 
 @accepts(t.enum, t.uint, t.uint)
@@ -211,8 +255,10 @@ def bind_buffer_base(target, index, buffer):
     
     Args:
         target: Specify the target of the bind operation
-        index: Specify the index of the binding point within the array specified by target
-        buffer: The name of a buffer object to bind to the specified binding point
+        index: Specify the index of the binding point within the array specified
+            by target
+        buffer: The name of a buffer object to bind to the specified binding
+            point
     '''
 
 @accepts(t.enum, t.uint, POINTER(t.int))

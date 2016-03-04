@@ -27,7 +27,8 @@ def draw_elements(mode, count, type, indices):
         mode: Specifies what kind of primitives to render
         count: Specifies the number of elements to be rendered
         type: Specifies the type of the values in indices
-        indices: Specifies a pointer to the location where the indices are stored
+        indices: Specifies a pointer to the location where the indices are
+            stored
     '''
 
 @accepts(t.enum, t.void)
@@ -50,8 +51,10 @@ def polygon_offset(factor, units):
     set the scale and units used to calculate depth values
     
     Args:
-        factor: Specifies a scale factor that is used to create a variable depth offset for each polygon
-        units: Is multiplied by an implementation-specific value to create a constant depth offset
+        factor: Specifies a scale factor that is used to create a variable depth
+            offset for each polygon
+        units: Is multiplied by an implementation-specific value to create a
+            constant depth offset
     '''
 
 @accepts(t.enum, t.int, t.enum, t.int, t.int, t.sizei, t.int)
@@ -65,7 +68,10 @@ def copy_tex_image1_d(target, level, internalformat, x, y, width, border):
         target: Specifies the target texture
         level: Specifies the level-of-detail number
         internalformat: Specifies the internal format of the texture
-        x, y: Specify the window coordinates of the left corner of the row of pixels to be copied
+        x: Specify the window coordinates of the left corner of the row of
+            pixels to be copied
+        y: Specify the window coordinates of the left corner of the row of
+            pixels to be copied
         width: Specifies the width of the texture image
         border: Must be 0
     '''
@@ -81,7 +87,10 @@ def copy_tex_image2_d(target, level, internalformat, x, y, width, height, border
         target: Specifies the target texture
         level: Specifies the level-of-detail number
         internalformat: Specifies the internal format of the texture
-        x, y: Specify the window coordinates of the lower left corner of the rectangular region of pixels to be copied
+        x: Specify the window coordinates of the lower left corner of the
+            rectangular region of pixels to be copied
+        y: Specify the window coordinates of the lower left corner of the
+            rectangular region of pixels to be copied
         width: Specifies the width of the texture image
         height: Specifies the height of the texture image
         border: Must be 0
@@ -95,10 +104,14 @@ def copy_tex_sub_image1_d(target, level, xoffset, x, y, width):
     copy a one-dimensional texture subimage
     
     Args:
-        target: Specifies the target to which the texture object is bound for gl.copy_tex_sub_image1D function
+        target: Specifies the target to which the texture object is bound for
+            gl.copy_tex_sub_image1D function
         level: Specifies the level-of-detail number
         xoffset: Specifies the texel offset within the texture array
-        x, y: Specify the window coordinates of the left corner of the row of pixels to be copied
+        x: Specify the window coordinates of the left corner of the row of
+            pixels to be copied
+        y: Specify the window coordinates of the left corner of the row of
+            pixels to be copied
         width: Specifies the width of the texture subimage
     '''
 
@@ -110,11 +123,17 @@ def copy_tex_sub_image2_d(target, level, xoffset, yoffset, x, y, width, height):
     copy a two-dimensional texture subimage
     
     Args:
-        target: Specifies the target to which the texture object is bound for gl.copy_tex_sub_image2D function
+        target: Specifies the target to which the texture object is bound for
+            gl.copy_tex_sub_image2D function
         level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture array
-        yoffset: Specifies a texel offset in the y direction within the texture array
-        x, y: Specify the window coordinates of the lower left corner of the rectangular region of pixels to be copied
+        xoffset: Specifies a texel offset in the x direction within the texture
+            array
+        yoffset: Specifies a texel offset in the y direction within the texture
+            array
+        x: Specify the window coordinates of the lower left corner of the
+            rectangular region of pixels to be copied
+        y: Specify the window coordinates of the lower left corner of the
+            rectangular region of pixels to be copied
         width: Specifies the width of the texture subimage
         height: Specifies the height of the texture subimage
     '''
@@ -127,9 +146,11 @@ def tex_sub_image1_d(target, level, xoffset, width, format, type, pixels):
     specify a one-dimensional texture subimage
     
     Args:
-        target: Specifies the target to which the texture is bound for gl.tex_sub_image1D
+        target: Specifies the target to which the texture is bound for
+            gl.tex_sub_image1D
         level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture array
+        xoffset: Specifies a texel offset in the x direction within the texture
+            array
         width: Specifies the width of the texture subimage
         format: Specifies the format of the pixel data
         type: Specifies the data type of the pixel data
@@ -144,10 +165,13 @@ def tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, typ
     specify a two-dimensional texture subimage
     
     Args:
-        target: Specifies the target to which the texture is bound for gl.tex_sub_image2D
+        target: Specifies the target to which the texture is bound for
+            gl.tex_sub_image2D
         level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture array
-        yoffset: Specifies a texel offset in the y direction within the texture array
+        xoffset: Specifies a texel offset in the x direction within the texture
+            array
+        yoffset: Specifies a texel offset in the y direction within the texture
+            array
         width: Specifies the width of the texture subimage
         height: Specifies the height of the texture subimage
         format: Specifies the format of the pixel data
@@ -188,7 +212,8 @@ def gen_textures(n, textures):
     
     Args:
         n: Specifies the number of texture names to be generated
-        textures: Specifies an array in which the generated texture names are stored
+        textures: Specifies an array in which the generated texture names are
+            stored
     '''
 
 @accepts(t.uint)
@@ -224,7 +249,8 @@ def color_pointer(size, type, stride, pointer):
         size: Specifies the number of components per color
         type: Specifies the data type of each color component in the array
         stride: Specifies the byte offset between consecutive colors
-        pointer: Specifies a pointer to the first component of the first color element in the array
+        pointer: Specifies a pointer to the first component of the first color
+            element in the array
     '''
 
 @accepts(t.enum)
@@ -253,6 +279,7 @@ def enable_client_state(array):
     enable or disable client-side capability
     
     Args:
+        array: Specifies the capability to enable
     '''
 
 @accepts(t.enum, t.sizei, t.void)
@@ -277,7 +304,8 @@ def interleaved_arrays(format, stride, pointer):
     
     Args:
         format: Specifies the type of array to enable
-        stride: Specifies the offset in bytes between each aggregate array element
+        stride: Specifies the offset in bytes between each aggregate array
+            element
     '''
 
 @accepts(t.enum, t.sizei, t.void)
@@ -290,7 +318,8 @@ def normal_pointer(type, stride, pointer):
     Args:
         type: Specifies the data type of each coordinate in the array
         stride: Specifies the byte offset between consecutive normals
-        pointer: Specifies a pointer to the first coordinate of the first normal in the array
+        pointer: Specifies a pointer to the first coordinate of the first normal
+            in the array
     '''
 
 @accepts(t.int, t.enum, t.sizei, t.void)
@@ -303,8 +332,10 @@ def tex_coord_pointer(size, type, stride, pointer):
     Args:
         size: Specifies the number of coordinates per array element
         type: Specifies the data type of each texture coordinate
-        stride: Specifies the byte offset between consecutive texture coordinate sets
-        pointer: Specifies a pointer to the first coordinate of the first texture coordinate set in the array
+        stride: Specifies the byte offset between consecutive texture coordinate
+            sets
+        pointer: Specifies a pointer to the first coordinate of the first
+            texture coordinate set in the array
     '''
 
 @accepts(t.int, t.enum, t.sizei, t.void)
@@ -318,7 +349,8 @@ def vertex_pointer(size, type, stride, pointer):
         size: Specifies the number of coordinates per vertex
         type: Specifies the data type of each coordinate in the array
         stride: Specifies the byte offset between consecutive vertices
-        pointer: Specifies a pointer to the first coordinate of the first vertex in the array
+        pointer: Specifies a pointer to the first coordinate of the first vertex
+            in the array
     '''
 
 @accepts(t.sizei, POINTER(t.uint), POINTER(t.boolean))
@@ -330,8 +362,10 @@ def are_textures_resident(n, textures, residences):
     
     Args:
         n: Specifies the number of textures to be queried
-        textures: Specifies an array containing the names of the textures to be queried
-        residences: Specifies an array in which the texture residence status is returned
+        textures: Specifies an array containing the names of the textures to be
+            queried
+        residences: Specifies an array in which the texture residence status is
+            returned
     '''
 
 @accepts(t.sizei, POINTER(t.uint), POINTER(t.float))
@@ -343,7 +377,8 @@ def prioritize_textures(n, textures, priorities):
     
     Args:
         n: Specifies the number of textures to be prioritized
-        textures: Specifies an array containing the names of the textures to be prioritized
+        textures: Specifies an array containing the names of the textures to be
+            prioritized
         priorities: Specifies an array containing the texture priorities
     '''
 

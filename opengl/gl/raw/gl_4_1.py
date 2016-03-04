@@ -44,8 +44,6 @@ UNDEFINED_VERTEX = 0x8260
 def release_shader_compiler():
     '''
     release resources consumed by the implementation's shader compiler
-    
-    Args:
     '''
 
 @accepts(t.sizei, POINTER(t.uint), t.enum, t.void, t.sizei)
@@ -56,11 +54,16 @@ def shader_binary(count, shaders, binaryformat, binary, length):
     load pre-compiled shader binaries
     
     Args:
-        count: Specifies the number of shader object handles contained in shaders
-        shaders: Specifies the address of an array of shader handles into which to load pre-compiled shader binaries
-        binaryformat: Specifies the format of the shader binaries contained in binary
-        binary: Specifies the address of an array of bytes containing pre-compiled binary shader code
-        length: Specifies the length of the array whose address is given in binary
+        count: Specifies the number of shader object handles contained in
+            shaders
+        shaders: Specifies the address of an array of shader handles into which
+            to load pre-compiled shader binaries
+        binaryformat: Specifies the format of the shader binaries contained in
+            binary
+        binary: Specifies the address of an array of bytes containing pre-
+            compiled binary shader code
+        length: Specifies the length of the array whose address is given in
+            binary
     '''
 
 @accepts(t.enum, t.enum, POINTER(t.int), POINTER(t.int))
@@ -68,13 +71,17 @@ def shader_binary(count, shaders, binaryformat, binary, length):
 @binds(dll)
 def get_shader_precision_format(shadertype, precisiontype, range, precision):
     '''
-    retrieve the range and precision for numeric formats supported by the shader compiler
+    retrieve the range and precision for numeric formats supported by the shader
+compiler
     
     Args:
         shadertype: Specifies the type of shader whose precision to query
-        precisiontype: Specifies the numeric format whose precision and range to query
-        range: Specifies the address of array of two integers into which encodings of the implementation's numeric range are returned
-        precision: Specifies the address of an integer into which the numeric precision of the implementation is written
+        precisiontype: Specifies the numeric format whose precision and range to
+            query
+        range: Specifies the address of array of two integers into which
+            encodings of the implementation's numeric range are returned
+        precision: Specifies the address of an integer into which the numeric
+            precision of the implementation is written
     '''
 
 @accepts(t.float, t.float)
@@ -94,14 +101,18 @@ def clear_depthf(d):
 @binds(dll)
 def get_program_binary(program, bufsize, length, binaryformat, binary):
     '''
-    return a binary representation of a program object's compiled and linked executable source
+    return a binary representation of a program object's compiled and linked
+executable source
     
     Args:
-        program: Specifies the name of a program object whose binary representation to retrieve
-        bufsize: Specifies the size of the buffer whose address is given by binary
-        length: Specifies the address of a variable to receive the number of bytes written into binary
-        binaryformat: Specifies the address of a variable to receive a token indicating the format of the binary data returned by the GL
-        binary: Specifies the address an array into which the GL will return program's binary representation
+        program: Specifies the name of a program object whose binary
+            representation to retrieve
+        length: Specifies the address of a variable to receive the number of
+            bytes written into binary
+        binaryformat: Specifies the address of a variable to receive a token
+            indicating the format of the binary data returned by the GL
+        binary: Specifies the address an array into which the GL will return
+            program's binary representation
     '''
 
 @accepts(t.uint, t.enum, t.void, t.sizei)
@@ -112,9 +123,11 @@ def program_binary(program, binaryformat, binary, length):
     load a program object with a program binary
     
     Args:
-        program: Specifies the name of a program object into which to load a program binary
+        program: Specifies the name of a program object into which to load a
+            program binary
         binaryformat: Specifies the format of the binary data in binary
-        binary: Specifies the address an array containing the binary to be loaded into program
+        binary: Specifies the address an array containing the binary to be
+            loaded into program
         length: Specifies the number of bytes contained in binary
     '''
 
@@ -132,9 +145,12 @@ def use_program_stages(pipeline, stages, program):
     bind stages of a program object to a program pipeline
     
     Args:
-        pipeline: Specifies the program pipeline object to which to bind stages from program
-        stages: Specifies a set of program stages to bind to the program pipeline object
-        program: Specifies the program object containing the shader executables to use in pipeline
+        pipeline: Specifies the program pipeline object to which to bind stages
+            from program
+        stages: Specifies a set of program stages to bind to the program
+            pipeline object
+        program: Specifies the program object containing the shader executables
+            to use in pipeline
     '''
 
 @accepts(t.uint, t.uint)
@@ -145,8 +161,10 @@ def active_shader_program(pipeline, program):
     set the active program object for a program pipeline object
     
     Args:
-        pipeline: Specifies the program pipeline object to set the active program object for
-        program: Specifies the program object to set as the active program pipeline object pipeline
+        pipeline: Specifies the program pipeline object to set the active
+            program object for
+        program: Specifies the program object to set as the active program
+            pipeline object pipeline
     '''
 
 @accepts(t.enum, t.sizei, POINTER(t.char_p))
@@ -163,7 +181,8 @@ def bind_program_pipeline(pipeline):
     bind a program pipeline to the current context
     
     Args:
-        pipeline: Specifies the name of the pipeline object to bind to the context
+        pipeline: Specifies the name of the pipeline object to bind to the
+            context
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -175,7 +194,8 @@ def delete_program_pipelines(n, pipelines):
     
     Args:
         n: Specifies the number of program pipeline objects to delete
-        pipelines: Specifies an array of names of program pipeline objects to delete
+        pipelines: Specifies an array of names of program pipeline objects to
+            delete
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -187,7 +207,8 @@ def gen_program_pipelines(n, pipelines):
     
     Args:
         n: Specifies the number of program pipeline object names to reserve
-        pipelines: Specifies an array of into which the reserved names will be written
+        pipelines: Specifies an array of into which the reserved names will be
+            written
     '''
 
 @accepts(t.uint)
@@ -198,7 +219,8 @@ def is_program_pipeline(pipeline):
     determine if a name corresponds to a program pipeline object
     
     Args:
-        pipeline: Specifies a value that may be the name of a program pipeline object
+        pipeline: Specifies a value that may be the name of a program pipeline
+            object
     '''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
@@ -526,10 +548,14 @@ def get_program_pipeline_info_log(pipeline, bufsize, length, infolog):
     retrieve the info log string from a program pipeline object
     
     Args:
-        pipeline: Specifies the name of a program pipeline object from which to retrieve the info log
-        bufsize: Specifies the maximum number of characters, including the null terminator, that may be written into infoLog
-        length: Specifies the address of a variable into which will be written the number of characters written into infoLog
-        infolog: Specifies the address of an array of characters into which will be written the info log for pipeline
+        pipeline: Specifies the name of a program pipeline object from which to
+            retrieve the info log
+        bufsize: Specifies the maximum number of characters, including the null
+            terminator, that may be written into infoLog
+        length: Specifies the address of a variable into which will be written
+            the number of characters written into infoLog
+        infolog: Specifies the address of an array of characters into which will
+            be written the info log for pipeline
     '''
 
 @accepts(t.uint, t.double)
@@ -625,8 +651,12 @@ def scissor_indexed(index, left, bottom, width, height):
     
     Args:
         index: Specifies the index of the viewport whose scissor box to modify
-        left, bottom: Specify the coordinate of the bottom left corner of the scissor box, in pixels
-        width, height: Specify ths dimensions of the scissor box, in pixels
+        left: Specify the coordinate of the bottom left corner of the scissor
+            box, in pixels
+        bottom: Specify the coordinate of the bottom left corner of the scissor
+            box, in pixels
+        width: Specify ths dimensions of the scissor box, in pixels
+        height: Specify ths dimensions of the scissor box, in pixels
     '''
 
 @accepts(t.uint, POINTER(t.int))
@@ -646,10 +676,14 @@ def depth_range_arrayv(first, count, v):
 @binds(dll)
 def depth_range_indexed(index, n, f):
     '''
-    specify mapping of depth values from normalized device coordinates to window coordinates for a specified viewport
+    specify mapping of depth values from normalized device coordinates to window
+coordinates for a specified viewport
     
     Args:
         index: Specifies the index of the viewport whose depth range to update
+        n: Specifies the mapping of the near clipping plane to window
+            coordinates
+        f: Specifies the mapping of the far clipping plane to window coordinates
     '''
 
 @accepts(t.enum, t.uint, POINTER(t.float))

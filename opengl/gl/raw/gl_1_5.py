@@ -12,7 +12,8 @@ def gen_queries(n, ids):
     
     Args:
         n: Specifies the number of query object names to be generated
-        ids: Specifies an array in which the generated query object names are stored
+        ids: Specifies an array in which the generated query object names are
+            stored
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -46,7 +47,8 @@ def begin_query(target, id):
     delimit the boundaries of a query object
     
     Args:
-        target: Specifies the target type of query object established between gl.begin_query and the subsequent gl.end_query
+        target: Specifies the target type of query object established between
+            gl.begin_query and the subsequent gl.end_query
         id: Specifies the name of a query object
     '''
 
@@ -89,7 +91,8 @@ def bind_buffer(target, buffer):
     bind a named buffer object
     
     Args:
-        target: Specifies the target to which the buffer object is bound, which must be one of the buffer binding targets in the following table:
+        target: Specifies the target to which the buffer object is bound, which
+            must be one of the buffer binding targets in the following table:
         buffer: Specifies the name of a buffer object
     '''
 
@@ -114,7 +117,8 @@ def gen_buffers(n, buffers):
     
     Args:
         n: Specifies the number of buffer object names to be generated
-        buffers: Specifies an array in which the generated buffer object names are stored
+        buffers: Specifies an array in which the generated buffer object names
+            are stored
     '''
 
 @accepts(t.uint)
@@ -136,9 +140,12 @@ def buffer_data(target, size, data, usage):
     creates and initializes a buffer object's data store
     
     Args:
-        target: Specifies the target to which the buffer object is bound for gl.buffer_data, which must be one of the buffer binding targets in the following table:
+        target: Specifies the target to which the buffer object is bound for
+            gl.buffer_data, which must be one of the buffer binding targets in
+            the following table:
         size: Specifies the size in bytes of the buffer object's new data store
-        data: Specifies a pointer to data that will be copied into the data store for initialization, or None if no data is to be copied
+        data: Specifies a pointer to data that will be copied into the data
+            store for initialization, or None if no data is to be copied
         usage: Specifies the expected usage pattern of the data store
     '''
 
@@ -150,10 +157,15 @@ def buffer_sub_data(target, offset, size, data):
     updates a subset of a buffer object's data store
     
     Args:
-        target: Specifies the target to which the buffer object is bound for gl.buffer_sub_data, which must be one of the buffer binding targets in the following table:
-        offset: Specifies the offset into the buffer object's data store where data replacement will begin, measured in bytes
-        size: Specifies the size in bytes of the data store region being replaced
-        data: Specifies a pointer to the new data that will be copied into the data store
+        target: Specifies the target to which the buffer object is bound for
+            gl.buffer_sub_data, which must be one of the buffer binding targets
+            in the following table:
+        offset: Specifies the offset into the buffer object's data store where
+            data replacement will begin, measured in bytes
+        size: Specifies the size in bytes of the data store region being
+            replaced
+        data: Specifies a pointer to the new data that will be copied into the
+            data store
     '''
 
 @accepts(t.enum, t.intptr, t.sizeiptr, t.void)
@@ -164,10 +176,15 @@ def get_buffer_sub_data(target, offset, size, data):
     returns a subset of a buffer object's data store
     
     Args:
-        target: Specifies the target to which the buffer object is bound for gl.get_buffer_sub_data, which must be one of the buffer binding targets in the following table:
-        offset: Specifies the offset into the buffer object's data store from which data will be returned, measured in bytes
-        size: Specifies the size in bytes of the data store region being returned
-        data: Specifies a pointer to the location where buffer object data is returned
+        target: Specifies the target to which the buffer object is bound for
+            gl.get_buffer_sub_data, which must be one of the buffer binding
+            targets in the following table:
+        offset: Specifies the offset into the buffer object's data store from
+            which data will be returned, measured in bytes
+        size: Specifies the size in bytes of the data store region being
+            returned
+        data: Specifies a pointer to the location where buffer object data is
+            returned
     '''
 
 @accepts(t.enum, t.enum)
@@ -178,8 +195,13 @@ def map_buffer(target, access):
     map all of a buffer object's data store into the client's address space
     
     Args:
-        target: Specifies the target to which the buffer object is bound for gl.map_buffer, which must be one of the buffer binding targets in the following table:
-        access: Specifies the access policy for gl.map_buffer and gl.map_named_buffer, indicating whether it will be possible to read from, write to, or both read from and write to the buffer object's mapped data store
+        target: Specifies the target to which the buffer object is bound for
+            gl.map_buffer, which must be one of the buffer binding targets in
+            the following table:
+        access: Specifies the access policy for gl.map_buffer and
+            gl.map_named_buffer, indicating whether it will be possible to read
+            from, write to, or both read from and write to the buffer object's
+            mapped data store
     '''
 
 @accepts(t.enum)
@@ -187,10 +209,13 @@ def map_buffer(target, access):
 @binds(dll)
 def unmap_buffer(target):
     '''
-    release the mapping of a buffer object's data store into the client's address space
+    release the mapping of a buffer object's data store into the client's address
+space
     
     Args:
-        target: Specifies the target to which the buffer object is bound for gl.unmap_buffer, which must be one of the buffer binding targets in the following table:
+        target: Specifies the target to which the buffer object is bound for
+            gl.unmap_buffer, which must be one of the buffer binding targets in
+            the following table:
     '''
 
 @accepts(t.enum, t.enum, POINTER(t.int))
@@ -202,6 +227,8 @@ def get_buffer_parameteriv(target, pname, params):
     
     Args:
         target: Specifies the target buffer object
+        pname: Specifies the symbolic name of a buffer object parameter
+        params: Returns the requested parameter
     '''
 
 @accepts(t.enum, t.enum, t.void)
@@ -212,7 +239,9 @@ def get_buffer_pointerv(target, pname, params):
     return the pointer to a mapped buffer object's data store
     
     Args:
-        target: Specifies the target to which the buffer object is bound for gl.get_buffer_pointerv, which must be one of the buffer binding targets in the following table:
+        target: Specifies the target to which the buffer object is bound for
+            gl.get_buffer_pointerv, which must be one of the buffer binding
+            targets in the following table:
         pname: Specifies the name of the pointer to be returned
         params: Returns the pointer value specified by pname
     '''

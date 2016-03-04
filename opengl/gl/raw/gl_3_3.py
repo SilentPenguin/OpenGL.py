@@ -9,13 +9,18 @@ VERTEX_ATTRIB_ARRAY_DIVISOR = 0x88FE
 @binds(dll)
 def bind_frag_data_location_indexed(program, colornumber, index, name):
     '''
-    bind a user-defined varying out variable to a fragment shader color number and index
+    bind a user-defined varying out variable to a fragment shader color number and
+index
     
     Args:
-        program: The name of the program containing varying out variable whose binding to modify
-        colornumber: The color number to bind the user-defined varying out variable to
-        index: The index of the color input to bind the user-defined varying out variable to
-        name: The name of the user-defined varying out variable whose binding to modify
+        program: The name of the program containing varying out variable whose
+            binding to modify
+        colornumber: The color number to bind the user-defined varying out
+            variable to
+        index: The index of the color input to bind the user-defined varying out
+            variable to
+        name: The name of the user-defined varying out variable whose binding to
+            modify
     '''
 
 @accepts(t.uint, t.char_p)
@@ -26,8 +31,10 @@ def get_frag_data_index(program, name):
     query the bindings of color indices to user-defined varying out variables
     
     Args:
-        program: The name of the program containing varying out variable whose binding to query
-        name: The name of the user-defined varying out variable whose index to query
+        program: The name of the program containing varying out variable whose
+            binding to query
+        name: The name of the user-defined varying out variable whose index to
+            query
     '''
 
 SRC1_COLOR = 0x88F9
@@ -43,7 +50,9 @@ def gen_samplers(count, samplers):
     generate sampler object names
     
     Args:
-        samplers: Specifies an array in which the generated sampler object names are stored
+        count: Specifies the number of sampler object names to generate
+        samplers: Specifies an array in which the generated sampler object names
+            are stored
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -54,6 +63,7 @@ def delete_samplers(count, samplers):
     delete named sampler objects
     
     Args:
+        count: Specifies the number of sampler objects to be deleted
         samplers: Specifies an array of sampler objects to be deleted
     '''
 
@@ -65,6 +75,7 @@ def is_sampler(sampler):
     determine if a name corresponds to a sampler object
     
     Args:
+        sampler: Specifies a value that may be the name of a sampler object
     '''
 
 @accepts(t.uint, t.uint)
@@ -75,7 +86,8 @@ def bind_sampler(unit, sampler):
     bind a named sampler to a texturing target
     
     Args:
-        unit: Specifies the index of the texture unit to which the sampler is bound
+        unit: Specifies the index of the texture unit to which the sampler is
+            bound
         sampler: Specifies the name of a sampler
     '''
 
@@ -151,7 +163,8 @@ TEXTURE_SWIZZLE_RGBA = 0x8E46
 @binds(dll)
 def query_counter(id, target):
     '''
-    record the GL time into a query object after all previous commands have reached the GL server but have not yet necessarily executed
+    record the GL time into a query object after all previous commands have reached
+the GL server but have not yet necessarily executed
     
     Args:
         id: Specify the name of a query object into which to record the GL time
@@ -177,11 +190,13 @@ TIMESTAMP = 0x8E28
 @binds(dll)
 def vertex_attrib_divisor(index, divisor):
     '''
-    modify the rate at which generic vertex attributes advance during instanced rendering
+    modify the rate at which generic vertex attributes advance during instanced
+rendering
     
     Args:
         index: Specify the index of the generic vertex attribute
-        divisor: Specify the number of instances that will pass between updates of the generic attribute at slot index
+        divisor: Specify the number of instances that will pass between updates
+            of the generic attribute at slot index
     '''
 
 @accepts(t.uint, t.enum, t.boolean, t.uint)
