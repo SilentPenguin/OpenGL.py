@@ -177,9 +177,9 @@ element offset.
     corresponding draw call will be taken from element indices[i] + basevertex
     of each enabled array. If the resulting value is larger than the maximum
     value representable by type, it is as if the calculation were upconverted to
-    32-bit unsigned integers (with wrapping on overflow conditions). The
-    operation is undefined if the sum would be negative. The basevertex has no
-    effect on the shader-visible value of gl_VertexID.
+    32-bit unsigned integers. The operation is undefined if the sum would be
+    negative. The basevertex has no effect on the shader-visible value of
+    gl_VertexID.
     
     Args:
         mode: what kind of primitives to render.

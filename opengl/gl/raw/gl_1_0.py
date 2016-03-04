@@ -10,11 +10,11 @@ def cull_face(mode):
     '''
     specify whether front- or back-facing facets can be culled.
     
-    gl.cull_face specifies whether front- or back-facing facets are culled (as
-    specified by mode) when facet culling is enabled. Facet culling is initially
-    disabled. To enable and disable facet culling, call the gl.enable and
-    gl.disable commands with the argument gl.CULL_FACE. Facets include
-    triangles, quadrilaterals, polygons, and rectangles.
+    gl.cull_face specifies whether front- or back-facing facets are culled when
+    facet culling is enabled. Facet culling is initially disabled. To enable and
+    disable facet culling, call the gl.enable and gl.disable commands with the
+    argument gl.CULL_FACE. Facets include triangles, quadrilaterals, polygons,
+    and rectangles.
     
     Args:
         mode: whether front- or back-facing facets are candidates for culling.
@@ -68,9 +68,9 @@ def point_size(size):
     specify the diameter of rasterized points.
     
     gl.point_size specifies the rasterized diameter of points. If point size
-    mode is disabled (see gl.enable with parameter gl.PROGRAM_POINT_SIZE), this
-    value will be used to rasterize points. Otherwise, the value written to the
-    shading language built-in variable gl_PointSize will be used.
+    mode is disabled, this value will be used to rasterize points. Otherwise,
+    the value written to the shading language built-in variable gl_PointSize
+    will be used.
     
     Args:
         size: the diameter of rasterized points.
@@ -85,9 +85,9 @@ def polygon_mode(face, mode):
     
     gl.polygon_mode controls the interpretation of polygons for rasterization.
     face describes which polygons mode applies to: both front and back-facing
-    polygons (gl.FRONT_AND_BACK). The polygon mode affects only the final
-    rasterization of polygons. In particular, a polygon's vertices are lit and
-    the polygon is clipped and possibly culled before these modes are applied.
+    polygons. The polygon mode affects only the final rasterization of polygons.
+    In particular, a polygon's vertices are lit and the polygon is clipped and
+    possibly culled before these modes are applied.
     
     Args:
         face: the polygons that mode applies to.
@@ -233,7 +233,7 @@ def clear_stencil(s):
     specify the clear value for the stencil buffer.
     
     gl.clear_stencil specifies the index used by gl.clear to clear the stencil
-    buffer. s is masked with 2 m - 1, where.
+    buffer. s is masked with 2 m - 1 , where.
     
     Args:
         s: the index used when the stencil buffer is cleared.
@@ -434,8 +434,7 @@ def depth_func(func):
     
     gl.depth_func specifies the function used to compare each incoming pixel
     depth value with the depth value present in the depth buffer. The comparison
-    is performed only if depth testing is enabled. (See gl.enable and gl.disable
-    of gl.DEPTH_TEST.).
+    is performed only if depth testing is enabled.
     
     Args:
         func: the depth comparison function.
@@ -483,12 +482,12 @@ def read_pixels(x, y, width, height, format, type, pixels):
     read a block of pixels from the frame buffer.
     
     gl.read_pixels and gl.readn_pixels return pixel data from the frame buffer,
-    starting with the pixel whose lower left corner is at location (x, y), into
-    client memory starting at location data. Several parameters control the
-    processing of the pixel data before it is placed into client memory. These
-    parameters are set with gl.pixel_store. This reference page describes the
-    effects on gl.read_pixels and gl.readn_pixels of most, but not all of the
-    parameters specified by these three commands.
+    starting with the pixel whose lower left corner is at location , into client
+    memory starting at location data. Several parameters control the processing
+    of the pixel data before it is placed into client memory. These parameters
+    are set with gl.pixel_store. This reference page describes the effects on
+    gl.read_pixels and gl.readn_pixels of most, but not all of the parameters
+    specified by these three commands.
     
     Args:
         x: the window coordinates of the first pixel that is read from the frame
@@ -559,13 +558,10 @@ def get_tex_image(target, level, format, type, pixels):
     gl.get_tex_image, gl.getn_tex_image and gl.get_texture_image functions
     return a texture image into pixels. For gl.get_tex_image and
     gl.getn_tex_image, target specifies whether the desired texture image is one
-    specified by gl.tex_image1D (gl.TEXTURE_1D), gl.tex_image2D
-    (gl.TEXTURE_1D_ARRAY, gl.TEXTURE_RECTANGLE, gl.TEXTURE_2D or any of
-    gl.TEXTURE_CUBE_MAP_*), or gl.tex_image3D (gl.TEXTURE_2D_ARRAY,
-    gl.TEXTURE_3D, gl.TEXTURE_CUBE_MAP_ARRAY). For gl.get_texture_image, texture
-    specifies the texture object name. In addition to types of textures accepted
-    by gl.get_tex_image and gl.getn_tex_image, the function also accepts cube
-    map texture objects (with effective target gl.TEXTURE_CUBE_MAP).
+    specified by gl.tex_image1D , gl.tex_image2D , or gl.tex_image3D . For
+    gl.get_texture_image, texture specifies the texture object name. In addition
+    to types of textures accepted by gl.get_tex_image and gl.getn_tex_image, the
+    function also accepts cube map texture objects.
     
     Args:
         target: the target to which the texture is bound for glgetteximage and
@@ -729,7 +725,7 @@ def gen_lists(range):
     generate a contiguous set of empty display lists.
     
     gl.gen_lists has one argument, range. It returns an integer n such that
-    range contiguous empty display lists, named n, n + 1, ..., n + range - 1,
+    range contiguous empty display lists, named n, n + 1 , ... , n + range - 1 ,
     are created. If range is 0, if there is no group of range contiguous names
     available, or if any error is generated, no display lists are generated, and
     0 is returned.
@@ -1884,8 +1880,7 @@ def feedback_buffer(size, type, buffer):
     floating-point values into which feedback information is placed. size
     indicates the size of the array. type is a symbolic constant describing the
     information that is fed back for each vertex. gl.feedback_buffer must be
-    issued before feedback mode is enabled (by calling gl.render_mode with
-    argument gl.FEEDBACK).
+    issued before feedback mode is enabled.
     
     Args:
         size: the maximum number of values that can be written into buffer.
@@ -1903,10 +1898,9 @@ def select_buffer(size, buffer):
     
     gl.select_buffer has two arguments: buffer is a pointer to an array of
     unsigned integers, and size indicates the size of the array. buffer returns
-    values from the name stack (see gl.init_names, gl.load_name, gl.push_name)
-    when the rendering mode is gl.SELECT (see gl.render_mode). gl.select_buffer
-    must be issued before selection mode is enabled, and it must not be issued
-    while the rendering mode is gl.SELECT.
+    values from the name stack when the rendering mode is gl.SELECT.
+    gl.select_buffer must be issued before selection mode is enabled, and it
+    must not be issued while the rendering mode is gl.SELECT.
     
     Args:
         size: the size of buffer.
@@ -2016,7 +2010,7 @@ def clear_index(c):
     gl.clear_index specifies the index used by gl.clear to clear the color index
     buffers. c is not clamped. Rather, c is converted to a fixed-point value
     with unspecified precision to the right of the binary point. The integer
-    part of this value is then masked with 2 m - 1, where m is the number of
+    part of this value is then masked with 2 m - 1 , where m is the number of
     bits in a color index stored in the frame buffer.
     
     Args:
@@ -2032,10 +2026,9 @@ def index_mask(mask):
     
     gl.index_mask controls the writing of individual bits in the color index
     buffers. The least significant n bits of mask, where n is the number of bits
-    in a color index buffer, specify a mask. Where a 1 (one) appears in the
-    mask, it's possible to write to the corresponding bit in the color index
-    buffer (or buffers). Where a 0 (zero) appears, the corresponding bit is
-    write-protected.
+    in a color index buffer, specify a mask. Where a 1 appears in the mask, it's
+    possible to write to the corresponding bit in the color index buffer. Where
+    a 0 appears, the corresponding bit is write-protected.
     
     Args:
         mask: a bit mask to enable and disable the writing of individual bits in
@@ -2228,10 +2221,9 @@ def pixel_zoom(xfactor, yfactor):
     specify the pixel zoom factors.
     
     gl.pixel_zoom specifies values for the x and y zoom factors. During the
-    execution of gl.draw_pixels or gl.copy_pixels, if ( xr, yr ) is the current
-    raster position, and a given element is in the mth row and nth column of the
-    pixel rectangle, then pixels whose centers are in the rectangle with corners
-    at.
+    execution of gl.draw_pixels or gl.copy_pixels, if is the current raster
+    position, and a given element is in the mth row and nth column of the pixel
+    rectangle, then pixels whose centers are in the rectangle with corners at.
     
     Args:
         xfactor: the x and y zoom factors for pixel write operations.
@@ -2404,8 +2396,8 @@ def get_polygon_stipple(mask):
     The pattern is packed into memory as if gl.read_pixels with both height and
     width of 32, type of gl.BITMAP, and format of gl.COLOR_INDEX were called,
     and the stipple pattern were stored in an internal 32 * 32 color index
-    buffer. Unlike gl.read_pixels, however, pixel transfer operations (shift,
-    offset, pixel map) are not applied to the returned stipple image.
+    buffer. Unlike gl.read_pixels, however, pixel transfer operations are not
+    applied to the returned stipple image.
     
     Args:
         mask: returns the stipple pattern.
@@ -2463,8 +2455,8 @@ def frustum(left, right, bottom, top, znear, zfar):
     multiply the current matrix by a perspective matrix.
     
     gl.frustum describes a perspective matrix that produces a perspective
-    projection. The current matrix (see gl.matrix_mode) is multiplied by this
-    matrix and the result replaces the current matrix, as if gl.
+    projection. The current matrix is multiplied by this matrix and the result
+    replaces the current matrix, as if gl.
     
     Args:
         left: the coordinates for the left and right vertical clipping planes.
@@ -2529,8 +2521,8 @@ def ortho(left, right, bottom, top, znear, zfar):
     multiply the current matrix with an orthographic matrix.
     
     gl.ortho describes a transformation that produces a parallel projection. The
-    current matrix (see gl.matrix_mode) is multiplied by this matrix and the
-    result replaces the current matrix, as if gl.
+    current matrix is multiplied by this matrix and the result replaces the
+    current matrix, as if gl.
     
     Args:
         left: the coordinates for the left and right vertical clipping planes.

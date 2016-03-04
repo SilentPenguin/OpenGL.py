@@ -25,7 +25,12 @@ class write:
         write.enum_values = define.enums(doc)
         write.command_values = define.commands(doc)
         for feature in doc.feature:
-            write.feature(feature)
+            lines = []
+            name = feature['name']
+            feature_path = RAW_PATH + pep.feature(name) + '.py'
+            write.headers(lines)
+            write.feature(lines, feature)
+            write.file(lines, feature_path)
             
     @staticmethod
     def headers(lines):
@@ -36,17 +41,12 @@ class write:
         lines.append('')
             
     @staticmethod
-    def feature(feature):
-        lines = []
-        name = feature['name']
-        feature_path = RAW_PATH + pep.feature(name) + '.py'
-        write.headers(lines)
+    def feature(lines, feature):
         for require in feature.require:
             for command in require.command:
                 write.command(lines, command)
             for enum in require.enum:
                 write.enum(lines, enum)
-        write.file(lines, feature_path)
         
     @staticmethod
     def command(lines, command):
@@ -104,15 +104,20 @@ class document:
             if not text: continue
             text = text.strip()
             if not text: continue
+            #consider only the first few sentences, replacing any ellipsis to ensure they aren't matched
             text = text.replace('...', '…')
             text = '.'.join(text.split('.')[:4])
             text = text.replace('…', '...')
+            #strip out bracketed objects
+            text = re.sub(r' ?\([^)]*\)', '', text)
+            text = text.replace(' , ', ', ')
             text = pep.doc_body(text)
             while text.endswith(':'):
                 text = '.'.join(text.split('.')[:-1])
+            #looking for a paragraph that matches our function name
             if not text or not text.startswith('gl.' + pep.command(name)): continue
             text = ('\n    ').join(textwrap.wrap(text, 76))
-            text = text.replace(' ,', ',')
+            #add a full stop to the end if there isn't one
             if not text.endswith('.'):
                 text += '.'
             lines.append('    ')

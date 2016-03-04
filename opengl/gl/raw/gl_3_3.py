@@ -234,7 +234,7 @@ rendering.
     attributes advance when rendering multiple instances of primitives in a
     single draw call. If divisor is zero, the attribute at slot index advances
     once per vertex. If divisor is non-zero, the attribute advances once per
-    divisor instances of the set(s) of vertices being rendered. An attribute is
+    divisor instances of the set of vertices being rendered. An attribute is
     referred to as instanced if its gl.VERTEX_ATTRIB_ARRAY_DIVISOR value is non-
     zero.
     

@@ -195,11 +195,10 @@ def get_active_uniform_name(program, uniformindex, bufsize, length, uniformname)
     
     gl.get_active_uniform_name returns the name of the active uniform at
     uniformIndex within program. If uniformName is not None, up to bufSize
-    characters (including a nul-terminator) will be written into the array whose
-    address is specified by uniformName. If length is not None, the number of
-    characters that were (or would have been) written into uniformName (not
-    including the nul-terminator) will be placed in the variable whose address
-    is specified in length. If length is None, no length is returned.
+    characters will be written into the array whose address is specified by
+    uniformName. If length is not None, the number of characters that were
+    written into uniformName will be placed in the variable whose address is
+    specified in length. If length is None, no length is returned.
     
     Args:
         program: the program containing the active uniform index uniformindex.

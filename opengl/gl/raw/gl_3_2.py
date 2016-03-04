@@ -37,9 +37,8 @@ def draw_elements_base_vertex(mode, count, type, indices, basevertex):
     that the ith element transferred by the corresponding draw call will be
     taken from element indices[i] + basevertex of each enabled array. If the
     resulting value is larger than the maximum value representable by type, it
-    is as if the calculation were upconverted to 32-bit unsigned integers (with
-    wrapping on overflow conditions). The operation is undefined if the sum
-    would be negative.
+    is as if the calculation were upconverted to 32-bit unsigned integers. The
+    operation is undefined if the sum would be negative.
     
     Args:
         mode: what kind of primitives to render.
@@ -91,8 +90,8 @@ element offset.
     corresponding draw call will be taken from element indices[i] + basevertex
     of each enabled array. If the resulting value is larger than the maximum
     value representable by type, it is as if the calculation were upconverted to
-    32-bit unsigned integers (with wrapping on overflow conditions). The
-    operation is undefined if the sum would be negative.
+    32-bit unsigned integers. The operation is undefined if the sum would be
+    negative.
     
     Args:
         mode: what kind of primitives to render.

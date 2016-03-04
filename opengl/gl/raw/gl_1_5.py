@@ -29,7 +29,7 @@ def delete_queries(n, ids):
     
     gl.delete_queries deletes n query objects named by the elements of the array
     ids. After a query object is deleted, it has no contents, and its name is
-    free for reuse (for example by gl.gen_queries).
+    free for reuse.
     
     Args:
         n: the number of query objects to be deleted.
@@ -127,9 +127,8 @@ def delete_buffers(n, buffers):
     
     gl.delete_buffers deletes n buffer objects named by the elements of the
     array buffers. After a buffer object is deleted, it has no contents, and its
-    name is free for reuse (for example by gl.gen_buffers). If a buffer object
-    that is currently bound is deleted, the binding reverts to 0 (the absence of
-    any buffer object).
+    name is free for reuse. If a buffer object that is currently bound is
+    deleted, the binding reverts to 0.
     
     Args:
         n: the number of buffer objects to be deleted.
@@ -267,9 +266,8 @@ def unmap_buffer(target):
     release the mapping of a buffer object's data store into the client's address
 space.
     
-    gl.unmap_buffer and gl.unmap_named_buffer unmap (release) any mapping of a
-    specified buffer object into the client's address space (see
-    gl.map_buffer_range and gl.map_buffer).
+    gl.unmap_buffer and gl.unmap_named_buffer unmap any mapping of a specified
+    buffer object into the client's address space.
     
     Args:
         target: the target to which the buffer object is bound for

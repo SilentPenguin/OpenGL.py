@@ -179,7 +179,7 @@ def delete_queries(n, ids):
     
     gl.delete_queries deletes n query objects named by the elements of the array
     ids. After a query object is deleted, it has no contents, and its name is
-    free for reuse (for example by gl.gen_queries).
+    free for reuse.
     
     Args:
         n: the number of query objects to be deleted.
@@ -250,9 +250,8 @@ def unmap_buffer(target):
     release the mapping of a buffer object's data store into the client's address
 space.
     
-    gl.unmap_buffer and gl.unmap_named_buffer unmap (release) any mapping of a
-    specified buffer object into the client's address space (see
-    gl.map_buffer_range and gl.map_buffer).
+    gl.unmap_buffer and gl.unmap_named_buffer unmap any mapping of a specified
+    buffer object into the client's address space.
     
     Args:
         target: the target to which the buffer object is bound for
@@ -1205,7 +1204,7 @@ rendering.
     attributes advance when rendering multiple instances of primitives in a
     single draw call. If divisor is zero, the attribute at slot index advances
     once per vertex. If divisor is non-zero, the attribute advances once per
-    divisor instances of the set(s) of vertices being rendered. An attribute is
+    divisor instances of the set of vertices being rendered. An attribute is
     referred to as instanced if its gl.VERTEX_ATTRIB_ARRAY_DIVISOR value is non-
     zero.
     
