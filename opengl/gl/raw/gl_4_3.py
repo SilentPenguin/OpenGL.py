@@ -458,7 +458,7 @@ def vertex_attrib_binding(attribindex, bindingindex):
 @returns(t.void)
 @binds(dll)
 def vertex_binding_divisor(bindingindex, divisor): 
-    pass
+    '''modify the rate at which generic vertex attributes advance'''
 
 @accepts(t.enum, t.enum, t.enum, t.sizei, POINTER(t.uint), t.boolean)
 @returns(t.void)
