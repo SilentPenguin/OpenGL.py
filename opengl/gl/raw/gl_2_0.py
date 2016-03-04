@@ -6,559 +6,559 @@ from opengl.gl.raw.bindings import *
 @accepts(t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
-def blend_equation_separate(modeRGB, modeAlpha): 
+def blend_equation_separate(modeRGB, modeAlpha):
     '''set the RGB blend equation and the alpha blend equation separately'''
 
 @accepts(t.sizei, POINTER(t.enum))
 @returns(t.void)
 @binds(dll)
-def draw_buffers(n, bufs): 
+def draw_buffers(n, bufs):
     '''Specifies a list of color buffers to be drawn into'''
 
 @accepts(t.enum, t.enum, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
-def stencil_op_separate(face, sfail, dpfail, dppass): 
+def stencil_op_separate(face, sfail, dpfail, dppass):
     '''set front and/or back stencil test actions'''
 
 @accepts(t.enum, t.enum, t.int, t.uint)
 @returns(t.void)
 @binds(dll)
-def stencil_func_separate(face, func, ref, mask): 
+def stencil_func_separate(face, func, ref, mask):
     '''set front and/or back function and reference value for stencil testing'''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def stencil_mask_separate(face, mask): 
+def stencil_mask_separate(face, mask):
     '''control the front and/or back writing of individual bits in the stencil planes'''
 
 @accepts(t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def attach_shader(program, shader): 
+def attach_shader(program, shader):
     '''Attaches a shader object to a program object'''
 
 @accepts(t.uint, t.uint, t.char_p)
 @returns(t.void)
 @binds(dll)
-def bind_attrib_location(program, index, name): 
+def bind_attrib_location(program, index, name):
     '''Associates a generic vertex attribute index with a named attribute variable'''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
-def compile_shader(shader): 
+def compile_shader(shader):
     '''Compiles a shader object'''
 
 @accepts()
 @returns(t.uint)
 @binds(dll)
-def create_program(): 
+def create_program():
     '''Creates a program object'''
 
 @accepts(t.enum)
 @returns(t.uint)
 @binds(dll)
-def create_shader(type): 
+def create_shader(type):
     '''Creates a shader object'''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
-def delete_program(program): 
+def delete_program(program):
     '''Deletes a program object'''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
-def delete_shader(shader): 
+def delete_shader(shader):
     '''Deletes a shader object'''
 
 @accepts(t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def detach_shader(program, shader): 
+def detach_shader(program, shader):
     '''Detaches a shader object from a program object to which it is attached'''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
-def disable_vertex_attrib_array(index): 
+def disable_vertex_attrib_array(index):
     pass
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
-def enable_vertex_attrib_array(index): 
+def enable_vertex_attrib_array(index):
     '''Enable or disable a generic vertex attribute array'''
 
 @accepts(t.uint, t.uint, t.sizei, POINTER(t.sizei), POINTER(t.int), POINTER(t.enum), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_active_attrib(program, index, bufSize, length, size, type, name): 
+def get_active_attrib(program, index, bufSize, length, size, type, name):
     '''Returns information about an active attribute variable for the specified program object'''
 
 @accepts(t.uint, t.uint, t.sizei, POINTER(t.sizei), POINTER(t.int), POINTER(t.enum), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_active_uniform(program, index, bufSize, length, size, type, name): 
+def get_active_uniform(program, index, bufSize, length, size, type, name):
     '''Returns information about an active uniform variable for the specified program object'''
 
 @accepts(t.uint, t.sizei, POINTER(t.sizei), POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def get_attached_shaders(program, maxCount, count, shaders): 
+def get_attached_shaders(program, maxCount, count, shaders):
     '''Returns the handles of the shader objects attached to a program object'''
 
 @accepts(t.uint, t.char_p)
 @returns(t.int)
 @binds(dll)
-def get_attrib_location(program, name): 
+def get_attrib_location(program, name):
     '''Returns the location of an attribute variable'''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_programiv(program, pname, params): 
+def get_programiv(program, pname, params):
     pass
 
 @accepts(t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_program_info_log(program, bufSize, length, infoLog): 
+def get_program_info_log(program, bufSize, length, infoLog):
     '''Returns the information log for a program object'''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_shaderiv(shader, pname, params): 
+def get_shaderiv(shader, pname, params):
     pass
 
 @accepts(t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_shader_info_log(shader, bufSize, length, infoLog): 
+def get_shader_info_log(shader, bufSize, length, infoLog):
     '''Returns the information log for a shader object'''
 
 @accepts(t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_shader_source(shader, bufSize, length, source): 
+def get_shader_source(shader, bufSize, length, source):
     '''Returns the source code string from a shader object'''
 
 @accepts(t.uint, t.char_p)
 @returns(t.int)
 @binds(dll)
-def get_uniform_location(program, name): 
+def get_uniform_location(program, name):
     '''Returns the location of a uniform variable'''
 
 @accepts(t.uint, t.int, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def get_uniformfv(program, location, params): 
+def get_uniformfv(program, location, params):
     pass
 
 @accepts(t.uint, t.int, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_uniformiv(program, location, params): 
+def get_uniformiv(program, location, params):
     pass
 
 @accepts(t.uint, t.enum, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def get_vertex_attribdv(index, pname, params): 
+def get_vertex_attribdv(index, pname, params):
     pass
 
 @accepts(t.uint, t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def get_vertex_attribfv(index, pname, params): 
+def get_vertex_attribfv(index, pname, params):
     pass
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_vertex_attribiv(index, pname, params): 
+def get_vertex_attribiv(index, pname, params):
     pass
 
 @accepts(t.uint, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def get_vertex_attrib_pointerv(index, pname, pointer): 
+def get_vertex_attrib_pointerv(index, pname, pointer):
     '''return the address of the specified generic vertex attribute pointer'''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
-def is_program(program): 
+def is_program(program):
     '''Determines if a name corresponds to a program object'''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
-def is_shader(shader): 
+def is_shader(shader):
     '''Determines if a name corresponds to a shader object'''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
-def link_program(program): 
+def link_program(program):
     '''Links a program object'''
 
 @accepts(t.uint, t.sizei, POINTER(t.char_p), POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def shader_source(shader, count, string, length): 
+def shader_source(shader, count, string, length):
     '''Replaces the source code in a shader object'''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
-def use_program(program): 
+def use_program(program):
     '''Installs a program object as part of current rendering state'''
 
 @accepts(t.int, t.float)
 @returns(t.void)
 @binds(dll)
-def uniform1f(location, v0): 
+def uniform1f(location, v0):
     pass
 
 @accepts(t.int, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def uniform2f(location, v0, v1): 
+def uniform2f(location, v0, v1):
     pass
 
 @accepts(t.int, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def uniform3f(location, v0, v1, v2): 
+def uniform3f(location, v0, v1, v2):
     pass
 
 @accepts(t.int, t.float, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def uniform4f(location, v0, v1, v2, v3): 
+def uniform4f(location, v0, v1, v2, v3):
     pass
 
 @accepts(t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def uniform1i(location, v0): 
+def uniform1i(location, v0):
     pass
 
 @accepts(t.int, t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def uniform2i(location, v0, v1): 
+def uniform2i(location, v0, v1):
     pass
 
 @accepts(t.int, t.int, t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def uniform3i(location, v0, v1, v2): 
+def uniform3i(location, v0, v1, v2):
     pass
 
 @accepts(t.int, t.int, t.int, t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def uniform4i(location, v0, v1, v2, v3): 
+def uniform4i(location, v0, v1, v2, v3):
     pass
 
 @accepts(t.int, t.sizei, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def uniform1fv(location, count, value): 
+def uniform1fv(location, count, value):
     pass
 
 @accepts(t.int, t.sizei, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def uniform2fv(location, count, value): 
+def uniform2fv(location, count, value):
     pass
 
 @accepts(t.int, t.sizei, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def uniform3fv(location, count, value): 
+def uniform3fv(location, count, value):
     pass
 
 @accepts(t.int, t.sizei, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def uniform4fv(location, count, value): 
+def uniform4fv(location, count, value):
     pass
 
 @accepts(t.int, t.sizei, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def uniform1iv(location, count, value): 
+def uniform1iv(location, count, value):
     pass
 
 @accepts(t.int, t.sizei, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def uniform2iv(location, count, value): 
+def uniform2iv(location, count, value):
     pass
 
 @accepts(t.int, t.sizei, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def uniform3iv(location, count, value): 
+def uniform3iv(location, count, value):
     pass
 
 @accepts(t.int, t.sizei, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def uniform4iv(location, count, value): 
+def uniform4iv(location, count, value):
     pass
 
 @accepts(t.int, t.sizei, t.boolean, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def uniform_matrix2fv(location, count, transpose, value): 
+def uniform_matrix2fv(location, count, transpose, value):
     pass
 
 @accepts(t.int, t.sizei, t.boolean, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def uniform_matrix3fv(location, count, transpose, value): 
+def uniform_matrix3fv(location, count, transpose, value):
     pass
 
 @accepts(t.int, t.sizei, t.boolean, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def uniform_matrix4fv(location, count, transpose, value): 
+def uniform_matrix4fv(location, count, transpose, value):
     pass
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
-def validate_program(program): 
+def validate_program(program):
     '''Validates a program object'''
 
 @accepts(t.uint, t.double)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib1d(index, x): 
+def vertex_attrib1d(index, x):
     pass
 
 @accepts(t.uint, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib1dv(index, v): 
+def vertex_attrib1dv(index, v):
     pass
 
 @accepts(t.uint, t.float)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib1f(index, x): 
+def vertex_attrib1f(index, x):
     pass
 
 @accepts(t.uint, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib1fv(index, v): 
+def vertex_attrib1fv(index, v):
     pass
 
 @accepts(t.uint, t.short)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib1s(index, x): 
+def vertex_attrib1s(index, x):
     pass
 
 @accepts(t.uint, POINTER(t.short))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib1sv(index, v): 
+def vertex_attrib1sv(index, v):
     pass
 
 @accepts(t.uint, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib2d(index, x, y): 
+def vertex_attrib2d(index, x, y):
     pass
 
 @accepts(t.uint, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib2dv(index, v): 
+def vertex_attrib2dv(index, v):
     pass
 
 @accepts(t.uint, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib2f(index, x, y): 
+def vertex_attrib2f(index, x, y):
     pass
 
 @accepts(t.uint, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib2fv(index, v): 
+def vertex_attrib2fv(index, v):
     pass
 
 @accepts(t.uint, t.short, t.short)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib2s(index, x, y): 
+def vertex_attrib2s(index, x, y):
     pass
 
 @accepts(t.uint, POINTER(t.short))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib2sv(index, v): 
+def vertex_attrib2sv(index, v):
     pass
 
 @accepts(t.uint, t.double, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib3d(index, x, y, z): 
+def vertex_attrib3d(index, x, y, z):
     pass
 
 @accepts(t.uint, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib3dv(index, v): 
+def vertex_attrib3dv(index, v):
     pass
 
 @accepts(t.uint, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib3f(index, x, y, z): 
+def vertex_attrib3f(index, x, y, z):
     pass
 
 @accepts(t.uint, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib3fv(index, v): 
+def vertex_attrib3fv(index, v):
     pass
 
 @accepts(t.uint, t.short, t.short, t.short)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib3s(index, x, y, z): 
+def vertex_attrib3s(index, x, y, z):
     pass
 
 @accepts(t.uint, POINTER(t.short))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib3sv(index, v): 
+def vertex_attrib3sv(index, v):
     pass
 
 @accepts(t.uint, POINTER(t.byte))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib4_nbv(index, v): 
+def vertex_attrib4_nbv(index, v):
     pass
 
 @accepts(t.uint, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib4_niv(index, v): 
+def vertex_attrib4_niv(index, v):
     pass
 
 @accepts(t.uint, POINTER(t.short))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib4_nsv(index, v): 
+def vertex_attrib4_nsv(index, v):
     pass
 
 @accepts(t.uint, t.ubyte, t.ubyte, t.ubyte, t.ubyte)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib4_nub(index, x, y, z, w): 
+def vertex_attrib4_nub(index, x, y, z, w):
     pass
 
 @accepts(t.uint, POINTER(t.ubyte))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib4_nubv(index, v): 
+def vertex_attrib4_nubv(index, v):
     pass
 
 @accepts(t.uint, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib4_nuiv(index, v): 
+def vertex_attrib4_nuiv(index, v):
     pass
 
 @accepts(t.uint, POINTER(t.ushort))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib4_nusv(index, v): 
+def vertex_attrib4_nusv(index, v):
     pass
 
 @accepts(t.uint, POINTER(t.byte))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib4bv(index, v): 
+def vertex_attrib4bv(index, v):
     pass
 
 @accepts(t.uint, t.double, t.double, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib4d(index, x, y, z, w): 
+def vertex_attrib4d(index, x, y, z, w):
     pass
 
 @accepts(t.uint, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib4dv(index, v): 
+def vertex_attrib4dv(index, v):
     pass
 
 @accepts(t.uint, t.float, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib4f(index, x, y, z, w): 
+def vertex_attrib4f(index, x, y, z, w):
     pass
 
 @accepts(t.uint, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib4fv(index, v): 
+def vertex_attrib4fv(index, v):
     pass
 
 @accepts(t.uint, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib4iv(index, v): 
+def vertex_attrib4iv(index, v):
     pass
 
 @accepts(t.uint, t.short, t.short, t.short, t.short)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib4s(index, x, y, z, w): 
+def vertex_attrib4s(index, x, y, z, w):
     pass
 
 @accepts(t.uint, POINTER(t.short))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib4sv(index, v): 
+def vertex_attrib4sv(index, v):
     pass
 
 @accepts(t.uint, POINTER(t.ubyte))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib4ubv(index, v): 
+def vertex_attrib4ubv(index, v):
     pass
 
 @accepts(t.uint, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib4uiv(index, v): 
+def vertex_attrib4uiv(index, v):
     pass
 
 @accepts(t.uint, POINTER(t.ushort))
 @returns(t.void)
 @binds(dll)
-def vertex_attrib4usv(index, v): 
+def vertex_attrib4usv(index, v):
     pass
 
 @accepts(t.uint, t.int, t.enum, t.boolean, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def vertex_attrib_pointer(index, size, type, normalized, stride, pointer): 
+def vertex_attrib_pointer(index, size, type, normalized, stride, pointer):
     '''define an array of generic vertex attribute data'''
 
 BLEND_EQUATION_RGB = 0x8009

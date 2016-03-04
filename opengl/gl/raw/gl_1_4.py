@@ -6,271 +6,271 @@ from opengl.gl.raw.bindings import *
 @accepts(t.enum, t.enum, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
-def blend_func_separate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha): 
+def blend_func_separate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha):
     '''specify pixel arithmetic for RGB and alpha components separately'''
 
 @accepts(t.enum, POINTER(t.int), POINTER(t.sizei), t.sizei)
 @returns(t.void)
 @binds(dll)
-def multi_draw_arrays(mode, first, count, drawcount): 
+def multi_draw_arrays(mode, first, count, drawcount):
     '''render multiple sets of primitives from array data'''
 
 @accepts(t.enum, POINTER(t.sizei), t.enum, t.void, t.sizei)
 @returns(t.void)
 @binds(dll)
-def multi_draw_elements(mode, count, type, indices, drawcount): 
+def multi_draw_elements(mode, count, type, indices, drawcount):
     '''render multiple sets of primitives by specifying indices of array data elements'''
 
 @accepts(t.enum, t.float)
 @returns(t.void)
 @binds(dll)
-def point_parameterf(pname, param): 
+def point_parameterf(pname, param):
     pass
 
 @accepts(t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def point_parameterfv(pname, params): 
+def point_parameterfv(pname, params):
     pass
 
 @accepts(t.enum, t.int)
 @returns(t.void)
 @binds(dll)
-def point_parameteri(pname, param): 
+def point_parameteri(pname, param):
     pass
 
 @accepts(t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def point_parameteriv(pname, params): 
+def point_parameteriv(pname, params):
     pass
 
 @accepts(t.float)
 @returns(t.void)
 @binds(dll)
-def fog_coordf(coord): 
+def fog_coordf(coord):
     pass
 
 @accepts(POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def fog_coordfv(coord): 
+def fog_coordfv(coord):
     pass
 
 @accepts(t.double)
 @returns(t.void)
 @binds(dll)
-def fog_coordd(coord): 
+def fog_coordd(coord):
     pass
 
 @accepts(POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def fog_coorddv(coord): 
+def fog_coorddv(coord):
     pass
 
 @accepts(t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def fog_coord_pointer(type, stride, pointer): 
+def fog_coord_pointer(type, stride, pointer):
     '''define an array of fog coordinates'''
 
 @accepts(t.byte, t.byte, t.byte)
 @returns(t.void)
 @binds(dll)
-def secondary_color3b(red, green, blue): 
+def secondary_color3b(red, green, blue):
     pass
 
 @accepts(POINTER(t.byte))
 @returns(t.void)
 @binds(dll)
-def secondary_color3bv(v): 
+def secondary_color3bv(v):
     pass
 
 @accepts(t.double, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def secondary_color3d(red, green, blue): 
+def secondary_color3d(red, green, blue):
     pass
 
 @accepts(POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def secondary_color3dv(v): 
+def secondary_color3dv(v):
     pass
 
 @accepts(t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def secondary_color3f(red, green, blue): 
+def secondary_color3f(red, green, blue):
     pass
 
 @accepts(POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def secondary_color3fv(v): 
+def secondary_color3fv(v):
     pass
 
 @accepts(t.int, t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def secondary_color3i(red, green, blue): 
+def secondary_color3i(red, green, blue):
     pass
 
 @accepts(POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def secondary_color3iv(v): 
+def secondary_color3iv(v):
     pass
 
 @accepts(t.short, t.short, t.short)
 @returns(t.void)
 @binds(dll)
-def secondary_color3s(red, green, blue): 
+def secondary_color3s(red, green, blue):
     pass
 
 @accepts(POINTER(t.short))
 @returns(t.void)
 @binds(dll)
-def secondary_color3sv(v): 
+def secondary_color3sv(v):
     pass
 
 @accepts(t.ubyte, t.ubyte, t.ubyte)
 @returns(t.void)
 @binds(dll)
-def secondary_color3ub(red, green, blue): 
+def secondary_color3ub(red, green, blue):
     pass
 
 @accepts(POINTER(t.ubyte))
 @returns(t.void)
 @binds(dll)
-def secondary_color3ubv(v): 
+def secondary_color3ubv(v):
     pass
 
 @accepts(t.uint, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def secondary_color3ui(red, green, blue): 
+def secondary_color3ui(red, green, blue):
     pass
 
 @accepts(POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def secondary_color3uiv(v): 
+def secondary_color3uiv(v):
     pass
 
 @accepts(t.ushort, t.ushort, t.ushort)
 @returns(t.void)
 @binds(dll)
-def secondary_color3us(red, green, blue): 
+def secondary_color3us(red, green, blue):
     pass
 
 @accepts(POINTER(t.ushort))
 @returns(t.void)
 @binds(dll)
-def secondary_color3usv(v): 
+def secondary_color3usv(v):
     pass
 
 @accepts(t.int, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def secondary_color_pointer(size, type, stride, pointer): 
+def secondary_color_pointer(size, type, stride, pointer):
     '''define an array of secondary colors'''
 
 @accepts(t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def window_pos2d(x, y): 
+def window_pos2d(x, y):
     pass
 
 @accepts(POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def window_pos2dv(v): 
+def window_pos2dv(v):
     pass
 
 @accepts(t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def window_pos2f(x, y): 
+def window_pos2f(x, y):
     pass
 
 @accepts(POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def window_pos2fv(v): 
+def window_pos2fv(v):
     pass
 
 @accepts(t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def window_pos2i(x, y): 
+def window_pos2i(x, y):
     pass
 
 @accepts(POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def window_pos2iv(v): 
+def window_pos2iv(v):
     pass
 
 @accepts(t.short, t.short)
 @returns(t.void)
 @binds(dll)
-def window_pos2s(x, y): 
+def window_pos2s(x, y):
     pass
 
 @accepts(POINTER(t.short))
 @returns(t.void)
 @binds(dll)
-def window_pos2sv(v): 
+def window_pos2sv(v):
     pass
 
 @accepts(t.double, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def window_pos3d(x, y, z): 
+def window_pos3d(x, y, z):
     pass
 
 @accepts(POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def window_pos3dv(v): 
+def window_pos3dv(v):
     pass
 
 @accepts(t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def window_pos3f(x, y, z): 
+def window_pos3f(x, y, z):
     pass
 
 @accepts(POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def window_pos3fv(v): 
+def window_pos3fv(v):
     pass
 
 @accepts(t.int, t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def window_pos3i(x, y, z): 
+def window_pos3i(x, y, z):
     pass
 
 @accepts(POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def window_pos3iv(v): 
+def window_pos3iv(v):
     pass
 
 @accepts(t.short, t.short, t.short)
 @returns(t.void)
 @binds(dll)
-def window_pos3s(x, y, z): 
+def window_pos3s(x, y, z):
     pass
 
 @accepts(POINTER(t.short))
 @returns(t.void)
 @binds(dll)
-def window_pos3sv(v): 
+def window_pos3sv(v):
     pass
 
 BLEND_DST_RGB = 0x80C8
@@ -315,13 +315,13 @@ COMPARE_R_TO_TEXTURE = 0x884E
 @accepts(t.float, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
-def blend_color(red, green, blue, alpha): 
+def blend_color(red, green, blue, alpha):
     '''set the blend color'''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def blend_equation(mode): 
+def blend_equation(mode):
     '''specify the equation used for both the RGB blend equation and the Alpha blend equation'''
 
 FUNC_ADD = 0x8006

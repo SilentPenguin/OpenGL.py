@@ -9,7 +9,7 @@ TEXTURE_BUFFER_BINDING = 0x8C2A
 @accepts(t.enum, t.sizeiptr, t.void, t.bitfield)
 @returns(t.void)
 @binds(dll)
-def buffer_storage(target, size, data, flags): 
+def buffer_storage(target, size, data, flags):
     '''creates and initializes a buffer object's immutable data store'''
 
 MAP_READ_BIT = 0x0001
@@ -24,13 +24,13 @@ BUFFER_STORAGE_FLAGS = 0x8220
 @accepts(t.uint, t.int, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def clear_tex_image(texture, level, format, type, data): 
+def clear_tex_image(texture, level, format, type, data):
     '''fills all a texture image with a constant value'''
 
 @accepts(t.uint, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def clear_tex_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data): 
+def clear_tex_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data):
     '''fills all or part of a texture image with a constant value'''
 
 CLEAR_TEXTURE = 0x9365
@@ -41,37 +41,37 @@ TRANSFORM_FEEDBACK_BUFFER_STRIDE = 0x934C
 @accepts(t.enum, t.uint, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def bind_buffers_base(target, first, count, buffers): 
+def bind_buffers_base(target, first, count, buffers):
     '''bind one or more buffer objects to a sequence of indexed buffer targets'''
 
 @accepts(t.enum, t.uint, t.sizei, POINTER(t.uint), POINTER(t.intptr), POINTER(t.sizeiptr))
 @returns(t.void)
 @binds(dll)
-def bind_buffers_range(target, first, count, buffers, offsets, sizes): 
+def bind_buffers_range(target, first, count, buffers, offsets, sizes):
     '''bind ranges of one or more buffer objects to a sequence of indexed buffer targets'''
 
 @accepts(t.uint, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def bind_textures(first, count, textures): 
+def bind_textures(first, count, textures):
     '''bind one or more named textures to a sequence of consecutive texture units'''
 
 @accepts(t.uint, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def bind_samplers(first, count, samplers): 
+def bind_samplers(first, count, samplers):
     '''bind one or more named sampler objects to a sequence of consecutive sampler units'''
 
 @accepts(t.uint, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def bind_image_textures(first, count, textures): 
+def bind_image_textures(first, count, textures):
     '''bind one or more named texture images to a sequence of consecutive image units'''
 
 @accepts(t.uint, t.sizei, POINTER(t.uint), POINTER(t.intptr), POINTER(t.sizei))
 @returns(t.void)
 @binds(dll)
-def bind_vertex_buffers(first, count, buffers, offsets, strides): 
+def bind_vertex_buffers(first, count, buffers, offsets, strides):
     '''attach multiple buffer objects to a vertex array object'''
 
 QUERY_BUFFER = 0x9192

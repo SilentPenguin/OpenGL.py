@@ -6,31 +6,31 @@ from opengl.gl.raw.bindings import *
 @accepts(t.float)
 @returns(t.void)
 @binds(dll)
-def min_sample_shading(value): 
+def min_sample_shading(value):
     '''specifies minimum rate at which sample shaing takes place'''
 
 @accepts(t.uint, t.enum)
 @returns(t.void)
 @binds(dll)
-def blend_equationi(buf, mode): 
+def blend_equationi(buf, mode):
     pass
 
 @accepts(t.uint, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
-def blend_equation_separatei(buf, modeRGB, modeAlpha): 
+def blend_equation_separatei(buf, modeRGB, modeAlpha):
     pass
 
 @accepts(t.uint, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
-def blend_funci(buf, src, dst): 
+def blend_funci(buf, src, dst):
     pass
 
 @accepts(t.uint, t.enum, t.enum, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
-def blend_func_separatei(buf, srcRGB, dstRGB, srcAlpha, dstAlpha): 
+def blend_func_separatei(buf, srcRGB, dstRGB, srcAlpha, dstAlpha):
     pass
 
 SAMPLE_SHADING = 0x8C36
@@ -47,13 +47,13 @@ UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY = 0x900F
 @accepts(t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def draw_arrays_indirect(mode, indirect): 
+def draw_arrays_indirect(mode, indirect):
     '''render primitives from array data, taking parameters from memory'''
 
 @accepts(t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def draw_elements_indirect(mode, type, indirect): 
+def draw_elements_indirect(mode, type, indirect):
     '''render indexed primitives from array data, taking parameters from memory'''
 
 DRAW_INDIRECT_BUFFER = 0x8F3F
@@ -67,109 +67,109 @@ MAX_VERTEX_STREAMS = 0x8E71
 @accepts(t.int, t.double)
 @returns(t.void)
 @binds(dll)
-def uniform1d(location, x): 
+def uniform1d(location, x):
     pass
 
 @accepts(t.int, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def uniform2d(location, x, y): 
+def uniform2d(location, x, y):
     pass
 
 @accepts(t.int, t.double, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def uniform3d(location, x, y, z): 
+def uniform3d(location, x, y, z):
     pass
 
 @accepts(t.int, t.double, t.double, t.double, t.double)
 @returns(t.void)
 @binds(dll)
-def uniform4d(location, x, y, z, w): 
+def uniform4d(location, x, y, z, w):
     pass
 
 @accepts(t.int, t.sizei, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def uniform1dv(location, count, value): 
+def uniform1dv(location, count, value):
     pass
 
 @accepts(t.int, t.sizei, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def uniform2dv(location, count, value): 
+def uniform2dv(location, count, value):
     pass
 
 @accepts(t.int, t.sizei, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def uniform3dv(location, count, value): 
+def uniform3dv(location, count, value):
     pass
 
 @accepts(t.int, t.sizei, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def uniform4dv(location, count, value): 
+def uniform4dv(location, count, value):
     pass
 
 @accepts(t.int, t.sizei, t.boolean, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def uniform_matrix2dv(location, count, transpose, value): 
+def uniform_matrix2dv(location, count, transpose, value):
     pass
 
 @accepts(t.int, t.sizei, t.boolean, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def uniform_matrix3dv(location, count, transpose, value): 
+def uniform_matrix3dv(location, count, transpose, value):
     pass
 
 @accepts(t.int, t.sizei, t.boolean, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def uniform_matrix4dv(location, count, transpose, value): 
+def uniform_matrix4dv(location, count, transpose, value):
     pass
 
 @accepts(t.int, t.sizei, t.boolean, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def uniform_matrix2x3dv(location, count, transpose, value): 
+def uniform_matrix2x3dv(location, count, transpose, value):
     pass
 
 @accepts(t.int, t.sizei, t.boolean, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def uniform_matrix2x4dv(location, count, transpose, value): 
+def uniform_matrix2x4dv(location, count, transpose, value):
     pass
 
 @accepts(t.int, t.sizei, t.boolean, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def uniform_matrix3x2dv(location, count, transpose, value): 
+def uniform_matrix3x2dv(location, count, transpose, value):
     pass
 
 @accepts(t.int, t.sizei, t.boolean, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def uniform_matrix3x4dv(location, count, transpose, value): 
+def uniform_matrix3x4dv(location, count, transpose, value):
     pass
 
 @accepts(t.int, t.sizei, t.boolean, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def uniform_matrix4x2dv(location, count, transpose, value): 
+def uniform_matrix4x2dv(location, count, transpose, value):
     pass
 
 @accepts(t.int, t.sizei, t.boolean, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def uniform_matrix4x3dv(location, count, transpose, value): 
+def uniform_matrix4x3dv(location, count, transpose, value):
     pass
 
 @accepts(t.uint, t.int, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def get_uniformdv(program, location, params): 
+def get_uniformdv(program, location, params):
     pass
 
 DOUBLE_VEC2 = 0x8FFC
@@ -187,49 +187,49 @@ DOUBLE_MAT4x3 = 0x8F4E
 @accepts(t.uint, t.enum, t.char_p)
 @returns(t.int)
 @binds(dll)
-def get_subroutine_uniform_location(program, shadertype, name): 
+def get_subroutine_uniform_location(program, shadertype, name):
     '''retrieve the location of a subroutine uniform of a given shader stage within a program'''
 
 @accepts(t.uint, t.enum, t.char_p)
 @returns(t.uint)
 @binds(dll)
-def get_subroutine_index(program, shadertype, name): 
+def get_subroutine_index(program, shadertype, name):
     '''retrieve the index of a subroutine uniform of a given shader stage within a program'''
 
 @accepts(t.uint, t.enum, t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_active_subroutine_uniformiv(program, shadertype, index, pname, values): 
+def get_active_subroutine_uniformiv(program, shadertype, index, pname, values):
     pass
 
 @accepts(t.uint, t.enum, t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_active_subroutine_uniform_name(program, shadertype, index, bufsize, length, name): 
+def get_active_subroutine_uniform_name(program, shadertype, index, bufsize, length, name):
     '''query the name of an active shader subroutine uniform'''
 
 @accepts(t.uint, t.enum, t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_active_subroutine_name(program, shadertype, index, bufsize, length, name): 
+def get_active_subroutine_name(program, shadertype, index, bufsize, length, name):
     '''query the name of an active shader subroutine'''
 
 @accepts(t.enum, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def uniform_subroutinesuiv(shadertype, count, indices): 
+def uniform_subroutinesuiv(shadertype, count, indices):
     pass
 
 @accepts(t.enum, t.int, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def get_uniform_subroutineuiv(shadertype, location, params): 
+def get_uniform_subroutineuiv(shadertype, location, params):
     pass
 
 @accepts(t.uint, t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_program_stageiv(program, shadertype, pname, values): 
+def get_program_stageiv(program, shadertype, pname, values):
     pass
 
 ACTIVE_SUBROUTINES = 0x8DE5
@@ -244,13 +244,13 @@ COMPATIBLE_SUBROUTINES = 0x8E4B
 @accepts(t.enum, t.int)
 @returns(t.void)
 @binds(dll)
-def patch_parameteri(pname, value): 
+def patch_parameteri(pname, value):
     pass
 
 @accepts(t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def patch_parameterfv(pname, values): 
+def patch_parameterfv(pname, values):
     pass
 
 PATCHES = 0x000E
@@ -289,43 +289,43 @@ TESS_CONTROL_SHADER = 0x8E88
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def bind_transform_feedback(target, id): 
+def bind_transform_feedback(target, id):
     '''bind a transform feedback object'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def delete_transform_feedbacks(n, ids): 
+def delete_transform_feedbacks(n, ids):
     '''delete transform feedback objects'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def gen_transform_feedbacks(n, ids): 
+def gen_transform_feedbacks(n, ids):
     '''reserve transform feedback object names'''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
-def is_transform_feedback(id): 
+def is_transform_feedback(id):
     '''determine if a name corresponds to a transform feedback object'''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
-def pause_transform_feedback(): 
+def pause_transform_feedback():
     '''pause transform feedback operations'''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
-def resume_transform_feedback(): 
+def resume_transform_feedback():
     '''resume transform feedback operations'''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def draw_transform_feedback(mode, id): 
+def draw_transform_feedback(mode, id):
     '''render primitives using a count derived from a transform feedback object'''
 
 TRANSFORM_FEEDBACK = 0x8E22
@@ -335,25 +335,25 @@ TRANSFORM_FEEDBACK_BINDING = 0x8E25
 @accepts(t.enum, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def draw_transform_feedback_stream(mode, id, stream): 
+def draw_transform_feedback_stream(mode, id, stream):
     '''render primitives using a count derived from a specifed stream of a transform feedback object'''
 
 @accepts(t.enum, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def begin_query_indexed(target, index, id): 
+def begin_query_indexed(target, index, id):
     '''delimit the boundaries of a query object on an indexed target'''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def end_query_indexed(target, index): 
+def end_query_indexed(target, index):
     pass
 
 @accepts(t.enum, t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_query_indexediv(target, index, pname, params): 
+def get_query_indexediv(target, index, pname, params):
     pass
 
 MAX_TRANSFORM_FEEDBACK_BUFFERS = 0x8E70

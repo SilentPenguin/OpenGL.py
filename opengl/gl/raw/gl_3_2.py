@@ -29,31 +29,31 @@ DEPTH_CLAMP = 0x864F
 @accepts(t.enum, t.sizei, t.enum, t.void, t.int)
 @returns(t.void)
 @binds(dll)
-def draw_elements_base_vertex(mode, count, type, indices, basevertex): 
+def draw_elements_base_vertex(mode, count, type, indices, basevertex):
     '''render primitives from array data with a per-element offset'''
 
 @accepts(t.enum, t.uint, t.uint, t.sizei, t.enum, t.void, t.int)
 @returns(t.void)
 @binds(dll)
-def draw_range_elements_base_vertex(mode, start, end, count, type, indices, basevertex): 
+def draw_range_elements_base_vertex(mode, start, end, count, type, indices, basevertex):
     '''render primitives from array data with a per-element offset'''
 
 @accepts(t.enum, t.sizei, t.enum, t.void, t.sizei, t.int)
 @returns(t.void)
 @binds(dll)
-def draw_elements_instanced_base_vertex(mode, count, type, indices, instancecount, basevertex): 
+def draw_elements_instanced_base_vertex(mode, count, type, indices, instancecount, basevertex):
     '''render multiple instances of a set of primitives from array data with a per-element offset'''
 
 @accepts(t.enum, POINTER(t.sizei), t.enum, t.void, t.sizei, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def multi_draw_elements_base_vertex(mode, count, type, indices, drawcount, basevertex): 
+def multi_draw_elements_base_vertex(mode, count, type, indices, drawcount, basevertex):
     '''render multiple sets of primitives by specifying indices of array data elements and an index to apply to each index'''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
-def provoking_vertex(mode): 
+def provoking_vertex(mode):
     '''specifiy the vertex to be used as the source of data for flat shaded varyings'''
 
 QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION = 0x8E4C
@@ -64,43 +64,43 @@ TEXTURE_CUBE_MAP_SEAMLESS = 0x884F
 @accepts(t.enum, t.bitfield)
 @returns(t.sync)
 @binds(dll)
-def fence_sync(condition, flags): 
+def fence_sync(condition, flags):
     '''create a new sync object and insert it into the GL command stream'''
 
 @accepts(t.sync)
 @returns(t.boolean)
 @binds(dll)
-def is_sync(sync): 
+def is_sync(sync):
     '''determine if a name corresponds to a sync object'''
 
 @accepts(t.sync)
 @returns(t.void)
 @binds(dll)
-def delete_sync(sync): 
+def delete_sync(sync):
     '''delete a sync object'''
 
 @accepts(t.sync, t.bitfield, t.uint64)
 @returns(t.enum)
 @binds(dll)
-def client_wait_sync(sync, flags, timeout): 
+def client_wait_sync(sync, flags, timeout):
     '''block and wait for a sync object to become signaled'''
 
 @accepts(t.sync, t.bitfield, t.uint64)
 @returns(t.void)
 @binds(dll)
-def wait_sync(sync, flags, timeout): 
+def wait_sync(sync, flags, timeout):
     '''instruct the GL server to block until the specified sync object becomes signaled'''
 
 @accepts(t.enum, POINTER(t.int64))
 @returns(t.void)
 @binds(dll)
-def get_integer64v(pname, data): 
+def get_integer64v(pname, data):
     pass
 
 @accepts(t.sync, t.enum, t.sizei, POINTER(t.sizei), POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_synciv(sync, pname, bufSize, length, values): 
+def get_synciv(sync, pname, bufSize, length, values):
     pass
 
 MAX_SERVER_WAIT_TIMEOUT = 0x9111
@@ -121,43 +121,43 @@ SYNC_FLUSH_COMMANDS_BIT = 0x00000001
 @accepts(t.enum, t.uint, POINTER(t.int64))
 @returns(t.void)
 @binds(dll)
-def get_integer64i_v(target, index, data): 
+def get_integer64i_v(target, index, data):
     pass
 
 @accepts(t.enum, t.enum, POINTER(t.int64))
 @returns(t.void)
 @binds(dll)
-def get_buffer_parameteri64v(target, pname, params): 
+def get_buffer_parameteri64v(target, pname, params):
     pass
 
 @accepts(t.enum, t.enum, t.uint, t.int)
 @returns(t.void)
 @binds(dll)
-def framebuffer_texture(target, attachment, texture, level): 
+def framebuffer_texture(target, attachment, texture, level):
     '''attach a level of a texture object as a logical buffer of a framebuffer object'''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei, t.boolean)
 @returns(t.void)
 @binds(dll)
-def tex_image2_d_multisample(target, samples, internalformat, width, height, fixedsamplelocations): 
+def tex_image2_d_multisample(target, samples, internalformat, width, height, fixedsamplelocations):
     '''establish the data storage, format, dimensions, and number of samples of a multisample texture's image'''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei, t.sizei, t.boolean)
 @returns(t.void)
 @binds(dll)
-def tex_image3_d_multisample(target, samples, internalformat, width, height, depth, fixedsamplelocations): 
+def tex_image3_d_multisample(target, samples, internalformat, width, height, depth, fixedsamplelocations):
     '''establish the data storage, format, dimensions, and number of samples of a multisample texture's image'''
 
 @accepts(t.enum, t.uint, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def get_multisamplefv(pname, index, val): 
+def get_multisamplefv(pname, index, val):
     pass
 
 @accepts(t.uint, t.bitfield)
 @returns(t.void)
 @binds(dll)
-def sample_maski(maskNumber, mask): 
+def sample_maski(maskNumber, mask):
     '''set the value of a sub-word of the sample mask'''
 
 SAMPLE_POSITION = 0x8E50

@@ -7,7 +7,7 @@ CONTEXT_LOST = 0x0507
 @accepts(t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
-def clip_control(origin, depth): 
+def clip_control(origin, depth):
     '''control clip coordinate to window coordinate behavior'''
 
 LOWER_LEFT = 0x8CA1
@@ -25,583 +25,583 @@ MAX_COMBINED_CLIP_AND_CULL_DISTANCES = 0x82FA
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def create_transform_feedbacks(n, ids): 
+def create_transform_feedbacks(n, ids):
     '''create transform feedback objects'''
 
 @accepts(t.uint, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def transform_feedback_buffer_base(xfb, index, buffer): 
+def transform_feedback_buffer_base(xfb, index, buffer):
     '''bind a buffer object to a transform feedback buffer object'''
 
 @accepts(t.uint, t.uint, t.uint, t.intptr, t.sizeiptr)
 @returns(t.void)
 @binds(dll)
-def transform_feedback_buffer_range(xfb, index, buffer, offset, size): 
+def transform_feedback_buffer_range(xfb, index, buffer, offset, size):
     '''bind a range within a buffer object to a transform feedback buffer object'''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_transform_feedbackiv(xfb, pname, param): 
+def get_transform_feedbackiv(xfb, pname, param):
     pass
 
 @accepts(t.uint, t.enum, t.uint, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_transform_feedbacki_v(xfb, pname, index, param): 
+def get_transform_feedbacki_v(xfb, pname, index, param):
     pass
 
 @accepts(t.uint, t.enum, t.uint, POINTER(t.int64))
 @returns(t.void)
 @binds(dll)
-def get_transform_feedbacki64_v(xfb, pname, index, param): 
+def get_transform_feedbacki64_v(xfb, pname, index, param):
     pass
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def create_buffers(n, buffers): 
+def create_buffers(n, buffers):
     '''create buffer objects'''
 
 @accepts(t.uint, t.sizeiptr, t.void, t.bitfield)
 @returns(t.void)
 @binds(dll)
-def named_buffer_storage(buffer, size, data, flags): 
+def named_buffer_storage(buffer, size, data, flags):
     pass
 
 @accepts(t.uint, t.sizeiptr, t.void, t.enum)
 @returns(t.void)
 @binds(dll)
-def named_buffer_data(buffer, size, data, usage): 
+def named_buffer_data(buffer, size, data, usage):
     pass
 
 @accepts(t.uint, t.intptr, t.sizeiptr, t.void)
 @returns(t.void)
 @binds(dll)
-def named_buffer_sub_data(buffer, offset, size, data): 
+def named_buffer_sub_data(buffer, offset, size, data):
     pass
 
 @accepts(t.uint, t.uint, t.intptr, t.intptr, t.sizeiptr)
 @returns(t.void)
 @binds(dll)
-def copy_named_buffer_sub_data(readBuffer, writeBuffer, readOffset, writeOffset, size): 
+def copy_named_buffer_sub_data(readBuffer, writeBuffer, readOffset, writeOffset, size):
     pass
 
 @accepts(t.uint, t.enum, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def clear_named_buffer_data(buffer, internalformat, format, type, data): 
+def clear_named_buffer_data(buffer, internalformat, format, type, data):
     pass
 
 @accepts(t.uint, t.enum, t.intptr, t.sizeiptr, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def clear_named_buffer_sub_data(buffer, internalformat, offset, size, format, type, data): 
+def clear_named_buffer_sub_data(buffer, internalformat, offset, size, format, type, data):
     pass
 
 @accepts(t.uint, t.enum)
 @returns(t.void)
 @binds(dll)
-def map_named_buffer(buffer, access): 
+def map_named_buffer(buffer, access):
     pass
 
 @accepts(t.uint, t.intptr, t.sizeiptr, t.bitfield)
 @returns(t.void)
 @binds(dll)
-def map_named_buffer_range(buffer, offset, length, access): 
+def map_named_buffer_range(buffer, offset, length, access):
     pass
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
-def unmap_named_buffer(buffer): 
+def unmap_named_buffer(buffer):
     pass
 
 @accepts(t.uint, t.intptr, t.sizeiptr)
 @returns(t.void)
 @binds(dll)
-def flush_mapped_named_buffer_range(buffer, offset, length): 
+def flush_mapped_named_buffer_range(buffer, offset, length):
     pass
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_named_buffer_parameteriv(buffer, pname, params): 
+def get_named_buffer_parameteriv(buffer, pname, params):
     pass
 
 @accepts(t.uint, t.enum, POINTER(t.int64))
 @returns(t.void)
 @binds(dll)
-def get_named_buffer_parameteri64v(buffer, pname, params): 
+def get_named_buffer_parameteri64v(buffer, pname, params):
     pass
 
 @accepts(t.uint, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def get_named_buffer_pointerv(buffer, pname, params): 
+def get_named_buffer_pointerv(buffer, pname, params):
     pass
 
 @accepts(t.uint, t.intptr, t.sizeiptr, t.void)
 @returns(t.void)
 @binds(dll)
-def get_named_buffer_sub_data(buffer, offset, size, data): 
+def get_named_buffer_sub_data(buffer, offset, size, data):
     pass
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def create_framebuffers(n, framebuffers): 
+def create_framebuffers(n, framebuffers):
     '''create framebuffer objects'''
 
 @accepts(t.uint, t.enum, t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def named_framebuffer_renderbuffer(framebuffer, attachment, renderbuffertarget, renderbuffer): 
+def named_framebuffer_renderbuffer(framebuffer, attachment, renderbuffertarget, renderbuffer):
     pass
 
 @accepts(t.uint, t.enum, t.int)
 @returns(t.void)
 @binds(dll)
-def named_framebuffer_parameteri(framebuffer, pname, param): 
+def named_framebuffer_parameteri(framebuffer, pname, param):
     pass
 
 @accepts(t.uint, t.enum, t.uint, t.int)
 @returns(t.void)
 @binds(dll)
-def named_framebuffer_texture(framebuffer, attachment, texture, level): 
+def named_framebuffer_texture(framebuffer, attachment, texture, level):
     pass
 
 @accepts(t.uint, t.enum, t.uint, t.int, t.int)
 @returns(t.void)
 @binds(dll)
-def named_framebuffer_texture_layer(framebuffer, attachment, texture, level, layer): 
+def named_framebuffer_texture_layer(framebuffer, attachment, texture, level, layer):
     pass
 
 @accepts(t.uint, t.enum)
 @returns(t.void)
 @binds(dll)
-def named_framebuffer_draw_buffer(framebuffer, buf): 
+def named_framebuffer_draw_buffer(framebuffer, buf):
     pass
 
 @accepts(t.uint, t.sizei, POINTER(t.enum))
 @returns(t.void)
 @binds(dll)
-def named_framebuffer_draw_buffers(framebuffer, n, bufs): 
+def named_framebuffer_draw_buffers(framebuffer, n, bufs):
     pass
 
 @accepts(t.uint, t.enum)
 @returns(t.void)
 @binds(dll)
-def named_framebuffer_read_buffer(framebuffer, src): 
+def named_framebuffer_read_buffer(framebuffer, src):
     pass
 
 @accepts(t.uint, t.sizei, POINTER(t.enum))
 @returns(t.void)
 @binds(dll)
-def invalidate_named_framebuffer_data(framebuffer, numAttachments, attachments): 
+def invalidate_named_framebuffer_data(framebuffer, numAttachments, attachments):
     pass
 
 @accepts(t.uint, t.sizei, POINTER(t.enum), t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def invalidate_named_framebuffer_sub_data(framebuffer, numAttachments, attachments, x, y, width, height): 
+def invalidate_named_framebuffer_sub_data(framebuffer, numAttachments, attachments, x, y, width, height):
     pass
 
 @accepts(t.uint, t.enum, t.int, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def clear_named_framebufferiv(framebuffer, buffer, drawbuffer, value): 
+def clear_named_framebufferiv(framebuffer, buffer, drawbuffer, value):
     pass
 
 @accepts(t.uint, t.enum, t.int, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def clear_named_framebufferuiv(framebuffer, buffer, drawbuffer, value): 
+def clear_named_framebufferuiv(framebuffer, buffer, drawbuffer, value):
     pass
 
 @accepts(t.uint, t.enum, t.int, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def clear_named_framebufferfv(framebuffer, buffer, drawbuffer, value): 
+def clear_named_framebufferfv(framebuffer, buffer, drawbuffer, value):
     pass
 
 @accepts(t.uint, t.enum, t.int, t.float, t.int)
 @returns(t.void)
 @binds(dll)
-def clear_named_framebufferfi(framebuffer, buffer, drawbuffer, depth, stencil): 
+def clear_named_framebufferfi(framebuffer, buffer, drawbuffer, depth, stencil):
     pass
 
 @accepts(t.uint, t.uint, t.int, t.int, t.int, t.int, t.int, t.int, t.int, t.int, t.bitfield, t.enum)
 @returns(t.void)
 @binds(dll)
-def blit_named_framebuffer(readFramebuffer, drawFramebuffer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter): 
+def blit_named_framebuffer(readFramebuffer, drawFramebuffer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter):
     pass
 
 @accepts(t.uint, t.enum)
 @returns(t.enum)
 @binds(dll)
-def check_named_framebuffer_status(framebuffer, target): 
+def check_named_framebuffer_status(framebuffer, target):
     pass
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_named_framebuffer_parameteriv(framebuffer, pname, param): 
+def get_named_framebuffer_parameteriv(framebuffer, pname, param):
     pass
 
 @accepts(t.uint, t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_named_framebuffer_attachment_parameteriv(framebuffer, attachment, pname, params): 
+def get_named_framebuffer_attachment_parameteriv(framebuffer, attachment, pname, params):
     pass
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def create_renderbuffers(n, renderbuffers): 
+def create_renderbuffers(n, renderbuffers):
     '''create renderbuffer objects'''
 
 @accepts(t.uint, t.enum, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def named_renderbuffer_storage(renderbuffer, internalformat, width, height): 
+def named_renderbuffer_storage(renderbuffer, internalformat, width, height):
     pass
 
 @accepts(t.uint, t.sizei, t.enum, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def named_renderbuffer_storage_multisample(renderbuffer, samples, internalformat, width, height): 
+def named_renderbuffer_storage_multisample(renderbuffer, samples, internalformat, width, height):
     pass
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_named_renderbuffer_parameteriv(renderbuffer, pname, params): 
+def get_named_renderbuffer_parameteriv(renderbuffer, pname, params):
     pass
 
 @accepts(t.enum, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def create_textures(target, n, textures): 
+def create_textures(target, n, textures):
     '''create texture objects'''
 
 @accepts(t.uint, t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def texture_buffer(texture, internalformat, buffer): 
+def texture_buffer(texture, internalformat, buffer):
     pass
 
 @accepts(t.uint, t.enum, t.uint, t.intptr, t.sizeiptr)
 @returns(t.void)
 @binds(dll)
-def texture_buffer_range(texture, internalformat, buffer, offset, size): 
+def texture_buffer_range(texture, internalformat, buffer, offset, size):
     pass
 
 @accepts(t.uint, t.sizei, t.enum, t.sizei)
 @returns(t.void)
 @binds(dll)
-def texture_storage1_d(texture, levels, internalformat, width): 
+def texture_storage1_d(texture, levels, internalformat, width):
     pass
 
 @accepts(t.uint, t.sizei, t.enum, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def texture_storage2_d(texture, levels, internalformat, width, height): 
+def texture_storage2_d(texture, levels, internalformat, width, height):
     pass
 
 @accepts(t.uint, t.sizei, t.enum, t.sizei, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def texture_storage3_d(texture, levels, internalformat, width, height, depth): 
+def texture_storage3_d(texture, levels, internalformat, width, height, depth):
     pass
 
 @accepts(t.uint, t.sizei, t.enum, t.sizei, t.sizei, t.boolean)
 @returns(t.void)
 @binds(dll)
-def texture_storage2_d_multisample(texture, samples, internalformat, width, height, fixedsamplelocations): 
+def texture_storage2_d_multisample(texture, samples, internalformat, width, height, fixedsamplelocations):
     pass
 
 @accepts(t.uint, t.sizei, t.enum, t.sizei, t.sizei, t.sizei, t.boolean)
 @returns(t.void)
 @binds(dll)
-def texture_storage3_d_multisample(texture, samples, internalformat, width, height, depth, fixedsamplelocations): 
+def texture_storage3_d_multisample(texture, samples, internalformat, width, height, depth, fixedsamplelocations):
     pass
 
 @accepts(t.uint, t.int, t.int, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def texture_sub_image1_d(texture, level, xoffset, width, format, type, pixels): 
+def texture_sub_image1_d(texture, level, xoffset, width, format, type, pixels):
     pass
 
 @accepts(t.uint, t.int, t.int, t.int, t.sizei, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def texture_sub_image2_d(texture, level, xoffset, yoffset, width, height, format, type, pixels): 
+def texture_sub_image2_d(texture, level, xoffset, yoffset, width, height, format, type, pixels):
     pass
 
 @accepts(t.uint, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
-def texture_sub_image3_d(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels): 
+def texture_sub_image3_d(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels):
     pass
 
 @accepts(t.uint, t.int, t.int, t.sizei, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def compressed_texture_sub_image1_d(texture, level, xoffset, width, format, imageSize, data): 
+def compressed_texture_sub_image1_d(texture, level, xoffset, width, format, imageSize, data):
     pass
 
 @accepts(t.uint, t.int, t.int, t.int, t.sizei, t.sizei, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def compressed_texture_sub_image2_d(texture, level, xoffset, yoffset, width, height, format, imageSize, data): 
+def compressed_texture_sub_image2_d(texture, level, xoffset, yoffset, width, height, format, imageSize, data):
     pass
 
 @accepts(t.uint, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def compressed_texture_sub_image3_d(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data): 
+def compressed_texture_sub_image3_d(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data):
     pass
 
 @accepts(t.uint, t.int, t.int, t.int, t.int, t.sizei)
 @returns(t.void)
 @binds(dll)
-def copy_texture_sub_image1_d(texture, level, xoffset, x, y, width): 
+def copy_texture_sub_image1_d(texture, level, xoffset, x, y, width):
     pass
 
 @accepts(t.uint, t.int, t.int, t.int, t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def copy_texture_sub_image2_d(texture, level, xoffset, yoffset, x, y, width, height): 
+def copy_texture_sub_image2_d(texture, level, xoffset, yoffset, x, y, width, height):
     pass
 
 @accepts(t.uint, t.int, t.int, t.int, t.int, t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def copy_texture_sub_image3_d(texture, level, xoffset, yoffset, zoffset, x, y, width, height): 
+def copy_texture_sub_image3_d(texture, level, xoffset, yoffset, zoffset, x, y, width, height):
     pass
 
 @accepts(t.uint, t.enum, t.float)
 @returns(t.void)
 @binds(dll)
-def texture_parameterf(texture, pname, param): 
+def texture_parameterf(texture, pname, param):
     pass
 
 @accepts(t.uint, t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def texture_parameterfv(texture, pname, param): 
+def texture_parameterfv(texture, pname, param):
     pass
 
 @accepts(t.uint, t.enum, t.int)
 @returns(t.void)
 @binds(dll)
-def texture_parameteri(texture, pname, param): 
+def texture_parameteri(texture, pname, param):
     pass
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def texture_parameter_iiv(texture, pname, params): 
+def texture_parameter_iiv(texture, pname, params):
     pass
 
 @accepts(t.uint, t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def texture_parameter_iuiv(texture, pname, params): 
+def texture_parameter_iuiv(texture, pname, params):
     pass
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def texture_parameteriv(texture, pname, param): 
+def texture_parameteriv(texture, pname, param):
     pass
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
-def generate_texture_mipmap(texture): 
+def generate_texture_mipmap(texture):
     pass
 
 @accepts(t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def bind_texture_unit(unit, texture): 
+def bind_texture_unit(unit, texture):
     '''bind an existing texture object to the specified texture unit'''
 
 @accepts(t.uint, t.int, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def get_texture_image(texture, level, format, type, bufSize, pixels): 
+def get_texture_image(texture, level, format, type, bufSize, pixels):
     pass
 
 @accepts(t.uint, t.int, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def get_compressed_texture_image(texture, level, bufSize, pixels): 
+def get_compressed_texture_image(texture, level, bufSize, pixels):
     pass
 
 @accepts(t.uint, t.int, t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def get_texture_level_parameterfv(texture, level, pname, params): 
+def get_texture_level_parameterfv(texture, level, pname, params):
     pass
 
 @accepts(t.uint, t.int, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_texture_level_parameteriv(texture, level, pname, params): 
+def get_texture_level_parameteriv(texture, level, pname, params):
     pass
 
 @accepts(t.uint, t.enum, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def get_texture_parameterfv(texture, pname, params): 
+def get_texture_parameterfv(texture, pname, params):
     pass
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_texture_parameter_iiv(texture, pname, params): 
+def get_texture_parameter_iiv(texture, pname, params):
     pass
 
 @accepts(t.uint, t.enum, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def get_texture_parameter_iuiv(texture, pname, params): 
+def get_texture_parameter_iuiv(texture, pname, params):
     pass
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_texture_parameteriv(texture, pname, params): 
+def get_texture_parameteriv(texture, pname, params):
     pass
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def create_vertex_arrays(n, arrays): 
+def create_vertex_arrays(n, arrays):
     '''create vertex array objects'''
 
 @accepts(t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def disable_vertex_array_attrib(vaobj, index): 
+def disable_vertex_array_attrib(vaobj, index):
     pass
 
 @accepts(t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def enable_vertex_array_attrib(vaobj, index): 
+def enable_vertex_array_attrib(vaobj, index):
     pass
 
 @accepts(t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_array_element_buffer(vaobj, buffer): 
+def vertex_array_element_buffer(vaobj, buffer):
     '''configures element array buffer binding of a vertex array object'''
 
 @accepts(t.uint, t.uint, t.uint, t.intptr, t.sizei)
 @returns(t.void)
 @binds(dll)
-def vertex_array_vertex_buffer(vaobj, bindingindex, buffer, offset, stride): 
+def vertex_array_vertex_buffer(vaobj, bindingindex, buffer, offset, stride):
     pass
 
 @accepts(t.uint, t.uint, t.sizei, POINTER(t.uint), POINTER(t.intptr), POINTER(t.sizei))
 @returns(t.void)
 @binds(dll)
-def vertex_array_vertex_buffers(vaobj, first, count, buffers, offsets, strides): 
+def vertex_array_vertex_buffers(vaobj, first, count, buffers, offsets, strides):
     pass
 
 @accepts(t.uint, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_array_attrib_binding(vaobj, attribindex, bindingindex): 
+def vertex_array_attrib_binding(vaobj, attribindex, bindingindex):
     pass
 
 @accepts(t.uint, t.uint, t.int, t.enum, t.boolean, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_array_attrib_format(vaobj, attribindex, size, type, normalized, relativeoffset): 
+def vertex_array_attrib_format(vaobj, attribindex, size, type, normalized, relativeoffset):
     pass
 
 @accepts(t.uint, t.uint, t.int, t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_array_attrib_i_format(vaobj, attribindex, size, type, relativeoffset): 
+def vertex_array_attrib_i_format(vaobj, attribindex, size, type, relativeoffset):
     pass
 
 @accepts(t.uint, t.uint, t.int, t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_array_attrib_l_format(vaobj, attribindex, size, type, relativeoffset): 
+def vertex_array_attrib_l_format(vaobj, attribindex, size, type, relativeoffset):
     pass
 
 @accepts(t.uint, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
-def vertex_array_binding_divisor(vaobj, bindingindex, divisor): 
+def vertex_array_binding_divisor(vaobj, bindingindex, divisor):
     pass
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_vertex_arrayiv(vaobj, pname, param): 
+def get_vertex_arrayiv(vaobj, pname, param):
     '''retrieve parameters of a vertex array object'''
 
 @accepts(t.uint, t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_vertex_array_indexediv(vaobj, index, pname, param): 
+def get_vertex_array_indexediv(vaobj, index, pname, param):
     pass
 
 @accepts(t.uint, t.uint, t.enum, POINTER(t.int64))
 @returns(t.void)
 @binds(dll)
-def get_vertex_array_indexed64iv(vaobj, index, pname, param): 
+def get_vertex_array_indexed64iv(vaobj, index, pname, param):
     pass
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def create_samplers(n, samplers): 
+def create_samplers(n, samplers):
     '''create sampler objects'''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def create_program_pipelines(n, pipelines): 
+def create_program_pipelines(n, pipelines):
     '''create program pipeline objects'''
 
 @accepts(t.enum, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def create_queries(target, n, ids): 
+def create_queries(target, n, ids):
     '''create query objects'''
 
 @accepts(t.uint, t.uint, t.enum, t.intptr)
 @returns(t.void)
 @binds(dll)
-def get_query_buffer_objecti64v(id, buffer, pname, offset): 
+def get_query_buffer_objecti64v(id, buffer, pname, offset):
     pass
 
 @accepts(t.uint, t.uint, t.enum, t.intptr)
 @returns(t.void)
 @binds(dll)
-def get_query_buffer_objectiv(id, buffer, pname, offset): 
+def get_query_buffer_objectiv(id, buffer, pname, offset):
     pass
 
 @accepts(t.uint, t.uint, t.enum, t.intptr)
 @returns(t.void)
 @binds(dll)
-def get_query_buffer_objectui64v(id, buffer, pname, offset): 
+def get_query_buffer_objectui64v(id, buffer, pname, offset):
     pass
 
 @accepts(t.uint, t.uint, t.enum, t.intptr)
 @returns(t.void)
 @binds(dll)
-def get_query_buffer_objectuiv(id, buffer, pname, offset): 
+def get_query_buffer_objectuiv(id, buffer, pname, offset):
     pass
 
 TEXTURE_TARGET = 0x1006
@@ -620,68 +620,68 @@ TEXTURE_BINDING_RECTANGLE = 0x84F6
 @accepts(t.bitfield)
 @returns(t.void)
 @binds(dll)
-def memory_barrier_by_region(barriers): 
+def memory_barrier_by_region(barriers):
     pass
 
 BACK = 0x0405
 @accepts(t.uint, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def get_texture_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, pixels): 
+def get_texture_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, pixels):
     '''retrieve a sub-region of a texture image from a texture object'''
 
 @accepts(t.uint, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def get_compressed_texture_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth, bufSize, pixels): 
+def get_compressed_texture_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth, bufSize, pixels):
     '''retrieve a sub-region of a compressed texture image from a compressed texture object'''
 
 @accepts()
 @returns(t.enum)
 @binds(dll)
-def get_graphics_reset_status(): 
+def get_graphics_reset_status():
     '''check if the rendering context has not been lost due to software or hardware issues'''
 
 @accepts(t.enum, t.int, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def getn_compressed_tex_image(target, lod, bufSize, pixels): 
+def getn_compressed_tex_image(target, lod, bufSize, pixels):
     pass
 
 @accepts(t.enum, t.int, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def getn_tex_image(target, level, format, type, bufSize, pixels): 
+def getn_tex_image(target, level, format, type, bufSize, pixels):
     pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def getn_uniformdv(program, location, bufSize, params): 
+def getn_uniformdv(program, location, bufSize, params):
     pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def getn_uniformfv(program, location, bufSize, params): 
+def getn_uniformfv(program, location, bufSize, params):
     pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def getn_uniformiv(program, location, bufSize, params): 
+def getn_uniformiv(program, location, bufSize, params):
     pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def getn_uniformuiv(program, location, bufSize, params): 
+def getn_uniformuiv(program, location, bufSize, params):
     pass
 
 @accepts(t.int, t.int, t.sizei, t.sizei, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def readn_pixels(x, y, width, height, format, type, bufSize, data): 
+def readn_pixels(x, y, width, height, format, type, bufSize, data):
     pass
 
 NO_ERROR = 0
@@ -696,79 +696,79 @@ CONTEXT_LOST = 0x0507
 @accepts(t.enum, t.enum, t.sizei, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def getn_mapdv(target, query, bufSize, v): 
+def getn_mapdv(target, query, bufSize, v):
     pass
 
 @accepts(t.enum, t.enum, t.sizei, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def getn_mapfv(target, query, bufSize, v): 
+def getn_mapfv(target, query, bufSize, v):
     pass
 
 @accepts(t.enum, t.enum, t.sizei, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def getn_mapiv(target, query, bufSize, v): 
+def getn_mapiv(target, query, bufSize, v):
     pass
 
 @accepts(t.enum, t.sizei, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def getn_pixel_mapfv(map, bufSize, values): 
+def getn_pixel_mapfv(map, bufSize, values):
     pass
 
 @accepts(t.enum, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def getn_pixel_mapuiv(map, bufSize, values): 
+def getn_pixel_mapuiv(map, bufSize, values):
     pass
 
 @accepts(t.enum, t.sizei, POINTER(t.ushort))
 @returns(t.void)
 @binds(dll)
-def getn_pixel_mapusv(map, bufSize, values): 
+def getn_pixel_mapusv(map, bufSize, values):
     pass
 
 @accepts(t.sizei, POINTER(t.ubyte))
 @returns(t.void)
 @binds(dll)
-def getn_polygon_stipple(bufSize, pattern): 
+def getn_polygon_stipple(bufSize, pattern):
     pass
 
 @accepts(t.enum, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def getn_color_table(target, format, type, bufSize, table): 
+def getn_color_table(target, format, type, bufSize, table):
     pass
 
 @accepts(t.enum, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def getn_convolution_filter(target, format, type, bufSize, image): 
+def getn_convolution_filter(target, format, type, bufSize, image):
     pass
 
 @accepts(t.enum, t.enum, t.enum, t.sizei, t.void, t.sizei, t.void, t.void)
 @returns(t.void)
 @binds(dll)
-def getn_separable_filter(target, format, type, rowBufSize, row, columnBufSize, column, span): 
+def getn_separable_filter(target, format, type, rowBufSize, row, columnBufSize, column, span):
     pass
 
 @accepts(t.enum, t.boolean, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def getn_histogram(target, reset, format, type, bufSize, values): 
+def getn_histogram(target, reset, format, type, bufSize, values):
     pass
 
 @accepts(t.enum, t.boolean, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def getn_minmax(target, reset, format, type, bufSize, values): 
+def getn_minmax(target, reset, format, type, bufSize, values):
     pass
 
 @accepts()
 @returns(t.void)
 @binds(dll)
-def texture_barrier(): 
+def texture_barrier():
     '''controls the ordering of reads and writes to rendered fragments across drawing commands'''
 
 CONTEXT_RELEASE_BEHAVIOR = 0x82FB
