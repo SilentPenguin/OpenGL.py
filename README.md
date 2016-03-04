@@ -8,7 +8,7 @@ gl functions and constants have been defined in the module opengl.
 The reasons for this package's existance was simple, after having a brief stint into PyOpenGL, I was frustrated by
 the lack of documentation on the binding and the true to gl naming conventions without being true to the call signatures.
 These were big grumbles, my gl code was noisy, banging its `camelCase` hands together, attracting untoward attention while
-coding and when I did need to interact with gl, my editor's completion functionality wasn't especially informative.
+coding. When I did need to interact with gl, my editor's completion functionality wasn't especially informative.
 OpenGL.py sets out to resolve these issues.
 
 ### Write PEP 8 code
