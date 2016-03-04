@@ -220,9 +220,8 @@ def delete_textures(n, textures):
     
     gl.delete_textures deletes n textures named by the elements of the array
     textures. After a texture is deleted, it has no contents or dimensionality,
-    and its name is free for reuse (for example by gl.gen_textures). If a
-    texture that is currently bound is deleted, the binding reverts to 0 (the
-    default texture).
+    and its name is free for reuse. If a texture that is currently bound is
+    deleted, the binding reverts to 0.
     
     Args:
         n: the number of textures to be deleted.
@@ -383,8 +382,7 @@ def normal_pointer(type, stride, pointer):
     normals to use when rendering. type specifies the data type of each normal
     coordinate, and stride specifies the byte stride from one normal to the
     next, allowing vertices and attributes to be packed into a single array or
-    stored in separate arrays. (Single-array storage may be more efficient on
-    some implementations; see gl.interleaved_arrays.).
+    stored in separate arrays.
     
     Args:
         type: the data type of each coordinate in the array.

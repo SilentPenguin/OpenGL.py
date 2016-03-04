@@ -556,9 +556,9 @@ def point_size(size):
     specify the diameter of rasterized points.
     
     gl.point_size specifies the rasterized diameter of points. If point size
-    mode is disabled (see gl.enable with parameter gl.PROGRAM_POINT_SIZE), this
-    value will be used to rasterize points. Otherwise, the value written to the
-    shading language built-in variable gl_PointSize will be used.
+    mode is disabled, this value will be used to rasterize points. Otherwise,
+    the value written to the shading language built-in variable gl_PointSize
+    will be used.
     
     Args:
         size: the diameter of rasterized points.
@@ -786,7 +786,7 @@ def clear_stencil(s):
     specify the clear value for the stencil buffer.
     
     gl.clear_stencil specifies the index used by gl.clear to clear the stencil
-    buffer. s is masked with 2 m - 1, where.
+    buffer. s is masked with 2 m - 1 , where.
     
     Args:
         s: the index used when the stencil buffer is cleared.
@@ -963,11 +963,11 @@ def cull_face(mode):
     '''
     specify whether front- or back-facing facets can be culled.
     
-    gl.cull_face specifies whether front- or back-facing facets are culled (as
-    specified by mode) when facet culling is enabled. Facet culling is initially
-    disabled. To enable and disable facet culling, call the gl.enable and
-    gl.disable commands with the argument gl.CULL_FACE. Facets include
-    triangles, quadrilaterals, polygons, and rectangles.
+    gl.cull_face specifies whether front- or back-facing facets are culled when
+    facet culling is enabled. Facet culling is initially disabled. To enable and
+    disable facet culling, call the gl.enable and gl.disable commands with the
+    argument gl.CULL_FACE. Facets include triangles, quadrilaterals, polygons,
+    and rectangles.
     
     Args:
         mode: whether front- or back-facing facets are candidates for culling.
@@ -982,9 +982,8 @@ def delete_buffers(n, buffers):
     
     gl.delete_buffers deletes n buffer objects named by the elements of the
     array buffers. After a buffer object is deleted, it has no contents, and its
-    name is free for reuse (for example by gl.gen_buffers). If a buffer object
-    that is currently bound is deleted, the binding reverts to 0 (the absence of
-    any buffer object).
+    name is free for reuse. If a buffer object that is currently bound is
+    deleted, the binding reverts to 0.
     
     Args:
         n: the number of buffer objects to be deleted.
@@ -1000,9 +999,8 @@ def delete_textures(n, textures):
     
     gl.delete_textures deletes n textures named by the elements of the array
     textures. After a texture is deleted, it has no contents or dimensionality,
-    and its name is free for reuse (for example by gl.gen_textures). If a
-    texture that is currently bound is deleted, the binding reverts to 0 (the
-    default texture).
+    and its name is free for reuse. If a texture that is currently bound is
+    deleted, the binding reverts to 0.
     
     Args:
         n: the number of textures to be deleted.
@@ -1018,8 +1016,7 @@ def depth_func(func):
     
     gl.depth_func specifies the function used to compare each incoming pixel
     depth value with the depth value present in the depth buffer. The comparison
-    is performed only if depth testing is enabled. (See gl.enable and gl.disable
-    of gl.DEPTH_TEST.).
+    is performed only if depth testing is enabled.
     
     Args:
         func: the depth comparison function.
@@ -1499,8 +1496,7 @@ def normal_pointer(type, stride, pointer):
     normals to use when rendering. type specifies the data type of each normal
     coordinate, and stride specifies the byte stride from one normal to the
     next, allowing vertices and attributes to be packed into a single array or
-    stored in separate arrays. (Single-array storage may be more efficient on
-    some implementations; see gl.interleaved_arrays.).
+    stored in separate arrays.
     
     Args:
         type: the data type of each coordinate in the array.
@@ -1567,12 +1563,12 @@ def read_pixels(x, y, width, height, format, type, pixels):
     read a block of pixels from the frame buffer.
     
     gl.read_pixels and gl.readn_pixels return pixel data from the frame buffer,
-    starting with the pixel whose lower left corner is at location (x, y), into
-    client memory starting at location data. Several parameters control the
-    processing of the pixel data before it is placed into client memory. These
-    parameters are set with gl.pixel_store. This reference page describes the
-    effects on gl.read_pixels and gl.readn_pixels of most, but not all of the
-    parameters specified by these three commands.
+    starting with the pixel whose lower left corner is at location , into client
+    memory starting at location data. Several parameters control the processing
+    of the pixel data before it is placed into client memory. These parameters
+    are set with gl.pixel_store. This reference page describes the effects on
+    gl.read_pixels and gl.readn_pixels of most, but not all of the parameters
+    specified by these three commands.
     
     Args:
         x: the window coordinates of the first pixel that is read from the frame

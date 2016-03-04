@@ -363,10 +363,9 @@ def copy_image_sub_data(srcname, srctarget, srclevel, srcx, srcy, srcz, dstname,
     '''
     perform a raw data copy between two images.
     
-    gl.copy_image_sub_data may be used to copy data from one image (i.e. texture
-    or renderbuffer) to another. gl.copy_image_sub_data does not perform
-    general-purpose conversions such as scaling, resizing, blending, color-
-    space, or format conversions.
+    gl.copy_image_sub_data may be used to copy data from one image to another.
+    gl.copy_image_sub_data does not perform general-purpose conversions such as
+    scaling, resizing, blending, color-space, or format conversions.
     
     Args:
         srcname: the name of a texture or renderbuffer object from which to
@@ -896,8 +895,8 @@ def vertex_binding_divisor(bindingindex, divisor):
     instances of primitives in a single draw command. If divisor is zero, the
     attributes using the buffer bound to bindingindex advance once per vertex.
     If divisor is non-zero, the attributes advance once per divisor instances of
-    the set(s) of vertices being rendered. An attribute is referred to as
-    instanced if the corresponding divisor value is non-zero.
+    the set of vertices being rendered. An attribute is referred to as instanced
+    if the corresponding divisor value is non-zero.
     
     Args:
         bindingindex: the index of the binding whose divisor to modify.
