@@ -7,103 +7,202 @@ from opengl.gl.raw.bindings import *
 @returns(t.void)
 @binds(dll)
 def active_texture(texture):
-    '''select active texture unit'''
+    '''
+    select active texture unit
+    
+    Args:
+        texture: Specifies which texture unit to make active
+    '''
 
 @accepts(t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
 def attach_shader(program, shader):
-    '''Attaches a shader object to a program object'''
+    '''
+    Attaches a shader object to a program object
+    
+    Args:
+        program: Specifies the program object to which a shader object will be attached
+        shader: Specifies the shader object that is to be attached
+    '''
 
 @accepts(t.uint, t.uint, t.char_p)
 @returns(t.void)
 @binds(dll)
 def bind_attrib_location(program, index, name):
-    '''Associates a generic vertex attribute index with a named attribute variable'''
+    '''
+    Associates a generic vertex attribute index with a named attribute variable
+    
+    Args:
+        program: Specifies the handle of the program object in which the association is to be made
+        index: Specifies the index of the generic vertex attribute to be bound
+        name: Specifies a null terminated string containing the name of the vertex shader attribute variable to which index is to be bound
+    '''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
 def bind_buffer(target, buffer):
-    '''bind a named buffer object'''
+    '''
+    bind a named buffer object
+    
+    Args:
+        target: Specifies the target to which the buffer object is bound, which must be one of the buffer binding targets in the following table:
+        buffer: Specifies the name of a buffer object
+    '''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
 def bind_framebuffer(target, framebuffer):
-    '''bind a framebuffer to a framebuffer target'''
+    '''
+    bind a framebuffer to a framebuffer target
+    
+    Args:
+        target: Specifies the framebuffer target of the binding operation
+        framebuffer: Specifies the name of the framebuffer object to bind
+    '''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
 def bind_renderbuffer(target, renderbuffer):
-    '''bind a renderbuffer to a renderbuffer target'''
+    '''
+    bind a renderbuffer to a renderbuffer target
+    
+    Args:
+        target: Specifies the renderbuffer target of the binding operation
+        renderbuffer: Specifies the name of the renderbuffer object to bind
+    '''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
 def bind_texture(target, texture):
-    '''bind a named texture to a texturing target'''
+    '''
+    bind a named texture to a texturing target
+    
+    Args:
+        target: Specifies the target to which the texture is bound
+        texture: Specifies the name of a texture
+    '''
 
 @accepts(t.float, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
 def blend_color(red, green, blue, alpha):
-    '''set the blend color'''
+    '''
+    set the blend color
+    
+    Args:
+        red, green, blue, alpha: specify the components of GL_BLEND_COLOR
+    '''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
 def blend_equation(mode):
-    '''specify the equation used for both the RGB blend equation and the Alpha blend equation'''
+    '''
+    specify the equation used for both the RGB blend equation and the Alpha blend equation
+    
+    Args:
+        mode: specifies how source and destination colors are combined
+    '''
 
 @accepts(t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
-def blend_equation_separate(modeRGB, modeAlpha):
-    '''set the RGB blend equation and the alpha blend equation separately'''
+def blend_equation_separate(modergb, modealpha):
+    '''
+    set the RGB blend equation and the alpha blend equation separately
+    
+    Args:
+        modergb: specifies the RGB blend equation, how the red, green, and blue components of the source and destination colors are combined
+        modealpha: specifies the alpha blend equation, how the alpha component of the source and destination colors are combined
+    '''
 
 @accepts(t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
 def blend_func(sfactor, dfactor):
-    '''specify pixel arithmetic'''
+    '''
+    specify pixel arithmetic
+    
+    Args:
+        sfactor: Specifies how the red, green, blue, and alpha source blending factors are computed
+        dfactor: Specifies how the red, green, blue, and alpha destination blending factors are computed
+    '''
 
 @accepts(t.enum, t.enum, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
-def blend_func_separate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha):
-    '''specify pixel arithmetic for RGB and alpha components separately'''
+def blend_func_separate(sfactorrgb, dfactorrgb, sfactoralpha, dfactoralpha):
+    '''
+    specify pixel arithmetic for RGB and alpha components separately
+    
+    Args:
+    '''
 
 @accepts(t.enum, t.sizeiptr, t.void, t.enum)
 @returns(t.void)
 @binds(dll)
 def buffer_data(target, size, data, usage):
-    '''creates and initializes a buffer object's data store'''
+    '''
+    creates and initializes a buffer object's data store
+    
+    Args:
+        target: Specifies the target to which the buffer object is bound for glBufferData, which must be one of the buffer binding targets in the following table:
+        size: Specifies the size in bytes of the buffer object's new data store
+        data: Specifies a pointer to data that will be copied into the data store for initialization, or NULL if no data is to be copied
+        usage: Specifies the expected usage pattern of the data store
+    '''
 
 @accepts(t.enum, t.intptr, t.sizeiptr, t.void)
 @returns(t.void)
 @binds(dll)
 def buffer_sub_data(target, offset, size, data):
-    '''updates a subset of a buffer object's data store'''
+    '''
+    updates a subset of a buffer object's data store
+    
+    Args:
+        target: Specifies the target to which the buffer object is bound for glBufferSubData, which must be one of the buffer binding targets in the following table:
+        offset: Specifies the offset into the buffer object's data store where data replacement will begin, measured in bytes
+        size: Specifies the size in bytes of the data store region being replaced
+        data: Specifies a pointer to the new data that will be copied into the data store
+    '''
 
 @accepts(t.enum)
 @returns(t.enum)
 @binds(dll)
 def check_framebuffer_status(target):
-    '''check the completeness status of a framebuffer'''
+    '''
+    check the completeness status of a framebuffer
+    
+    Args:
+        target: Specify the target to which the framebuffer is bound for glCheckFramebufferStatus, and the target against which framebuffer completeness of framebuffer is checked for glCheckNamedFramebufferStatus
+    '''
 
 @accepts(t.bitfield)
 @returns(t.void)
 @binds(dll)
 def clear(mask):
-    '''clear buffers to preset values'''
+    '''
+    clear buffers to preset values
+    
+    Args:
+        mask: Bitwise OR of masks that indicate the buffers to be cleared
+    '''
 
 @accepts(t.float, t.float, t.float, t.float)
 @returns(t.void)
 @binds(dll)
 def clear_color(red, green, blue, alpha):
-    '''specify clear values for the color buffers'''
+    '''
+    specify clear values for the color buffers
+    
+    Args:
+        red, green, blue, alpha: Specify the red, green, blue, and alpha values used when the color buffers are cleared
+    '''
 
 @accepts(t.float)
 @returns(t.void)
@@ -115,109 +214,228 @@ def clear_depthf(d):
 @returns(t.void)
 @binds(dll)
 def clear_stencil(s):
-    '''specify the clear value for the stencil buffer'''
+    '''
+    specify the clear value for the stencil buffer
+    
+    Args:
+        s: Specifies the index used when the stencil buffer is cleared
+    '''
 
 @accepts(t.boolean, t.boolean, t.boolean, t.boolean)
 @returns(t.void)
 @binds(dll)
 def color_mask(red, green, blue, alpha):
-    '''enable and disable writing of frame buffer color components'''
+    '''
+    enable and disable writing of frame buffer color components
+    
+    Args:
+        red, green, blue, alpha: Specify whether red, green, blue, and alpha are to be written into the frame buffer
+    '''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
 def compile_shader(shader):
-    '''Compiles a shader object'''
+    '''
+    Compiles a shader object
+    
+    Args:
+        shader: Specifies the shader object to be compiled
+    '''
 
 @accepts(t.enum, t.int, t.enum, t.sizei, t.sizei, t.int, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def compressed_tex_image2_d(target, level, internalformat, width, height, border, imageSize, data):
-    '''specify a two-dimensional texture image in a compressed format'''
+def compressed_tex_image2_d(target, level, internalformat, width, height, border, imagesize, data):
+    '''
+    specify a two-dimensional texture image in a compressed format
+    
+    Args:
+        target: Specifies the target texture
+        level: Specifies the level-of-detail number
+        internalformat: Specifies the format of the compressed image data stored at address data
+        width: Specifies the width of the texture image
+        height: Specifies the height of the texture image
+        border: This value must be 0
+        imagesize: Specifies the number of unsigned bytes of image data starting at the address specified by data
+        data: Specifies a pointer to the compressed image data in memory
+    '''
 
 @accepts(t.enum, t.int, t.int, t.int, t.sizei, t.sizei, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def compressed_tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, imageSize, data):
-    '''specify a two-dimensional texture subimage in a compressed format'''
+def compressed_tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, imagesize, data):
+    '''
+    specify a two-dimensional texture subimage in a compressed format
+    
+    Args:
+        target: Specifies the target to which the texture is bound for glCompressedTexSubImage2D function
+        level: Specifies the level-of-detail number
+        xoffset: Specifies a texel offset in the x direction within the texture array
+        yoffset: Specifies a texel offset in the y direction within the texture array
+        width: Specifies the width of the texture subimage
+        height: Specifies the height of the texture subimage
+        format: Specifies the format of the compressed image data stored at address data
+        imagesize: Specifies the number of unsigned bytes of image data starting at the address specified by data
+        data: Specifies a pointer to the compressed image data in memory
+    '''
 
 @accepts(t.enum, t.int, t.enum, t.int, t.int, t.sizei, t.sizei, t.int)
 @returns(t.void)
 @binds(dll)
 def copy_tex_image2_d(target, level, internalformat, x, y, width, height, border):
-    '''copy pixels into a 2D texture image'''
+    '''
+    copy pixels into a 2D texture image
+    
+    Args:
+        target: Specifies the target texture
+        level: Specifies the level-of-detail number
+        internalformat: Specifies the internal format of the texture
+        x, y: Specify the window coordinates of the lower left corner of the rectangular region of pixels to be copied
+        width: Specifies the width of the texture image
+        height: Specifies the height of the texture image
+        border: Must be 0
+    '''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def copy_tex_sub_image2_d(target, level, xoffset, yoffset, x, y, width, height):
-    '''copy a two-dimensional texture subimage'''
+    '''
+    copy a two-dimensional texture subimage
+    
+    Args:
+        target: Specifies the target to which the texture object is bound for glCopyTexSubImage2D function
+        level: Specifies the level-of-detail number
+        xoffset: Specifies a texel offset in the x direction within the texture array
+        yoffset: Specifies a texel offset in the y direction within the texture array
+        x, y: Specify the window coordinates of the lower left corner of the rectangular region of pixels to be copied
+        width: Specifies the width of the texture subimage
+        height: Specifies the height of the texture subimage
+    '''
 
 @accepts()
 @returns(t.uint)
 @binds(dll)
 def create_program():
-    '''Creates a program object'''
+    '''
+    Creates a program object
+    
+    Args:
+    '''
 
 @accepts(t.enum)
 @returns(t.uint)
 @binds(dll)
 def create_shader(type):
-    '''Creates a shader object'''
+    '''
+    Creates a shader object
+    
+    Args:
+    '''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
 def cull_face(mode):
-    '''specify whether front- or back-facing facets can be culled'''
+    '''
+    specify whether front- or back-facing facets can be culled
+    
+    Args:
+        mode: Specifies whether front- or back-facing facets are candidates for culling
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def delete_buffers(n, buffers):
-    '''delete named buffer objects'''
+    '''
+    delete named buffer objects
+    
+    Args:
+        n: Specifies the number of buffer objects to be deleted
+        buffers: Specifies an array of buffer objects to be deleted
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def delete_framebuffers(n, framebuffers):
-    '''delete framebuffer objects'''
+    '''
+    delete framebuffer objects
+    
+    Args:
+        n: Specifies the number of framebuffer objects to be deleted
+        framebuffers: A pointer to an array containing n framebuffer objects to be deleted
+    '''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
 def delete_program(program):
-    '''Deletes a program object'''
+    '''
+    Deletes a program object
+    
+    Args:
+        program: Specifies the program object to be deleted
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def delete_renderbuffers(n, renderbuffers):
-    '''delete renderbuffer objects'''
+    '''
+    delete renderbuffer objects
+    
+    Args:
+        n: Specifies the number of renderbuffer objects to be deleted
+        renderbuffers: A pointer to an array containing n renderbuffer objects to be deleted
+    '''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
 def delete_shader(shader):
-    '''Deletes a shader object'''
+    '''
+    Deletes a shader object
+    
+    Args:
+        shader: Specifies the shader object to be deleted
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def delete_textures(n, textures):
-    '''delete named textures'''
+    '''
+    delete named textures
+    
+    Args:
+        n: Specifies the number of textures to be deleted
+        textures: Specifies an array of textures to be deleted
+    '''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
 def depth_func(func):
-    '''specify the value used for depth buffer comparisons'''
+    '''
+    specify the value used for depth buffer comparisons
+    
+    Args:
+        func: Specifies the depth comparison function
+    '''
 
 @accepts(t.boolean)
 @returns(t.void)
 @binds(dll)
 def depth_mask(flag):
-    '''enable or disable writing into the depth buffer'''
+    '''
+    enable or disable writing into the depth buffer
+    
+    Args:
+        flag: Specifies whether the depth buffer is enabled for writing
+    '''
 
 @accepts(t.float, t.float)
 @returns(t.void)
@@ -229,7 +447,13 @@ def depth_rangef(n, f):
 @returns(t.void)
 @binds(dll)
 def detach_shader(program, shader):
-    '''Detaches a shader object from a program object to which it is attached'''
+    '''
+    Detaches a shader object from a program object to which it is attached
+    
+    Args:
+        program: Specifies the program object from which to detach the shader object
+        shader: Specifies the shader object to be detached
+    '''
 
 @accepts(t.enum)
 @returns(t.void)
@@ -247,43 +471,84 @@ def disable_vertex_attrib_array(index):
 @returns(t.void)
 @binds(dll)
 def draw_arrays(mode, first, count):
-    '''render primitives from array data'''
+    '''
+    render primitives from array data
+    
+    Args:
+        mode: Specifies what kind of primitives to render
+        first: Specifies the starting index in the enabled arrays
+        count: Specifies the number of indices to be rendered
+    '''
 
 @accepts(t.enum, t.sizei, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def draw_elements(mode, count, type, indices):
-    '''render primitives from array data'''
+    '''
+    render primitives from array data
+    
+    Args:
+        mode: Specifies what kind of primitives to render
+        count: Specifies the number of elements to be rendered
+        type: Specifies the type of the values in indices
+        indices: Specifies a pointer to the location where the indices are stored
+    '''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
 def enable(cap):
-    '''enable or disable server-side GL capabilities'''
+    '''
+    enable or disable server-side GL capabilities
+    
+    Args:
+        cap: Specifies a symbolic constant indicating a GL capability
+    '''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
 def enable_vertex_attrib_array(index):
-    '''Enable or disable a generic vertex attribute array'''
+    '''
+    Enable or disable a generic vertex attribute array
+    
+    Args:
+        index: Specifies the index of the generic vertex attribute to be enabled or disabled
+    '''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
 def finish():
-    '''block until all GL execution is complete'''
+    '''
+    block until all GL execution is complete
+    
+    Args:
+    '''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
 def flush():
-    '''force execution of GL commands in finite time'''
+    '''
+    force execution of GL commands in finite time
+    
+    Args:
+    '''
 
 @accepts(t.enum, t.enum, t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
 def framebuffer_renderbuffer(target, attachment, renderbuffertarget, renderbuffer):
-    '''attach a renderbuffer as a logical buffer of a framebuffer object'''
+    '''
+    attach a renderbuffer as a logical buffer of a framebuffer object
+    
+    Args:
+        target: Specifies the target to which the framebuffer is bound for glFramebufferRenderbuffer
+        attachment: Specifies the attachment point of the framebuffer
+        renderbuffertarget: Specifies the renderbuffer target
+        renderbuffer: Specifies the name of an existing renderbuffer object of type renderbuffertarget to attach
+    '''
 
 @accepts(t.enum, t.enum, t.enum, t.uint, t.int)
 @returns(t.void)
@@ -295,61 +560,130 @@ def framebuffer_texture2_d(target, attachment, textarget, texture, level):
 @returns(t.void)
 @binds(dll)
 def front_face(mode):
-    '''define front- and back-facing polygons'''
+    '''
+    define front- and back-facing polygons
+    
+    Args:
+        mode: Specifies the orientation of front-facing polygons
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def gen_buffers(n, buffers):
-    '''generate buffer object names'''
+    '''
+    generate buffer object names
+    
+    Args:
+        n: Specifies the number of buffer object names to be generated
+        buffers: Specifies an array in which the generated buffer object names are stored
+    '''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
 def generate_mipmap(target):
-    '''generate mipmaps for a specified texture object'''
+    '''
+    generate mipmaps for a specified texture object
+    
+    Args:
+        target: Specifies the target to which the texture object is bound for glGenerateMipmap
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def gen_framebuffers(n, framebuffers):
-    '''generate framebuffer object names'''
+    '''
+    generate framebuffer object names
+    
+    Args:
+        n: Specifies the number of framebuffer object names to generate
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def gen_renderbuffers(n, renderbuffers):
-    '''generate renderbuffer object names'''
+    '''
+    generate renderbuffer object names
+    
+    Args:
+        n: Specifies the number of renderbuffer object names to generate
+        renderbuffers: Specifies an array in which the generated renderbuffer object names are stored
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def gen_textures(n, textures):
-    '''generate texture names'''
+    '''
+    generate texture names
+    
+    Args:
+        n: Specifies the number of texture names to be generated
+        textures: Specifies an array in which the generated texture names are stored
+    '''
 
 @accepts(t.uint, t.uint, t.sizei, POINTER(t.sizei), POINTER(t.int), POINTER(t.enum), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_active_attrib(program, index, bufSize, length, size, type, name):
-    '''Returns information about an active attribute variable for the specified program object'''
+def get_active_attrib(program, index, bufsize, length, size, type, name):
+    '''
+    Returns information about an active attribute variable for the specified program object
+    
+    Args:
+        program: Specifies the program object to be queried
+        index: Specifies the index of the attribute variable to be queried
+        bufsize: Specifies the maximum number of characters OpenGL is allowed to write in the character buffer indicated by name
+        length: Returns the number of characters actually written by OpenGL in the string indicated by name (excluding the null terminator) if a value other than NULL is passed
+        size: Returns the size of the attribute variable
+        type: Returns the data type of the attribute variable
+        name: Returns a null terminated string containing the name of the attribute variable
+    '''
 
 @accepts(t.uint, t.uint, t.sizei, POINTER(t.sizei), POINTER(t.int), POINTER(t.enum), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_active_uniform(program, index, bufSize, length, size, type, name):
-    '''Returns information about an active uniform variable for the specified program object'''
+def get_active_uniform(program, index, bufsize, length, size, type, name):
+    '''
+    Returns information about an active uniform variable for the specified program object
+    
+    Args:
+        program: Specifies the program object to be queried
+        index: Specifies the index of the uniform variable to be queried
+        bufsize: Specifies the maximum number of characters OpenGL is allowed to write in the character buffer indicated by name
+        length: Returns the number of characters actually written by OpenGL in the string indicated by name (excluding the null terminator) if a value other than NULL is passed
+        size: Returns the size of the uniform variable
+        type: Returns the data type of the uniform variable
+        name: Returns a null terminated string containing the name of the uniform variable
+    '''
 
 @accepts(t.uint, t.sizei, POINTER(t.sizei), POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def get_attached_shaders(program, maxCount, count, shaders):
-    '''Returns the handles of the shader objects attached to a program object'''
+def get_attached_shaders(program, maxcount, count, shaders):
+    '''
+    Returns the handles of the shader objects attached to a program object
+    
+    Args:
+        program: Specifies the program object to be queried
+        maxcount: Specifies the size of the array for storing the returned object names
+        count: Returns the number of names actually returned in shaders
+        shaders: Specifies an array that is used to return the names of attached shader objects
+    '''
 
 @accepts(t.uint, t.char_p)
 @returns(t.int)
 @binds(dll)
 def get_attrib_location(program, name):
-    '''Returns the location of an attribute variable'''
+    '''
+    Returns the location of an attribute variable
+    
+    Args:
+        program: Specifies the program object to be queried
+        name: Points to a null terminated string containing the name of the attribute variable whose location is to be queried
+    '''
 
 @accepts(t.enum, POINTER(t.boolean))
 @returns(t.void)
@@ -361,13 +695,22 @@ def get_booleanv(pname, data):
 @returns(t.void)
 @binds(dll)
 def get_buffer_parameteriv(target, pname, params):
-    '''return parameters of a buffer object'''
+    '''
+    return parameters of a buffer object
+    
+    Args:
+        target: Specifies the target buffer object
+    '''
 
 @accepts()
 @returns(t.enum)
 @binds(dll)
 def get_error():
-    '''return error information'''
+    '''
+    return error information
+    
+    Args:
+    '''
 
 @accepts(t.enum, POINTER(t.float))
 @returns(t.void)
@@ -396,8 +739,15 @@ def get_programiv(program, pname, params):
 @accepts(t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_program_info_log(program, bufSize, length, infoLog):
-    '''Returns the information log for a program object'''
+def get_program_info_log(program, bufsize, length, infolog):
+    '''
+    Returns the information log for a program object
+    
+    Args:
+        program: Specifies the program object whose information log is to be queried
+        length: Returns the length of the string returned in infoLog (excluding the null terminator)
+        infolog: Specifies an array of characters that is used to return the information log
+    '''
 
 @accepts(t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
@@ -414,26 +764,54 @@ def get_shaderiv(shader, pname, params):
 @accepts(t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_shader_info_log(shader, bufSize, length, infoLog):
-    '''Returns the information log for a shader object'''
+def get_shader_info_log(shader, bufsize, length, infolog):
+    '''
+    Returns the information log for a shader object
+    
+    Args:
+        shader: Specifies the shader object whose information log is to be queried
+        length: Returns the length of the string returned in infoLog (excluding the null terminator)
+        infolog: Specifies an array of characters that is used to return the information log
+    '''
 
 @accepts(t.enum, t.enum, POINTER(t.int), POINTER(t.int))
 @returns(t.void)
 @binds(dll)
 def get_shader_precision_format(shadertype, precisiontype, range, precision):
-    '''retrieve the range and precision for numeric formats supported by the shader compiler'''
+    '''
+    retrieve the range and precision for numeric formats supported by the shader compiler
+    
+    Args:
+        shadertype: Specifies the type of shader whose precision to query
+        precisiontype: Specifies the numeric format whose precision and range to query
+        range: Specifies the address of array of two integers into which encodings of the implementation's numeric range are returned
+        precision: Specifies the address of an integer into which the numeric precision of the implementation is written
+    '''
 
 @accepts(t.uint, t.sizei, POINTER(t.sizei), t.char_p)
 @returns(t.void)
 @binds(dll)
-def get_shader_source(shader, bufSize, length, source):
-    '''Returns the source code string from a shader object'''
+def get_shader_source(shader, bufsize, length, source):
+    '''
+    Returns the source code string from a shader object
+    
+    Args:
+        shader: Specifies the shader object to be queried
+        bufsize: Specifies the size of the character buffer for storing the returned source code string
+        length: Returns the length of the string returned in source (excluding the null terminator)
+        source: Specifies an array of characters that is used to return the source code string
+    '''
 
 @accepts(t.enum)
 @returns(POINTER(t.ubyte))
 @binds(dll)
 def get_string(name):
-    '''return a string describing the current GL connection'''
+    '''
+    return a string describing the current GL connection
+    
+    Args:
+        name: Specifies a symbolic constant, one of GL_VENDOR, GL_RENDERER, GL_VERSION, or GL_SHADING_LANGUAGE_VERSION
+    '''
 
 @accepts(t.enum, t.enum, POINTER(t.float))
 @returns(t.void)
@@ -463,7 +841,13 @@ def get_uniformiv(program, location, params):
 @returns(t.int)
 @binds(dll)
 def get_uniform_location(program, name):
-    '''Returns the location of a uniform variable'''
+    '''
+    Returns the location of a uniform variable
+    
+    Args:
+        program: Specifies the program object to be queried
+        name: Points to a null terminated string containing the name of the uniform variable whose location is to be queried
+    '''
 
 @accepts(t.uint, t.enum, POINTER(t.float))
 @returns(t.void)
@@ -481,67 +865,125 @@ def get_vertex_attribiv(index, pname, params):
 @returns(t.void)
 @binds(dll)
 def get_vertex_attrib_pointerv(index, pname, pointer):
-    '''return the address of the specified generic vertex attribute pointer'''
+    '''
+    return the address of the specified generic vertex attribute pointer
+    
+    Args:
+        index: Specifies the generic vertex attribute parameter to be returned
+        pname: Specifies the symbolic name of the generic vertex attribute parameter to be returned
+        pointer: Returns the pointer value
+    '''
 
 @accepts(t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
 def hint(target, mode):
-    '''specify implementation-specific hints'''
+    '''
+    specify implementation-specific hints
+    
+    Args:
+        target: Specifies a symbolic constant indicating the behavior to be controlled
+        mode: Specifies a symbolic constant indicating the desired behavior
+    '''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
 def is_buffer(buffer):
-    '''determine if a name corresponds to a buffer object'''
+    '''
+    determine if a name corresponds to a buffer object
+    
+    Args:
+        buffer: Specifies a value that may be the name of a buffer object
+    '''
 
 @accepts(t.enum)
 @returns(t.boolean)
 @binds(dll)
 def is_enabled(cap):
-    '''test whether a capability is enabled'''
+    '''
+    test whether a capability is enabled
+    
+    Args:
+        cap: Specifies a symbolic constant indicating a GL capability
+    '''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
 def is_framebuffer(framebuffer):
-    '''determine if a name corresponds to a framebuffer object'''
+    '''
+    determine if a name corresponds to a framebuffer object
+    
+    Args:
+        framebuffer: Specifies a value that may be the name of a framebuffer object
+    '''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
 def is_program(program):
-    '''Determines if a name corresponds to a program object'''
+    '''
+    Determines if a name corresponds to a program object
+    
+    Args:
+        program: Specifies a potential program object
+    '''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
 def is_renderbuffer(renderbuffer):
-    '''determine if a name corresponds to a renderbuffer object'''
+    '''
+    determine if a name corresponds to a renderbuffer object
+    
+    Args:
+        renderbuffer: Specifies a value that may be the name of a renderbuffer object
+    '''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
 def is_shader(shader):
-    '''Determines if a name corresponds to a shader object'''
+    '''
+    Determines if a name corresponds to a shader object
+    
+    Args:
+        shader: Specifies a potential shader object
+    '''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
 def is_texture(texture):
-    '''determine if a name corresponds to a texture'''
+    '''
+    determine if a name corresponds to a texture
+    
+    Args:
+        texture: Specifies a value that may be the name of a texture
+    '''
 
 @accepts(t.float)
 @returns(t.void)
 @binds(dll)
 def line_width(width):
-    '''specify the width of rasterized lines'''
+    '''
+    specify the width of rasterized lines
+    
+    Args:
+        width: Specifies the width of rasterized lines
+    '''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
 def link_program(program):
-    '''Links a program object'''
+    '''
+    Links a program object
+    
+    Args:
+        program: Specifies the handle of the program object to be linked
+    '''
 
 @accepts(t.enum, t.int)
 @returns(t.void)
@@ -553,91 +995,196 @@ def pixel_storei(pname, param):
 @returns(t.void)
 @binds(dll)
 def polygon_offset(factor, units):
-    '''set the scale and units used to calculate depth values'''
+    '''
+    set the scale and units used to calculate depth values
+    
+    Args:
+        factor: Specifies a scale factor that is used to create a variable depth offset for each polygon
+        units: Is multiplied by an implementation-specific value to create a constant depth offset
+    '''
 
 @accepts(t.int, t.int, t.sizei, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def read_pixels(x, y, width, height, format, type, pixels):
-    '''read a block of pixels from the frame buffer'''
+    '''
+    read a block of pixels from the frame buffer
+    
+    Args:
+        x, y: Specify the window coordinates of the first pixel that is read from the frame buffer
+        width, height: Specify the dimensions of the pixel rectangle
+        format: Specifies the format of the pixel data
+        type: Specifies the data type of the pixel data
+    '''
 
 @accepts()
 @returns(t.void)
 @binds(dll)
 def release_shader_compiler():
-    '''release resources consumed by the implementation's shader compiler'''
+    '''
+    release resources consumed by the implementation's shader compiler
+    
+    Args:
+    '''
 
 @accepts(t.enum, t.enum, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def renderbuffer_storage(target, internalformat, width, height):
-    '''establish data storage, format and dimensions of a renderbuffer object's image'''
+    '''
+    establish data storage, format and dimensions of a renderbuffer object's image
+    
+    Args:
+        target: Specifies a binding target of the allocation for glRenderbufferStorage function
+        internalformat: Specifies the internal format to use for the renderbuffer object's image
+        width: Specifies the width of the renderbuffer, in pixels
+        height: Specifies the height of the renderbuffer, in pixels
+    '''
 
 @accepts(t.float, t.boolean)
 @returns(t.void)
 @binds(dll)
 def sample_coverage(value, invert):
-    '''specify multisample coverage parameters'''
+    '''
+    specify multisample coverage parameters
+    
+    Args:
+        value: Specify a single floating-point sample coverage value
+        invert: Specify a single boolean value representing if the coverage masks should be inverted
+    '''
 
 @accepts(t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def scissor(x, y, width, height):
-    '''define the scissor box'''
+    '''
+    define the scissor box
+    
+    Args:
+        x, y: Specify the lower left corner of the scissor box
+        width, height: Specify the width and height of the scissor box
+    '''
 
 @accepts(t.sizei, POINTER(t.uint), t.enum, t.void, t.sizei)
 @returns(t.void)
 @binds(dll)
 def shader_binary(count, shaders, binaryformat, binary, length):
-    '''load pre-compiled shader binaries'''
+    '''
+    load pre-compiled shader binaries
+    
+    Args:
+        count: Specifies the number of shader object handles contained in shaders
+        shaders: Specifies the address of an array of shader handles into which to load pre-compiled shader binaries
+        binaryformat: Specifies the format of the shader binaries contained in binary
+        binary: Specifies the address of an array of bytes containing pre-compiled binary shader code
+        length: Specifies the length of the array whose address is given in binary
+    '''
 
 @accepts(t.uint, t.sizei, POINTER(t.char_p), POINTER(t.int))
 @returns(t.void)
 @binds(dll)
 def shader_source(shader, count, string, length):
-    '''Replaces the source code in a shader object'''
+    '''
+    Replaces the source code in a shader object
+    
+    Args:
+        shader: Specifies the handle of the shader object whose source code is to be replaced
+        count: Specifies the number of elements in the string and length arrays
+        string: Specifies an array of pointers to strings containing the source code to be loaded into the shader
+        length: Specifies an array of string lengths
+    '''
 
 @accepts(t.enum, t.int, t.uint)
 @returns(t.void)
 @binds(dll)
 def stencil_func(func, ref, mask):
-    '''set front and back function and reference value for stencil testing'''
+    '''
+    set front and back function and reference value for stencil testing
+    
+    Args:
+        func: Specifies the test function
+        ref: Specifies the reference value for the stencil test
+        mask: Specifies a mask that is ANDed with both the reference value and the stored stencil value when the test is done
+    '''
 
 @accepts(t.enum, t.enum, t.int, t.uint)
 @returns(t.void)
 @binds(dll)
 def stencil_func_separate(face, func, ref, mask):
-    '''set front and/or back function and reference value for stencil testing'''
+    '''
+    set front and/or back function and reference value for stencil testing
+    
+    Args:
+        face: Specifies whether front and/or back stencil state is updated
+        func: Specifies the test function
+        ref: Specifies the reference value for the stencil test
+        mask: Specifies a mask that is ANDed with both the reference value and the stored stencil value when the test is done
+    '''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
 def stencil_mask(mask):
-    '''control the front and back writing of individual bits in the stencil planes'''
+    '''
+    control the front and back writing of individual bits in the stencil planes
+    
+    Args:
+        mask: Specifies a bit mask to enable and disable writing of individual bits in the stencil planes
+    '''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
 def stencil_mask_separate(face, mask):
-    '''control the front and/or back writing of individual bits in the stencil planes'''
+    '''
+    control the front and/or back writing of individual bits in the stencil planes
+    
+    Args:
+        face: Specifies whether the front and/or back stencil writemask is updated
+        mask: Specifies a bit mask to enable and disable writing of individual bits in the stencil planes
+    '''
 
 @accepts(t.enum, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
 def stencil_op(fail, zfail, zpass):
-    '''set front and back stencil test actions'''
+    '''
+    set front and back stencil test actions
+    
+    Args:
+    '''
 
 @accepts(t.enum, t.enum, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
 def stencil_op_separate(face, sfail, dpfail, dppass):
-    '''set front and/or back stencil test actions'''
+    '''
+    set front and/or back stencil test actions
+    
+    Args:
+        face: Specifies whether front and/or back stencil state is updated
+        sfail: Specifies the action to take when the stencil test fails
+        dpfail: Specifies the stencil action when the stencil test passes, but the depth test fails
+        dppass: Specifies the stencil action when both the stencil test and the depth test pass, or when the stencil test passes and either there is no depth buffer or depth testing is not enabled
+    '''
 
 @accepts(t.enum, t.int, t.int, t.sizei, t.sizei, t.int, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def tex_image2_d(target, level, internalformat, width, height, border, format, type, pixels):
-    '''specify a two-dimensional texture image'''
+    '''
+    specify a two-dimensional texture image
+    
+    Args:
+        target: Specifies the target texture
+        level: Specifies the level-of-detail number
+        internalformat: Specifies the number of color components in the texture
+        width: Specifies the width of the texture image
+        height: Specifies the height of the texture image, or the number of layers in a texture array, in the case of the GL_TEXTURE_1D_ARRAY and GL_PROXY_TEXTURE_1D_ARRAY targets
+        border: This value must be 0
+        format: Specifies the format of the pixel data
+        type: Specifies the data type of the pixel data
+    '''
 
 @accepts(t.enum, t.enum, t.float)
 @returns(t.void)
@@ -667,7 +1214,20 @@ def tex_parameteriv(target, pname, params):
 @returns(t.void)
 @binds(dll)
 def tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, type, pixels):
-    '''specify a two-dimensional texture subimage'''
+    '''
+    specify a two-dimensional texture subimage
+    
+    Args:
+        target: Specifies the target to which the texture is bound for glTexSubImage2D
+        level: Specifies the level-of-detail number
+        xoffset: Specifies a texel offset in the x direction within the texture array
+        yoffset: Specifies a texel offset in the y direction within the texture array
+        width: Specifies the width of the texture subimage
+        height: Specifies the height of the texture subimage
+        format: Specifies the format of the pixel data
+        type: Specifies the data type of the pixel data
+        pixels: Specifies a pointer to the image data in memory
+    '''
 
 @accepts(t.int, t.float)
 @returns(t.void)
@@ -787,13 +1347,23 @@ def uniform_matrix4fv(location, count, transpose, value):
 @returns(t.void)
 @binds(dll)
 def use_program(program):
-    '''Installs a program object as part of current rendering state'''
+    '''
+    Installs a program object as part of current rendering state
+    
+    Args:
+        program: Specifies the handle of the program object whose executables are to be used as part of current rendering state
+    '''
 
 @accepts(t.uint)
 @returns(t.void)
 @binds(dll)
 def validate_program(program):
-    '''Validates a program object'''
+    '''
+    Validates a program object
+    
+    Args:
+        program: Specifies the handle of the program object to be validated
+    '''
 
 @accepts(t.uint, t.float)
 @returns(t.void)
@@ -847,13 +1417,29 @@ def vertex_attrib4fv(index, v):
 @returns(t.void)
 @binds(dll)
 def vertex_attrib_pointer(index, size, type, normalized, stride, pointer):
-    '''define an array of generic vertex attribute data'''
+    '''
+    define an array of generic vertex attribute data
+    
+    Args:
+        index: Specifies the index of the generic vertex attribute to be modified
+        size: Specifies the number of components per generic vertex attribute
+        type: Specifies the data type of each component in the array
+        normalized: For glVertexAttribPointer, specifies whether fixed-point data values should be normalized (GL_TRUE) or converted directly as fixed-point values (GL_FALSE) when they are accessed
+        stride: Specifies the byte offset between consecutive generic vertex attributes
+        pointer: Specifies a offset of the first component of the first generic vertex attribute in the array in the data store of the buffer currently bound to the GL_ARRAY_BUFFER target
+    '''
 
 @accepts(t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def viewport(x, y, width, height):
-    '''set the viewport'''
+    '''
+    set the viewport
+    
+    Args:
+        x, y: Specify the lower left corner of the viewport rectangle, in pixels
+        width, height: Specify the width and height of the viewport
+    '''
 
 DEPTH_BUFFER_BIT = 0x00000100
 STENCIL_BUFFER_BIT = 0x00000400

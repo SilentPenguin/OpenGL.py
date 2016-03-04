@@ -7,97 +7,225 @@ from opengl.gl.raw.bindings import *
 @returns(t.void)
 @binds(dll)
 def draw_arrays(mode, first, count):
-    '''render primitives from array data'''
+    '''
+    render primitives from array data
+    
+    Args:
+        mode: Specifies what kind of primitives to render
+        first: Specifies the starting index in the enabled arrays
+        count: Specifies the number of indices to be rendered
+    '''
 
 @accepts(t.enum, t.sizei, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def draw_elements(mode, count, type, indices):
-    '''render primitives from array data'''
+    '''
+    render primitives from array data
+    
+    Args:
+        mode: Specifies what kind of primitives to render
+        count: Specifies the number of elements to be rendered
+        type: Specifies the type of the values in indices
+        indices: Specifies a pointer to the location where the indices are stored
+    '''
 
 @accepts(t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def get_pointerv(pname, params):
-    '''return the address of the specified pointer'''
+    '''
+    return the address of the specified pointer
+    
+    Args:
+        pname: Specifies the pointer to be returned
+        params: Returns the pointer value specified by pname
+    '''
 
 @accepts(t.float, t.float)
 @returns(t.void)
 @binds(dll)
 def polygon_offset(factor, units):
-    '''set the scale and units used to calculate depth values'''
+    '''
+    set the scale and units used to calculate depth values
+    
+    Args:
+        factor: Specifies a scale factor that is used to create a variable depth offset for each polygon
+        units: Is multiplied by an implementation-specific value to create a constant depth offset
+    '''
 
 @accepts(t.enum, t.int, t.enum, t.int, t.int, t.sizei, t.int)
 @returns(t.void)
 @binds(dll)
 def copy_tex_image1_d(target, level, internalformat, x, y, width, border):
-    '''copy pixels into a 1D texture image'''
+    '''
+    copy pixels into a 1D texture image
+    
+    Args:
+        target: Specifies the target texture
+        level: Specifies the level-of-detail number
+        internalformat: Specifies the internal format of the texture
+        x, y: Specify the window coordinates of the left corner of the row of pixels to be copied
+        width: Specifies the width of the texture image
+        border: Must be 0
+    '''
 
 @accepts(t.enum, t.int, t.enum, t.int, t.int, t.sizei, t.sizei, t.int)
 @returns(t.void)
 @binds(dll)
 def copy_tex_image2_d(target, level, internalformat, x, y, width, height, border):
-    '''copy pixels into a 2D texture image'''
+    '''
+    copy pixels into a 2D texture image
+    
+    Args:
+        target: Specifies the target texture
+        level: Specifies the level-of-detail number
+        internalformat: Specifies the internal format of the texture
+        x, y: Specify the window coordinates of the lower left corner of the rectangular region of pixels to be copied
+        width: Specifies the width of the texture image
+        height: Specifies the height of the texture image
+        border: Must be 0
+    '''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.sizei)
 @returns(t.void)
 @binds(dll)
 def copy_tex_sub_image1_d(target, level, xoffset, x, y, width):
-    '''copy a one-dimensional texture subimage'''
+    '''
+    copy a one-dimensional texture subimage
+    
+    Args:
+        target: Specifies the target to which the texture object is bound for glCopyTexSubImage1D function
+        level: Specifies the level-of-detail number
+        xoffset: Specifies the texel offset within the texture array
+        x, y: Specify the window coordinates of the left corner of the row of pixels to be copied
+        width: Specifies the width of the texture subimage
+    '''
 
 @accepts(t.enum, t.int, t.int, t.int, t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def copy_tex_sub_image2_d(target, level, xoffset, yoffset, x, y, width, height):
-    '''copy a two-dimensional texture subimage'''
+    '''
+    copy a two-dimensional texture subimage
+    
+    Args:
+        target: Specifies the target to which the texture object is bound for glCopyTexSubImage2D function
+        level: Specifies the level-of-detail number
+        xoffset: Specifies a texel offset in the x direction within the texture array
+        yoffset: Specifies a texel offset in the y direction within the texture array
+        x, y: Specify the window coordinates of the lower left corner of the rectangular region of pixels to be copied
+        width: Specifies the width of the texture subimage
+        height: Specifies the height of the texture subimage
+    '''
 
 @accepts(t.enum, t.int, t.int, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def tex_sub_image1_d(target, level, xoffset, width, format, type, pixels):
-    '''specify a one-dimensional texture subimage'''
+    '''
+    specify a one-dimensional texture subimage
+    
+    Args:
+        target: Specifies the target to which the texture is bound for glTexSubImage1D
+        level: Specifies the level-of-detail number
+        xoffset: Specifies a texel offset in the x direction within the texture array
+        width: Specifies the width of the texture subimage
+        format: Specifies the format of the pixel data
+        type: Specifies the data type of the pixel data
+        pixels: Specifies a pointer to the image data in memory
+    '''
 
 @accepts(t.enum, t.int, t.int, t.int, t.sizei, t.sizei, t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def tex_sub_image2_d(target, level, xoffset, yoffset, width, height, format, type, pixels):
-    '''specify a two-dimensional texture subimage'''
+    '''
+    specify a two-dimensional texture subimage
+    
+    Args:
+        target: Specifies the target to which the texture is bound for glTexSubImage2D
+        level: Specifies the level-of-detail number
+        xoffset: Specifies a texel offset in the x direction within the texture array
+        yoffset: Specifies a texel offset in the y direction within the texture array
+        width: Specifies the width of the texture subimage
+        height: Specifies the height of the texture subimage
+        format: Specifies the format of the pixel data
+        type: Specifies the data type of the pixel data
+        pixels: Specifies a pointer to the image data in memory
+    '''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
 def bind_texture(target, texture):
-    '''bind a named texture to a texturing target'''
+    '''
+    bind a named texture to a texturing target
+    
+    Args:
+        target: Specifies the target to which the texture is bound
+        texture: Specifies the name of a texture
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def delete_textures(n, textures):
-    '''delete named textures'''
+    '''
+    delete named textures
+    
+    Args:
+        n: Specifies the number of textures to be deleted
+        textures: Specifies an array of textures to be deleted
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def gen_textures(n, textures):
-    '''generate texture names'''
+    '''
+    generate texture names
+    
+    Args:
+        n: Specifies the number of texture names to be generated
+        textures: Specifies an array in which the generated texture names are stored
+    '''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
 def is_texture(texture):
-    '''determine if a name corresponds to a texture'''
+    '''
+    determine if a name corresponds to a texture
+    
+    Args:
+        texture: Specifies a value that may be the name of a texture
+    '''
 
 @accepts(t.int)
 @returns(t.void)
 @binds(dll)
 def array_element(i):
-    '''render a vertex using the specified vertex array element'''
+    '''
+    render a vertex using the specified vertex array element
+    
+    Args:
+        i: Specifies an index into the enabled vertex data arrays
+    '''
 
 @accepts(t.int, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
 def color_pointer(size, type, stride, pointer):
-    '''define an array of colors'''
+    '''
+    define an array of colors
+    
+    Args:
+        size: Specifies the number of components per color
+        type: Specifies the data type of each color component in the array
+        stride: Specifies the byte offset between consecutive colors
+        pointer: Specifies a pointer to the first component of the first color element in the array
+    '''
 
 @accepts(t.enum)
 @returns(t.void)
@@ -109,55 +237,115 @@ def disable_client_state(array):
 @returns(t.void)
 @binds(dll)
 def edge_flag_pointer(stride, pointer):
-    '''define an array of edge flags'''
+    '''
+    define an array of edge flags
+    
+    Args:
+        stride: Specifies the byte offset between consecutive edge flags
+        pointer: Specifies a pointer to the first edge flag in the array
+    '''
 
 @accepts(t.enum)
 @returns(t.void)
 @binds(dll)
 def enable_client_state(array):
-    '''enable or disable client-side capability'''
+    '''
+    enable or disable client-side capability
+    
+    Args:
+    '''
 
 @accepts(t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
 def index_pointer(type, stride, pointer):
-    '''define an array of color indexes'''
+    '''
+    define an array of color indexes
+    
+    Args:
+        type: Specifies the data type of each color index in the array
+        stride: Specifies the byte offset between consecutive color indexes
+        pointer: Specifies a pointer to the first index in the array
+    '''
 
 @accepts(t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
 def interleaved_arrays(format, stride, pointer):
-    '''simultaneously specify and enable several interleaved arrays'''
+    '''
+    simultaneously specify and enable several interleaved arrays
+    
+    Args:
+        format: Specifies the type of array to enable
+        stride: Specifies the offset in bytes between each aggregate array element
+    '''
 
 @accepts(t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
 def normal_pointer(type, stride, pointer):
-    '''define an array of normals'''
+    '''
+    define an array of normals
+    
+    Args:
+        type: Specifies the data type of each coordinate in the array
+        stride: Specifies the byte offset between consecutive normals
+        pointer: Specifies a pointer to the first coordinate of the first normal in the array
+    '''
 
 @accepts(t.int, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
 def tex_coord_pointer(size, type, stride, pointer):
-    '''define an array of texture coordinates'''
+    '''
+    define an array of texture coordinates
+    
+    Args:
+        size: Specifies the number of coordinates per array element
+        type: Specifies the data type of each texture coordinate
+        stride: Specifies the byte offset between consecutive texture coordinate sets
+        pointer: Specifies a pointer to the first coordinate of the first texture coordinate set in the array
+    '''
 
 @accepts(t.int, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
 def vertex_pointer(size, type, stride, pointer):
-    '''define an array of vertex data'''
+    '''
+    define an array of vertex data
+    
+    Args:
+        size: Specifies the number of coordinates per vertex
+        type: Specifies the data type of each coordinate in the array
+        stride: Specifies the byte offset between consecutive vertices
+        pointer: Specifies a pointer to the first coordinate of the first vertex in the array
+    '''
 
 @accepts(t.sizei, POINTER(t.uint), POINTER(t.boolean))
 @returns(t.boolean)
 @binds(dll)
 def are_textures_resident(n, textures, residences):
-    '''determine if textures are loaded in texture memory'''
+    '''
+    determine if textures are loaded in texture memory
+    
+    Args:
+        n: Specifies the number of textures to be queried
+        textures: Specifies an array containing the names of the textures to be queried
+        residences: Specifies an array in which the texture residence status is returned
+    '''
 
 @accepts(t.sizei, POINTER(t.uint), POINTER(t.float))
 @returns(t.void)
 @binds(dll)
 def prioritize_textures(n, textures, priorities):
-    '''set texture residence priority'''
+    '''
+    set texture residence priority
+    
+    Args:
+        n: Specifies the number of textures to be prioritized
+        textures: Specifies an array containing the names of the textures to be prioritized
+        priorities: Specifies an array containing the texture priorities
+    '''
 
 @accepts(t.ubyte)
 @returns(t.void)
@@ -181,7 +369,12 @@ def pop_client_attrib():
 @returns(t.void)
 @binds(dll)
 def push_client_attrib(mask):
-    '''push and pop the client attribute stack'''
+    '''
+    push and pop the client attribute stack
+    
+    Args:
+        mask: Specifies a mask that indicates which attributes to save
+    '''
 
 DEPTH_BUFFER_BIT = 0x00000100
 STENCIL_BUFFER_BIT = 0x00000400

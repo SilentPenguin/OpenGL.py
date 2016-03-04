@@ -8,7 +8,13 @@ CONTEXT_LOST = 0x0507
 @returns(t.void)
 @binds(dll)
 def clip_control(origin, depth):
-    '''control clip coordinate to window coordinate behavior'''
+    '''
+    control clip coordinate to window coordinate behavior
+    
+    Args:
+        origin: Specifies the clip control origin
+        depth: Specifies the clip control depth mode
+    '''
 
 LOWER_LEFT = 0x8CA1
 UPPER_LEFT = 0x8CA2
@@ -26,19 +32,41 @@ MAX_COMBINED_CLIP_AND_CULL_DISTANCES = 0x82FA
 @returns(t.void)
 @binds(dll)
 def create_transform_feedbacks(n, ids):
-    '''create transform feedback objects'''
+    '''
+    create transform feedback objects
+    
+    Args:
+        n: Number of transform feedback objects to create
+        ids: Specifies an array in which names of the new transform feedback objects are stored
+    '''
 
 @accepts(t.uint, t.uint, t.uint)
 @returns(t.void)
 @binds(dll)
 def transform_feedback_buffer_base(xfb, index, buffer):
-    '''bind a buffer object to a transform feedback buffer object'''
+    '''
+    bind a buffer object to a transform feedback buffer object
+    
+    Args:
+        xfb: Name of the transform feedback buffer object
+        index: Index of the binding point within xfb
+        buffer: Name of the buffer object to bind to the specified binding point
+    '''
 
 @accepts(t.uint, t.uint, t.uint, t.intptr, t.sizeiptr)
 @returns(t.void)
 @binds(dll)
 def transform_feedback_buffer_range(xfb, index, buffer, offset, size):
-    '''bind a range within a buffer object to a transform feedback buffer object'''
+    '''
+    bind a range within a buffer object to a transform feedback buffer object
+    
+    Args:
+        xfb: Name of the transform feedback buffer object
+        index: Index of the binding point within xfb
+        buffer: Name of the buffer object to bind to the specified binding point
+        offset: The starting offset in basic machine units into the buffer object
+        size: The amount of data in basic machine units that can be read from or written to the buffer object while used as an indexed target
+    '''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
@@ -62,7 +90,13 @@ def get_transform_feedbacki64_v(xfb, pname, index, param):
 @returns(t.void)
 @binds(dll)
 def create_buffers(n, buffers):
-    '''create buffer objects'''
+    '''
+    create buffer objects
+    
+    Args:
+        n: Specifies the number of buffer objects to create
+        buffers: Specifies an array in which names of the new buffer objects are stored
+    '''
 
 @accepts(t.uint, t.sizeiptr, t.void, t.bitfield)
 @returns(t.void)
@@ -85,7 +119,7 @@ def named_buffer_sub_data(buffer, offset, size, data):
 @accepts(t.uint, t.uint, t.intptr, t.intptr, t.sizeiptr)
 @returns(t.void)
 @binds(dll)
-def copy_named_buffer_sub_data(readBuffer, writeBuffer, readOffset, writeOffset, size):
+def copy_named_buffer_sub_data(readbuffer, writebuffer, readoffset, writeoffset, size):
     pass
 
 @accepts(t.uint, t.enum, t.enum, t.enum, t.void)
@@ -152,7 +186,13 @@ def get_named_buffer_sub_data(buffer, offset, size, data):
 @returns(t.void)
 @binds(dll)
 def create_framebuffers(n, framebuffers):
-    '''create framebuffer objects'''
+    '''
+    create framebuffer objects
+    
+    Args:
+        n: Number of framebuffer objects to create
+        framebuffers: Specifies an array in which names of the new framebuffer objects are stored
+    '''
 
 @accepts(t.uint, t.enum, t.enum, t.uint)
 @returns(t.void)
@@ -199,13 +239,13 @@ def named_framebuffer_read_buffer(framebuffer, src):
 @accepts(t.uint, t.sizei, POINTER(t.enum))
 @returns(t.void)
 @binds(dll)
-def invalidate_named_framebuffer_data(framebuffer, numAttachments, attachments):
+def invalidate_named_framebuffer_data(framebuffer, numattachments, attachments):
     pass
 
 @accepts(t.uint, t.sizei, POINTER(t.enum), t.int, t.int, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
-def invalidate_named_framebuffer_sub_data(framebuffer, numAttachments, attachments, x, y, width, height):
+def invalidate_named_framebuffer_sub_data(framebuffer, numattachments, attachments, x, y, width, height):
     pass
 
 @accepts(t.uint, t.enum, t.int, POINTER(t.int))
@@ -235,7 +275,7 @@ def clear_named_framebufferfi(framebuffer, buffer, drawbuffer, depth, stencil):
 @accepts(t.uint, t.uint, t.int, t.int, t.int, t.int, t.int, t.int, t.int, t.int, t.bitfield, t.enum)
 @returns(t.void)
 @binds(dll)
-def blit_named_framebuffer(readFramebuffer, drawFramebuffer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter):
+def blit_named_framebuffer(readframebuffer, drawframebuffer, srcx0, srcy0, srcx1, srcy1, dstx0, dsty0, dstx1, dsty1, mask, filter):
     pass
 
 @accepts(t.uint, t.enum)
@@ -260,7 +300,13 @@ def get_named_framebuffer_attachment_parameteriv(framebuffer, attachment, pname,
 @returns(t.void)
 @binds(dll)
 def create_renderbuffers(n, renderbuffers):
-    '''create renderbuffer objects'''
+    '''
+    create renderbuffer objects
+    
+    Args:
+        n: Number of renderbuffer objects to create
+        renderbuffers: Specifies an array in which names of the new renderbuffer objects are stored
+    '''
 
 @accepts(t.uint, t.enum, t.sizei, t.sizei)
 @returns(t.void)
@@ -284,7 +330,14 @@ def get_named_renderbuffer_parameteriv(renderbuffer, pname, params):
 @returns(t.void)
 @binds(dll)
 def create_textures(target, n, textures):
-    '''create texture objects'''
+    '''
+    create texture objects
+    
+    Args:
+        target: Specifies the effective texture target of each created texture
+        n: Number of texture objects to create
+        textures: Specifies an array in which names of the new texture objects are stored
+    '''
 
 @accepts(t.uint, t.enum, t.uint)
 @returns(t.void)
@@ -349,19 +402,19 @@ def texture_sub_image3_d(texture, level, xoffset, yoffset, zoffset, width, heigh
 @accepts(t.uint, t.int, t.int, t.sizei, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def compressed_texture_sub_image1_d(texture, level, xoffset, width, format, imageSize, data):
+def compressed_texture_sub_image1_d(texture, level, xoffset, width, format, imagesize, data):
     pass
 
 @accepts(t.uint, t.int, t.int, t.int, t.sizei, t.sizei, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def compressed_texture_sub_image2_d(texture, level, xoffset, yoffset, width, height, format, imageSize, data):
+def compressed_texture_sub_image2_d(texture, level, xoffset, yoffset, width, height, format, imagesize, data):
     pass
 
 @accepts(t.uint, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def compressed_texture_sub_image3_d(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data):
+def compressed_texture_sub_image3_d(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imagesize, data):
     pass
 
 @accepts(t.uint, t.int, t.int, t.int, t.int, t.sizei)
@@ -428,18 +481,24 @@ def generate_texture_mipmap(texture):
 @returns(t.void)
 @binds(dll)
 def bind_texture_unit(unit, texture):
-    '''bind an existing texture object to the specified texture unit'''
+    '''
+    bind an existing texture object to the specified texture unit
+    
+    Args:
+        unit: Specifies the texture unit, to which the texture object should be bound to
+        texture: Specifies the name of a texture
+    '''
 
 @accepts(t.uint, t.int, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def get_texture_image(texture, level, format, type, bufSize, pixels):
+def get_texture_image(texture, level, format, type, bufsize, pixels):
     pass
 
 @accepts(t.uint, t.int, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def get_compressed_texture_image(texture, level, bufSize, pixels):
+def get_compressed_texture_image(texture, level, bufsize, pixels):
     pass
 
 @accepts(t.uint, t.int, t.enum, POINTER(t.float))
@@ -482,7 +541,13 @@ def get_texture_parameteriv(texture, pname, params):
 @returns(t.void)
 @binds(dll)
 def create_vertex_arrays(n, arrays):
-    '''create vertex array objects'''
+    '''
+    create vertex array objects
+    
+    Args:
+        n: Number of vertex array objects to create
+        arrays: Specifies an array in which names of the new vertex array objects are stored
+    '''
 
 @accepts(t.uint, t.uint)
 @returns(t.void)
@@ -500,7 +565,13 @@ def enable_vertex_array_attrib(vaobj, index):
 @returns(t.void)
 @binds(dll)
 def vertex_array_element_buffer(vaobj, buffer):
-    '''configures element array buffer binding of a vertex array object'''
+    '''
+    configures element array buffer binding of a vertex array object
+    
+    Args:
+        vaobj: Specifies the name of the vertex array object
+        buffer: Specifies the name of the buffer object to use for the element array buffer binding
+    '''
 
 @accepts(t.uint, t.uint, t.uint, t.intptr, t.sizei)
 @returns(t.void)
@@ -548,7 +619,14 @@ def vertex_array_binding_divisor(vaobj, bindingindex, divisor):
 @returns(t.void)
 @binds(dll)
 def get_vertex_arrayiv(vaobj, pname, param):
-    '''retrieve parameters of a vertex array object'''
+    '''
+    retrieve parameters of a vertex array object
+    
+    Args:
+        vaobj: specifies the name of the vertex array object to use for the query
+        pname: Name of the property to use for the query
+        param: Returns the requested value
+    '''
 
 @accepts(t.uint, t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
@@ -566,19 +644,38 @@ def get_vertex_array_indexed64iv(vaobj, index, pname, param):
 @returns(t.void)
 @binds(dll)
 def create_samplers(n, samplers):
-    '''create sampler objects'''
+    '''
+    create sampler objects
+    
+    Args:
+        n: Number of sampler objects to create
+        samplers: Specifies an array in which names of the new sampler objects are stored
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def create_program_pipelines(n, pipelines):
-    '''create program pipeline objects'''
+    '''
+    create program pipeline objects
+    
+    Args:
+        n: Number of program pipeline objects to create
+        pipelines: Specifies an array in which names of the new program pipeline objects are stored
+    '''
 
 @accepts(t.enum, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def create_queries(target, n, ids):
-    '''create query objects'''
+    '''
+    create query objects
+    
+    Args:
+        target: Specifies the target of each created query object
+        n: Number of query objects to create
+        ids: Specifies an array in which names of the new query objects are stored
+    '''
 
 @accepts(t.uint, t.uint, t.enum, t.intptr)
 @returns(t.void)
@@ -627,61 +724,95 @@ BACK = 0x0405
 @accepts(t.uint, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def get_texture_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, pixels):
-    '''retrieve a sub-region of a texture image from a texture object'''
+def get_texture_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufsize, pixels):
+    '''
+    retrieve a sub-region of a texture image from a texture object
+    
+    Args:
+        texture: Specifies the name of the source texture object
+        level: Specifies the level-of-detail number
+        xoffset: Specifies a texel offset in the x direction within the texture array
+        yoffset: Specifies a texel offset in the y direction within the texture array
+        zoffset: Specifies a texel offset in the z direction within the texture array
+        width: Specifies the width of the texture subimage
+        height: Specifies the height of the texture subimage
+        depth: Specifies the depth of the texture subimage
+        format: Specifies the format of the pixel data
+        type: Specifies the data type of the pixel data
+        bufsize: Specifies the size of the buffer to receive the retrieved pixel data
+        pixels: Returns the texture subimage
+    '''
 
 @accepts(t.uint, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def get_compressed_texture_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth, bufSize, pixels):
-    '''retrieve a sub-region of a compressed texture image from a compressed texture object'''
+def get_compressed_texture_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth, bufsize, pixels):
+    '''
+    retrieve a sub-region of a compressed texture image from a compressed texture object
+    
+    Args:
+        texture: Specifies the name of the source texture object
+        level: Specifies the level-of-detail number
+        xoffset: Specifies a texel offset in the x direction within the texture array
+        yoffset: Specifies a texel offset in the y direction within the texture array
+        zoffset: Specifies a texel offset in the z direction within the texture array
+        width: Specifies the width of the texture subimage
+        height: Specifies the height of the texture subimage
+        depth: Specifies the depth of the texture subimage
+        bufsize: Specifies the size of the buffer to receive the retrieved pixel data
+        pixels: Returns the texture subimage
+    '''
 
 @accepts()
 @returns(t.enum)
 @binds(dll)
 def get_graphics_reset_status():
-    '''check if the rendering context has not been lost due to software or hardware issues'''
+    '''
+    check if the rendering context has not been lost due to software or hardware issues
+    
+    Args:
+    '''
 
 @accepts(t.enum, t.int, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def getn_compressed_tex_image(target, lod, bufSize, pixels):
+def getn_compressed_tex_image(target, lod, bufsize, pixels):
     pass
 
 @accepts(t.enum, t.int, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def getn_tex_image(target, level, format, type, bufSize, pixels):
+def getn_tex_image(target, level, format, type, bufsize, pixels):
     pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def getn_uniformdv(program, location, bufSize, params):
+def getn_uniformdv(program, location, bufsize, params):
     pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def getn_uniformfv(program, location, bufSize, params):
+def getn_uniformfv(program, location, bufsize, params):
     pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def getn_uniformiv(program, location, bufSize, params):
+def getn_uniformiv(program, location, bufsize, params):
     pass
 
 @accepts(t.uint, t.int, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def getn_uniformuiv(program, location, bufSize, params):
+def getn_uniformuiv(program, location, bufsize, params):
     pass
 
 @accepts(t.int, t.int, t.sizei, t.sizei, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def readn_pixels(x, y, width, height, format, type, bufSize, data):
+def readn_pixels(x, y, width, height, format, type, bufsize, data):
     pass
 
 NO_ERROR = 0
@@ -696,80 +827,84 @@ CONTEXT_LOST = 0x0507
 @accepts(t.enum, t.enum, t.sizei, POINTER(t.double))
 @returns(t.void)
 @binds(dll)
-def getn_mapdv(target, query, bufSize, v):
+def getn_mapdv(target, query, bufsize, v):
     pass
 
 @accepts(t.enum, t.enum, t.sizei, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def getn_mapfv(target, query, bufSize, v):
+def getn_mapfv(target, query, bufsize, v):
     pass
 
 @accepts(t.enum, t.enum, t.sizei, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def getn_mapiv(target, query, bufSize, v):
+def getn_mapiv(target, query, bufsize, v):
     pass
 
 @accepts(t.enum, t.sizei, POINTER(t.float))
 @returns(t.void)
 @binds(dll)
-def getn_pixel_mapfv(map, bufSize, values):
+def getn_pixel_mapfv(map, bufsize, values):
     pass
 
 @accepts(t.enum, t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
-def getn_pixel_mapuiv(map, bufSize, values):
+def getn_pixel_mapuiv(map, bufsize, values):
     pass
 
 @accepts(t.enum, t.sizei, POINTER(t.ushort))
 @returns(t.void)
 @binds(dll)
-def getn_pixel_mapusv(map, bufSize, values):
+def getn_pixel_mapusv(map, bufsize, values):
     pass
 
 @accepts(t.sizei, POINTER(t.ubyte))
 @returns(t.void)
 @binds(dll)
-def getn_polygon_stipple(bufSize, pattern):
+def getn_polygon_stipple(bufsize, pattern):
     pass
 
 @accepts(t.enum, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def getn_color_table(target, format, type, bufSize, table):
+def getn_color_table(target, format, type, bufsize, table):
     pass
 
 @accepts(t.enum, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def getn_convolution_filter(target, format, type, bufSize, image):
+def getn_convolution_filter(target, format, type, bufsize, image):
     pass
 
 @accepts(t.enum, t.enum, t.enum, t.sizei, t.void, t.sizei, t.void, t.void)
 @returns(t.void)
 @binds(dll)
-def getn_separable_filter(target, format, type, rowBufSize, row, columnBufSize, column, span):
+def getn_separable_filter(target, format, type, rowbufsize, row, columnbufsize, column, span):
     pass
 
 @accepts(t.enum, t.boolean, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def getn_histogram(target, reset, format, type, bufSize, values):
+def getn_histogram(target, reset, format, type, bufsize, values):
     pass
 
 @accepts(t.enum, t.boolean, t.enum, t.enum, t.sizei, t.void)
 @returns(t.void)
 @binds(dll)
-def getn_minmax(target, reset, format, type, bufSize, values):
+def getn_minmax(target, reset, format, type, bufsize, values):
     pass
 
 @accepts()
 @returns(t.void)
 @binds(dll)
 def texture_barrier():
-    '''controls the ordering of reads and writes to rendered fragments across drawing commands'''
+    '''
+    controls the ordering of reads and writes to rendered fragments across drawing commands
+    
+    Args:
+    '''
 
 CONTEXT_RELEASE_BEHAVIOR = 0x82FB
 NONE = 0

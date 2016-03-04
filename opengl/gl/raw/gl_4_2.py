@@ -119,70 +119,161 @@ TEXTURE_IMMUTABLE_FORMAT = 0x912F
 @returns(t.void)
 @binds(dll)
 def draw_arrays_instanced_base_instance(mode, first, count, instancecount, baseinstance):
-    '''draw multiple instances of a range of elements with offset applied to instanced attributes'''
+    '''
+    draw multiple instances of a range of elements with offset applied to instanced attributes
+    
+    Args:
+        mode: Specifies what kind of primitives to render
+        first: Specifies the starting index in the enabled arrays
+        count: Specifies the number of indices to be rendered
+        baseinstance: Specifies the base instance for use in fetching instanced vertex attributes
+    '''
 
 @accepts(t.enum, t.sizei, t.enum, t.void, t.sizei, t.uint)
 @returns(t.void)
 @binds(dll)
 def draw_elements_instanced_base_instance(mode, count, type, indices, instancecount, baseinstance):
-    '''draw multiple instances of a set of elements with offset applied to instanced attributes'''
+    '''
+    draw multiple instances of a set of elements with offset applied to instanced attributes
+    
+    Args:
+        mode: Specifies what kind of primitives to render
+        count: Specifies the number of elements to be rendered
+        type: Specifies the type of the values in indices
+        indices: Specifies a pointer to the location where the indices are stored
+        baseinstance: Specifies the base instance for use in fetching instanced vertex attributes
+    '''
 
 @accepts(t.enum, t.sizei, t.enum, t.void, t.sizei, t.int, t.uint)
 @returns(t.void)
 @binds(dll)
 def draw_elements_instanced_base_vertex_base_instance(mode, count, type, indices, instancecount, basevertex, baseinstance):
-    '''render multiple instances of a set of primitives from array data with a per-element offset'''
+    '''
+    render multiple instances of a set of primitives from array data with a per-element offset
+    
+    Args:
+        mode: Specifies what kind of primitives to render
+        count: Specifies the number of elements to be rendered
+        type: Specifies the type of the values in indices
+        indices: Specifies a pointer to the location where the indices are stored
+        basevertex: Specifies a constant that should be added to each element of indices when chosing elements from the enabled vertex arrays
+        baseinstance: Specifies the base instance for use in fetching instanced vertex attributes
+    '''
 
 @accepts(t.enum, t.enum, t.enum, t.sizei, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_internalformativ(target, internalformat, pname, bufSize, params):
+def get_internalformativ(target, internalformat, pname, bufsize, params):
     pass
 
 @accepts(t.uint, t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
-def get_active_atomic_counter_bufferiv(program, bufferIndex, pname, params):
-    '''retrieve information about the set of active atomic counter buffers for a program'''
+def get_active_atomic_counter_bufferiv(program, bufferindex, pname, params):
+    '''
+    retrieve information about the set of active atomic counter buffers for a program
+    
+    Args:
+        program: The name of a program object from which to retrieve information
+        bufferindex: Specifies index of an active atomic counter buffer
+        pname: Specifies which parameter of the atomic counter buffer to retrieve
+        params: Specifies the address of a variable into which to write the retrieved information
+    '''
 
 @accepts(t.uint, t.uint, t.int, t.boolean, t.int, t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
 def bind_image_texture(unit, texture, level, layered, layer, access, format):
-    '''bind a level of a texture to an image unit'''
+    '''
+    bind a level of a texture to an image unit
+    
+    Args:
+        unit: Specifies the index of the image unit to which to bind the texture
+        texture: Specifies the name of the texture to bind to the image unit
+        level: Specifies the level of the texture that is to be bound
+        layered: Specifies whether a layered texture binding is to be established
+        layer: If layered is GL_FALSE, specifies the layer of texture to be bound to the image unit
+        access: Specifies a token indicating the type of access that will be performed on the image
+        format: Specifies the format that the elements of the image will be treated as for the purposes of formatted stores
+    '''
 
 @accepts(t.bitfield)
 @returns(t.void)
 @binds(dll)
 def memory_barrier(barriers):
-    '''defines a barrier ordering memory transactions'''
+    '''
+    defines a barrier ordering memory transactions
+    
+    Args:
+        barriers: Specifies the barriers to insert
+    '''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei)
 @returns(t.void)
 @binds(dll)
 def tex_storage1_d(target, levels, internalformat, width):
-    '''simultaneously specify storage for all levels of a one-dimensional texture'''
+    '''
+    simultaneously specify storage for all levels of a one-dimensional texture
+    
+    Args:
+        target: Specifies the target to which the texture object is bound for glTexStorage1D
+        levels: Specify the number of texture levels
+        internalformat: Specifies the sized internal format to be used to store texture image data
+        width: Specifies the width of the texture, in texels
+    '''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def tex_storage2_d(target, levels, internalformat, width, height):
-    '''simultaneously specify storage for all levels of a two-dimensional or one-dimensional array texture'''
+    '''
+    simultaneously specify storage for all levels of a two-dimensional or one-dimensional array texture
+    
+    Args:
+        target: Specifies the target to which the texture object is bound for glTexStorage2D
+        levels: Specify the number of texture levels
+        internalformat: Specifies the sized internal format to be used to store texture image data
+        width: Specifies the width of the texture, in texels
+        height: Specifies the height of the texture, in texels
+    '''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei, t.sizei)
 @returns(t.void)
 @binds(dll)
 def tex_storage3_d(target, levels, internalformat, width, height, depth):
-    '''simultaneously specify storage for all levels of a three-dimensional, two-dimensional array or cube-map array texture'''
+    '''
+    simultaneously specify storage for all levels of a three-dimensional, two-dimensional array or cube-map array texture
+    
+    Args:
+        target: Specifies the target to which the texture object is bound for glTexStorage3D
+        levels: Specify the number of texture levels
+        internalformat: Specifies the sized internal format to be used to store texture image data
+        width: Specifies the width of the texture, in texels
+        height: Specifies the height of the texture, in texels
+        depth: Specifies the depth of the texture, in texels
+    '''
 
 @accepts(t.enum, t.uint, t.sizei)
 @returns(t.void)
 @binds(dll)
 def draw_transform_feedback_instanced(mode, id, instancecount):
-    '''render multiple instances of primitives using a count derived from a transform feedback object'''
+    '''
+    render multiple instances of primitives using a count derived from a transform feedback object
+    
+    Args:
+        mode: Specifies what kind of primitives to render
+        id: Specifies the name of a transform feedback object from which to retrieve a primitive count
+    '''
 
 @accepts(t.enum, t.uint, t.uint, t.sizei)
 @returns(t.void)
 @binds(dll)
 def draw_transform_feedback_stream_instanced(mode, id, stream, instancecount):
-    '''render multiple instances of primitives using a count derived from a specifed stream of a transform feedback object'''
+    '''
+    render multiple instances of primitives using a count derived from a specifed stream of a transform feedback object
+    
+    Args:
+        mode: Specifies what kind of primitives to render
+        id: Specifies the name of a transform feedback object from which to retrieve a primitive count
+        stream: Specifies the index of the transform feedback stream from which to retrieve a primitive count
+    '''

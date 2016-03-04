@@ -7,25 +7,48 @@ from opengl.gl.raw.bindings import *
 @returns(t.void)
 @binds(dll)
 def gen_queries(n, ids):
-    '''generate query object names'''
+    '''
+    generate query object names
+    
+    Args:
+        n: Specifies the number of query object names to be generated
+        ids: Specifies an array in which the generated query object names are stored
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def delete_queries(n, ids):
-    '''delete named query objects'''
+    '''
+    delete named query objects
+    
+    Args:
+        n: Specifies the number of query objects to be deleted
+        ids: Specifies an array of query objects to be deleted
+    '''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
 def is_query(id):
-    '''determine if a name corresponds to a query object'''
+    '''
+    determine if a name corresponds to a query object
+    
+    Args:
+        id: Specifies a value that may be the name of a query object
+    '''
 
 @accepts(t.enum, t.uint)
 @returns(t.void)
 @binds(dll)
 def begin_query(target, id):
-    '''delimit the boundaries of a query object'''
+    '''
+    delimit the boundaries of a query object
+    
+    Args:
+        target: Specifies the target type of query object established between glBeginQuery and the subsequent  glEndQuery
+        id: Specifies the name of a query object
+    '''
 
 @accepts(t.enum)
 @returns(t.void)
@@ -37,7 +60,14 @@ def end_query(target):
 @returns(t.void)
 @binds(dll)
 def get_queryiv(target, pname, params):
-    '''return parameters of a query object target'''
+    '''
+    return parameters of a query object target
+    
+    Args:
+        target: Specifies a query object target
+        pname: Specifies the symbolic name of a query object target parameter
+        params: Returns the requested data
+    '''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
 @returns(t.void)
@@ -55,67 +85,137 @@ def get_query_objectuiv(id, pname, params):
 @returns(t.void)
 @binds(dll)
 def bind_buffer(target, buffer):
-    '''bind a named buffer object'''
+    '''
+    bind a named buffer object
+    
+    Args:
+        target: Specifies the target to which the buffer object is bound, which must be one of the buffer binding targets in the following table:
+        buffer: Specifies the name of a buffer object
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def delete_buffers(n, buffers):
-    '''delete named buffer objects'''
+    '''
+    delete named buffer objects
+    
+    Args:
+        n: Specifies the number of buffer objects to be deleted
+        buffers: Specifies an array of buffer objects to be deleted
+    '''
 
 @accepts(t.sizei, POINTER(t.uint))
 @returns(t.void)
 @binds(dll)
 def gen_buffers(n, buffers):
-    '''generate buffer object names'''
+    '''
+    generate buffer object names
+    
+    Args:
+        n: Specifies the number of buffer object names to be generated
+        buffers: Specifies an array in which the generated buffer object names are stored
+    '''
 
 @accepts(t.uint)
 @returns(t.boolean)
 @binds(dll)
 def is_buffer(buffer):
-    '''determine if a name corresponds to a buffer object'''
+    '''
+    determine if a name corresponds to a buffer object
+    
+    Args:
+        buffer: Specifies a value that may be the name of a buffer object
+    '''
 
 @accepts(t.enum, t.sizeiptr, t.void, t.enum)
 @returns(t.void)
 @binds(dll)
 def buffer_data(target, size, data, usage):
-    '''creates and initializes a buffer object's data store'''
+    '''
+    creates and initializes a buffer object's data store
+    
+    Args:
+        target: Specifies the target to which the buffer object is bound for glBufferData, which must be one of the buffer binding targets in the following table:
+        size: Specifies the size in bytes of the buffer object's new data store
+        data: Specifies a pointer to data that will be copied into the data store for initialization, or NULL if no data is to be copied
+        usage: Specifies the expected usage pattern of the data store
+    '''
 
 @accepts(t.enum, t.intptr, t.sizeiptr, t.void)
 @returns(t.void)
 @binds(dll)
 def buffer_sub_data(target, offset, size, data):
-    '''updates a subset of a buffer object's data store'''
+    '''
+    updates a subset of a buffer object's data store
+    
+    Args:
+        target: Specifies the target to which the buffer object is bound for glBufferSubData, which must be one of the buffer binding targets in the following table:
+        offset: Specifies the offset into the buffer object's data store where data replacement will begin, measured in bytes
+        size: Specifies the size in bytes of the data store region being replaced
+        data: Specifies a pointer to the new data that will be copied into the data store
+    '''
 
 @accepts(t.enum, t.intptr, t.sizeiptr, t.void)
 @returns(t.void)
 @binds(dll)
 def get_buffer_sub_data(target, offset, size, data):
-    '''returns a subset of a buffer object's data store'''
+    '''
+    returns a subset of a buffer object's data store
+    
+    Args:
+        target: Specifies the target to which the buffer object is bound for glGetBufferSubData, which must be one of the buffer binding targets in the following table:
+        offset: Specifies the offset into the buffer object's data store from which data will be returned, measured in bytes
+        size: Specifies the size in bytes of the data store region being returned
+        data: Specifies a pointer to the location where buffer object data is returned
+    '''
 
 @accepts(t.enum, t.enum)
 @returns(t.void)
 @binds(dll)
 def map_buffer(target, access):
-    '''map all of a buffer object's data store into the client's address space'''
+    '''
+    map all of a buffer object's data store into the client's address space
+    
+    Args:
+        target: Specifies the target to which the buffer object is bound for glMapBuffer, which must be one of the buffer binding targets in the following table:
+        access: Specifies the access policy for glMapBuffer and glMapNamedBuffer, indicating whether it will be possible to read from, write to, or both read from and write to the buffer object's mapped data store
+    '''
 
 @accepts(t.enum)
 @returns(t.boolean)
 @binds(dll)
 def unmap_buffer(target):
-    '''release the mapping of a buffer object's data store into the client's address space'''
+    '''
+    release the mapping of a buffer object's data store into the client's address space
+    
+    Args:
+        target: Specifies the target to which the buffer object is bound for glUnmapBuffer, which must be one of the buffer binding targets in the following table:
+    '''
 
 @accepts(t.enum, t.enum, POINTER(t.int))
 @returns(t.void)
 @binds(dll)
 def get_buffer_parameteriv(target, pname, params):
-    '''return parameters of a buffer object'''
+    '''
+    return parameters of a buffer object
+    
+    Args:
+        target: Specifies the target buffer object
+    '''
 
 @accepts(t.enum, t.enum, t.void)
 @returns(t.void)
 @binds(dll)
 def get_buffer_pointerv(target, pname, params):
-    '''return the pointer to a mapped buffer object's data store'''
+    '''
+    return the pointer to a mapped buffer object's data store
+    
+    Args:
+        target: Specifies the target to which the buffer object is bound for glGetBufferPointerv, which must be one of the buffer binding targets in the following table:
+        pname: Specifies the name of the pointer to be returned
+        params: Returns the pointer value specified by pname
+    '''
 
 BUFFER_SIZE = 0x8764
 BUFFER_USAGE = 0x8765
