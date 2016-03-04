@@ -11,6 +11,13 @@ def blend_func_separate(sfactorrgb, dfactorrgb, sfactoralpha, dfactoralpha):
     specify pixel arithmetic for RGB and alpha components separately
     
     Args:
+        sfactorrgb: Specifies how the red, green, and blue blending factors are
+            computed
+        dfactorrgb: Specifies how the red, green, and blue destination blending
+            factors are computed
+        sfactoralpha: Specified how the alpha source blending factor is computed
+        dfactoralpha: Specified how the alpha destination blending factor is
+            computed
     '''
 
 @accepts(t.enum, POINTER(t.int), POINTER(t.sizei), t.sizei)
@@ -38,7 +45,8 @@ def multi_draw_elements(mode, count, type, indices, drawcount):
         mode: Specifies what kind of primitives to render
         count: Points to an array of the elements counts
         type: Specifies the type of the values in indices
-        indices: Specifies a pointer to the location where the indices are stored
+        indices: Specifies a pointer to the location where the indices are
+            stored
         drawcount: Specifies the size of the count and indices arrays
     '''
 
@@ -100,7 +108,8 @@ def fog_coord_pointer(type, stride, pointer):
     Args:
         type: Specifies the data type of each fog coordinate
         stride: Specifies the byte offset between consecutive fog coordinates
-        pointer: Specifies a pointer to the first coordinate of the first fog coordinate in the array
+        pointer: Specifies a pointer to the first coordinate of the first fog
+            coordinate in the array
     '''
 
 @accepts(t.byte, t.byte, t.byte)
@@ -210,7 +219,8 @@ def secondary_color_pointer(size, type, stride, pointer):
         size: Specifies the number of components per color
         type: Specifies the data type of each color component in the array
         stride: Specifies the byte offset between consecutive colors
-        pointer: Specifies a pointer to the first component of the first color element in the array
+        pointer: Specifies a pointer to the first component of the first color
+            element in the array
     '''
 
 @accepts(t.double, t.double)
@@ -356,7 +366,10 @@ def blend_color(red, green, blue, alpha):
     set the blend color
     
     Args:
-        red, green, blue, alpha: specify the components of gl.BLEND_COLOR
+        red: specify the components of gl.BLEND_COLOR
+        green: specify the components of gl.BLEND_COLOR
+        blue: specify the components of gl.BLEND_COLOR
+        alpha: specify the components of gl.BLEND_COLOR
     '''
 
 @accepts(t.enum)
@@ -364,7 +377,8 @@ def blend_color(red, green, blue, alpha):
 @binds(dll)
 def blend_equation(mode):
     '''
-    specify the equation used for both the RGB blend equation and the Alpha blend equation
+    specify the equation used for both the RGB blend equation and the Alpha blend
+equation
     
     Args:
         mode: specifies how source and destination colors are combined

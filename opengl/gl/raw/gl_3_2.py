@@ -37,8 +37,10 @@ def draw_elements_base_vertex(mode, count, type, indices, basevertex):
         mode: Specifies what kind of primitives to render
         count: Specifies the number of elements to be rendered
         type: Specifies the type of the values in indices
-        indices: Specifies a pointer to the location where the indices are stored
-        basevertex: Specifies a constant that should be added to each element of indices when chosing elements from the enabled vertex arrays
+        indices: Specifies a pointer to the location where the indices are
+            stored
+        basevertex: Specifies a constant that should be added to each element of
+            indices when chosing elements from the enabled vertex arrays
     '''
 
 @accepts(t.enum, t.uint, t.uint, t.sizei, t.enum, t.void, t.int)
@@ -54,8 +56,10 @@ def draw_range_elements_base_vertex(mode, start, end, count, type, indices, base
         end: Specifies the maximum array index contained in indices
         count: Specifies the number of elements to be rendered
         type: Specifies the type of the values in indices
-        indices: Specifies a pointer to the location where the indices are stored
-        basevertex: Specifies a constant that should be added to each element of indices when chosing elements from the enabled vertex arrays
+        indices: Specifies a pointer to the location where the indices are
+            stored
+        basevertex: Specifies a constant that should be added to each element of
+            indices when chosing elements from the enabled vertex arrays
     '''
 
 @accepts(t.enum, t.sizei, t.enum, t.void, t.sizei, t.int)
@@ -63,14 +67,19 @@ def draw_range_elements_base_vertex(mode, start, end, count, type, indices, base
 @binds(dll)
 def draw_elements_instanced_base_vertex(mode, count, type, indices, instancecount, basevertex):
     '''
-    render multiple instances of a set of primitives from array data with a per-element offset
+    render multiple instances of a set of primitives from array data with a per-
+element offset
     
     Args:
         mode: Specifies what kind of primitives to render
         count: Specifies the number of elements to be rendered
         type: Specifies the type of the values in indices
-        indices: Specifies a pointer to the location where the indices are stored
-        basevertex: Specifies a constant that should be added to each element of indices when chosing elements from the enabled vertex arrays
+        indices: Specifies a pointer to the location where the indices are
+            stored
+        instancecount: Specifies the number of instances of the indexed geometry
+            that should be drawn
+        basevertex: Specifies a constant that should be added to each element of
+            indices when chosing elements from the enabled vertex arrays
     '''
 
 @accepts(t.enum, POINTER(t.sizei), t.enum, t.void, t.sizei, POINTER(t.int))
@@ -78,15 +87,19 @@ def draw_elements_instanced_base_vertex(mode, count, type, indices, instancecoun
 @binds(dll)
 def multi_draw_elements_base_vertex(mode, count, type, indices, drawcount, basevertex):
     '''
-    render multiple sets of primitives by specifying indices of array data elements and an index to apply to each index
+    render multiple sets of primitives by specifying indices of array data elements
+and an index to apply to each index
     
     Args:
         mode: Specifies what kind of primitives to render
         count: Points to an array of the elements counts
         type: Specifies the type of the values in indices
-        indices: Specifies a pointer to the location where the indices are stored
-        drawcount: Specifies the size of the count, indices and basevertex arrays
-        basevertex: Specifies a pointer to the location where the base vertices are stored
+        indices: Specifies a pointer to the location where the indices are
+            stored
+        drawcount: Specifies the size of the count, indices and basevertex
+            arrays
+        basevertex: Specifies a pointer to the location where the base vertices
+            are stored
     '''
 
 @accepts(t.enum)
@@ -97,6 +110,8 @@ def provoking_vertex(mode):
     specifiy the vertex to be used as the source of data for flat shaded varyings
     
     Args:
+        mode: Specifies the vertex to be used as the source of data for flat
+            shaded varyings
     '''
 
 QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION = 0x8E4C
@@ -112,8 +127,10 @@ def fence_sync(condition, flags):
     create a new sync object and insert it into the GL command stream
     
     Args:
-        condition: Specifies the condition that must be met to set the sync object's state to signaled
-        flags: Specifies a bitwise combination of flags controlling the behavior of the sync object
+        condition: Specifies the condition that must be met to set the sync
+            object's state to signaled
+        flags: Specifies a bitwise combination of flags controlling the behavior
+            of the sync object
     '''
 
 @accepts(t.sync)
@@ -148,7 +165,8 @@ def client_wait_sync(sync, flags, timeout):
     Args:
         sync: The sync object whose status to wait on
         flags: A bitfield controlling the command flushing behavior
-        timeout: The timeout, specified in nanoseconds, for which the implementation should wait for sync to become signaled
+        timeout: The timeout, specified in nanoseconds, for which the
+            implementation should wait for sync to become signaled
     '''
 
 @accepts(t.sync, t.bitfield, t.uint64)
@@ -161,7 +179,8 @@ def wait_sync(sync, flags, timeout):
     Args:
         sync: Specifies the sync object whose status to wait on
         flags: A bitfield controlling the command flushing behavior
-        timeout: Specifies the timeout that the server should wait before continuing
+        timeout: Specifies the timeout that the server should wait before
+            continuing
     '''
 
 @accepts(t.enum, POINTER(t.int64))
@@ -211,7 +230,8 @@ def framebuffer_texture(target, attachment, texture, level):
     attach a level of a texture object as a logical buffer of a framebuffer object
     
     Args:
-        target: Specifies the target to which the framebuffer is bound for all commands except gl.named_framebuffer_texture
+        target: Specifies the target to which the framebuffer is bound for all
+            commands except gl.named_framebuffer_texture
         attachment: Specifies the attachment point of the framebuffer
         texture: Specifies the name of an existing texture object to attach
         level: Specifies the mipmap level of the texture object to attach
@@ -222,15 +242,20 @@ def framebuffer_texture(target, attachment, texture, level):
 @binds(dll)
 def tex_image2_d_multisample(target, samples, internalformat, width, height, fixedsamplelocations):
     '''
-    establish the data storage, format, dimensions, and number of samples of a multisample texture's image
+    establish the data storage, format, dimensions, and number of samples of a
+multisample texture's image
     
     Args:
         target: Specifies the target of the operation
         samples: The number of samples in the multisample texture's image
-        internalformat: The internal format to be used to store the multisample texture's image
+        internalformat: The internal format to be used to store the multisample
+            texture's image
         width: The width of the multisample texture's image, in texels
         height: The height of the multisample texture's image, in texels
-        fixedsamplelocations: Specifies whether the image will use identical sample locations and the same number of samples for all texels in the image, and the sample locations will not depend on the internal format or size of the image
+        fixedsamplelocations: Specifies whether the image will use identical
+            sample locations and the same number of samples for all texels in
+            the image, and the sample locations will not depend on the internal
+            format or size of the image
     '''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei, t.sizei, t.boolean)
@@ -238,15 +263,20 @@ def tex_image2_d_multisample(target, samples, internalformat, width, height, fix
 @binds(dll)
 def tex_image3_d_multisample(target, samples, internalformat, width, height, depth, fixedsamplelocations):
     '''
-    establish the data storage, format, dimensions, and number of samples of a multisample texture's image
+    establish the data storage, format, dimensions, and number of samples of a
+multisample texture's image
     
     Args:
         target: Specifies the target of the operation
         samples: The number of samples in the multisample texture's image
-        internalformat: The internal format to be used to store the multisample texture's image
+        internalformat: The internal format to be used to store the multisample
+            texture's image
         width: The width of the multisample texture's image, in texels
         height: The height of the multisample texture's image, in texels
-        fixedsamplelocations: Specifies whether the image will use identical sample locations and the same number of samples for all texels in the image, and the sample locations will not depend on the internal format or size of the image
+        fixedsamplelocations: Specifies whether the image will use identical
+            sample locations and the same number of samples for all texels in
+            the image, and the sample locations will not depend on the internal
+            format or size of the image
     '''
 
 @accepts(t.enum, t.uint, POINTER(t.float))

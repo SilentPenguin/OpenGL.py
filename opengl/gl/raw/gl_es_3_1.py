@@ -11,9 +11,12 @@ def dispatch_compute(num_groups_x, num_groups_y, num_groups_z):
     launch one or more compute work groups
     
     Args:
-        num_groups_x: The number of work groups to be launched in the X dimension
-        num_groups_y: The number of work groups to be launched in the Y dimension
-        num_groups_z: The number of work groups to be launched in the Z dimension
+        num_groups_x: The number of work groups to be launched in the X
+            dimension
+        num_groups_y: The number of work groups to be launched in the Y
+            dimension
+        num_groups_z: The number of work groups to be launched in the Z
+            dimension
     '''
 
 @accepts(t.intptr)
@@ -24,7 +27,9 @@ def dispatch_compute_indirect(indirect):
     launch one or more compute work groups using parameters stored in a buffer
     
     Args:
-        indirect: The offset into the buffer object currently bound to the gl.DISPATCH_INDIRECT_BUFFER buffer target at which the dispatch parameters are stored
+        indirect: The offset into the buffer object currently bound to the
+            gl.DISPATCH_INDIRECT_BUFFER buffer target at which the dispatch
+            parameters are stored
     '''
 
 COMPUTE_SHADER = 0x91B9
@@ -52,7 +57,8 @@ def draw_arrays_indirect(mode, indirect):
     
     Args:
         mode: Specifies what kind of primitives to render
-        indirect: Specifies the address of a structure containing the draw parameters
+        indirect: Specifies the address of a structure containing the draw
+            parameters
     '''
 
 @accepts(t.enum, t.enum, t.void)
@@ -64,8 +70,10 @@ def draw_elements_indirect(mode, type, indirect):
     
     Args:
         mode: Specifies what kind of primitives to render
-        type: Specifies the type of data in the buffer bound to the gl.ELEMENT_ARRAY_BUFFER binding
-        indirect: Specifies the address of a structure containing the draw parameters
+        type: Specifies the type of data in the buffer bound to the
+            gl.ELEMENT_ARRAY_BUFFER binding
+        indirect: Specifies the address of a structure containing the draw
+            parameters
     '''
 
 DRAW_INDIRECT_BUFFER = 0x8F3F
@@ -79,7 +87,8 @@ def framebuffer_parameteri(target, pname, param):
     set a named parameter of a framebuffer object
     
     Args:
-        target: Specifies the target to which the framebuffer is bound for gl.framebuffer_parameteri
+        target: Specifies the target to which the framebuffer is bound for
+            gl.framebuffer_parameteri
         pname: Specifies the framebuffer parameter to be modified
         param: The new value for the parameter named pname
     '''
@@ -112,7 +121,8 @@ def get_program_resource_index(program, programinterface, name):
     
     Args:
         program: The name of a program object whose resources to query
-        programinterface: A token identifying the interface within program containing the resource named name
+        programinterface: A token identifying the interface within program
+            containing the resource named name
         name: The name of the resource to query the index of
     '''
 
@@ -125,11 +135,14 @@ def get_program_resource_name(program, programinterface, index, bufsize, length,
     
     Args:
         program: The name of a program object whose resources to query
-        programinterface: A token identifying the interface within program containing the indexed resource
+        programinterface: A token identifying the interface within program
+            containing the indexed resource
         index: The index of the resource within programInterface of program
         bufsize: The size of the character array whose address is given by name
-        length: The address of a variable which will receive the length of the resource name
-        name: The address of a character array into which will be written the name of the resource
+        length: The address of a variable which will receive the length of the
+            resource name
+        name: The address of a character array into which will be written the
+            name of the resource
     '''
 
 @accepts(t.uint, t.enum, t.uint, t.sizei, POINTER(t.enum), t.sizei, POINTER(t.sizei), POINTER(t.int))
@@ -147,7 +160,8 @@ def get_program_resource_location(program, programinterface, name):
     
     Args:
         program: The name of a program object whose resources to query
-        programinterface: A token identifying the interface within program containing the resource named name
+        programinterface: A token identifying the interface within program
+            containing the resource named name
         name: The name of the resource to query the location of
     '''
 
@@ -189,9 +203,12 @@ def use_program_stages(pipeline, stages, program):
     bind stages of a program object to a program pipeline
     
     Args:
-        pipeline: Specifies the program pipeline object to which to bind stages from program
-        stages: Specifies a set of program stages to bind to the program pipeline object
-        program: Specifies the program object containing the shader executables to use in pipeline
+        pipeline: Specifies the program pipeline object to which to bind stages
+            from program
+        stages: Specifies a set of program stages to bind to the program
+            pipeline object
+        program: Specifies the program object containing the shader executables
+            to use in pipeline
     '''
 
 @accepts(t.uint, t.uint)
@@ -202,8 +219,10 @@ def active_shader_program(pipeline, program):
     set the active program object for a program pipeline object
     
     Args:
-        pipeline: Specifies the program pipeline object to set the active program object for
-        program: Specifies the program object to set as the active program pipeline object pipeline
+        pipeline: Specifies the program pipeline object to set the active
+            program object for
+        program: Specifies the program object to set as the active program
+            pipeline object pipeline
     '''
 
 @accepts(t.enum, t.sizei, POINTER(t.char_p))
@@ -220,7 +239,8 @@ def bind_program_pipeline(pipeline):
     bind a program pipeline to the current context
     
     Args:
-        pipeline: Specifies the name of the pipeline object to bind to the context
+        pipeline: Specifies the name of the pipeline object to bind to the
+            context
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -232,7 +252,8 @@ def delete_program_pipelines(n, pipelines):
     
     Args:
         n: Specifies the number of program pipeline objects to delete
-        pipelines: Specifies an array of names of program pipeline objects to delete
+        pipelines: Specifies an array of names of program pipeline objects to
+            delete
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -244,7 +265,8 @@ def gen_program_pipelines(n, pipelines):
     
     Args:
         n: Specifies the number of program pipeline object names to reserve
-        pipelines: Specifies an array of into which the reserved names will be written
+        pipelines: Specifies an array of into which the reserved names will be
+            written
     '''
 
 @accepts(t.uint)
@@ -255,7 +277,8 @@ def is_program_pipeline(pipeline):
     determine if a name corresponds to a program pipeline object
     
     Args:
-        pipeline: Specifies a value that may be the name of a program pipeline object
+        pipeline: Specifies a value that may be the name of a program pipeline
+            object
     '''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
@@ -481,10 +504,14 @@ def get_program_pipeline_info_log(pipeline, bufsize, length, infolog):
     retrieve the info log string from a program pipeline object
     
     Args:
-        pipeline: Specifies the name of a program pipeline object from which to retrieve the info log
-        bufsize: Specifies the maximum number of characters, including the null terminator, that may be written into infoLog
-        length: Specifies the address of a variable into which will be written the number of characters written into infoLog
-        infolog: Specifies the address of an array of characters into which will be written the info log for pipeline
+        pipeline: Specifies the name of a program pipeline object from which to
+            retrieve the info log
+        bufsize: Specifies the maximum number of characters, including the null
+            terminator, that may be written into infoLog
+        length: Specifies the address of a variable into which will be written
+            the number of characters written into infoLog
+        infolog: Specifies the address of an array of characters into which will
+            be written the info log for pipeline
     '''
 
 VERTEX_SHADER_BIT = 0x00000001
@@ -520,10 +547,14 @@ def bind_image_texture(unit, texture, level, layered, layer, access, format):
         unit: Specifies the index of the image unit to which to bind the texture
         texture: Specifies the name of the texture to bind to the image unit
         level: Specifies the level of the texture that is to be bound
-        layered: Specifies whether a layered texture binding is to be established
-        layer: If layered is gl.FALSE, specifies the layer of texture to be bound to the image unit
-        access: Specifies a token indicating the type of access that will be performed on the image
-        format: Specifies the format that the elements of the image will be treated as for the purposes of formatted stores
+        layered: Specifies whether a layered texture binding is to be
+            established
+        layer: If layered is gl.FALSE, specifies the layer of texture to be
+            bound to the image unit
+        access: Specifies a token indicating the type of access that will be
+            performed on the image
+        format: Specifies the format that the elements of the image will be
+            treated as for the purposes of formatted stores
     '''
 
 @accepts(t.enum, t.uint, POINTER(t.boolean))
@@ -616,12 +647,17 @@ def tex_storage2_d_multisample(target, samples, internalformat, width, height, f
     specify storage for a two-dimensional multisample texture
     
     Args:
-        target: Specifies the target to which the texture object is bound for gl.tex_storage2DMultisample
+        target: Specifies the target to which the texture object is bound for
+            gl.tex_storage2DMultisample
         samples: Specify the number of samples in the texture
-        internalformat: Specifies the sized internal format to be used to store texture image data
+        internalformat: Specifies the sized internal format to be used to store
+            texture image data
         width: Specifies the width of the texture, in texels
         height: Specifies the height of the texture, in texels
-        fixedsamplelocations: Specifies whether the image will use identical sample locations and the same number of samples for all texels in the image, and the sample locations will not depend on the internal format or size of the image
+        fixedsamplelocations: Specifies whether the image will use identical
+            sample locations and the same number of samples for all texels in
+            the image, and the sample locations will not depend on the internal
+            format or size of the image
     '''
 
 @accepts(t.enum, t.uint, POINTER(t.float))
@@ -693,7 +729,8 @@ def bind_vertex_buffer(bindingindex, buffer, offset, stride):
     bind a buffer to a vertex buffer bind point
     
     Args:
-        bindingindex: The index of the vertex buffer binding point to which to bind the buffer
+        bindingindex: The index of the vertex buffer binding point to which to
+            bind the buffer
         buffer: The name of a buffer to bind to the vertex buffer binding point
         offset: The offset of the first element of the buffer
         stride: The distance between elements within the buffer
@@ -725,11 +762,14 @@ def vertex_attrib_i_format(attribindex, size, type, relativeoffset):
 @binds(dll)
 def vertex_attrib_binding(attribindex, bindingindex):
     '''
-    associate a vertex attribute and a vertex buffer binding for a vertex array object
+    associate a vertex attribute and a vertex buffer binding for a vertex array
+object
     
     Args:
-        attribindex: The index of the attribute to associate with a vertex buffer binding
-        bindingindex: The index of the vertex buffer binding with which to associate the generic vertex attribute
+        attribindex: The index of the attribute to associate with a vertex
+            buffer binding
+        bindingindex: The index of the vertex buffer binding with which to
+            associate the generic vertex attribute
     '''
 
 @accepts(t.uint, t.uint)

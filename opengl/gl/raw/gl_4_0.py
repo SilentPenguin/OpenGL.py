@@ -11,7 +11,8 @@ def min_sample_shading(value):
     specifies minimum rate at which sample shaing takes place
     
     Args:
-        value: Specifies the rate at which samples are shaded within each covered pixel
+        value: Specifies the rate at which samples are shaded within each
+            covered pixel
     '''
 
 @accepts(t.uint, t.enum)
@@ -58,7 +59,8 @@ def draw_arrays_indirect(mode, indirect):
     
     Args:
         mode: Specifies what kind of primitives to render
-        indirect: Specifies the address of a structure containing the draw parameters
+        indirect: Specifies the address of a structure containing the draw
+            parameters
     '''
 
 @accepts(t.enum, t.enum, t.void)
@@ -70,8 +72,10 @@ def draw_elements_indirect(mode, type, indirect):
     
     Args:
         mode: Specifies what kind of primitives to render
-        type: Specifies the type of data in the buffer bound to the gl.ELEMENT_ARRAY_BUFFER binding
-        indirect: Specifies the address of a structure containing the draw parameters
+        type: Specifies the type of data in the buffer bound to the
+            gl.ELEMENT_ARRAY_BUFFER binding
+        indirect: Specifies the address of a structure containing the draw
+            parameters
     '''
 
 DRAW_INDIRECT_BUFFER = 0x8F3F
@@ -207,11 +211,13 @@ DOUBLE_MAT4x3 = 0x8F4E
 @binds(dll)
 def get_subroutine_uniform_location(program, shadertype, name):
     '''
-    retrieve the location of a subroutine uniform of a given shader stage within a program
+    retrieve the location of a subroutine uniform of a given shader stage within a
+program
     
     Args:
         program: Specifies the name of the program containing shader stage
-        shadertype: Specifies the shader stage from which to query for subroutine uniform index
+        shadertype: Specifies the shader stage from which to query for
+            subroutine uniform index
         name: Specifies the name of the subroutine uniform whose index to query
     '''
 
@@ -220,11 +226,13 @@ def get_subroutine_uniform_location(program, shadertype, name):
 @binds(dll)
 def get_subroutine_index(program, shadertype, name):
     '''
-    retrieve the index of a subroutine uniform of a given shader stage within a program
+    retrieve the index of a subroutine uniform of a given shader stage within a
+program
     
     Args:
         program: Specifies the name of the program containing shader stage
-        shadertype: Specifies the shader stage from which to query for subroutine uniform index
+        shadertype: Specifies the shader stage from which to query for
+            subroutine uniform index
         name: Specifies the name of the subroutine uniform whose index to query
     '''
 
@@ -243,11 +251,14 @@ def get_active_subroutine_uniform_name(program, shadertype, index, bufsize, leng
     
     Args:
         program: Specifies the name of the program containing the subroutine
-        shadertype: Specifies the shader stage from which to query for the subroutine parameter
+        shadertype: Specifies the shader stage from which to query for the
+            subroutine parameter
         index: Specifies the index of the shader subroutine uniform
         bufsize: Specifies the size of the buffer whose address is given in name
-        length: Specifies the address of a variable into which is written the number of characters copied into name
-        name: Specifies the address of a buffer that will receive the name of the specified shader subroutine uniform
+        length: Specifies the address of a variable into which is written the
+            number of characters copied into name
+        name: Specifies the address of a buffer that will receive the name of
+            the specified shader subroutine uniform
     '''
 
 @accepts(t.uint, t.enum, t.uint, t.sizei, POINTER(t.sizei), t.char_p)
@@ -259,11 +270,14 @@ def get_active_subroutine_name(program, shadertype, index, bufsize, length, name
     
     Args:
         program: Specifies the name of the program containing the subroutine
-        shadertype: Specifies the shader stage from which to query the subroutine name
+        shadertype: Specifies the shader stage from which to query the
+            subroutine name
         index: Specifies the index of the shader subroutine uniform
         bufsize: Specifies the size of the buffer whose address is given in name
-        length: Specifies the address of a variable which is to receive the length of the shader subroutine uniform name
-        name: Specifies the address of an array into which the name of the shader subroutine uniform will be written
+        length: Specifies the address of a variable which is to receive the
+            length of the shader subroutine uniform name
+        name: Specifies the address of an array into which the name of the
+            shader subroutine uniform will be written
     '''
 
 @accepts(t.enum, t.sizei, POINTER(t.uint))
@@ -346,8 +360,10 @@ def bind_transform_feedback(target, id):
     bind a transform feedback object
     
     Args:
-        target: Specifies the target to which to bind the transform feedback object id
-        id: Specifies the name of a transform feedback object reserved by gl.gen_transform_feedbacks
+        target: Specifies the target to which to bind the transform feedback
+            object id
+        id: Specifies the name of a transform feedback object reserved by
+            gl.gen_transform_feedbacks
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -382,7 +398,8 @@ def is_transform_feedback(id):
     determine if a name corresponds to a transform feedback object
     
     Args:
-        id: Specifies a value that may be the name of a transform feedback object
+        id: Specifies a value that may be the name of a transform feedback
+            object
     '''
 
 @accepts()
@@ -391,8 +408,6 @@ def is_transform_feedback(id):
 def pause_transform_feedback():
     '''
     pause transform feedback operations
-    
-    Args:
     '''
 
 @accepts()
@@ -401,8 +416,6 @@ def pause_transform_feedback():
 def resume_transform_feedback():
     '''
     resume transform feedback operations
-    
-    Args:
     '''
 
 @accepts(t.enum, t.uint)
@@ -414,7 +427,8 @@ def draw_transform_feedback(mode, id):
     
     Args:
         mode: Specifies what kind of primitives to render
-        id: Specifies the name of a transform feedback object from which to retrieve a primitive count
+        id: Specifies the name of a transform feedback object from which to
+            retrieve a primitive count
     '''
 
 TRANSFORM_FEEDBACK = 0x8E22
@@ -426,12 +440,15 @@ TRANSFORM_FEEDBACK_BINDING = 0x8E25
 @binds(dll)
 def draw_transform_feedback_stream(mode, id, stream):
     '''
-    render primitives using a count derived from a specifed stream of a transform feedback object
+    render primitives using a count derived from a specifed stream of a transform
+feedback object
     
     Args:
         mode: Specifies what kind of primitives to render
-        id: Specifies the name of a transform feedback object from which to retrieve a primitive count
-        stream: Specifies the index of the transform feedback stream from which to retrieve a primitive count
+        id: Specifies the name of a transform feedback object from which to
+            retrieve a primitive count
+        stream: Specifies the index of the transform feedback stream from which
+            to retrieve a primitive count
     '''
 
 @accepts(t.enum, t.uint, t.uint)
@@ -442,8 +459,10 @@ def begin_query_indexed(target, index, id):
     delimit the boundaries of a query object on an indexed target
     
     Args:
-        target: Specifies the target type of query object established between gl.begin_query_indexed and the subsequent gl.end_query_indexed
-        index: Specifies the index of the query target upon which to begin the query
+        target: Specifies the target type of query object established between
+            gl.begin_query_indexed and the subsequent gl.end_query_indexed
+        index: Specifies the index of the query target upon which to begin the
+            query
         id: Specifies the name of a query object
     '''
 

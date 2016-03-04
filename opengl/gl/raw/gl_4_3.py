@@ -270,11 +270,15 @@ def clear_buffer_data(target, internalformat, format, type, data):
     fill a buffer object's data store with a fixed value
     
     Args:
-        target: Specifies the target to which the buffer object is bound for gl.clear_buffer_data, which must must be one of the buffer binding targets in the following table:
-        internalformat: The internal format with which the data will be stored in the buffer object
+        target: Specifies the target to which the buffer object is bound for
+            gl.clear_buffer_data, which must must be one of the buffer binding
+            targets in the following table:
+        internalformat: The internal format with which the data will be stored
+            in the buffer object
         format: The format of the data in memory addressed by data
         type: The type of the data in memory addressed by data
-        data: The address of a memory location storing the data to be replicated into the buffer's data store
+        data: The address of a memory location storing the data to be replicated
+            into the buffer's data store
     '''
 
 @accepts(t.enum, t.enum, t.intptr, t.sizeiptr, t.enum, t.enum, t.void)
@@ -285,13 +289,19 @@ def clear_buffer_sub_data(target, internalformat, offset, size, format, type, da
     fill all or part of buffer object's data store with a fixed value
     
     Args:
-        target: Specifies the target to which the buffer object is bound for gl.clear_buffer_sub_data, which must be one of the buffer binding targets in the following table:
-        internalformat: The internal format with which the data will be stored in the buffer object
-        offset: The offset in basic machine units into the buffer object's data store at which to start filling
-        size: The size in basic machine units of the range of the data store to fill
+        target: Specifies the target to which the buffer object is bound for
+            gl.clear_buffer_sub_data, which must be one of the buffer binding
+            targets in the following table:
+        internalformat: The internal format with which the data will be stored
+            in the buffer object
+        offset: The offset in basic machine units into the buffer object's data
+            store at which to start filling
+        size: The size in basic machine units of the range of the data store to
+            fill
         format: The format of the data in memory addressed by data
         type: The type of the data in memory addressed by data
-        data: The address of a memory location storing the data to be replicated into the buffer's data store
+        data: The address of a memory location storing the data to be replicated
+            into the buffer's data store
     '''
 
 @accepts(t.uint, t.uint, t.uint)
@@ -302,9 +312,12 @@ def dispatch_compute(num_groups_x, num_groups_y, num_groups_z):
     launch one or more compute work groups
     
     Args:
-        num_groups_x: The number of work groups to be launched in the X dimension
-        num_groups_y: The number of work groups to be launched in the Y dimension
-        num_groups_z: The number of work groups to be launched in the Z dimension
+        num_groups_x: The number of work groups to be launched in the X
+            dimension
+        num_groups_y: The number of work groups to be launched in the Y
+            dimension
+        num_groups_z: The number of work groups to be launched in the Z
+            dimension
     '''
 
 @accepts(t.intptr)
@@ -315,7 +328,9 @@ def dispatch_compute_indirect(indirect):
     launch one or more compute work groups using parameters stored in a buffer
     
     Args:
-        indirect: The offset into the buffer object currently bound to the gl.DISPATCH_INDIRECT_BUFFER buffer target at which the dispatch parameters are stored
+        indirect: The offset into the buffer object currently bound to the
+            gl.DISPATCH_INDIRECT_BUFFER buffer target at which the dispatch
+            parameters are stored
     '''
 
 @accepts(t.uint, t.enum, t.int, t.int, t.int, t.int, t.uint, t.enum, t.int, t.int, t.int, t.int, t.sizei, t.sizei, t.sizei)
@@ -327,13 +342,15 @@ def copy_image_sub_data(srcname, srctarget, srclevel, srcx, srcy, srcz, dstname,
     
     Args:
         srcname: The name of a texture or renderbuffer object from which to copy
-        srctarget: The target representing the namespace of the source name srcName
+        srctarget: The target representing the namespace of the source name
+            srcName
         srclevel: The mipmap level to read from the source
         srcx: The X coordinate of the left edge of the souce region to copy
         srcy: The Y coordinate of the top edge of the souce region to copy
         srcz: The Z coordinate of the near edge of the souce region to copy
         dstname: The name of a texture or renderbuffer object to which to copy
-        dsttarget: The target representing the namespace of the destination name dstName
+        dsttarget: The target representing the namespace of the destination name
+            dstName
         dstx: The X coordinate of the left edge of the destination region
         dsty: The Y coordinate of the top edge of the destination region
         dstz: The Z coordinate of the near edge of the destination region
@@ -350,7 +367,8 @@ def framebuffer_parameteri(target, pname, param):
     set a named parameter of a framebuffer object
     
     Args:
-        target: Specifies the target to which the framebuffer is bound for gl.framebuffer_parameteri
+        target: Specifies the target to which the framebuffer is bound for
+            gl.framebuffer_parameteri
         pname: Specifies the framebuffer parameter to be modified
         param: The new value for the parameter named pname
     '''
@@ -376,7 +394,8 @@ def invalidate_tex_sub_image(texture, level, xoffset, yoffset, zoffset, width, h
     
     Args:
         texture: The name of a texture object a subregion of which to invalidate
-        level: The level of detail of the texture object within which the region resides
+        level: The level of detail of the texture object within which the region
+            resides
         xoffset: The X offset of the region to be invalidated
         yoffset: The Y offset of the region to be invalidated
         zoffset: The Z offset of the region to be invalidated
@@ -405,9 +424,12 @@ def invalidate_buffer_sub_data(buffer, offset, length):
     invalidate a region of a buffer object's data store
     
     Args:
-        buffer: The name of a buffer object, a subrange of whose data store to invalidate
-        offset: The offset within the buffer's data store of the start of the range to be invalidated
-        length: The length of the range within the buffer's data store to be invalidated
+        buffer: The name of a buffer object, a subrange of whose data store to
+            invalidate
+        offset: The offset within the buffer's data store of the start of the
+            range to be invalidated
+        length: The length of the range within the buffer's data store to be
+            invalidated
     '''
 
 @accepts(t.uint)
@@ -429,9 +451,11 @@ def invalidate_framebuffer(target, numattachments, attachments):
     invalidate the content of some or all of a framebuffer's attachments
     
     Args:
-        target: Specifies the target to which the framebuffer object is attached for gl.invalidate_framebuffer
+        target: Specifies the target to which the framebuffer object is attached
+            for gl.invalidate_framebuffer
         numattachments: Specifies the number of entries in the attachments array
-        attachments: Specifies a pointer to an array identifying the attachments to be invalidated
+        attachments: Specifies a pointer to an array identifying the attachments
+            to be invalidated
     '''
 
 @accepts(t.enum, t.sizei, POINTER(t.enum), t.int, t.int, t.sizei, t.sizei)
@@ -442,9 +466,11 @@ def invalidate_sub_framebuffer(target, numattachments, attachments, x, y, width,
     invalidate the content of a region of some or all of a framebuffer's attachments
     
     Args:
-        target: Specifies the target to which the framebuffer object is attached for gl.invalidate_sub_framebuffer
+        target: Specifies the target to which the framebuffer object is attached
+            for gl.invalidate_sub_framebuffer
         numattachments: Specifies the number of entries in the attachments array
-        attachments: Specifies a pointer to an array identifying the attachments to be invalidated
+        attachments: Specifies a pointer to an array identifying the attachments
+            to be invalidated
         x: Specifies the X offset of the region to be invalidated
         y: Specifies the Y offset of the region to be invalidated
         width: Specifies the width of the region to be invalidated
@@ -456,13 +482,17 @@ def invalidate_sub_framebuffer(target, numattachments, attachments, x, y, width,
 @binds(dll)
 def multi_draw_arrays_indirect(mode, indirect, drawcount, stride):
     '''
-    render multiple sets of primitives from array data, taking parameters from memory
+    render multiple sets of primitives from array data, taking parameters from
+memory
     
     Args:
         mode: Specifies what kind of primitives to render
-        indirect: Specifies the address of an array of structures containing the draw parameters
-        drawcount: Specifies the the number of elements in the array of draw parameter structures
-        stride: Specifies the distance in basic machine units between elements of the draw parameter array
+        indirect: Specifies the address of an array of structures containing the
+            draw parameters
+        drawcount: Specifies the the number of elements in the array of draw
+            parameter structures
+        stride: Specifies the distance in basic machine units between elements
+            of the draw parameter array
     '''
 
 @accepts(t.enum, t.enum, t.void, t.sizei, t.sizei)
@@ -474,10 +504,14 @@ def multi_draw_elements_indirect(mode, type, indirect, drawcount, stride):
     
     Args:
         mode: Specifies what kind of primitives to render
-        type: Specifies the type of data in the buffer bound to the gl.ELEMENT_ARRAY_BUFFER binding
-        indirect: Specifies the address of a structure containing an array of draw parameters
-        drawcount: Specifies the number of elements in the array addressed by indirect
-        stride: Specifies the distance in basic machine units between elements of the draw parameter array
+        type: Specifies the type of data in the buffer bound to the
+            gl.ELEMENT_ARRAY_BUFFER binding
+        indirect: Specifies the address of a structure containing an array of
+            draw parameters
+        drawcount: Specifies the number of elements in the array addressed by
+            indirect
+        stride: Specifies the distance in basic machine units between elements
+            of the draw parameter array
     '''
 
 @accepts(t.uint, t.enum, t.enum, POINTER(t.int))
@@ -495,7 +529,8 @@ def get_program_resource_index(program, programinterface, name):
     
     Args:
         program: The name of a program object whose resources to query
-        programinterface: A token identifying the interface within program containing the resource named name
+        programinterface: A token identifying the interface within program
+            containing the resource named name
         name: The name of the resource to query the index of
     '''
 
@@ -508,11 +543,14 @@ def get_program_resource_name(program, programinterface, index, bufsize, length,
     
     Args:
         program: The name of a program object whose resources to query
-        programinterface: A token identifying the interface within program containing the indexed resource
+        programinterface: A token identifying the interface within program
+            containing the indexed resource
         index: The index of the resource within programInterface of program
         bufsize: The size of the character array whose address is given by name
-        length: The address of a variable which will receive the length of the resource name
-        name: The address of a character array into which will be written the name of the resource
+        length: The address of a variable which will receive the length of the
+            resource name
+        name: The address of a character array into which will be written the
+            name of the resource
     '''
 
 @accepts(t.uint, t.enum, t.uint, t.sizei, POINTER(t.enum), t.sizei, POINTER(t.sizei), POINTER(t.int))
@@ -530,7 +568,8 @@ def get_program_resource_location(program, programinterface, name):
     
     Args:
         program: The name of a program object whose resources to query
-        programinterface: A token identifying the interface within program containing the resource named name
+        programinterface: A token identifying the interface within program
+            containing the resource named name
         name: The name of the resource to query the location of
     '''
 
@@ -543,7 +582,8 @@ def get_program_resource_location_index(program, programinterface, name):
     
     Args:
         program: The name of a program object whose resources to query
-        programinterface: A token identifying the interface within program containing the resource named name
+        programinterface: A token identifying the interface within program
+            containing the resource named name
         name: The name of the resource to query the location of
     '''
 
@@ -555,9 +595,11 @@ def shader_storage_block_binding(program, storageblockindex, storageblockbinding
     change an active shader storage block binding
     
     Args:
-        program: The name of the program containing the block whose binding to change
+        program: The name of the program containing the block whose binding to
+            change
         storageblockindex: The index storage block within the program
-        storageblockbinding: The index storage block binding to associate with the specified storage block
+        storageblockbinding: The index storage block binding to associate with
+            the specified storage block
     '''
 
 @accepts(t.enum, t.enum, t.uint, t.intptr, t.sizeiptr)
@@ -568,11 +610,16 @@ def tex_buffer_range(target, internalformat, buffer, offset, size):
     attach a range of a buffer object's data store to a buffer texture object
     
     Args:
-        target: Specifies the target to which the texture object is bound for gl.tex_buffer_range
-        internalformat: Specifies the internal format of the data in the store belonging to buffer
-        buffer: Specifies the name of the buffer object whose storage to attach to the active buffer texture
-        offset: Specifies the offset of the start of the range of the buffer's data store to attach
-        size: Specifies the size of the range of the buffer's data store to attach
+        target: Specifies the target to which the texture object is bound for
+            gl.tex_buffer_range
+        internalformat: Specifies the internal format of the data in the store
+            belonging to buffer
+        buffer: Specifies the name of the buffer object whose storage to attach
+            to the active buffer texture
+        offset: Specifies the offset of the start of the range of the buffer's
+            data store to attach
+        size: Specifies the size of the range of the buffer's data store to
+            attach
     '''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei, t.boolean)
@@ -583,12 +630,17 @@ def tex_storage2_d_multisample(target, samples, internalformat, width, height, f
     specify storage for a two-dimensional multisample texture
     
     Args:
-        target: Specifies the target to which the texture object is bound for gl.tex_storage2DMultisample
+        target: Specifies the target to which the texture object is bound for
+            gl.tex_storage2DMultisample
         samples: Specify the number of samples in the texture
-        internalformat: Specifies the sized internal format to be used to store texture image data
+        internalformat: Specifies the sized internal format to be used to store
+            texture image data
         width: Specifies the width of the texture, in texels
         height: Specifies the height of the texture, in texels
-        fixedsamplelocations: Specifies whether the image will use identical sample locations and the same number of samples for all texels in the image, and the sample locations will not depend on the internal format or size of the image
+        fixedsamplelocations: Specifies whether the image will use identical
+            sample locations and the same number of samples for all texels in
+            the image, and the sample locations will not depend on the internal
+            format or size of the image
     '''
 
 @accepts(t.enum, t.sizei, t.enum, t.sizei, t.sizei, t.sizei, t.boolean)
@@ -599,13 +651,18 @@ def tex_storage3_d_multisample(target, samples, internalformat, width, height, d
     specify storage for a two-dimensional multisample array texture
     
     Args:
-        target: Specifies the target to which the texture object is bound for gl.tex_storage3DMultisample
+        target: Specifies the target to which the texture object is bound for
+            gl.tex_storage3DMultisample
         samples: Specify the number of samples in the texture
-        internalformat: Specifies the sized internal format to be used to store texture image data
+        internalformat: Specifies the sized internal format to be used to store
+            texture image data
         width: Specifies the width of the texture, in texels
         height: Specifies the height of the texture, in texels
         depth: Specifies the depth of the texture, in layers
-        fixedsamplelocations: Specifies whether the image will use identical sample locations and the same number of samples for all texels in the image, and the sample locations will not depend on the internal format or size of the image
+        fixedsamplelocations: Specifies whether the image will use identical
+            sample locations and the same number of samples for all texels in
+            the image, and the sample locations will not depend on the internal
+            format or size of the image
     '''
 
 @accepts(t.uint, t.enum, t.uint, t.enum, t.uint, t.uint, t.uint, t.uint)
@@ -617,11 +674,13 @@ def texture_view(texture, target, origtexture, internalformat, minlevel, numleve
     
     Args:
         texture: Specifies the texture object to be initialized as a view
-        target: Specifies the target to be used for the newly initialized texture
-        origtexture: Specifies the name of a texture object of which to make a view
-        internalformat: Specifies the internal format for the newly created view
+        target: Specifies the target to be used for the newly initialized
+            texture
+        origtexture: Specifies the name of a texture object of which to make a
+            view
         minlevel: Specifies lowest level of detail of the view
-        numlevels: Specifies the number of levels of detail to include in the view
+        numlevels: Specifies the number of levels of detail to include in the
+            view
         minlayer: Specifies the index of the first layer to include in the view
         numlayers: Specifies the number of layers to include in the view
     '''
@@ -634,7 +693,8 @@ def bind_vertex_buffer(bindingindex, buffer, offset, stride):
     bind a buffer to a vertex buffer bind point
     
     Args:
-        bindingindex: The index of the vertex buffer binding point to which to bind the buffer
+        bindingindex: The index of the vertex buffer binding point to which to
+            bind the buffer
         buffer: The name of a buffer to bind to the vertex buffer binding point
         offset: The offset of the first element of the buffer
         stride: The distance between elements within the buffer
@@ -672,11 +732,14 @@ def vertex_attrib_l_format(attribindex, size, type, relativeoffset):
 @binds(dll)
 def vertex_attrib_binding(attribindex, bindingindex):
     '''
-    associate a vertex attribute and a vertex buffer binding for a vertex array object
+    associate a vertex attribute and a vertex buffer binding for a vertex array
+object
     
     Args:
-        attribindex: The index of the attribute to associate with a vertex buffer binding
-        bindingindex: The index of the vertex buffer binding with which to associate the generic vertex attribute
+        attribindex: The index of the attribute to associate with a vertex
+            buffer binding
+        bindingindex: The index of the vertex buffer binding with which to
+            associate the generic vertex attribute
     '''
 
 @accepts(t.uint, t.uint)
@@ -703,8 +766,10 @@ def debug_message_control(source, type, severity, count, ids, enabled):
         type: The type of debug messages to enable or disable
         severity: The severity of debug messages to enable or disable
         count: The length of the array ids
-        ids: The address of an array of unsigned integers contianing the ids of the messages to enable or disable
-        enabled: A Boolean flag determining whether the selected messages should be enabled or disabled
+        ids: The address of an array of unsigned integers contianing the ids of
+            the messages to enable or disable
+        enabled: A Boolean flag determining whether the selected messages should
+            be enabled or disabled
     '''
 
 @accepts(t.enum, t.enum, t.uint, t.enum, t.sizei, t.char_p)
@@ -719,7 +784,9 @@ def debug_message_insert(source, type, id, severity, length, buf):
         type: The type of the debug message insert
         id: The user-supplied identifier of the message to insert
         severity: The severity of the debug messages to insert
-        length: The length string contained in the character array whose address is given by message
+        length: The length string contained in the character array whose address
+            is given by message
+        buf: The address of a character array containing the message to insert
     '''
 
 @accepts(t.DEBUGPROC, t.void)
@@ -730,8 +797,10 @@ def debug_message_callback(callback, userparam):
     specify a callback to receive debugging messages from the GL
     
     Args:
-        callback: The address of a callback function that will be called when a debug message is generated
-        userparam: A user supplied pointer that will be passed on each invocation of callback
+        callback: The address of a callback function that will be called when a
+            debug message is generated
+        userparam: A user supplied pointer that will be passed on each
+            invocation of callback
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.enum), POINTER(t.enum), POINTER(t.uint), POINTER(t.enum), POINTER(t.sizei), t.char_p)
@@ -744,12 +813,18 @@ def get_debug_message_log(count, bufsize, sources, types, ids, severities, lengt
     Args:
         count: The number of debug messages to retrieve from the log
         bufsize: The size of the buffer whose address is given by messageLog
-        sources: The address of an array of variables to receive the sources of the retrieved messages
-        types: The address of an array of variables to receive the types of the retrieved messages
-        ids: The address of an array of unsigned integers to receive the ids of the retrieved messages
-        severities: The address of an array of variables to receive the severites of the retrieved messages
-        lengths: The address of an array of variables to receive the lengths of the received messages
-        messagelog: The address of an array of characters that will receive the messages
+        sources: The address of an array of variables to receive the sources of
+            the retrieved messages
+        types: The address of an array of variables to receive the types of the
+            retrieved messages
+        ids: The address of an array of unsigned integers to receive the ids of
+            the retrieved messages
+        severities: The address of an array of variables to receive the
+            severites of the retrieved messages
+        lengths: The address of an array of variables to receive the lengths of
+            the received messages
+        messagelog: The address of an array of characters that will receive the
+            messages
     '''
 
 @accepts(t.enum, t.uint, t.sizei, t.char_p)
@@ -763,7 +838,8 @@ def push_debug_group(source, id, length, message):
         source: The source of the debug message
         id: The identifier of the message
         length: The length of the message to be sent to the debug output stream
-        message: The a string containing the message to be sent to the debug output stream
+        message: The a string containing the message to be sent to the debug
+            output stream
     '''
 
 @accepts()
@@ -772,8 +848,6 @@ def push_debug_group(source, id, length, message):
 def pop_debug_group():
     '''
     pop the active debug group
-    
-    Args:
     '''
 
 @accepts(t.enum, t.uint, t.sizei, t.char_p)
@@ -787,7 +861,8 @@ def object_label(identifier, name, length, label):
         identifier: The namespace from which the name of the object is allocated
         name: The name of the object to label
         length: The length of the label to be used for the object
-        label: The address of a string containing the label to assign to the object
+        label: The address of a string containing the label to assign to the
+            object
     '''
 
 @accepts(t.enum, t.uint, t.sizei, POINTER(t.sizei), t.char_p)
@@ -800,8 +875,8 @@ def get_object_label(identifier, name, bufsize, length, label):
     Args:
         identifier: The namespace from which the name of the object is allocated
         name: The name of the object whose label to retrieve
-        bufsize: The length of the buffer whose address is in label
-        length: The address of a variable to receive the length of the object label
+        length: The address of a variable to receive the length of the object
+            label
         label: The address of a string that will receive the object label
     '''
 
@@ -815,7 +890,8 @@ def object_ptr_label(ptr, length, label):
     Args:
         ptr: A pointer identifying a sync object
         length: The length of the label to be used for the object
-        label: The address of a string containing the label to assign to the object
+        label: The address of a string containing the label to assign to the
+            object
     '''
 
 @accepts(t.void, t.sizei, POINTER(t.sizei), t.char_p)
@@ -827,8 +903,8 @@ def get_object_ptr_label(ptr, bufsize, length, label):
     
     Args:
         ptr: The name of the sync object whose label to retrieve
-        bufsize: The length of the buffer whose address is in label
-        length: The address of a variable to receive the length of the object label
+        length: The address of a variable to receive the length of the object
+            label
         label: The address of a string that will receive the object label
     '''
 

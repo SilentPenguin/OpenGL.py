@@ -1,5 +1,7 @@
 import re
 import rxml
+import textwrap
+import lxml.html
 
 MAN_PATH = 'OpenGL/registry/man/man{}/{}.xml'
 XML_PATH = 'OpenGL/registry/api/gl.xml'
@@ -87,21 +89,47 @@ class document:
     def command_description(lines, doc):
         text = doc.refnamediv[0].refpurpose[0].node_text
         text = pep.doc_body(text)
+        text = textwrap.fill(text, 80)
         lines.append('    ' + text)
         
     @staticmethod
     def command_args(lines, params, doc):
+        
+        if not doc.refsect1 or not doc.refsect1[0].variablelist or not doc.refsect1[0].variablelist[0].varlistentry: return
+        if not doc.refsynopsisdiv or not doc.refsynopsisdiv[0].funcsynopsis[0] or not doc.refsynopsisdiv[0].funcsynopsis[0].funcprototype or not doc.refsynopsisdiv[0].funcsynopsis[0].funcprototype[0].paramdef: return
+        
+        var_elements = doc.refsect1[0].variablelist[0].varlistentry
+        arg_elements = doc.refsynopsisdiv[0].funcsynopsis[0].funcprototype[0].paramdef
+        
+        #The documentation occationally uses differing names for parameters
+        #This maps the binding names to the documentation, since the bindings favour gl.xml over the manpages 
+        args = {
+            arg.parameter[0].text : param 
+            for param, arg in zip(params, arg_elements)
+            if arg.parameter
+        }
+        
+        if not args: return
+        
+        #This maps documented names above to the documented lines
+        docline = {
+            args[term.parameter[0].text] : pep.doc_body(param.listitem[0].para[0].node_text)
+            for param in var_elements
+            if param.term
+            for term in param.term
+            if term.parameter and term.parameter[0].text in args
+        }
+        
         lines.append('    ')
         lines.append('    Args:')
-        if not doc.refsect1 or not doc.refsect1[0].variablelist or not doc.refsect1[0].variablelist[0].varlistentry: return
-        variable_list = doc.refsect1[0].variablelist[0].varlistentry
-        for param in variable_list:
-            if not param.term: break
-            name = ', '.join(term.parameter[0].text.lower() for term in param.term if term.parameter and term.parameter[0].text.lower() in params)
-            if not name: continue
-            text = param.listitem[0].para[0].node_text
-            text = pep.doc_body(text)
-            lines.append('        {}: {}'.format(name, text))
+        
+        for param in params:
+            if param not in docline: continue
+            text = docline[param]
+            text = '{}: {}'.format(param, text)
+            text = text[:4] + ('\n            ').join(textwrap.wrap(text[4:], 68))
+            lines.append('        ' + text)
+        return
             
 class define:
     @staticmethod
@@ -157,7 +185,6 @@ class pep:
     def doc_body(string):
         def command_replace(match):
             return 'gl.' + pep.command(match.group(0))
-        import lxml.html
         string = string.split(".")[0]
         string = re.sub('GL_([_A-Z]*?)', r'gl.\1', string)
         string = re.sub('gl[A-Z][A-Za-z]+', command_replace, string)
@@ -166,6 +193,5 @@ class pep:
         string = lxml.html.fromstring(string).text_content().encode('unicode-escape')
         string = ' '.join(string.split())
         return string
-        
 
 if __name__ == '__main__': main()

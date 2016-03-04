@@ -11,7 +11,8 @@ def cull_face(mode):
     specify whether front- or back-facing facets can be culled
     
     Args:
-        mode: Specifies whether front- or back-facing facets are candidates for culling
+        mode: Specifies whether front- or back-facing facets are candidates for
+            culling
     '''
 
 @accepts(t.enum)
@@ -33,7 +34,8 @@ def hint(target, mode):
     specify implementation-specific hints
     
     Args:
-        target: Specifies a symbolic constant indicating the behavior to be controlled
+        target: Specifies a symbolic constant indicating the behavior to be
+            controlled
         mode: Specifies a symbolic constant indicating the desired behavior
     '''
 
@@ -79,8 +81,10 @@ def scissor(x, y, width, height):
     define the scissor box
     
     Args:
-        x, y: Specify the lower left corner of the scissor box
-        width, height: Specify the width and height of the scissor box
+        x: Specify the lower left corner of the scissor box
+        y: Specify the lower left corner of the scissor box
+        width: Specify the width and height of the scissor box
+        height: Specify the width and height of the scissor box
     '''
 
 @accepts(t.enum, t.enum, t.float)
@@ -122,6 +126,7 @@ def tex_image1_d(target, level, internalformat, width, border, format, type, pix
         border: This value must be 0
         format: Specifies the format of the pixel data
         type: Specifies the data type of the pixel data
+        pixels: Specifies a pointer to the image data in memory
     '''
 
 @accepts(t.enum, t.int, t.int, t.sizei, t.sizei, t.int, t.enum, t.enum, t.void)
@@ -136,10 +141,13 @@ def tex_image2_d(target, level, internalformat, width, height, border, format, t
         level: Specifies the level-of-detail number
         internalformat: Specifies the number of color components in the texture
         width: Specifies the width of the texture image
-        height: Specifies the height of the texture image, or the number of layers in a texture array, in the case of the gl.TEXTURE_1D_ARRAY and gl.PROXY_TEXTURE_1D_ARRAY targets
+        height: Specifies the height of the texture image, or the number of
+            layers in a texture array, in the case of the gl.TEXTURE_1D_ARRAY
+            and gl.PROXY_TEXTURE_1D_ARRAY targets
         border: This value must be 0
         format: Specifies the format of the pixel data
         type: Specifies the data type of the pixel data
+        pixels: Specifies a pointer to the image data in memory
     '''
 
 @accepts(t.enum)
@@ -150,7 +158,8 @@ def draw_buffer(buf):
     specify which color buffers are to be drawn into
     
     Args:
-        buf: For default framebuffer, the argument specifies up to four color buffers to be drawn into
+        buf: For default framebuffer, the argument specifies up to four color
+            buffers to be drawn into
     '''
 
 @accepts(t.bitfield)
@@ -172,7 +181,14 @@ def clear_color(red, green, blue, alpha):
     specify clear values for the color buffers
     
     Args:
-        red, green, blue, alpha: Specify the red, green, blue, and alpha values used when the color buffers are cleared
+        red: Specify the red, green, blue, and alpha values used when the color
+            buffers are cleared
+        green: Specify the red, green, blue, and alpha values used when the
+            color buffers are cleared
+        blue: Specify the red, green, blue, and alpha values used when the color
+            buffers are cleared
+        alpha: Specify the red, green, blue, and alpha values used when the
+            color buffers are cleared
     '''
 
 @accepts(t.int)
@@ -205,7 +221,8 @@ def stencil_mask(mask):
     control the front and back writing of individual bits in the stencil planes
     
     Args:
-        mask: Specifies a bit mask to enable and disable writing of individual bits in the stencil planes
+        mask: Specifies a bit mask to enable and disable writing of individual
+            bits in the stencil planes
     '''
 
 @accepts(t.boolean, t.boolean, t.boolean, t.boolean)
@@ -216,7 +233,14 @@ def color_mask(red, green, blue, alpha):
     enable and disable writing of frame buffer color components
     
     Args:
-        red, green, blue, alpha: Specify whether red, green, blue, and alpha are to be written into the frame buffer
+        red: Specify whether red, green, blue, and alpha are to be written into
+            the frame buffer
+        green: Specify whether red, green, blue, and alpha are to be written
+            into the frame buffer
+        blue: Specify whether red, green, blue, and alpha are to be written into
+            the frame buffer
+        alpha: Specify whether red, green, blue, and alpha are to be written
+            into the frame buffer
     '''
 
 @accepts(t.boolean)
@@ -253,8 +277,6 @@ def enable(cap):
 def finish():
     '''
     block until all GL execution is complete
-    
-    Args:
     '''
 
 @accepts()
@@ -263,8 +285,6 @@ def finish():
 def flush():
     '''
     force execution of GL commands in finite time
-    
-    Args:
     '''
 
 @accepts(t.enum, t.enum)
@@ -275,8 +295,10 @@ def blend_func(sfactor, dfactor):
     specify pixel arithmetic
     
     Args:
-        sfactor: Specifies how the red, green, blue, and alpha source blending factors are computed
-        dfactor: Specifies how the red, green, blue, and alpha destination blending factors are computed
+        sfactor: Specifies how the red, green, blue, and alpha source blending
+            factors are computed
+        dfactor: Specifies how the red, green, blue, and alpha destination
+            blending factors are computed
     '''
 
 @accepts(t.enum)
@@ -300,7 +322,8 @@ def stencil_func(func, ref, mask):
     Args:
         func: Specifies the test function
         ref: Specifies the reference value for the stencil test
-        mask: Specifies a mask that is ANDed with both the reference value and the stored stencil value when the test is done
+        mask: Specifies a mask that is ANDed with both the reference value and
+            the stored stencil value when the test is done
     '''
 
 @accepts(t.enum, t.enum, t.enum)
@@ -311,6 +334,12 @@ def stencil_op(fail, zfail, zpass):
     set front and back stencil test actions
     
     Args:
+        fail: Specifies the action to take when the stencil test fails
+        zfail: Specifies the stencil action when the stencil test passes, but
+            the depth test fails
+        zpass: Specifies the stencil action when both the stencil test and the
+            depth test pass, or when the stencil test passes and either there is
+            no depth buffer or depth testing is not enabled
     '''
 
 @accepts(t.enum)
@@ -344,6 +373,7 @@ def read_buffer(src):
     select a color buffer source for pixels
     
     Args:
+        src: Specifies a color buffer
     '''
 
 @accepts(t.int, t.int, t.sizei, t.sizei, t.enum, t.enum, t.void)
@@ -354,10 +384,15 @@ def read_pixels(x, y, width, height, format, type, pixels):
     read a block of pixels from the frame buffer
     
     Args:
-        x, y: Specify the window coordinates of the first pixel that is read from the frame buffer
-        width, height: Specify the dimensions of the pixel rectangle
+        x: Specify the window coordinates of the first pixel that is read from
+            the frame buffer
+        y: Specify the window coordinates of the first pixel that is read from
+            the frame buffer
+        width: Specify the dimensions of the pixel rectangle
+        height: Specify the dimensions of the pixel rectangle
         format: Specifies the format of the pixel data
         type: Specifies the data type of the pixel data
+        pixels: Returns the pixel data
     '''
 
 @accepts(t.enum, POINTER(t.boolean))
@@ -378,8 +413,6 @@ def get_doublev(pname, data):
 def get_error():
     '''
     return error information
-    
-    Args:
     '''
 
 @accepts(t.enum, POINTER(t.float))
@@ -402,7 +435,8 @@ def get_string(name):
     return a string describing the current GL connection
     
     Args:
-        name: Specifies a symbolic constant, one of gl.VENDOR, gl.RENDERER, gl.VERSION, or gl.SHADING_LANGUAGE_VERSION
+        name: Specifies a symbolic constant, one of gl.VENDOR, gl.RENDERER,
+            gl.VERSION, or gl.SHADING_LANGUAGE_VERSION
     '''
 
 @accepts(t.enum, t.int, t.enum, t.enum, t.void)
@@ -413,7 +447,8 @@ def get_tex_image(target, level, format, type, pixels):
     return a texture image
     
     Args:
-        target: Specifies the target to which the texture is bound for gl.get_tex_image and gl.getn_tex_image functions
+        target: Specifies the target to which the texture is bound for
+            gl.get_tex_image and gl.getn_tex_image functions
         level: Specifies the level-of-detail number of the desired image
         format: Specifies a pixel format for the returned data
         type: Specifies a pixel type for the returned data
@@ -460,9 +495,14 @@ def is_enabled(cap):
 @binds(dll)
 def depth_range(near, far):
     '''
-    specify mapping of depth values from normalized device coordinates to window coordinates
+    specify mapping of depth values from normalized device coordinates to window
+coordinates
     
     Args:
+        near: Specifies the mapping of the near clipping plane to window
+            coordinates
+        far: Specifies the mapping of the far clipping plane to window
+            coordinates
     '''
 
 @accepts(t.int, t.int, t.sizei, t.sizei)
@@ -473,8 +513,10 @@ def viewport(x, y, width, height):
     set the viewport
     
     Args:
-        x, y: Specify the lower left corner of the viewport rectangle, in pixels
-        width, height: Specify the width and height of the viewport
+        x: Specify the lower left corner of the viewport rectangle, in pixels
+        y: Specify the lower left corner of the viewport rectangle, in pixels
+        width: Specify the width and height of the viewport
+        height: Specify the width and height of the viewport
     '''
 
 @accepts(t.uint, t.enum)
@@ -486,7 +528,8 @@ def new_list(list, mode):
     
     Args:
         list: Specifies the display-list name
-        mode: Specifies the compilation mode, which can be gl.COMPILE or gl.COMPILE_AND_EXECUTE
+        mode: Specifies the compilation mode, which can be gl.COMPILE or
+            gl.COMPILE_AND_EXECUTE
     '''
 
 @accepts()
@@ -516,7 +559,8 @@ def call_lists(n, type, lists):
     Args:
         n: Specifies the number of display lists to be executed
         type: Specifies the type of values in lists
-        lists: Specifies the address of an array of name offsets in the display list
+        lists: Specifies the address of an array of name offsets in the display
+            list
     '''
 
 @accepts(t.uint, t.sizei)
@@ -539,7 +583,8 @@ def gen_lists(range):
     generate a contiguous set of empty display lists
     
     Args:
-        range: Specifies the number of contiguous empty display lists to be generated
+        range: Specifies the number of contiguous empty display lists to be
+            generated
     '''
 
 @accepts(t.uint)
@@ -550,7 +595,8 @@ def list_base(base):
     set the display-list base for gl.call_lists
     
     Args:
-        base: Specifies an integer offset that will be added to gl.call_lists offsets to generate display-list names
+        base: Specifies an integer offset that will be added to gl.call_lists
+            offsets to generate display-list names
     '''
 
 @accepts(t.enum)
@@ -561,7 +607,8 @@ def begin(mode):
     delimit the vertices of a primitive or a group of like primitives
     
     Args:
-        mode: Specifies the primitive or primitives that will be created from vertices presented between gl.begin and the subsequent gl.end
+        mode: Specifies the primitive or primitives that will be created from
+            vertices presented between gl.begin and the subsequent gl.end
     '''
 
 @accepts(t.sizei, t.sizei, t.float, t.float, t.float, t.float, POINTER(t.ubyte))
@@ -572,9 +619,14 @@ def bitmap(width, height, xorig, yorig, xmove, ymove, bitmap):
     draw a bitmap
     
     Args:
-        width, height: Specify the pixel width and height of the bitmap image
-        xorig, yorig: Specify the location of the origin in the bitmap image
-        xmove, ymove: Specify the x and y offsets to be added to the current raster position after the bitmap is drawn
+        width: Specify the pixel width and height of the bitmap image
+        height: Specify the pixel width and height of the bitmap image
+        xorig: Specify the location of the origin in the bitmap image
+        yorig: Specify the location of the origin in the bitmap image
+        xmove: Specify the x and y offsets to be added to the current raster
+            position after the bitmap is drawn
+        ymove: Specify the x and y offsets to be added to the current raster
+            position after the bitmap is drawn
         bitmap: Specifies the address of the bitmap image
     '''
 
@@ -1438,7 +1490,8 @@ def clip_plane(plane, equation):
     
     Args:
         plane: Specifies which clipping plane is being positioned
-        equation: Specifies the address of an array of four double-precision floating-point values
+        equation: Specifies the address of an array of four double-precision
+            floating-point values
     '''
 
 @accepts(t.enum, t.enum)
@@ -1449,8 +1502,10 @@ def color_material(face, mode):
     cause a material color to track the current color
     
     Args:
-        face: Specifies whether front, back, or both front and back material parameters should track the current color
-        mode: Specifies which of several material parameters track the current color
+        face: Specifies whether front, back, or both front and back material
+            parameters should track the current color
+        mode: Specifies which of several material parameters track the current
+            color
     '''
 
 @accepts(t.enum, t.float)
@@ -1534,7 +1589,8 @@ def line_stipple(factor, pattern):
     
     Args:
         factor: Specifies a multiplier for each bit in the line stipple pattern
-        pattern: Specifies a 16-bit integer whose bit pattern determines which fragments of a line will be drawn when the line is rasterized
+        pattern: Specifies a 16-bit integer whose bit pattern determines which
+            fragments of a line will be drawn when the line is rasterized
     '''
 
 @accepts(t.enum, t.enum, t.float)
@@ -1569,6 +1625,9 @@ def polygon_stipple(mask):
     set the polygon stippling pattern
     
     Args:
+        mask: Specifies a pointer to a 32 \xd7 32 stipple pattern that will be
+            unpacked from memory in the same way that gl.draw_pixels unpacks
+            pixels
     '''
 
 @accepts(t.enum)
@@ -1650,8 +1709,10 @@ def feedback_buffer(size, type, buffer):
     controls feedback mode
     
     Args:
-        size: Specifies the maximum number of values that can be written into buffer
-        type: Specifies a symbolic constant that describes the information that will be returned for each vertex
+        size: Specifies the maximum number of values that can be written into
+            buffer
+        type: Specifies a symbolic constant that describes the information that
+            will be returned for each vertex
         buffer: Returns the feedback data
     '''
 
@@ -1684,8 +1745,6 @@ def render_mode(mode):
 def init_names():
     '''
     initialize the name stack
-    
-    Args:
     '''
 
 @accepts(t.uint)
@@ -1707,7 +1766,8 @@ def pass_through(token):
     place a marker in the feedback buffer
     
     Args:
-        token: Specifies a marker value to be placed in the feedback buffer following a gl.PASS_THROUGH_TOKEN
+        token: Specifies a marker value to be placed in the feedback buffer
+            following a gl.PASS_THROUGH_TOKEN
     '''
 
 @accepts()
@@ -1735,7 +1795,14 @@ def clear_accum(red, green, blue, alpha):
     specify clear values for the accumulation buffer
     
     Args:
-        red, green, blue, alpha: Specify the red, green, blue, and alpha values used when the accumulation buffer is cleared
+        red: Specify the red, green, blue, and alpha values used when the
+            accumulation buffer is cleared
+        green: Specify the red, green, blue, and alpha values used when the
+            accumulation buffer is cleared
+        blue: Specify the red, green, blue, and alpha values used when the
+            accumulation buffer is cleared
+        alpha: Specify the red, green, blue, and alpha values used when the
+            accumulation buffer is cleared
     '''
 
 @accepts(t.float)
@@ -1757,7 +1824,8 @@ def index_mask(mask):
     control the writing of individual bits in the color index buffers
     
     Args:
-        mask: Specifies a bit mask to enable and disable the writing of individual bits in the color index buffers
+        mask: Specifies a bit mask to enable and disable the writing of
+            individual bits in the color index buffers
     '''
 
 @accepts(t.enum, t.float)
@@ -1769,7 +1837,8 @@ def accum(op, value):
     
     Args:
         op: Specifies the accumulation buffer operation
-        value: Specifies a floating-point value used in the accumulation buffer operation
+        value: Specifies a floating-point value used in the accumulation buffer
+            operation
     '''
 
 @accepts()
@@ -1918,7 +1987,8 @@ def alpha_func(func, ref):
     
     Args:
         func: Specifies the alpha comparison function
-        ref: Specifies the reference value that incoming alpha values are compared to
+        ref: Specifies the reference value that incoming alpha values are
+            compared to
     '''
 
 @accepts(t.float, t.float)
@@ -1929,7 +1999,8 @@ def pixel_zoom(xfactor, yfactor):
     specify the pixel zoom factors
     
     Args:
-        xfactor, yfactor: Specify the x and y zoom factors for pixel write operations
+        xfactor: Specify the x and y zoom factors for pixel write operations
+        yfactor: Specify the x and y zoom factors for pixel write operations
     '''
 
 @accepts(t.enum, t.float)
@@ -1970,9 +2041,16 @@ def copy_pixels(x, y, width, height, type):
     copy pixels in the frame buffer
     
     Args:
-        x, y: Specify the window coordinates of the lower left corner of the rectangular region of pixels to be copied
-        width, height: Specify the dimensions of the rectangular region of pixels to be copied
-        type: Specifies whether color values, depth values, or stencil values are to be copied
+        x: Specify the window coordinates of the lower left corner of the
+            rectangular region of pixels to be copied
+        y: Specify the window coordinates of the lower left corner of the
+            rectangular region of pixels to be copied
+        width: Specify the dimensions of the rectangular region of pixels to be
+            copied
+        height: Specify the dimensions of the rectangular region of pixels to be
+            copied
+        type: Specifies whether color values, depth values, or stencil values
+            are to be copied
     '''
 
 @accepts(t.sizei, t.sizei, t.enum, t.enum, t.void)
@@ -1983,9 +2061,13 @@ def draw_pixels(width, height, format, type, pixels):
     write a block of pixels to the frame buffer
     
     Args:
-        width, height: Specify the dimensions of the pixel rectangle to be written into the frame buffer
+        width: Specify the dimensions of the pixel rectangle to be written into
+            the frame buffer
+        height: Specify the dimensions of the pixel rectangle to be written into
+            the frame buffer
         format: Specifies the format of the pixel data
         type: Specifies the data type for data
+        pixels: Specifies a pointer to the pixel data
     '''
 
 @accepts(t.enum, POINTER(t.double))
@@ -1997,7 +2079,8 @@ def get_clip_plane(plane, equation):
     
     Args:
         plane: Specifies a clipping plane
-        equation: Returns four double-precision values that are the coefficients of the plane equation of plane in eye coordinates
+        equation: Returns four double-precision values that are the coefficients
+            of the plane equation of plane in eye coordinates
     '''
 
 @accepts(t.enum, t.enum, POINTER(t.float))
@@ -2068,6 +2151,7 @@ def get_polygon_stipple(mask):
     return the polygon stipple pattern
     
     Args:
+        mask: Returns the stipple pattern
     '''
 
 @accepts(t.enum, t.enum, POINTER(t.float))
@@ -2119,8 +2203,16 @@ def frustum(left, right, bottom, top, znear, zfar):
     multiply the current matrix by a perspective matrix
     
     Args:
-        left, right: Specify the coordinates for the left and right vertical clipping planes
-        bottom, top: Specify the coordinates for the bottom and top horizontal clipping planes
+        left: Specify the coordinates for the left and right vertical clipping
+            planes
+        right: Specify the coordinates for the left and right vertical clipping
+            planes
+        bottom: Specify the coordinates for the bottom and top horizontal
+            clipping planes
+        top: Specify the coordinates for the bottom and top horizontal clipping
+            planes
+        znear: Specify the distances to the near and far depth clipping planes
+        zfar: Specify the distances to the near and far depth clipping planes
     '''
 
 @accepts()
@@ -2129,8 +2221,6 @@ def frustum(left, right, bottom, top, znear, zfar):
 def load_identity():
     '''
     replace the current matrix with the identity matrix
-    
-    Args:
     '''
 
 @accepts(POINTER(t.float))
@@ -2153,7 +2243,8 @@ def matrix_mode(mode):
     specify which matrix is the current matrix
     
     Args:
-        mode: Specifies which matrix stack is the target for subsequent matrix operations
+        mode: Specifies which matrix stack is the target for subsequent matrix
+            operations
     '''
 
 @accepts(POINTER(t.float))
@@ -2176,8 +2267,18 @@ def ortho(left, right, bottom, top, znear, zfar):
     multiply the current matrix with an orthographic matrix
     
     Args:
-        left, right: Specify the coordinates for the left and right vertical clipping planes
-        bottom, top: Specify the coordinates for the bottom and top horizontal clipping planes
+        left: Specify the coordinates for the left and right vertical clipping
+            planes
+        right: Specify the coordinates for the left and right vertical clipping
+            planes
+        bottom: Specify the coordinates for the bottom and top horizontal
+            clipping planes
+        top: Specify the coordinates for the bottom and top horizontal clipping
+            planes
+        znear: Specify the distances to the nearer and farther depth clipping
+            planes
+        zfar: Specify the distances to the nearer and farther depth clipping
+            planes
     '''
 
 @accepts()
@@ -2192,8 +2293,6 @@ def pop_matrix():
 def push_matrix():
     '''
     push and pop the current matrix stack
-    
-    Args:
     '''
 
 @accepts(t.double, t.double, t.double, t.double)

@@ -37,7 +37,8 @@ def create_transform_feedbacks(n, ids):
     
     Args:
         n: Number of transform feedback objects to create
-        ids: Specifies an array in which names of the new transform feedback objects are stored
+        ids: Specifies an array in which names of the new transform feedback
+            objects are stored
     '''
 
 @accepts(t.uint, t.uint, t.uint)
@@ -64,8 +65,10 @@ def transform_feedback_buffer_range(xfb, index, buffer, offset, size):
         xfb: Name of the transform feedback buffer object
         index: Index of the binding point within xfb
         buffer: Name of the buffer object to bind to the specified binding point
-        offset: The starting offset in basic machine units into the buffer object
-        size: The amount of data in basic machine units that can be read from or written to the buffer object while used as an indexed target
+        offset: The starting offset in basic machine units into the buffer
+            object
+        size: The amount of data in basic machine units that can be read from or
+            written to the buffer object while used as an indexed target
     '''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
@@ -95,7 +98,8 @@ def create_buffers(n, buffers):
     
     Args:
         n: Specifies the number of buffer objects to create
-        buffers: Specifies an array in which names of the new buffer objects are stored
+        buffers: Specifies an array in which names of the new buffer objects are
+            stored
     '''
 
 @accepts(t.uint, t.sizeiptr, t.void, t.bitfield)
@@ -191,7 +195,6 @@ def create_framebuffers(n, framebuffers):
     
     Args:
         n: Number of framebuffer objects to create
-        framebuffers: Specifies an array in which names of the new framebuffer objects are stored
     '''
 
 @accepts(t.uint, t.enum, t.enum, t.uint)
@@ -305,7 +308,8 @@ def create_renderbuffers(n, renderbuffers):
     
     Args:
         n: Number of renderbuffer objects to create
-        renderbuffers: Specifies an array in which names of the new renderbuffer objects are stored
+        renderbuffers: Specifies an array in which names of the new renderbuffer
+            objects are stored
     '''
 
 @accepts(t.uint, t.enum, t.sizei, t.sizei)
@@ -336,7 +340,8 @@ def create_textures(target, n, textures):
     Args:
         target: Specifies the effective texture target of each created texture
         n: Number of texture objects to create
-        textures: Specifies an array in which names of the new texture objects are stored
+        textures: Specifies an array in which names of the new texture objects
+            are stored
     '''
 
 @accepts(t.uint, t.enum, t.uint)
@@ -485,7 +490,8 @@ def bind_texture_unit(unit, texture):
     bind an existing texture object to the specified texture unit
     
     Args:
-        unit: Specifies the texture unit, to which the texture object should be bound to
+        unit: Specifies the texture unit, to which the texture object should be
+            bound to
         texture: Specifies the name of a texture
     '''
 
@@ -546,7 +552,8 @@ def create_vertex_arrays(n, arrays):
     
     Args:
         n: Number of vertex array objects to create
-        arrays: Specifies an array in which names of the new vertex array objects are stored
+        arrays: Specifies an array in which names of the new vertex array
+            objects are stored
     '''
 
 @accepts(t.uint, t.uint)
@@ -570,7 +577,8 @@ def vertex_array_element_buffer(vaobj, buffer):
     
     Args:
         vaobj: Specifies the name of the vertex array object
-        buffer: Specifies the name of the buffer object to use for the element array buffer binding
+        buffer: Specifies the name of the buffer object to use for the element
+            array buffer binding
     '''
 
 @accepts(t.uint, t.uint, t.uint, t.intptr, t.sizei)
@@ -623,7 +631,8 @@ def get_vertex_arrayiv(vaobj, pname, param):
     retrieve parameters of a vertex array object
     
     Args:
-        vaobj: specifies the name of the vertex array object to use for the query
+        vaobj: specifies the name of the vertex array object to use for the
+            query
         pname: Name of the property to use for the query
         param: Returns the requested value
     '''
@@ -649,7 +658,8 @@ def create_samplers(n, samplers):
     
     Args:
         n: Number of sampler objects to create
-        samplers: Specifies an array in which names of the new sampler objects are stored
+        samplers: Specifies an array in which names of the new sampler objects
+            are stored
     '''
 
 @accepts(t.sizei, POINTER(t.uint))
@@ -661,7 +671,8 @@ def create_program_pipelines(n, pipelines):
     
     Args:
         n: Number of program pipeline objects to create
-        pipelines: Specifies an array in which names of the new program pipeline objects are stored
+        pipelines: Specifies an array in which names of the new program pipeline
+            objects are stored
     '''
 
 @accepts(t.enum, t.sizei, POINTER(t.uint))
@@ -674,7 +685,8 @@ def create_queries(target, n, ids):
     Args:
         target: Specifies the target of each created query object
         n: Number of query objects to create
-        ids: Specifies an array in which names of the new query objects are stored
+        ids: Specifies an array in which names of the new query objects are
+            stored
     '''
 
 @accepts(t.uint, t.uint, t.enum, t.intptr)
@@ -731,15 +743,19 @@ def get_texture_sub_image(texture, level, xoffset, yoffset, zoffset, width, heig
     Args:
         texture: Specifies the name of the source texture object
         level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture array
-        yoffset: Specifies a texel offset in the y direction within the texture array
-        zoffset: Specifies a texel offset in the z direction within the texture array
+        xoffset: Specifies a texel offset in the x direction within the texture
+            array
+        yoffset: Specifies a texel offset in the y direction within the texture
+            array
+        zoffset: Specifies a texel offset in the z direction within the texture
+            array
         width: Specifies the width of the texture subimage
         height: Specifies the height of the texture subimage
         depth: Specifies the depth of the texture subimage
         format: Specifies the format of the pixel data
         type: Specifies the data type of the pixel data
-        bufsize: Specifies the size of the buffer to receive the retrieved pixel data
+        bufsize: Specifies the size of the buffer to receive the retrieved pixel
+            data
         pixels: Returns the texture subimage
     '''
 
@@ -748,18 +764,23 @@ def get_texture_sub_image(texture, level, xoffset, yoffset, zoffset, width, heig
 @binds(dll)
 def get_compressed_texture_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth, bufsize, pixels):
     '''
-    retrieve a sub-region of a compressed texture image from a compressed texture object
+    retrieve a sub-region of a compressed texture image from a compressed texture
+object
     
     Args:
         texture: Specifies the name of the source texture object
         level: Specifies the level-of-detail number
-        xoffset: Specifies a texel offset in the x direction within the texture array
-        yoffset: Specifies a texel offset in the y direction within the texture array
-        zoffset: Specifies a texel offset in the z direction within the texture array
+        xoffset: Specifies a texel offset in the x direction within the texture
+            array
+        yoffset: Specifies a texel offset in the y direction within the texture
+            array
+        zoffset: Specifies a texel offset in the z direction within the texture
+            array
         width: Specifies the width of the texture subimage
         height: Specifies the height of the texture subimage
         depth: Specifies the depth of the texture subimage
-        bufsize: Specifies the size of the buffer to receive the retrieved pixel data
+        bufsize: Specifies the size of the buffer to receive the retrieved pixel
+            data
         pixels: Returns the texture subimage
     '''
 
@@ -768,9 +789,8 @@ def get_compressed_texture_sub_image(texture, level, xoffset, yoffset, zoffset, 
 @binds(dll)
 def get_graphics_reset_status():
     '''
-    check if the rendering context has not been lost due to software or hardware issues
-    
-    Args:
+    check if the rendering context has not been lost due to software or hardware
+issues
     '''
 
 @accepts(t.enum, t.int, t.sizei, t.void)
@@ -901,9 +921,8 @@ def getn_minmax(target, reset, format, type, bufsize, values):
 @binds(dll)
 def texture_barrier():
     '''
-    controls the ordering of reads and writes to rendered fragments across drawing commands
-    
-    Args:
+    controls the ordering of reads and writes to rendered fragments across drawing
+commands
     '''
 
 CONTEXT_RELEASE_BEHAVIOR = 0x82FB

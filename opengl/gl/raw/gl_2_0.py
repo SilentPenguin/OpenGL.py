@@ -11,8 +11,10 @@ def blend_equation_separate(modergb, modealpha):
     set the RGB blend equation and the alpha blend equation separately
     
     Args:
-        modergb: specifies the RGB blend equation, how the red, green, and blue components of the source and destination colors are combined
-        modealpha: specifies the alpha blend equation, how the alpha component of the source and destination colors are combined
+        modergb: specifies the RGB blend equation, how the red, green, and blue
+            components of the source and destination colors are combined
+        modealpha: specifies the alpha blend equation, how the alpha component
+            of the source and destination colors are combined
     '''
 
 @accepts(t.sizei, POINTER(t.enum))
@@ -24,7 +26,8 @@ def draw_buffers(n, bufs):
     
     Args:
         n: Specifies the number of buffers in bufs
-        bufs: Points to an array of symbolic constants specifying the buffers into which fragment colors or data values will be written
+        bufs: Points to an array of symbolic constants specifying the buffers
+            into which fragment colors or data values will be written
     '''
 
 @accepts(t.enum, t.enum, t.enum, t.enum)
@@ -37,8 +40,11 @@ def stencil_op_separate(face, sfail, dpfail, dppass):
     Args:
         face: Specifies whether front and/or back stencil state is updated
         sfail: Specifies the action to take when the stencil test fails
-        dpfail: Specifies the stencil action when the stencil test passes, but the depth test fails
-        dppass: Specifies the stencil action when both the stencil test and the depth test pass, or when the stencil test passes and either there is no depth buffer or depth testing is not enabled
+        dpfail: Specifies the stencil action when the stencil test passes, but
+            the depth test fails
+        dppass: Specifies the stencil action when both the stencil test and the
+            depth test pass, or when the stencil test passes and either there is
+            no depth buffer or depth testing is not enabled
     '''
 
 @accepts(t.enum, t.enum, t.int, t.uint)
@@ -52,7 +58,8 @@ def stencil_func_separate(face, func, ref, mask):
         face: Specifies whether front and/or back stencil state is updated
         func: Specifies the test function
         ref: Specifies the reference value for the stencil test
-        mask: Specifies a mask that is ANDed with both the reference value and the stored stencil value when the test is done
+        mask: Specifies a mask that is ANDed with both the reference value and
+            the stored stencil value when the test is done
     '''
 
 @accepts(t.enum, t.uint)
@@ -63,8 +70,10 @@ def stencil_mask_separate(face, mask):
     control the front and/or back writing of individual bits in the stencil planes
     
     Args:
-        face: Specifies whether the front and/or back stencil writemask is updated
-        mask: Specifies a bit mask to enable and disable writing of individual bits in the stencil planes
+        face: Specifies whether the front and/or back stencil writemask is
+            updated
+        mask: Specifies a bit mask to enable and disable writing of individual
+            bits in the stencil planes
     '''
 
 @accepts(t.uint, t.uint)
@@ -75,7 +84,8 @@ def attach_shader(program, shader):
     Attaches a shader object to a program object
     
     Args:
-        program: Specifies the program object to which a shader object will be attached
+        program: Specifies the program object to which a shader object will be
+            attached
         shader: Specifies the shader object that is to be attached
     '''
 
@@ -87,9 +97,11 @@ def bind_attrib_location(program, index, name):
     Associates a generic vertex attribute index with a named attribute variable
     
     Args:
-        program: Specifies the handle of the program object in which the association is to be made
+        program: Specifies the handle of the program object in which the
+            association is to be made
         index: Specifies the index of the generic vertex attribute to be bound
-        name: Specifies a null terminated string containing the name of the vertex shader attribute variable to which index is to be bound
+        name: Specifies a null terminated string containing the name of the
+            vertex shader attribute variable to which index is to be bound
     '''
 
 @accepts(t.uint)
@@ -109,8 +121,6 @@ def compile_shader(shader):
 def create_program():
     '''
     Creates a program object
-    
-    Args:
     '''
 
 @accepts(t.enum)
@@ -121,6 +131,7 @@ def create_shader(type):
     Creates a shader object
     
     Args:
+        type: Specifies the type of shader to be created
     '''
 
 @accepts(t.uint)
@@ -153,7 +164,8 @@ def detach_shader(program, shader):
     Detaches a shader object from a program object to which it is attached
     
     Args:
-        program: Specifies the program object from which to detach the shader object
+        program: Specifies the program object from which to detach the shader
+            object
         shader: Specifies the shader object to be detached
     '''
 
@@ -171,7 +183,8 @@ def enable_vertex_attrib_array(index):
     Enable or disable a generic vertex attribute array
     
     Args:
-        index: Specifies the index of the generic vertex attribute to be enabled or disabled
+        index: Specifies the index of the generic vertex attribute to be enabled
+            or disabled
     '''
 
 @accepts(t.uint, t.uint, t.sizei, POINTER(t.sizei), POINTER(t.int), POINTER(t.enum), t.char_p)
@@ -179,16 +192,21 @@ def enable_vertex_attrib_array(index):
 @binds(dll)
 def get_active_attrib(program, index, bufsize, length, size, type, name):
     '''
-    Returns information about an active attribute variable for the specified program object
+    Returns information about an active attribute variable for the specified program
+object
     
     Args:
         program: Specifies the program object to be queried
         index: Specifies the index of the attribute variable to be queried
-        bufsize: Specifies the maximum number of characters OpenGL is allowed to write in the character buffer indicated by name
-        length: Returns the number of characters actually written by OpenGL in the string indicated by name (excluding the null terminator) if a value other than None is passed
+        bufsize: Specifies the maximum number of characters OpenGL is allowed to
+            write in the character buffer indicated by name
+        length: Returns the number of characters actually written by OpenGL in
+            the string indicated by name (excluding the null terminator) if a
+            value other than None is passed
         size: Returns the size of the attribute variable
         type: Returns the data type of the attribute variable
-        name: Returns a null terminated string containing the name of the attribute variable
+        name: Returns a null terminated string containing the name of the
+            attribute variable
     '''
 
 @accepts(t.uint, t.uint, t.sizei, POINTER(t.sizei), POINTER(t.int), POINTER(t.enum), t.char_p)
@@ -196,16 +214,21 @@ def get_active_attrib(program, index, bufsize, length, size, type, name):
 @binds(dll)
 def get_active_uniform(program, index, bufsize, length, size, type, name):
     '''
-    Returns information about an active uniform variable for the specified program object
+    Returns information about an active uniform variable for the specified program
+object
     
     Args:
         program: Specifies the program object to be queried
         index: Specifies the index of the uniform variable to be queried
-        bufsize: Specifies the maximum number of characters OpenGL is allowed to write in the character buffer indicated by name
-        length: Returns the number of characters actually written by OpenGL in the string indicated by name (excluding the null terminator) if a value other than None is passed
+        bufsize: Specifies the maximum number of characters OpenGL is allowed to
+            write in the character buffer indicated by name
+        length: Returns the number of characters actually written by OpenGL in
+            the string indicated by name (excluding the null terminator) if a
+            value other than None is passed
         size: Returns the size of the uniform variable
         type: Returns the data type of the uniform variable
-        name: Returns a null terminated string containing the name of the uniform variable
+        name: Returns a null terminated string containing the name of the
+            uniform variable
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.sizei), POINTER(t.uint))
@@ -217,9 +240,11 @@ def get_attached_shaders(program, maxcount, count, shaders):
     
     Args:
         program: Specifies the program object to be queried
-        maxcount: Specifies the size of the array for storing the returned object names
+        maxcount: Specifies the size of the array for storing the returned
+            object names
         count: Returns the number of names actually returned in shaders
-        shaders: Specifies an array that is used to return the names of attached shader objects
+        shaders: Specifies an array that is used to return the names of attached
+            shader objects
     '''
 
 @accepts(t.uint, t.char_p)
@@ -231,7 +256,8 @@ def get_attrib_location(program, name):
     
     Args:
         program: Specifies the program object to be queried
-        name: Points to a null terminated string containing the name of the attribute variable whose location is to be queried
+        name: Points to a null terminated string containing the name of the
+            attribute variable whose location is to be queried
     '''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
@@ -248,9 +274,14 @@ def get_program_info_log(program, bufsize, length, infolog):
     Returns the information log for a program object
     
     Args:
-        program: Specifies the program object whose information log is to be queried
-        length: Returns the length of the string returned in infoLog (excluding the null terminator)
-        infolog: Specifies an array of characters that is used to return the information log
+        program: Specifies the program object whose information log is to be
+            queried
+        bufsize: Specifies the size of the character buffer for storing the
+            returned information log
+        length: Returns the length of the string returned in infoLog (excluding
+            the null terminator)
+        infolog: Specifies an array of characters that is used to return the
+            information log
     '''
 
 @accepts(t.uint, t.enum, POINTER(t.int))
@@ -267,9 +298,14 @@ def get_shader_info_log(shader, bufsize, length, infolog):
     Returns the information log for a shader object
     
     Args:
-        shader: Specifies the shader object whose information log is to be queried
-        length: Returns the length of the string returned in infoLog (excluding the null terminator)
-        infolog: Specifies an array of characters that is used to return the information log
+        shader: Specifies the shader object whose information log is to be
+            queried
+        bufsize: Specifies the size of the character buffer for storing the
+            returned information log
+        length: Returns the length of the string returned in infoLog (excluding
+            the null terminator)
+        infolog: Specifies an array of characters that is used to return the
+            information log
     '''
 
 @accepts(t.uint, t.sizei, POINTER(t.sizei), t.char_p)
@@ -281,9 +317,12 @@ def get_shader_source(shader, bufsize, length, source):
     
     Args:
         shader: Specifies the shader object to be queried
-        bufsize: Specifies the size of the character buffer for storing the returned source code string
-        length: Returns the length of the string returned in source (excluding the null terminator)
-        source: Specifies an array of characters that is used to return the source code string
+        bufsize: Specifies the size of the character buffer for storing the
+            returned source code string
+        length: Returns the length of the string returned in source (excluding
+            the null terminator)
+        source: Specifies an array of characters that is used to return the
+            source code string
     '''
 
 @accepts(t.uint, t.char_p)
@@ -295,7 +334,8 @@ def get_uniform_location(program, name):
     
     Args:
         program: Specifies the program object to be queried
-        name: Points to a null terminated string containing the name of the uniform variable whose location is to be queried
+        name: Points to a null terminated string containing the name of the
+            uniform variable whose location is to be queried
     '''
 
 @accepts(t.uint, t.int, POINTER(t.float))
@@ -337,7 +377,8 @@ def get_vertex_attrib_pointerv(index, pname, pointer):
     
     Args:
         index: Specifies the generic vertex attribute parameter to be returned
-        pname: Specifies the symbolic name of the generic vertex attribute parameter to be returned
+        pname: Specifies the symbolic name of the generic vertex attribute
+            parameter to be returned
         pointer: Returns the pointer value
     '''
 
@@ -382,9 +423,11 @@ def shader_source(shader, count, string, length):
     Replaces the source code in a shader object
     
     Args:
-        shader: Specifies the handle of the shader object whose source code is to be replaced
+        shader: Specifies the handle of the shader object whose source code is
+            to be replaced
         count: Specifies the number of elements in the string and length arrays
-        string: Specifies an array of pointers to strings containing the source code to be loaded into the shader
+        string: Specifies an array of pointers to strings containing the source
+            code to be loaded into the shader
         length: Specifies an array of string lengths
     '''
 
@@ -396,7 +439,8 @@ def use_program(program):
     Installs a program object as part of current rendering state
     
     Args:
-        program: Specifies the handle of the program object whose executables are to be used as part of current rendering state
+        program: Specifies the handle of the program object whose executables
+            are to be used as part of current rendering state
     '''
 
 @accepts(t.int, t.float)
@@ -748,12 +792,18 @@ def vertex_attrib_pointer(index, size, type, normalized, stride, pointer):
     define an array of generic vertex attribute data
     
     Args:
-        index: Specifies the index of the generic vertex attribute to be modified
+        index: Specifies the index of the generic vertex attribute to be
+            modified
         size: Specifies the number of components per generic vertex attribute
         type: Specifies the data type of each component in the array
-        normalized: For gl.vertex_attrib_pointer, specifies whether fixed-point data values should be normalized (gl.TRUE) or converted directly as fixed-point values (gl.FALSE) when they are accessed
-        stride: Specifies the byte offset between consecutive generic vertex attributes
-        pointer: Specifies a offset of the first component of the first generic vertex attribute in the array in the data store of the buffer currently bound to the gl.ARRAY_BUFFER target
+        normalized: For gl.vertex_attrib_pointer, specifies whether fixed-point
+            data values should be normalized (gl.TRUE) or converted directly as
+            fixed-point values (gl.FALSE) when they are accessed
+        stride: Specifies the byte offset between consecutive generic vertex
+            attributes
+        pointer: Specifies a offset of the first component of the first generic
+            vertex attribute in the array in the data store of the buffer
+            currently bound to the gl.ARRAY_BUFFER target
     '''
 
 BLEND_EQUATION_RGB = 0x8009
