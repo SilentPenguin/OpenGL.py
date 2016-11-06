@@ -25,7 +25,7 @@ gl.gen_buffers(1, buffers)
 gl.bind_buffer(gl.ARRAY_BUFFER, buffers[0])
 ```
 
-All OpenGL.py functions conform to this convention, regardless of weither you are using the 
+All OpenGL.py functions conform to this convention. 
 
 ### OpenGL call signatures
 OpenGL.py currently does nothing to protect you, as the coder, from the weirder merky depths of OpenGL.
