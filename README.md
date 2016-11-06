@@ -32,7 +32,7 @@ OpenGL.py currently does nothing to protect you, as the coder, from the weirder 
 
 The only difference between the spec, and OpenGL.py you should observe is:
 * The naming conventions follow `words_with_underscores` instead of `camelCase`.
-* The 'gl' prefix is omitted from command names and type defintions, and the 'GL_' prefixx is removed from enum values.
+* The 'gl' prefix is omitted from command names and type defintions, and the 'GL_' prefix is removed from enum values.
 * Any names that now start with a number (there are a few, I'm not sure I've ever used them though) are prefixed with an underscore.
 
 Aside from the three transformations above, the `opengl.gl.raw` package contains no changes to the spec.
