@@ -228,8 +228,8 @@ DOUBLE_MAT4x3 = 0x8F4E
 @binds(dll)
 def get_subroutine_uniform_location(program, shadertype, name):
     '''
-    retrieve the location of a subroutine uniform of a given shader stage within a
-program.
+    retrieve the location of a subroutine uniform of a given shader stage within
+    a program.
     
     gl.get_subroutine_uniform_location returns the location of the subroutine
     uniform variable name in the shader stage of type shadertype attached to
@@ -248,7 +248,7 @@ program.
 def get_subroutine_index(program, shadertype, name):
     '''
     retrieve the index of a subroutine uniform of a given shader stage within a
-program.
+    program.
     
     gl.get_subroutine_index returns the index of a subroutine uniform within a
     shader stage attached to a program object. program contains the name of the
@@ -509,8 +509,8 @@ TRANSFORM_FEEDBACK_BINDING = 0x8E25
 @binds(dll)
 def draw_transform_feedback_stream(mode, id, stream):
     '''
-    render primitives using a count derived from a specifed stream of a transform
-feedback object.
+    render primitives using a count derived from a specifed stream of a
+    transform feedback object.
     
     gl.draw_transform_feedback_stream draws primitives of a type specified by
     mode using a count retrieved from the transform feedback stream specified by

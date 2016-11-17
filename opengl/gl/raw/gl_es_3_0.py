@@ -247,8 +247,8 @@ def get_query_objectuiv(id, pname, params):
 @binds(dll)
 def unmap_buffer(target):
     '''
-    release the mapping of a buffer object's data store into the client's address
-space.
+    release the mapping of a buffer object's data store into the client's
+    address space.
     
     gl.unmap_buffer and gl.unmap_named_buffer unmap any mapping of a specified
     buffer object into the client's address space.
@@ -377,8 +377,8 @@ def blit_framebuffer(srcx0, srcy0, srcx1, srcy1, dstx0, dsty0, dstx1, dsty1, mas
 @binds(dll)
 def renderbuffer_storage_multisample(target, samples, internalformat, width, height):
     '''
-    establish data storage, format, dimensions and sample count of a renderbuffer
-object's image.
+    establish data storage, format, dimensions and sample count of a
+    renderbuffer object's image.
     
     gl.renderbuffer_storage_multisample and
     gl.named_renderbuffer_storage_multisample establish the data storage,
@@ -400,8 +400,8 @@ object's image.
 @binds(dll)
 def framebuffer_texture_layer(target, attachment, texture, level, layer):
     '''
-    attach a single layer of a texture object as a logical buffer of a framebuffer
-object.
+    attach a single layer of a texture object as a logical buffer of a
+    framebuffer object.
     
     gl.framebuffer_texture_layer and gl.named_framebuffer_texture_layer attach a
     single layer of a three-dimensional or array texture object as one of the
@@ -423,7 +423,8 @@ object.
 @binds(dll)
 def map_buffer_range(target, offset, length, access):
     '''
-    map all or part of a buffer object's data store into the client's address space.
+    map all or part of a buffer object's data store into the client's address
+    space.
     
     gl.map_buffer_range and gl.map_named_buffer_range map all or part of the
     data store of a specified buffer object into the client's address space.
@@ -797,7 +798,7 @@ def get_stringi(name, index):
 def copy_buffer_sub_data(readtarget, writetarget, readoffset, writeoffset, size):
     '''
     copy all or part of the data store of a buffer object to the data store of
-another buffer object.
+    another buffer object.
     
     gl.copy_buffer_sub_data and gl.copy_named_buffer_sub_data copy part of the
     data store attached to a source buffer object to the data store attached to
@@ -845,7 +846,7 @@ def get_uniform_indices(program, uniformcount, uniformnames, uniformindices):
 def get_active_uniformsiv(program, uniformcount, uniformindices, pname, params):
     '''
     Returns information about several active uniform variables for the specified
-program object.
+    program object.
     
     gl.get_active_uniformsiv queries the value of the parameter named pname for
     each of the uniforms within program whose indices are specified in the array
@@ -1047,7 +1048,8 @@ def client_wait_sync(sync, flags, timeout):
 @binds(dll)
 def wait_sync(sync, flags, timeout):
     '''
-    instruct the GL server to block until the specified sync object becomes signaled.
+    instruct the GL server to block until the specified sync object becomes
+    signaled.
     
     gl.wait_sync causes the GL server to block and wait until sync becomes
     signaled. sync is the name of an existing sync object upon which to wait.
@@ -1198,7 +1200,7 @@ def get_sampler_parameterfv(sampler, pname, params):
 def vertex_attrib_divisor(index, divisor):
     '''
     modify the rate at which generic vertex attributes advance during instanced
-rendering.
+    rendering.
     
     gl.vertex_attrib_divisor modifies the rate at which generic vertex
     attributes advance when rendering multiple instances of primitives in a
@@ -1310,7 +1312,7 @@ def resume_transform_feedback():
 def get_program_binary(program, bufsize, length, binaryformat, binary):
     '''
     return a binary representation of a program object's compiled and linked
-executable source.
+    executable source.
     
     gl.get_program_binary returns a binary representation of the compiled and
     linked executable for program into the array of bytes whose address is
@@ -1385,7 +1387,8 @@ def invalidate_framebuffer(target, numattachments, attachments):
 @binds(dll)
 def invalidate_sub_framebuffer(target, numattachments, attachments, x, y, width, height):
     '''
-    invalidate the content of a region of some or all of a framebuffer's attachments.
+    invalidate the content of a region of some or all of a framebuffer's
+    attachments.
     
     gl.invalidate_sub_framebuffer and gl.invalidate_named_framebuffer_sub_data
     invalidate the contents of a specified region of a specified set of
@@ -1409,7 +1412,7 @@ def invalidate_sub_framebuffer(target, numattachments, attachments, x, y, width,
 def tex_storage2_d(target, levels, internalformat, width, height):
     '''
     simultaneously specify storage for all levels of a two-dimensional or one-
-dimensional array texture.
+    dimensional array texture.
     
     Args:
         target: the target to which the texture object is bound for
@@ -1427,7 +1430,7 @@ dimensional array texture.
 def tex_storage3_d(target, levels, internalformat, width, height, depth):
     '''
     simultaneously specify storage for all levels of a three-dimensional, two-
-dimensional array or cube-map array texture.
+    dimensional array or cube-map array texture.
     
     Args:
         target: the target to which the texture object is bound for

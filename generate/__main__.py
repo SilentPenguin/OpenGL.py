@@ -91,7 +91,7 @@ class document:
         text = doc.refnamediv[0].refpurpose[0].node_text
         text = text.strip()
         text = pep.doc_body(text)
-        text = textwrap.fill(text, 80)
+        text = ('\n    ').join(textwrap.wrap(text, 76))
         lines.append('    {}.'.format(text))
         
     @staticmethod

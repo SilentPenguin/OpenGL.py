@@ -816,8 +816,8 @@ def get_texture_sub_image(texture, level, xoffset, yoffset, zoffset, width, heig
 @binds(dll)
 def get_compressed_texture_sub_image(texture, level, xoffset, yoffset, zoffset, width, height, depth, bufsize, pixels):
     '''
-    retrieve a sub-region of a compressed texture image from a compressed texture
-object.
+    retrieve a sub-region of a compressed texture image from a compressed
+    texture object.
     
     gl.get_compressed_texture_sub_image can be used to obtain a sub-region of a
     compressed texture image instead of the whole image, as long as the
@@ -846,7 +846,7 @@ object.
 def get_graphics_reset_status():
     '''
     check if the rendering context has not been lost due to software or hardware
-issues.
+    issues.
     '''
 
 @accepts(t.enum, t.int, t.sizei, t.void)
@@ -977,8 +977,8 @@ def getn_minmax(target, reset, format, type, bufsize, values):
 @binds(dll)
 def texture_barrier():
     '''
-    controls the ordering of reads and writes to rendered fragments across drawing
-commands.
+    controls the ordering of reads and writes to rendered fragments across
+    drawing commands.
     '''
 
 CONTEXT_RELEASE_BEHAVIOR = 0x82FB

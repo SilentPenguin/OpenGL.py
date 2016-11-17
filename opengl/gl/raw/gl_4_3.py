@@ -517,7 +517,8 @@ def invalidate_framebuffer(target, numattachments, attachments):
 @binds(dll)
 def invalidate_sub_framebuffer(target, numattachments, attachments, x, y, width, height):
     '''
-    invalidate the content of a region of some or all of a framebuffer's attachments.
+    invalidate the content of a region of some or all of a framebuffer's
+    attachments.
     
     gl.invalidate_sub_framebuffer and gl.invalidate_named_framebuffer_sub_data
     invalidate the contents of a specified region of a specified set of
@@ -541,7 +542,7 @@ def invalidate_sub_framebuffer(target, numattachments, attachments, x, y, width,
 def multi_draw_arrays_indirect(mode, indirect, drawcount, stride):
     '''
     render multiple sets of primitives from array data, taking parameters from
-memory.
+    memory.
     
     gl.multi_draw_arrays_indirect specifies multiple geometric primitives with
     very few subroutine calls. gl.multi_draw_arrays_indirect behaves similarly
@@ -867,7 +868,7 @@ def vertex_attrib_l_format(attribindex, size, type, relativeoffset):
 def vertex_attrib_binding(attribindex, bindingindex):
     '''
     associate a vertex attribute and a vertex buffer binding for a vertex array
-object.
+    object.
     
     gl.vertex_attrib_binding and gl.vertex_array_attrib_binding establishes an
     association between the generic vertex attribute of a vertex array object

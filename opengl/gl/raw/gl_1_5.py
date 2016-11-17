@@ -263,8 +263,8 @@ def map_buffer(target, access):
 @binds(dll)
 def unmap_buffer(target):
     '''
-    release the mapping of a buffer object's data store into the client's address
-space.
+    release the mapping of a buffer object's data store into the client's
+    address space.
     
     gl.unmap_buffer and gl.unmap_named_buffer unmap any mapping of a specified
     buffer object into the client's address space.
