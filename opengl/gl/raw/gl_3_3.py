@@ -9,8 +9,8 @@ VERTEX_ATTRIB_ARRAY_DIVISOR = 0x88FE
 @binds(dll)
 def bind_frag_data_location_indexed(program, colornumber, index, name):
     '''
-    bind a user-defined varying out variable to a fragment shader color number and
-index.
+    bind a user-defined varying out variable to a fragment shader color number
+    and index.
     
     gl.bind_frag_data_location_indexed specifies that the varying out variable
     name in program should be bound to fragment color colorNumber when the
@@ -194,8 +194,8 @@ TEXTURE_SWIZZLE_RGBA = 0x8E46
 @binds(dll)
 def query_counter(id, target):
     '''
-    record the GL time into a query object after all previous commands have reached
-the GL server but have not yet necessarily executed..
+    record the GL time into a query object after all previous commands have
+    reached the GL server but have not yet necessarily executed..
     
     gl.query_counter causes the GL to record the current time into the query
     object named id. target must be gl.TIMESTAMP. The time is recorded after all
@@ -228,7 +228,7 @@ TIMESTAMP = 0x8E28
 def vertex_attrib_divisor(index, divisor):
     '''
     modify the rate at which generic vertex attributes advance during instanced
-rendering.
+    rendering.
     
     gl.vertex_attrib_divisor modifies the rate at which generic vertex
     attributes advance when rendering multiple instances of primitives in a

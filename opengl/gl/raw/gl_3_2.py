@@ -83,7 +83,7 @@ def draw_range_elements_base_vertex(mode, start, end, count, type, indices, base
 def draw_elements_instanced_base_vertex(mode, count, type, indices, instancecount, basevertex):
     '''
     render multiple instances of a set of primitives from array data with a per-
-element offset.
+    element offset.
     
     gl.draw_elements_instanced_base_vertex behaves identically to
     gl.draw_elements_instanced except that the ith element transferred by the
@@ -109,8 +109,8 @@ element offset.
 @binds(dll)
 def multi_draw_elements_base_vertex(mode, count, type, indices, drawcount, basevertex):
     '''
-    render multiple sets of primitives by specifying indices of array data elements
-and an index to apply to each index.
+    render multiple sets of primitives by specifying indices of array data
+    elements and an index to apply to each index.
     
     gl.multi_draw_elements_base_vertex behaves identically to
     gl.draw_elements_base_vertex, except that drawcount separate lists of
@@ -131,7 +131,8 @@ and an index to apply to each index.
 @binds(dll)
 def provoking_vertex(mode):
     '''
-    specifiy the vertex to be used as the source of data for flat shaded varyings.
+    specifiy the vertex to be used as the source of data for flat shaded
+    varyings.
     
     Args:
         mode: the vertex to be used as the source of data for flat shaded
@@ -221,7 +222,8 @@ def client_wait_sync(sync, flags, timeout):
 @binds(dll)
 def wait_sync(sync, flags, timeout):
     '''
-    instruct the GL server to block until the specified sync object becomes signaled.
+    instruct the GL server to block until the specified sync object becomes
+    signaled.
     
     gl.wait_sync causes the GL server to block and wait until sync becomes
     signaled. sync is the name of an existing sync object upon which to wait.
@@ -281,7 +283,8 @@ def get_buffer_parameteri64v(target, pname, params):
 @binds(dll)
 def framebuffer_texture(target, attachment, texture, level):
     '''
-    attach a level of a texture object as a logical buffer of a framebuffer object.
+    attach a level of a texture object as a logical buffer of a framebuffer
+    object.
     
     Args:
         target: the target to which the framebuffer is bound for all commands
@@ -297,7 +300,7 @@ def framebuffer_texture(target, attachment, texture, level):
 def tex_image2_d_multisample(target, samples, internalformat, width, height, fixedsamplelocations):
     '''
     establish the data storage, format, dimensions, and number of samples of a
-multisample texture's image.
+    multisample texture's image.
     
     Args:
         target: the target of the operation.
@@ -318,7 +321,7 @@ multisample texture's image.
 def tex_image3_d_multisample(target, samples, internalformat, width, height, depth, fixedsamplelocations):
     '''
     establish the data storage, format, dimensions, and number of samples of a
-multisample texture's image.
+    multisample texture's image.
     
     Args:
         target: the target of the operation.

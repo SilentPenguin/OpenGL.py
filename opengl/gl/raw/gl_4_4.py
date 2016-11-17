@@ -120,7 +120,7 @@ def bind_buffers_base(target, first, count, buffers):
 def bind_buffers_range(target, first, count, buffers, offsets, sizes):
     '''
     bind ranges of one or more buffer objects to a sequence of indexed buffer
-targets.
+    targets.
     
     gl.bind_buffers_range binds a set of count ranges from buffer objects whose
     names are given in the array buffers to the count consecutive binding points
@@ -166,7 +166,7 @@ def bind_textures(first, count, textures):
 def bind_samplers(first, count, samplers):
     '''
     bind one or more named sampler objects to a sequence of consecutive sampler
-units.
+    units.
     
     gl.bind_samplers binds samplers from an array of existing sampler objects to
     a specified number of consecutive sampler units. count specifies the number
@@ -185,7 +185,8 @@ units.
 @binds(dll)
 def bind_image_textures(first, count, textures):
     '''
-    bind one or more named texture images to a sequence of consecutive image units.
+    bind one or more named texture images to a sequence of consecutive image
+    units.
     
     gl.bind_image_textures binds images from an array of existing texture
     objects to a specified number of consecutive image units. count specifies

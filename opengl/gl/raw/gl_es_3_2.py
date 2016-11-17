@@ -426,7 +426,7 @@ def draw_range_elements_base_vertex(mode, start, end, count, type, indices, base
 def draw_elements_instanced_base_vertex(mode, count, type, indices, instancecount, basevertex):
     '''
     render multiple instances of a set of primitives from array data with a per-
-element offset.
+    element offset.
     
     gl.draw_elements_instanced_base_vertex behaves identically to
     gl.draw_elements_instanced except that the ith element transferred by the
@@ -452,7 +452,8 @@ element offset.
 @binds(dll)
 def framebuffer_texture(target, attachment, texture, level):
     '''
-    attach a level of a texture object as a logical buffer of a framebuffer object.
+    attach a level of a texture object as a logical buffer of a framebuffer
+    object.
     
     Args:
         target: the target to which the framebuffer is bound for all commands
@@ -508,7 +509,7 @@ PRIMITIVE_BOUNDING_BOX = 0x92BE
 def get_graphics_reset_status():
     '''
     check if the rendering context has not been lost due to software or hardware
-issues.
+    issues.
     '''
 
 @accepts(t.int, t.int, t.sizei, t.sizei, t.enum, t.enum, t.sizei, t.void)

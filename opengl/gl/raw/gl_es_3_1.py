@@ -896,7 +896,7 @@ def vertex_attrib_i_format(attribindex, size, type, relativeoffset):
 def vertex_attrib_binding(attribindex, bindingindex):
     '''
     associate a vertex attribute and a vertex buffer binding for a vertex array
-object.
+    object.
     
     gl.vertex_attrib_binding and gl.vertex_array_attrib_binding establishes an
     association between the generic vertex attribute of a vertex array object

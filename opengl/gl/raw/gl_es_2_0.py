@@ -153,8 +153,8 @@ def blend_color(red, green, blue, alpha):
 @binds(dll)
 def blend_equation(mode):
     '''
-    specify the equation used for both the RGB blend equation and the Alpha blend
-equation.
+    specify the equation used for both the RGB blend equation and the Alpha
+    blend equation.
     
     Args:
         mode: how source and destination colors are combined.
@@ -897,8 +897,8 @@ def gen_textures(n, textures):
 @binds(dll)
 def get_active_attrib(program, index, bufsize, length, size, type, name):
     '''
-    Returns information about an active attribute variable for the specified program
-object.
+    Returns information about an active attribute variable for the specified
+    program object.
     
     gl.get_active_attrib returns information about an active attribute variable
     in the program object specified by program. The number of active attributes
@@ -926,8 +926,8 @@ object.
 @binds(dll)
 def get_active_uniform(program, index, bufsize, length, size, type, name):
     '''
-    Returns information about an active uniform variable for the specified program
-object.
+    Returns information about an active uniform variable for the specified
+    program object.
     
     gl.get_active_uniform returns information about an active uniform variable
     in the program object specified by program. The number of active uniform
@@ -1107,7 +1107,7 @@ def get_shader_info_log(shader, bufsize, length, infolog):
 def get_shader_precision_format(shadertype, precisiontype, range, precision):
     '''
     retrieve the range and precision for numeric formats supported by the shader
-compiler.
+    compiler.
     
     gl.get_shader_precision_format retrieves the numeric range and precision for
     the implementation's representation of quantities in different numeric
@@ -1470,7 +1470,8 @@ def release_shader_compiler():
 @binds(dll)
 def renderbuffer_storage(target, internalformat, width, height):
     '''
-    establish data storage, format and dimensions of a renderbuffer object's image.
+    establish data storage, format and dimensions of a renderbuffer object's
+    image.
     
     gl.renderbuffer_storage is equivalent to calling
     gl.renderbuffer_storage_multisample with the samples set to zero, and
@@ -1610,7 +1611,8 @@ def stencil_mask(mask):
 @binds(dll)
 def stencil_mask_separate(face, mask):
     '''
-    control the front and/or back writing of individual bits in the stencil planes.
+    control the front and/or back writing of individual bits in the stencil
+    planes.
     
     gl.stencil_mask_separate controls the writing of individual bits in the
     stencil planes. The least significant n bits of mask, where.

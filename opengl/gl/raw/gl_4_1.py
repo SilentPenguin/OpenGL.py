@@ -74,7 +74,7 @@ def shader_binary(count, shaders, binaryformat, binary, length):
 def get_shader_precision_format(shadertype, precisiontype, range, precision):
     '''
     retrieve the range and precision for numeric formats supported by the shader
-compiler.
+    compiler.
     
     gl.get_shader_precision_format retrieves the numeric range and precision for
     the implementation's representation of quantities in different numeric
@@ -111,7 +111,7 @@ def clear_depthf(d):
 def get_program_binary(program, bufsize, length, binaryformat, binary):
     '''
     return a binary representation of a program object's compiled and linked
-executable source.
+    executable source.
     
     gl.get_program_binary returns a binary representation of the compiled and
     linked executable for program into the array of bytes whose address is
@@ -757,7 +757,7 @@ def depth_range_arrayv(first, count, v):
 def depth_range_indexed(index, n, f):
     '''
     specify mapping of depth values from normalized device coordinates to window
-coordinates for a specified viewport.
+    coordinates for a specified viewport.
     
     Args:
         index: the index of the viewport whose depth range to update.

@@ -82,7 +82,8 @@ def stencil_func_separate(face, func, ref, mask):
 @binds(dll)
 def stencil_mask_separate(face, mask):
     '''
-    control the front and/or back writing of individual bits in the stencil planes.
+    control the front and/or back writing of individual bits in the stencil
+    planes.
     
     gl.stencil_mask_separate controls the writing of individual bits in the
     stencil planes. The least significant n bits of mask, where.
@@ -242,8 +243,8 @@ def enable_vertex_attrib_array(index):
 @binds(dll)
 def get_active_attrib(program, index, bufsize, length, size, type, name):
     '''
-    Returns information about an active attribute variable for the specified program
-object.
+    Returns information about an active attribute variable for the specified
+    program object.
     
     gl.get_active_attrib returns information about an active attribute variable
     in the program object specified by program. The number of active attributes
@@ -271,8 +272,8 @@ object.
 @binds(dll)
 def get_active_uniform(program, index, bufsize, length, size, type, name):
     '''
-    Returns information about an active uniform variable for the specified program
-object.
+    Returns information about an active uniform variable for the specified
+    program object.
     
     gl.get_active_uniform returns information about an active uniform variable
     in the program object specified by program. The number of active uniform

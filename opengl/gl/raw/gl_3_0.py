@@ -656,7 +656,8 @@ def gen_renderbuffers(n, renderbuffers):
 @binds(dll)
 def renderbuffer_storage(target, internalformat, width, height):
     '''
-    establish data storage, format and dimensions of a renderbuffer object's image.
+    establish data storage, format and dimensions of a renderbuffer object's
+    image.
     
     gl.renderbuffer_storage is equivalent to calling
     gl.renderbuffer_storage_multisample with the samples set to zero, and
@@ -875,8 +876,8 @@ def blit_framebuffer(srcx0, srcy0, srcx1, srcy1, dstx0, dsty0, dstx1, dsty1, mas
 @binds(dll)
 def renderbuffer_storage_multisample(target, samples, internalformat, width, height):
     '''
-    establish data storage, format, dimensions and sample count of a renderbuffer
-object's image.
+    establish data storage, format, dimensions and sample count of a
+    renderbuffer object's image.
     
     gl.renderbuffer_storage_multisample and
     gl.named_renderbuffer_storage_multisample establish the data storage,
@@ -898,8 +899,8 @@ object's image.
 @binds(dll)
 def framebuffer_texture_layer(target, attachment, texture, level, layer):
     '''
-    attach a single layer of a texture object as a logical buffer of a framebuffer
-object.
+    attach a single layer of a texture object as a logical buffer of a
+    framebuffer object.
     
     gl.framebuffer_texture_layer and gl.named_framebuffer_texture_layer attach a
     single layer of a three-dimensional or array texture object as one of the
@@ -1019,7 +1020,8 @@ HALF_FLOAT = 0x140B
 @binds(dll)
 def map_buffer_range(target, offset, length, access):
     '''
-    map all or part of a buffer object's data store into the client's address space.
+    map all or part of a buffer object's data store into the client's address
+    space.
     
     gl.map_buffer_range and gl.map_named_buffer_range map all or part of the
     data store of a specified buffer object into the client's address space.

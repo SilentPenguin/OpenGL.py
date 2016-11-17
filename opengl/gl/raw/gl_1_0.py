@@ -619,7 +619,7 @@ def is_enabled(cap):
 def depth_range(near, far):
     '''
     specify mapping of depth values from normalized device coordinates to window
-coordinates.
+    coordinates.
     
     Args:
         near: the mapping of the near clipping plane to window coordinates.

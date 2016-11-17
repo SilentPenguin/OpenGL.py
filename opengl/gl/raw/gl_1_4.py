@@ -53,7 +53,8 @@ def multi_draw_arrays(mode, first, count, drawcount):
 @binds(dll)
 def multi_draw_elements(mode, count, type, indices, drawcount):
     '''
-    render multiple sets of primitives by specifying indices of array data elements.
+    render multiple sets of primitives by specifying indices of array data
+    elements.
     
     gl.multi_draw_elements specifies multiple sets of geometric primitives with
     very few subroutine calls. Instead of calling a GL function to pass each
@@ -410,8 +411,8 @@ def blend_color(red, green, blue, alpha):
 @binds(dll)
 def blend_equation(mode):
     '''
-    specify the equation used for both the RGB blend equation and the Alpha blend
-equation.
+    specify the equation used for both the RGB blend equation and the Alpha
+    blend equation.
     
     Args:
         mode: how source and destination colors are combined.

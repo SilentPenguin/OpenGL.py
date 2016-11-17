@@ -1,29 +1,45 @@
 import ctypes
 
-boolean = ctypes.c_ubyte
-byte = ctypes.c_byte
-ubyte = ctypes.c_ubyte
-short = ctypes.c_short
-ushort = ctypes.c_ushort
-int = ctypes.c_int
-uint = ctypes.c_uint
-fixed = ctypes.c_int
-int64 = ctypes.c_int64
-uint64 = ctypes.c_uint64
-sizei = ctypes.c_int
-enum = ctypes.c_uint
-intptr = ctypes.c_int
-sizeiptr = ctypes.c_int
-sync = ctypes.c_int
-bitfield = ctypes.c_uint
-half = ctypes.c_int16
-float = ctypes.c_float
-clampf = ctypes.c_float
-double = ctypes.c_double
-clampd = ctypes.c_double
+def type_(ctype):
+    '''
+    Monkey patching method that creates wrapper types
+    '''
+    class GLMeta(type(ctype)):
+        '''implements gl.type[array_size] array typing'''
+        def __getitem__(self, other):
+            return type(ctype).__mul__(self, other)
+        def __instancecheck__(self, other):
+            return ctype.__instancecheck__(other)
+            
+    class GLType(ctype):
+        __metaclass__ = GLMeta
+        
+    return GLType
+
+boolean = type_(ctypes.c_ubyte)
+byte = type_(ctypes.c_byte)
+ubyte = type_(ctypes.c_ubyte)
+short = type_(ctypes.c_short)
+ushort = type_(ctypes.c_ushort)
+int = type_(ctypes.c_int)
+uint = type_(ctypes.c_uint)
+fixed = type_(ctypes.c_int)
+int64 = type_(ctypes.c_int64)
+uint64 = type_(ctypes.c_uint64)
+sizei = type_(ctypes.c_int)
+enum = type_(ctypes.c_uint)
+intptr = type_(ctypes.c_int)
+sizeiptr = type_(ctypes.c_int)
+sync = type_(ctypes.c_int)
+bitfield = type_(ctypes.c_uint)
+half = type_(ctypes.c_int16)
+float = type_(ctypes.c_float)
+clampf = type_(ctypes.c_float)
+double = type_(ctypes.c_double)
+clampd = type_(ctypes.c_double)
 void = ctypes.c_void_p
-char = ctypes.c_char
-char_p = ctypes.c_char_p
+char = type_(ctypes.c_char)
+char_p = type_(ctypes.c_char_p)
 
 DEBUGPROC = ctypes.CFUNCTYPE(enum, enum, uint, enum, sizei, ctypes.POINTER(char), void)
-clampx = ctypes.c_int
+clampx = type_(ctypes.c_int)

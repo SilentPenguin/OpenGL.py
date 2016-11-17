@@ -113,7 +113,7 @@ PRIMITIVE_RESTART_INDEX = 0x8F9E
 def copy_buffer_sub_data(readtarget, writetarget, readoffset, writeoffset, size):
     '''
     copy all or part of the data store of a buffer object to the data store of
-another buffer object.
+    another buffer object.
     
     gl.copy_buffer_sub_data and gl.copy_named_buffer_sub_data copy part of the
     data store attached to a source buffer object to the data store attached to
@@ -163,7 +163,7 @@ def get_uniform_indices(program, uniformcount, uniformnames, uniformindices):
 def get_active_uniformsiv(program, uniformcount, uniformindices, pname, params):
     '''
     Returns information about several active uniform variables for the specified
-program object.
+    program object.
     
     gl.get_active_uniformsiv queries the value of the parameter named pname for
     each of the uniforms within program whose indices are specified in the array

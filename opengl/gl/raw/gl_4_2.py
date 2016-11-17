@@ -120,8 +120,8 @@ TEXTURE_IMMUTABLE_FORMAT = 0x912F
 @binds(dll)
 def draw_arrays_instanced_base_instance(mode, first, count, instancecount, baseinstance):
     '''
-    draw multiple instances of a range of elements with offset applied to instanced
-attributes.
+    draw multiple instances of a range of elements with offset applied to
+    instanced attributes.
     
     gl.draw_arrays_instanced_base_instance behaves identically to gl.draw_arrays
     except that primcount instances of the range of elements are executed and
@@ -144,8 +144,8 @@ attributes.
 @binds(dll)
 def draw_elements_instanced_base_instance(mode, count, type, indices, instancecount, baseinstance):
     '''
-    draw multiple instances of a set of elements with offset applied to instanced
-attributes.
+    draw multiple instances of a set of elements with offset applied to
+    instanced attributes.
     
     gl.draw_elements_instanced_base_instance behaves identically to
     gl.draw_elements except that primcount instances of the set of elements are
@@ -170,7 +170,7 @@ attributes.
 def draw_elements_instanced_base_vertex_base_instance(mode, count, type, indices, instancecount, basevertex, baseinstance):
     '''
     render multiple instances of a set of primitives from array data with a per-
-element offset.
+    element offset.
     
     gl.draw_elements_instanced_base_vertex_base_instance behaves identically to
     gl.draw_elements_instanced except that the ith element transferred by the
@@ -206,7 +206,7 @@ def get_internalformativ(target, internalformat, pname, bufsize, params):
 def get_active_atomic_counter_bufferiv(program, bufferindex, pname, params):
     '''
     retrieve information about the set of active atomic counter buffers for a
-program.
+    program.
     
     gl.get_active_atomic_counter_bufferiv retrieves information about the set of
     active atomic counter buffers for a program object. program is the name of a
@@ -289,7 +289,7 @@ def tex_storage1_d(target, levels, internalformat, width):
 def tex_storage2_d(target, levels, internalformat, width, height):
     '''
     simultaneously specify storage for all levels of a two-dimensional or one-
-dimensional array texture.
+    dimensional array texture.
     
     Args:
         target: the target to which the texture object is bound for
@@ -307,7 +307,7 @@ dimensional array texture.
 def tex_storage3_d(target, levels, internalformat, width, height, depth):
     '''
     simultaneously specify storage for all levels of a three-dimensional, two-
-dimensional array or cube-map array texture.
+    dimensional array or cube-map array texture.
     
     Args:
         target: the target to which the texture object is bound for
@@ -325,8 +325,8 @@ dimensional array or cube-map array texture.
 @binds(dll)
 def draw_transform_feedback_instanced(mode, id, instancecount):
     '''
-    render multiple instances of primitives using a count derived from a transform
-feedback object.
+    render multiple instances of primitives using a count derived from a
+    transform feedback object.
     
     gl.draw_transform_feedback_instanced draws multiple copies of a range of
     primitives of a type specified by mode using a count retrieved from the
@@ -349,8 +349,8 @@ feedback object.
 @binds(dll)
 def draw_transform_feedback_stream_instanced(mode, id, stream, instancecount):
     '''
-    render multiple instances of primitives using a count derived from a specifed
-stream of a transform feedback object.
+    render multiple instances of primitives using a count derived from a
+    specifed stream of a transform feedback object.
     
     gl.draw_transform_feedback_stream_instanced draws multiple copies of a range
     of primitives of a type specified by mode using a count retrieved from the

@@ -4,4 +4,6 @@
     "files.exclude": {
         "**/*.pyc": { "when": "$(basename).py" }
     }
+,
+"python.linting.pylintEnabled": false
 }
