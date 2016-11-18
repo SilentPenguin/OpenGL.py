@@ -20,7 +20,7 @@ Below, is some code that demonstrates the usage of gl types, enums and commands 
 ```python
 from opengl import gl
 
-buffers = (gl.uint * 1)()
+buffers = gl.uint[1]()
 gl.gen_buffers(1, buffers)
 gl.bind_buffer(gl.ARRAY_BUFFER, buffers[0])
 ```
@@ -30,14 +30,14 @@ All OpenGL.py functions conform to this convention.
 ### OpenGL call signatures
 OpenGL.py currently does nothing to protect you, as the coder, from the weirder merky depths of OpenGL.
 
-The only difference between the spec, and OpenGL.py you should observe is:
+The only differences between the spec, and OpenGL.py you should observe are:
 * The naming conventions follow `words_with_underscores` instead of `camelCase`.
 * The 'gl' prefix is omitted from command names and type defintions, and the 'GL_' prefix is removed from enum values.
 * Any names that now start with a number (there are a few, I'm not sure I've ever used them though) are prefixed with an underscore.
 
 Aside from the three transformations above, the `opengl.gl.raw` package contains no changes to the spec.
 Any changes added to the `opengl.gl` package should be constructive, however if you are concerned about the call signatures
-of the api changing, use this package instead with the directive `from opengl.gl import raw as gl`.
+of the api changing, use the `opengl.gl.raw` package instead with the directive `from opengl.gl import raw as gl`.
 
 ### Docstrings
 OpenGL.py also includes docstrings as part of the bindings.
