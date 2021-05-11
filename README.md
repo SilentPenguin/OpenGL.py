@@ -12,7 +12,6 @@ coding. When I did need to interact with gl, my editor's completion functionalit
 OpenGL.py sets out to resolve these issues.
 
 ### Write PEP 8 code
-We aren't morons, we can quickly and easily translate PEP 8 names into their counterparts.
 
 OpenGL.py transforms the spec from the gl registry for PEP 8 naming conventions.
 Below, is some code that demonstrates the usage of gl types, enums and commands under OpenGL.py:
@@ -33,7 +32,7 @@ OpenGL.py currently does nothing to protect you, as the coder, from the weirder 
 The only differences between the spec, and OpenGL.py you should observe are:
 * The naming conventions follow `words_with_underscores` instead of `camelCase`.
 * The 'gl' prefix is omitted from command names and type defintions, and the 'GL_' prefix is removed from enum values.
-* Any names that now start with a number (there are a few, I'm not sure I've ever used them though) are prefixed with an underscore.
+* Any names that are no longer a valid symbol (there are a few) are prefixed with an underscore.
 
 Aside from the three transformations above, the `opengl.gl.raw` package contains no changes to the spec.
 Any changes added to the `opengl.gl` package should be constructive, however if you are concerned about the call signatures
